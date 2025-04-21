@@ -1,62 +1,37 @@
-import { Outlet, useNavigate } from 'react-router-dom';
-import { Box, Button, Grid, Stack } from '@mui/material';
+import { Outlet } from 'react-router-dom';
+import { Box, Grid } from '@mui/material';
 import bgImage from '../../public/images/auth/Dashboard.svg';
 import AuthLogo from '../components/auth/AuthLogo';
+import NavigateButton from '../components/auth/NavigateButton';
 
 const AuthLayout = () => {
-  const navigate = useNavigate();
-
   return (
     <Box
       sx={{
+        width: '100%',
+        height: '100%',
         backgroundImage: `url(${bgImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        overflow: 'hidden',
+        minHeight: '100vh',
       }}
     >
+      <NavigateButton />
       <Grid
         container
         alignItems={'center'}
         justifyContent="center"
         flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
         sx={{
-          height: '100vh',
-          gap: { xs: '0', sm: '9%' },
-          overflow: 'hidden',
-          p: '5%',
+          px: '5%',
+          width: '100%',
+          height: '100%',
+          minHeight: 'calc(100vh - 80px)',
+          gap: { xs: '9%', md: '9%' },
+          py: { xs: '3.5%', sm: '1.5%' },
         }}
       >
-        <Stack
-          spacing={2}
-          direction={'row'}
-          position={'absolute'}
-          sx={{ top: 20, right: 20 }}
-        >
-          <Button
-            variant="loginButton"
-            disableRipple
-            onClick={() => navigate('/login')}
-            sx={{
-              py: 1.2,
-              px: 2.8,
-            }}
-          >
-            Login
-          </Button>
-          <Button
-            variant="signupButton"
-            disableRipple
-            onClick={() => navigate('/signup')}
-            sx={{
-              py: 1.2,
-              px: 2.5,
-            }}
-          >
-            Sign up
-          </Button>
-        </Stack>
         <AuthLogo />
         <Outlet />
       </Grid>

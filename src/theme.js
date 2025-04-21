@@ -21,7 +21,6 @@ let theme = createTheme({
             fontFamily: 'Inter',
             textTransform: 'capitalize',
             fontWeight: 600,
-            py: 2,
             color: '#475467',
             '&:hover': {
               color: '#475467',
@@ -56,15 +55,6 @@ let theme = createTheme({
             color: '#212121',
             fontWeight: 500,
             fontFamily: 'Inter',
-          },
-        },
-        {
-          props: { variant: 'formLinkStyle' },
-          style: {
-            color: '#136BE5',
-            fontSize: { xs: '15px', sm: '17px' },
-            fontFamily: 'Inter',
-            fontWeight: 400,
           },
         },
       ],

@@ -1,25 +1,97 @@
-import { Button, Stack } from '@mui/material';
+import { Box, Button, Stack, Typography } from '@mui/material';
+import { Auth_FORMS } from '../../constants';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const [selectedOption, setSelectedOption] = useState({
+    supplier: false,
+    client: false,
+  });
+  const { signup_as, scrollBoxStyle, formSubmissionButtonStyle } =
+    Auth_FORMS || {};
+  const { title, buttons, signupTypeButtonStyle } = signup_as || {};
+  const navigate = useNavigate();
+
+  const handleClickOption = (option) => {
+    setSelectedOption({
+      [option]: true,
+    });
+  };
+
+  const handleClickNext = () => {
+    console.log({ sinup_as_a: selectedOption });
+    if (selectedOption?.supplier || selectedOption?.client) {
+      navigate(
+        `/signup/${selectedOption?.supplier === true ? 'supplier' : '' || selectedOption?.client === true ? 'client' : ''}`
+      );
+    } else {
+      null;
+    }
+  };
+
   return (
     <Stack
-      minHeight={{ xs: 'auto', sm: '549px' }}
-      maxWidth={{ xs: '420px', sm: '572px' }}
-      justifyContent={'center'}
+      maxWidth={{ xs: '420px', sm: '482px', md: '480px', lg: '572px' }}
+      minHeight={{ xs: '350px', lg: '428px' }}
+      maxHeight={{ xs: '90%', lg: '428px' }}
+      py={{ xs: 4.2, sm: 4.2, md: 4.2, lg: 1 }}
+      px={{ xs: 2.5, md: 2 }}
+      justifyContent={{ lg: 'center' }}
       alignItems={'center'}
-      py={{ xs: 4, sm: 1 }}
       variant={'authStack'}
       direction={'column'}
-      maxHeight={'630px'}
       useFlexGap
       spacing={2}
-      px={2}
     >
-      <h1>Signup</h1>
-      <Stack direction={'column'} spacing={2}>
-        <Button>Supplier</Button>
-        <Button>Client</Button>
-      </Stack>
+      <Box overflow={'auto'} sx={scrollBoxStyle}>
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            maxWidth: '380px',
+            flexDirection: 'column',
+            gap: 4,
+          }}
+          action="#"
+          component="form"
+          onSubmit={handleClickNext}
+        >
+          <Typography variant="body2" alignSelf={'center'}>
+            {title}
+          </Typography>
+          <Box>
+            {buttons?.map(({ text }, index) => (
+              <Button
+                variant="outlined"
+                disableRipple
+                key={index}
+                onClick={() => handleClickOption(text?.toLowerCase())}
+                endIcon={
+                  <Box
+                    component={'img'}
+                    src="/images/auth/signup_button_arrow.png"
+                    sx={{ width: { xs: '28px', md: 'auto' }, height: 'auto' }}
+                  />
+                }
+                sx={signupTypeButtonStyle(selectedOption, text)}
+              >
+                {text}
+              </Button>
+            ))}
+          </Box>
+          <Stack direction={'column'}>
+            <Button
+              type="submit"
+              variant="signupButton"
+              disabled={!selectedOption?.supplier && !selectedOption?.client}
+              sx={formSubmissionButtonStyle}
+            >
+              Next
+            </Button>
+          </Stack>
+        </Box>
+      </Box>
     </Stack>
   );
 };

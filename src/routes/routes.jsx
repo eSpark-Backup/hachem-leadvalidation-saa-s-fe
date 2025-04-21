@@ -9,6 +9,7 @@ import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import ResetPassword from '../components/auth/ResetPassword';
 import PrivateRoute from './PrivateRoute';
+import SignupForm from '../components/auth/SignupForm';
 
 const routes = [
   {
@@ -18,6 +19,7 @@ const routes = [
       { index: true },
       { path: 'login', element: <Login /> },
       { path: 'signup', element: <Signup /> },
+      { path: '/signup/:type', element: <SignupForm /> },
       { path: 'forget-password', element: <ForgotPassword /> },
       { path: 'new-password', element: <NewPassword /> },
       { path: 'verify-email', element: <VerifyEmail /> },
