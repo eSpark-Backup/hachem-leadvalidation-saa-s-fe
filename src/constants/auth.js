@@ -1,13 +1,9 @@
 // Authentication forms constant
 
-export const Auth_FORMS = {
+const AUTH_FORMS = {
   // forms data
   login: {
     title: 'Login',
-    policy: {
-      title: 'I agree to the Terms of Service and Privacy Policy.',
-      status: false,
-    },
     links: [
       { text: 'Forgot password', link: '/forget-password' },
       { text: ' Reset password', link: '/reset-password' },
@@ -69,10 +65,6 @@ export const Auth_FORMS = {
   },
   signup: {
     title: 'Sign up',
-    policy: {
-      title: 'I agree to the Terms of Service and Privacy Policy.',
-      status: false,
-    },
     fields: [
       {
         label: 'FULL NAME',
@@ -110,10 +102,7 @@ export const Auth_FORMS = {
     title: 'Verify your Email',
     text: 'A verification code has been sent to your email',
     buttonText: 'Verify',
-    link: {
-      text: 'Resend',
-      link: '/signup',
-    },
+    resendButtonText: 'Resend',
     // styles
     textStyle: {
       fontSize: '20px',
@@ -122,13 +111,14 @@ export const Auth_FORMS = {
       mb: 2,
       mx: 1.5,
     },
-    linkStyle: {
+    resendButtonStyle: {
       color: '#136BE5',
       fontSize: { xs: '15px', md: '18px', lg: '20px' },
       fontFamily: 'Inter',
       fontWeight: 400,
-      '@media(max-width: 319px)': {
-        fontSize: '10px',
+      textTransform: 'capitalize',
+      '&:hover': {
+        backgroundColor: 'transparent',
       },
     },
     otpXsStyle: {
@@ -143,12 +133,66 @@ export const Auth_FORMS = {
     otpSmStyle: {
       width: '3rem',
       height: '3rem',
-      margin: '0 0.5rem',
+      margin: '0 0.9rem',
       fontSize: '1.5rem',
       borderRadius: '8px',
       border: '1px solid #ccc',
       boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.25)',
     },
+  },
+  forgot_password: {
+    title: 'Forgot Password',
+    buttonText: 'Send Code',
+    fields: [
+      {
+        label: 'EMAIL',
+        name: 'email',
+        type: 'email',
+        placeholder: 'John@gmail.com',
+      },
+    ],
+  },
+  new_password: {
+    title: 'New Password',
+    buttonText: 'SAVE',
+    fields: [
+      {
+        label: 'PASSWORD',
+        name: 'password',
+        type: 'password',
+        placeholder: '******',
+      },
+      {
+        label: 'CONFRIM PASSWORD',
+        name: 'confrim_password',
+        type: 'password',
+        placeholder: '******',
+      },
+    ],
+  },
+  reset_password: {
+    title: 'Reset Password',
+    buttonText: 'SAVE',
+    fields: [
+      {
+        label: 'CURRENT PASSWORD',
+        name: 'current_password',
+        type: 'password',
+        placeholder: '******',
+      },
+      {
+        label: 'NEW PASSWORD',
+        name: 'new_password',
+        type: 'password',
+        placeholder: '******',
+      },
+      {
+        label: 'CONFRIM PASSWORD',
+        name: 'confrim_password',
+        type: 'password',
+        placeholder: '******',
+      },
+    ],
   },
 
   // forms styles
@@ -221,8 +265,10 @@ export const Auth_FORMS = {
     },
   },
   formSubmissionButtonStyle: {
+    width: '100%',
     height: { xs: '54px', lg: '64px' },
     borderRadius: '12px',
+    mx: 'auto',
     textTransform: 'uppercase',
     fontWeight: 500,
     '&.Mui-disabled': {
@@ -231,3 +277,10 @@ export const Auth_FORMS = {
     },
   },
 };
+
+const VERIFICATION_MODAL = {
+  title: 'Verification Successful ',
+  image: '/src/assets/images/auth/Verified_image.svg',
+};
+
+export { AUTH_FORMS, VERIFICATION_MODAL };

@@ -1,16 +1,16 @@
 import {
   Box,
   Button,
-  Checkbox,
-  FormControlLabel,
   IconButton,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
-import { Auth_FORMS } from '../../constants';
+import { AUTH_FORMS } from '../../constants/auth';
 import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import Checkbox from './Checkbox';
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState({
@@ -31,8 +31,9 @@ const SignupForm = () => {
     scrollBoxStyle,
     fieldStyle,
     formSubmissionButtonStyle,
-  } = Auth_FORMS || {};
-  const { title, fields, policy } = signup || {};
+  } = AUTH_FORMS || {};
+  const { title, fields } = signup || {};
+  const navigate = useNavigate();
 
   const handleClickEye = (field) => {
     setShowPassword((prev) => ({
@@ -47,6 +48,7 @@ const SignupForm = () => {
   const handleSignup = (e) => {
     e.preventDefault();
     console.log({ signupCreds: user });
+    navigate(`/verify-email`);
     setUser({
       name: '',
       email: '',
@@ -96,7 +98,8 @@ const SignupForm = () => {
                   required
                   autoComplete="off"
                   sx={fieldStyle}
-                  name={user[name] || ''}
+                  name={name}
+                  value={user[name] || ''}
                   placeholder={placeholder || ''}
                   onChange={(e) => handleInputChange(name, e?.target?.value)}
                   type={
@@ -119,29 +122,13 @@ const SignupForm = () => {
               )}
             </Box>
           ))}
-          <Stack p={0.6} px={1}>
-            <FormControlLabel
-              variant="authFormControl"
-              label={policy?.title || ''}
-              control={
-                <Checkbox
-                  disableRipple
-                  checked={user?.service_and_policy}
-                  onChange={(e) =>
-                    setUser((prev) => ({
-                      ...prev,
-                      service_and_policy: e?.target?.checked,
-                    }))
-                  }
-                />
-              }
-            />
+          <Stack px={1} py={1.5}>
+            <Checkbox setChecked={setUser} checked={user?.service_and_policy} />
           </Stack>
-          <Stack direction={'column'}>
+          <Stack direction={'column'} px={0.5} py={1}>
             <Button
               type="submit"
               variant="signupButton"
-              onClick={handleSignup}
               sx={formSubmissionButtonStyle}
             >
               Sign up
@@ -161,7 +148,7 @@ const SignupForm = () => {
             </Typography>
             <Box
               component={'img'}
-              src="/images/auth/google.png"
+              src="/src/assets/images/auth/google.png"
               sx={{ width: '40px', height: '40px', cursor: 'pointer' }}
             />
           </Stack>

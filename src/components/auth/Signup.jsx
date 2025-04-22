@@ -1,5 +1,5 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { Auth_FORMS } from '../../constants';
+import { AUTH_FORMS } from '../../constants/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ const Signup = () => {
     client: false,
   });
   const { signup_as, scrollBoxStyle, formSubmissionButtonStyle } =
-    Auth_FORMS || {};
+    AUTH_FORMS || {};
   const { title, buttons, signupTypeButtonStyle } = signup_as || {};
   const navigate = useNavigate();
 
@@ -70,7 +70,7 @@ const Signup = () => {
                 endIcon={
                   <Box
                     component={'img'}
-                    src="/images/auth/signup_button_arrow.png"
+                    src="/src/assets/images/auth/signup_button_arrow.png"
                     sx={{ width: { xs: '28px', md: 'auto' }, height: 'auto' }}
                   />
                 }

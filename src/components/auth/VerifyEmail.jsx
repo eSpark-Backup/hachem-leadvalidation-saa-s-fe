@@ -1,22 +1,26 @@
 import { Box, Button, Stack, Typography, useTheme } from '@mui/material';
-import { Auth_FORMS } from '../../constants';
+import { AUTH_FORMS, VERIFICATION_MODAL } from '../../constants/auth';
 import { OtpInput } from 'reactjs-otp-input';
 import { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { Link } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import VerificationModal from './VerificationModal';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-const VerifyEmail = () => {
+const VerifyEmail = ({ title }) => {
   const [otp, setOtp] = useState('');
+  const [showVerifyEmail, setShowVerifyEmail] = useState(false);
+
   const { verify_email, scrollBoxStyle, formSubmissionButtonStyle } =
-    Auth_FORMS || {};
+    AUTH_FORMS || {};
+  const navigate = useNavigate();
+
   const {
-    title,
     text,
-    link,
+    resendButtonText,
     buttonText,
     textStyle,
-    linkStyle,
+    resendButtonStyle,
     otpXsStyle,
     otpSmStyle,
   } = verify_email || {};
@@ -29,6 +33,11 @@ const VerifyEmail = () => {
 
   const handleVerify = (e) => {
     e.preventDefault();
+    if (title == 'Forgot password') {
+      navigate(`/new-password`);
+    } else {
+      setShowVerifyEmail(true);
+    }
     console.log({ Entered_OTP: otp });
   };
   return (
@@ -96,20 +105,24 @@ const VerifyEmail = () => {
             >
               {buttonText}
             </Button>
-            <Link
-              component={RouterLink}
-              to={link?.link || '#'}
-              underline="none"
-              alignSelf={'center'}
-              sx={linkStyle}
-            >
-              {link?.text || ''}
-            </Link>
+            <Button disableRipple sx={resendButtonStyle}>
+              {resendButtonText}
+            </Button>
           </Stack>
         </Box>
       </Box>
+      <VerificationModal
+        open={showVerifyEmail}
+        setOpen={setShowVerifyEmail}
+        data={VERIFICATION_MODAL}
+        text="Go to login"
+        link="/login"
+      />
     </Stack>
   );
 };
 
+VerifyEmail.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 export default VerifyEmail;

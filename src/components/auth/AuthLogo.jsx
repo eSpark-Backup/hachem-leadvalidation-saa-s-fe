@@ -6,7 +6,7 @@ const AuthLogo = () => {
   return (
     <Box
       component={'img'}
-      src="/images/auth/Group.png"
+      src="/src/assets/images/auth/Group.png"
       sx={{
         width: pathname === '/' ? '55%' : '35%',
         maxWidth: pathname === '/' ? '512px' : '360px',

@@ -36,7 +36,7 @@ const NavigateButton = () => {
           height: '44px',
           mt: { xs: 1.5, sm: 2.8 },
           mr: { xs: 1.5, sm: 2.8 },
-          display: pathname === '/signup' ? 'none' : 'flex',
+          display: pathname?.includes('/signup') ? 'none' : 'flex',
         }}
       >
         {pathname === '/signup' ? 'Log in' : 'Sign up'}

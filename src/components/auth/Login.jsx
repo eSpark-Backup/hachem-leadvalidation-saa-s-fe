@@ -1,8 +1,6 @@
 import {
   Box,
   Button,
-  Checkbox,
-  FormControlLabel,
   IconButton,
   Stack,
   TextField,
@@ -10,9 +8,10 @@ import {
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useState } from 'react';
-import { Auth_FORMS } from '../../constants';
+import { AUTH_FORMS } from '../../constants/auth';
 import { Link as RouterLink } from 'react-router-dom';
 import { Link } from '@mui/material';
+import Checkbox from './Checkbox';
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -27,8 +26,8 @@ const Login = () => {
     scrollBoxStyle,
     fieldStyle,
     formSubmissionButtonStyle,
-  } = Auth_FORMS || {};
-  const { title, policy, links, fields } = login || {};
+  } = AUTH_FORMS || {};
+  const { title, links, fields } = login || {};
 
   const handleClickEye = () => {
     setShowPassword((prev) => !prev);
@@ -87,7 +86,8 @@ const Login = () => {
                   required
                   autoComplete="off"
                   sx={fieldStyle}
-                  name={user[name] || ''}
+                  name={name}
+                  value={user[name] || ''}
                   placeholder={placeholder || ''}
                   onChange={(e) => handleInputChange(name, e?.target?.value)}
                   type={
@@ -110,25 +110,10 @@ const Login = () => {
               )}
             </Box>
           ))}
-          <Stack p={0.6} px={1}>
-            <FormControlLabel
-              variant="authFormControl"
-              label={policy?.title || ''}
-              control={
-                <Checkbox
-                  disableRipple
-                  checked={user?.service_and_policy}
-                  onChange={(e) =>
-                    setUser((prev) => ({
-                      ...prev,
-                      service_and_policy: e?.target?.checked,
-                    }))
-                  }
-                />
-              }
-            />
+          <Stack px={1} py={1}>
+            <Checkbox setChecked={setUser} checked={user?.service_and_policy} />
           </Stack>
-          <Stack direction={'column'} p={1}>
+          <Stack direction={'column'} px={0.5} py={1}>
             <Button
               variant="signupButton"
               onClick={handleLogin}
@@ -177,7 +162,7 @@ const Login = () => {
             </Typography>
             <Box
               component={'img'}
-              src="/images/auth/google.png"
+              src="/src/assets/images/auth/google.png"
               sx={{ width: '40px', height: '40px', cursor: 'pointer' }}
             />
           </Stack>

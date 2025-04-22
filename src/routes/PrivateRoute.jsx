@@ -1,6 +1,6 @@
 // components/PrivateRoute.js
 import { Navigate } from 'react-router-dom';
-import { isAuthenticated } from '../utils';
+import { isAuthenticated } from '../utils/auth';
 import PropTypes from 'prop-types';
 
 const PrivateRoute = ({ children }) => {

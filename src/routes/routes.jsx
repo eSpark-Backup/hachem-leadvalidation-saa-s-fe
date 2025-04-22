@@ -1,5 +1,5 @@
 // routes/index.js (ya jo file mein tum routes define kar rahe ho)
-import AuthLayout from '../pages/AuthLayout';
+import AuthLayout from '../layouts/AuthLayout';
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/Signup';
 import ForgotPassword from '../components/auth/ForgotPassword';
@@ -21,8 +21,15 @@ const routes = [
       { path: 'signup', element: <Signup /> },
       { path: '/signup/:type', element: <SignupForm /> },
       { path: 'forget-password', element: <ForgotPassword /> },
+      {
+        path: '/forget-password/:email',
+        element: <VerifyEmail title="Forgot password" />,
+      },
       { path: 'new-password', element: <NewPassword /> },
-      { path: 'verify-email', element: <VerifyEmail /> },
+      {
+        path: 'verify-email',
+        element: <VerifyEmail title="Verify your Email" />,
+      },
       { path: 'reset-password', element: <ResetPassword /> },
     ],
   },
