@@ -22,7 +22,6 @@ import {
   innerRowStyles,
   containerBoxStyles,
   textFieldStyles,
-  profileImgStyles,
   welcomdeTextStyles,
   profileNameStyles,
 } from '../../styles/components/globals/ProfileDropDown';

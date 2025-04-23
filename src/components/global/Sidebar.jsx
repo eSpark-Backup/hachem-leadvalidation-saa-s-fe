@@ -96,7 +96,7 @@ const Sidebar = () => {
           <Typography variant="h3" sx={dialogTitleStyles}></Typography>
         </DialogTitle>
         <DialogContent>
-          <Typography variant="body1" sx={dialogContentStyles}>
+          <Typography sx={dialogContentStyles}>
             {LOG_OUT_MODAL_INFO?.logOutText}
             <br />
             {LOG_OUT_MODAL_INFO?.unsavedChanges}

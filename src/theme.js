@@ -1,42 +1,14 @@
 'use client';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import '@fontsource/inter';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#1B2559',
-    },
-    secondary: {
-      main: '#136BE5',
-    },
-    info: {
-      main: '##888888 ',
-    },
-    background: {
-      default: '#ffffff',
-    },
-    default: {
-      main: '#ffffff',
-    },
-    text: {
-      primary: '#404040',
-      secondary: '#54D14D',
-    },
-  },
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 768,
-      md: 1024,
-      lg: 1440,
-      xl: 1920,
-    },
-  },
+let theme = createTheme({
   typography: {
     fontFamily: ['Gilroy', 'inter', 'poppins', 'sans-serif'].join(','),
     h1: {
       fontSize: '40px',
       fontWeight: 700,
+      fontFamily: 'Inter',
     },
     h2: {
       fontSize: '28px',
@@ -58,8 +30,11 @@ const theme = createTheme({
       fontSize: '16px',
       fontWeight: 700,
     },
-    body1: {
-      fontSize: '20px',
+    body1: {},
+    body2: {
+      fontSize: '31px',
+      fontWeight: 700,
+      fontFamily: 'Inter',
     },
     button: {
       textTransform: 'normal',
@@ -83,97 +58,109 @@ const theme = createTheme({
     MuiButton: {
       variants: [
         {
-          props: { variant: 'primary' },
+          props: { variant: 'loginButton' },
           style: {
-            backgroundColor: '#54D14D',
-            color: '#404040',
-            borderRadius: '5px',
-            position: 'relative',
+            backgroundColor: '#FFFFFF',
+            borderRadius: '8px',
+            fontFamily: 'Inter',
+            textTransform: 'capitalize',
+            fontWeight: 600,
+            color: '#475467',
             '&:hover': {
-              backgroundColor: '#404040 ',
-              color: '#ffffff',
+              color: '#475467',
+              backgroundColor: '#FFFFFF',
             },
           },
         },
         {
-          props: { variant: 'secondary' },
+          props: { variant: 'signupButton' },
           style: {
-            backgroundColor: '#404040 ',
-            color: '#ffffff',
-            borderRadius: '5px',
-            position: 'relative',
+            backgroundColor: '#09102B',
+            textTransform: 'capitalize',
+            fontFamily: 'Inter',
+            fontWeight: 600,
+            textWrap: 'nowrap',
+            borderRadius: '8px',
+            color: '#FFFFFF',
             '&:hover': {
-              backgroundColor: '#54D14D',
-              color: '#404040',
-            },
-          },
-        },
-        {
-          props: { variant: 'default' },
-          style: {
-            backgroundColor: '#54D14D',
-            color: '#404040',
-            borderRadius: '5px',
-            position: 'relative',
-            '&:hover': {
-              backgroundColor: '#404040 ',
-              color: '#ffffff',
-            },
-          },
-        },
-        {
-          props: { variant: 'outlined' },
-          style: {
-            border: '1px solid #E4E4E4',
-            boxShadow: '0px 0px 4px 0px #00000040',
-            backgroundColor: '#fff',
-            height: '40px',
-            color: '#888888',
-            '&:hover': {
-              border: '1px solid #E4E4E4',
-              boxShadow: '0px 0px 4px 0px #00000040',
-              backgroundColor: '#fff',
-              color: '#888888',
+              color: '#FFFFFF',
+              backgroundColor: '#09102B',
             },
           },
         },
       ],
     },
-    MuiLink: {
-      defaultProps: {
-        variant: 'link',
-      },
-    },
-    MuiIconButton: {
-      styleOverrides: {
-        root: {
-          color: '#54D14D',
-          '&:hover': {
-            backgroundColor: '#404040',
-            color: '#54D14D',
+    MuiTypography: {
+      variants: [
+        {
+          props: { variant: 'inputLabel' },
+          style: {
+            fontSize: '12px',
+            color: '#212121',
+            fontWeight: 500,
+            fontFamily: 'Inter',
           },
         },
-      },
+      ],
     },
-    MuiSelect: {
-      styleOverrides: {
-        root: {},
-        select: {
-          color: 'black',
-          alignItems: 'center',
-          paddingTop: '25px',
+    MuiStack: {
+      variants: [
+        {
+          props: { variant: 'authStack' },
+          style: {
+            width: '100%',
+            height: 'auto',
+            flexWrap: 'wrap',
+            borderRadius: '24px',
+            backgroundColor: '#FFFFFF',
+            border: '1px solid #E0E0E0',
+            boxShadow: '24px 82px 40px -14px rgba(100, 100, 100, 0.0784)',
+          },
         },
-      },
+      ],
     },
-    MuiContainer: {
-      styleOverrides: {
-        root: {
-          maxWidth: '1260px !important',
-          margin: '0 auto',
+    MuiFormControlLabel: {
+      variants: [
+        {
+          props: { variant: 'authFormControl' },
+          style: {
+            width: 'auto',
+            color: '#616161',
+            textDecoration: 'underline',
+            '& .MuiCheckbox-root': {
+              color: '#E4E4E4',
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
+              '&.Mui-checked': {
+                color: 'primary !important',
+              },
+            },
+            '& .MuiFormControlLabel-label': {
+              fontSize: '11px',
+              fontWeight: 400,
+              fontFamily: 'Inter',
+              textAlign: 'left',
+            },
+            '@media (max-width: 400px)': {
+              order: { xs: 2, sm: 1 },
+              width: '100%',
+            },
+          },
         },
-      },
+      ],
+    },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 768,
+      md: 1024,
+      lg: 1440,
+      xl: 1920,
     },
   },
 });
+theme = responsiveFontSizes(theme);
 
 export default theme;

@@ -19,9 +19,7 @@ const NotFound = () => {
       </Typography>
 
       {/* Description of the error */}
-      <Typography variant="body1" gutterBottom>
-        {NOT_FOUND_PAGE.description}
-      </Typography>
+      <Typography gutterBottom>{NOT_FOUND_PAGE.description}</Typography>
 
       {/* Button that redirects the user to the homepage */}
       <Button

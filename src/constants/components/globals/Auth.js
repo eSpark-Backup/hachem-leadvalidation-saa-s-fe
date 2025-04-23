@@ -1,27 +1,33 @@
 const ROUTES = {
-  dashboard: '/dashboard',
+  splash: '/',
   login: '/login',
-  register: '/register',
+  signup: '/signup',
+  signupType: '/signup/:type',
   forgotPassword: '/forgot-password',
+  forgotPasswordEmail: '/forgot-password/:email',
+  newpassword: '/new-password',
   resetPassword: '/reset-password',
+  verifyEmail: '/verify-email',
+  dashboard: '/dashboard',
+  notFound: '*',
 };
 const SUPPLIER_INFO = {
   role: 'supplier',
   id: 'SP10234',
   name: 'Supplier Name',
-  profileImage: 'src/assets/images/global/profile-Image-default.png',
+  profileImage: '/src/assets/images/global/profile-Image-default.png',
 };
 const ADMIN_INFO = {
   role: 'admin',
   id: 'AD10234',
   name: 'Admin Name',
-  profileImage: 'src/assets/images/global/profile-Image-default.png',
+  profileImage: '/src/assets/images/global/profile-Image-default.png',
 };
 const CLIENT_INFO = {
   role: 'client',
   id: 'CL10234',
   name: 'Client Name',
-  profileImage: 'src/assets/images/global/profile-Image-default.png',
+  profileImage: '/src/assets/images/global/profile-Image-default.png',
 };
 
 const USER_TYPES = {
