@@ -1,6 +1,7 @@
-// src/App.js
 import { BrowserRouter as Router } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
+import './App.css';
+import './assets/fonts/fonts.css';
 
 function App() {
   return (

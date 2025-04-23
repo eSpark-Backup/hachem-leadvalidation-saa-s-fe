@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import PrivateRoute from './PrivateRoute';
 import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
+import PrivateLayout from '../layouts/PrivateLayout';
 
 const AppRoutes = () => {
   return (
@@ -17,10 +18,13 @@ const AppRoutes = () => {
         path="/dashboard"
         element={
           <PrivateRoute>
-            <Dashboard />
+            <PrivateLayout />
           </PrivateRoute>
         }
-      />
+      >
+        {/* These are nested under /dashboard */}
+        <Route index element={<Dashboard />} />
+      </Route>
 
       {/* Catch-all Route (404) */}
       <Route path="*" element={<NotFound />} />

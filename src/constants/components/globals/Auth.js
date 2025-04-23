@@ -1,0 +1,38 @@
+const ROUTES = {
+  dashboard: '/dashboard',
+  login: '/login',
+  register: '/register',
+  forgotPassword: '/forgot-password',
+  resetPassword: '/reset-password',
+};
+const SUPPLIER_INFO = {
+  role: 'supplier',
+  id: 'SP10234',
+  name: 'Supplier Name',
+  profileImage: 'src/assets/images/global/profile-Image-default.png',
+};
+const ADMIN_INFO = {
+  role: 'admin',
+  id: 'AD10234',
+  name: 'Admin Name',
+  profileImage: 'src/assets/images/global/profile-Image-default.png',
+};
+const CLIENT_INFO = {
+  role: 'client',
+  id: 'CL10234',
+  name: 'Client Name',
+  profileImage: 'src/assets/images/global/profile-Image-default.png',
+};
+
+const USER_TYPES = {
+  supplier: 'supplier',
+  client: 'client',
+  admin: 'admin',
+};
+const KEYS = {
+  token: 'token',
+  userType: 'userType',
+  tokenKey: 'sample-token',
+};
+
+export { ROUTES, SUPPLIER_INFO, ADMIN_INFO, CLIENT_INFO, USER_TYPES, KEYS };

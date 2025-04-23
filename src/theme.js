@@ -4,10 +4,10 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#FEBD17',
+      main: '#1B2559',
     },
     secondary: {
-      main: '#404040',
+      main: '#136BE5',
     },
     info: {
       main: '##888888 ',
@@ -20,20 +20,20 @@ const theme = createTheme({
     },
     text: {
       primary: '#404040',
-      secondary: '#FEBD17',
+      secondary: '#54D14D',
     },
   },
   breakpoints: {
     values: {
       xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
+      sm: 768,
+      md: 1024,
+      lg: 1440,
       xl: 1920,
     },
   },
   typography: {
-    fontFamily: ['poppins', 'sans-serif'].join(','),
+    fontFamily: ['Gilroy', 'inter', 'poppins', 'sans-serif'].join(','),
     h1: {
       fontSize: '40px',
       fontWeight: 700,
@@ -66,12 +66,12 @@ const theme = createTheme({
     },
     link: {
       textDecoration: 'none',
-      color: '#FEBD17',
+      color: '#54D14D',
       '&:hover': {
         color: '#404040',
       },
       '&:active': {
-        color: '#FEBD17',
+        color: '#54D14D',
       },
     },
   },
@@ -85,7 +85,7 @@ const theme = createTheme({
         {
           props: { variant: 'primary' },
           style: {
-            backgroundColor: '#FEBD17',
+            backgroundColor: '#54D14D',
             color: '#404040',
             borderRadius: '5px',
             position: 'relative',
@@ -103,7 +103,7 @@ const theme = createTheme({
             borderRadius: '5px',
             position: 'relative',
             '&:hover': {
-              backgroundColor: '#FEBD17',
+              backgroundColor: '#54D14D',
               color: '#404040',
             },
           },
@@ -111,7 +111,7 @@ const theme = createTheme({
         {
           props: { variant: 'default' },
           style: {
-            backgroundColor: '#FEBD17',
+            backgroundColor: '#54D14D',
             color: '#404040',
             borderRadius: '5px',
             position: 'relative',
@@ -147,10 +147,10 @@ const theme = createTheme({
     MuiIconButton: {
       styleOverrides: {
         root: {
-          color: '#FEBD17',
+          color: '#54D14D',
           '&:hover': {
             backgroundColor: '#404040',
-            color: '#FEBD17',
+            color: '#54D14D',
           },
         },
       },

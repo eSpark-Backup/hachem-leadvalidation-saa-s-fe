@@ -1,19 +1,7 @@
-// src/pages/Dashboard.js
-import { useNavigate } from 'react-router-dom';
+import { DASHBOARD_PAGE } from '../constants/pages/DashBoard';
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/');
-  };
-  return (
-    <div>
-      <h2>Dashboard Page</h2>
-      <button onClick={handleLogout}>Logout</button>
-    </div>
-  );
+  return <>{DASHBOARD_PAGE.title}</>;
 };
 
 export default Dashboard;
