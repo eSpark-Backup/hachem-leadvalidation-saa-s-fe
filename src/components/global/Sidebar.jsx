@@ -8,7 +8,7 @@ import {
   DialogActions,
   Button,
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -35,6 +35,7 @@ import {
 } from '../../constants/components/globals/SideBar';
 
 const Sidebar = () => {
+  const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const navigate = useNavigate();
@@ -64,14 +65,25 @@ const Sidebar = () => {
                 key={index}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                sx={menuItemStyles}
+                sx={menuItemStyles(item?.path === pathname)}
               >
                 <Box sx={menuItemContentStyles}>
                   <img
-                    src={hoveredIndex === index ? item?.hoverIcon : item?.icon}
+                    src={
+                      hoveredIndex === index || item?.path === pathname
+                        ? item?.hoverIcon
+                        : item?.icon
+                    }
                     alt={item?.label}
                   />
-                  <Typography sx={labelStyles}>{item?.label}</Typography>
+                  <Typography
+                    sx={{
+                      ...labelStyles,
+                      color: item?.path === pathname ? 'white' : '77797D',
+                    }}
+                  >
+                    {item?.label}
+                  </Typography>
                 </Box>
                 <img src={bar} alt="bar" />
               </Box>
@@ -118,12 +130,6 @@ const Sidebar = () => {
       </Dialog>
     </>
   );
-};
-
-Sidebar.propTypes = {
-  open: PropTypes.node.isRequired,
-  setOpenNav: PropTypes.node.isRequired,
-  path: PropTypes.node.isRequired,
 };
 
 export default Sidebar;

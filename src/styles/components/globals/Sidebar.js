@@ -13,7 +13,7 @@ const menuWrapperStyles = {
   pt: 2.5,
 };
 
-const menuItemStyles = {
+const menuItemStyles = (isSelected) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
@@ -24,7 +24,10 @@ const menuItemStyles = {
   pl: 1,
   pr: 0.5,
   cursor: 'pointer',
-  backgroundColor: 'white',
+  background:
+    isSelected === true
+      ? 'linear-gradient(92.83deg, #24A956 38.94%, #126D30 133.43%)'
+      : 'white',
   height: '45px',
   '&:hover': {
     background: 'linear-gradient(92.83deg, #24A956 38.94%, #126D30 133.43%)',
@@ -34,7 +37,7 @@ const menuItemStyles = {
     background: 'linear-gradient(92.83deg, #24A956 38.94%, #126D30 133.43%)',
     color: 'white',
   },
-};
+});
 
 const menuItemContentStyles = {
   display: 'flex',
@@ -62,7 +65,9 @@ const dialogContentStyles = {
   fontSize: 16,
 };
 const logoutBtnStyles = { fontSize: '20px' };
-const labelStyles = { fontSize: '16px' };
+const labelStyles = {
+  fontSize: '16px',
+};
 const growBoxSTyles = { flexGrow: 1 };
 const logoStyles = { width: '100%', maxWidth: '150px' };
 export {

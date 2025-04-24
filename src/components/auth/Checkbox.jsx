@@ -48,7 +48,7 @@ const Checkbox = ({ checked, setChecked, data }) => {
 
 Checkbox.propTypes = {
   setChecked: PropTypes.func.isRequired,
-  checked: PropTypes.object.isRequired,
+  checked: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired,
 };
 

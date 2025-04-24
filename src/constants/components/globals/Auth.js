@@ -1,4 +1,5 @@
 const ROUTES = {
+  // public paths
   splash: '/',
   login: '/login',
   signup: '/signup',
@@ -8,8 +9,22 @@ const ROUTES = {
   newpassword: '/new-password',
   resetPassword: '/reset-password',
   verifyEmail: '/verify-email',
-  dashboard: '/dashboard',
   notFound: '*',
+
+  // private paths
+  settings: 'settings',
+  dashboard: '/dashboard',
+  billingLogsRevenue: 'billing-logs-revenue',
+  klaienManagement: 'klaien-management',
+  leadMonitoring: 'lead-monitoring',
+  leadScoringSetting: 'lead-scoring-setting',
+  leadsStatusTracker: 'leads-status-tracker',
+  manageClients: 'manage-clients',
+  manageSuppliers: 'manage-suppliers',
+  myLeads: 'my-leads',
+  reportsAnalytics: 'reports-analytics',
+  systemSetting: 'system-setting',
+  uploadLeads: 'upload-leads',
 };
 const SUPPLIER_INFO = {
   role: 'supplier',

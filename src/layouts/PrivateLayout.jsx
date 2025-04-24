@@ -28,7 +28,6 @@ const PrivateLayout = () => {
       <SideNav
         onClose={() => setOpenNav(false)}
         open={openNav}
-        setOpenNav={setOpenNav}
       />
       <LayoutRoot>
         <LayoutBodyRoot>

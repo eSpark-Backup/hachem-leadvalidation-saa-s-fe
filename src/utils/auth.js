@@ -53,7 +53,7 @@ const handleLoginAsSupplier = (navigate) => {
 const handleLogout = (navigate) => {
   localStorage.removeItem('token');
   localStorage.removeItem('userType');
-  navigate('/');
+  navigate(ROUTES.login);
 };
 
 const TOKEN = localStorage.getItem('token');
@@ -73,7 +73,7 @@ const PROFILE =
       : ADMIN_INFO;
 
 const isAuthenticated = () => {
-  return !localStorage.getItem('token'); // simulate token check
+  return localStorage.getItem('token'); // simulate token check
 };
 
 export {
