@@ -100,7 +100,7 @@ const SIDE_BAR_MENU_CLIENT = [
     hoverIcon: '/src/assets/images/global/menu-icons/add-filter-white-icon.svg',
   },
   {
-    label: 'report & Analytics',
+    label: 'Report & Analytics',
     path: '/dashboard/reports-analytics',
     icon: '/src/assets/images/global/menu-icons/report-gray-icon.svg',
     hoverIcon: '/src/assets/images/global/menu-icons/report-white-icon.svg',
