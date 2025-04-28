@@ -8,13 +8,18 @@ import VerifyEmail from '../components/auth/VerifyEmail';
 import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import ResetPassword from '../components/auth/ResetPassword';
-import PrivateRoute from './PrivateRoute';
+// import PrivateRoute from './PrivateRoute';
 import SignupForm from '../components/auth/SignupForm';
 import PrivateLayout from '../layouts/PrivateLayout';
 import { ROUTES } from '../constants/components/globals/Auth';
 import { AUTH_FORMS } from '../constants/auth';
+import PaymentLayout from '../layouts/PaymentLayout';
+import Credit from '../components/payment/Credit';
+import Payment from '../components/payment/Payment';
+import PrivateRoute from './PrivateRoute';
+
 const {
-  // publich paths
+  // publich paths --->
   splash,
   login,
   signup,
@@ -26,7 +31,12 @@ const {
   verifyEmail,
   notFound,
 
-  // private paths
+  // private paths --->
+  // payment routes
+  onboardingCredits,
+  onboardingPayment,
+
+  // dashboard routes
   dashboard,
 } = ROUTES || {};
 
@@ -52,6 +62,13 @@ const routes = [
         element: <VerifyEmail title={verify_email?.title} />,
       },
       { path: resetPassword, element: <ResetPassword /> },
+    ],
+  },
+  {
+    element: <PaymentLayout />,
+    children: [
+      { path: onboardingCredits, element: <Credit /> },
+      { path: onboardingPayment, element: <Payment /> },
     ],
   },
   {

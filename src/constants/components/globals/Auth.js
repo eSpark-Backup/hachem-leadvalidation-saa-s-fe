@@ -9,6 +9,8 @@ const ROUTES = {
   resetPassword: '/reset-password',
   verifyEmail: '/verify-email',
   dashboard: '/dashboard',
+  onboardingCredits: '/onboarding/credits',
+  onboardingPayment: '/onboarding/payment',
   notFound: '*',
 };
 const SUPPLIER_INFO = {

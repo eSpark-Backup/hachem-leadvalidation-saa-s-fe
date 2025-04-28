@@ -73,7 +73,7 @@ const PROFILE =
       : ADMIN_INFO;
 
 const isAuthenticated = () => {
-  return !localStorage.getItem('token'); // simulate token check
+  return !localStorage.getItem('token');
 };
 
 export {

@@ -1,7 +1,6 @@
 // Authentication forms constant
 
 const AUTH_FORMS = {
-  
   // forms data
   auth_image: '/src/assets/images/auth/Group.png',
   login: {
