@@ -88,6 +88,26 @@ let theme = createTheme({
             },
           },
         },
+        {
+          props: { variant: 'formSubmissionButton' },
+          style: {
+            backgroundColor: '#54D14D',
+            textTransform: 'capitalize',
+            fontFamily: 'Inter',
+            fontWeight: 700,
+            textWrap: 'nowrap',
+            borderRadius: '1234px',
+            color: '#FFFFFF',
+            '&:hover': {
+              color: '#FFFFFF',
+              backgroundColor: '#54D14D',
+            },
+            '&.Mui-disabled': {
+              backgroundColor: '#54D14D7D',
+              color: '#FFFFFF',
+            },
+          },
+        },
       ],
     },
     MuiTypography: {

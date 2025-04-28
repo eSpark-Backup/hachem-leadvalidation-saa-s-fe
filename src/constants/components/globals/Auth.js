@@ -9,6 +9,9 @@ const ROUTES = {
   newpassword: '/new-password',
   resetPassword: '/reset-password',
   verifyEmail: '/verify-email',
+  dashboard: '/dashboard',
+  onboardingCredits: '/onboarding/credits',
+  onboardingPayment: '/onboarding/payment',
   notFound: '*',
 
   // private paths
