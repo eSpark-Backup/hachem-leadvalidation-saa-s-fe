@@ -25,10 +25,7 @@ const PrivateLayout = () => {
 
   return (
     <>
-      <SideNav
-        onClose={() => setOpenNav(false)}
-        open={openNav}
-      />
+      <SideNav onClose={() => setOpenNav(false)} open={openNav} />
       <LayoutRoot>
         <LayoutBodyRoot>
           <LayoutContainer>

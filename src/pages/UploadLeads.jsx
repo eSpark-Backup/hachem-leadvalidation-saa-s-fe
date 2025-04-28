@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
 const UploadLeads = () => {
-  const {pathname}= useLocation()
+  const { pathname } = useLocation();
   return <>{pathname}</>;
 };
 

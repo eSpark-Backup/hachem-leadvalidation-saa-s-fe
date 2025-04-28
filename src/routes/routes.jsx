@@ -22,9 +22,9 @@ import MyLeads from '../pages/MyLeads';
 import SystemSetting from '../pages/SystemSetting';
 import ReportsAnalytics from '../pages/ReportsAnalytics';
 import ManageSuppliers from '../pages/ManageSuppliers';
+
 import { ROUTES } from '../constants/components/globals/Auth';
 import { AUTH_FORMS } from '../constants/auth';
-
 const {
   // publich paths
   splash,

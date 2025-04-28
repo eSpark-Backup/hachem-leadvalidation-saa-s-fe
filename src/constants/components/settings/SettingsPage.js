@@ -15,6 +15,4 @@ const SETTINGS = {
   },
 };
 
-
-
 export { SETTINGS };
