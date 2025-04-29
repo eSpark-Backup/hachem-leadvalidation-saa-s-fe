@@ -9,7 +9,6 @@ import {
   Button,
 } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardLogo from '../../assets/images/global/dashboard-logo.svg';
@@ -31,14 +30,20 @@ import {
 } from '../../styles/components/globals/Sidebar';
 import {
   LOG_OUT_MODAL_INFO,
+  LOW_CREDITS,
+  SETTINGS_PATH,
   SIDE_BAR_LOGOUT_BUTTON,
 } from '../../constants/components/globals/SideBar';
+import DotBadge from './DotBadge';
+import { USER_TYPES } from '../../constants/components/globals/Auth';
 
 const Sidebar = () => {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const navigate = useNavigate();
+  const userType = localStorage?.getItem('userType');
+  const client = USER_TYPES?.client;
 
   const openLogoutModal = () => {
     setOpen(true);
@@ -68,14 +73,33 @@ const Sidebar = () => {
                 sx={menuItemStyles(item?.path === pathname)}
               >
                 <Box sx={menuItemContentStyles}>
-                  <img
-                    src={
-                      hoveredIndex === index || item?.path === pathname
-                        ? item?.hoverIcon
-                        : item?.icon
-                    }
-                    alt={item?.label}
-                  />
+                  {item?.path.startsWith(SETTINGS_PATH) &&
+                  userType === client &&
+                  LOW_CREDITS ? (
+                    <DotBadge
+                      color={'#FF0000'}
+                      icon={
+                        <img
+                          src={
+                            hoveredIndex === index || item?.path === pathname
+                              ? item?.hoverIcon
+                              : item?.icon
+                          }
+                          alt={item?.label}
+                        />
+                      }
+                    />
+                  ) : (
+                    <img
+                      src={
+                        hoveredIndex === index || item?.path === pathname
+                          ? item?.hoverIcon
+                          : item?.icon
+                      }
+                      alt={item?.label}
+                    />
+                  )}
+
                   <Typography
                     sx={{
                       ...labelStyles,

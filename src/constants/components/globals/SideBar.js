@@ -28,7 +28,7 @@ const SIDE_BAR_MENU_SUPPLIER = [
     hoverIcon: '/src/assets/images/global/menu-icons/location-white-icon.svg',
   },
   {
-    label: 'Settings ',
+    label: 'Settings',
     path: '/dashboard/settings',
     icon: '/src/assets/images/global/menu-icons/setting-gray-icon.svg',
     hoverIcon: '/src/assets/images/global/menu-icons/setting-white-icon.svg',
@@ -129,6 +129,9 @@ const LOG_OUT_MODAL_INFO = {
   cancelBtn: 'Cancel',
   confirmBtn: 'Yes, Log Out',
 };
+const LOW_CREDITS = true;
+
+const SETTINGS_PATH = '/dashboard/settings';
 
 export {
   BODY_WIDTH,
@@ -138,4 +141,6 @@ export {
   SIDE_BAR_MENU_CLIENT,
   LOG_OUT_MODAL_INFO,
   SIDE_BAR_LOGOUT_BUTTON,
+  LOW_CREDITS,
+  SETTINGS_PATH,
 };
