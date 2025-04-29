@@ -7,19 +7,16 @@ import {
   handleCancelRequest,
   handleSendRequest,
 } from '../../utils/settings/PersonalInfo';
-import { getSupplierInputFields } from '../../constants/components/settings/getProfileInputFields';
 
-export default function RequestForSupplier() {
+import PropTypes from 'prop-types';
+
+const RequestForSupplier = ({ data }) => {
   const [values, setValues] = useState({});
 
   return (
     <Box>
       <Grid container spacing={2}>
-        <SettingForm
-          data={getSupplierInputFields}
-          values={values}
-          setValues={setValues}
-        />
+        <SettingForm data={data} values={values} setValues={setValues} />
         <SettingsSubmitButtons
           request={() => handleSendRequest(values)}
           cancel={() => handleCancelRequest(setValues)}
@@ -27,4 +24,10 @@ export default function RequestForSupplier() {
       </Grid>
     </Box>
   );
-}
+};
+
+RequestForSupplier.propTypes = {
+  data: PropTypes.array.isRequired,
+};
+
+export default RequestForSupplier;

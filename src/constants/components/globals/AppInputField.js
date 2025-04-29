@@ -1,6 +1,11 @@
 const APP_INPUT_FIELD_STYLE = {
   styles: {
-    titleStyle: { fontSize: '14px', fontWeight: 700, color: '#1E293B' },
+    titleStyle: {
+      fontSize: '14px',
+      fontWeight: 700,
+      color: '#1E293B',
+      textTransform: 'capitalize',
+    },
     inputStyle: (
       fontSize,
       py = 1.6,
