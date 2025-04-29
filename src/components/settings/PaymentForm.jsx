@@ -25,7 +25,7 @@ import {
   PAY_FORM_TEXT,
   SWITCHES,
 } from '../../constants/components/settings/PaymentForm';
-import { paymentFormStyles } from '../../styles/components/settings/PaymentForm';
+import { PaymentFormStyles } from '../../styles/components/settings/PaymentForm';
 import {
   handleInputChange,
   handlePayNow,
@@ -37,7 +37,7 @@ export default function PaymentForm() {
   const [errors, setErrors] = useState({});
 
   return (
-    <Box sx={paymentFormStyles.boxContainer}>
+    <Box sx={PaymentFormStyles.boxContainer}>
       {SWITCHES.map(({ label, stateKey, description }) => (
         <Box key={stateKey}>
           <FormControlLabel
@@ -49,11 +49,11 @@ export default function PaymentForm() {
             }
             label={label}
           />
-          <Box sx={paymentFormStyles.description}>{description}</Box>
+          <Box sx={PaymentFormStyles.description}>{description}</Box>
         </Box>
       ))}
 
-      <FormControl component={'fieldset'} sx={paymentFormStyles.radioFieldset}>
+      <FormControl component={'fieldset'} sx={PaymentFormStyles.radioFieldset}>
         <FormLabel component={'legend'}>
           {PAY_FORM_TEXT.paymentMethodLegend}
         </FormLabel>
@@ -76,7 +76,7 @@ export default function PaymentForm() {
 
           {formState.paymentMethod === PAY_FORM_TEXT.creditCard && (
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <Grid container spacing={2} sx={paymentFormStyles.gridPadding}>
+              <Grid container spacing={2} sx={PaymentFormStyles.gridPadding}>
                 <Grid item xs={12}>
                   <Typography fontWeight={600} mb={1}>
                     {PAY_FORM_TEXT.cardNumberLabel}
@@ -100,7 +100,7 @@ export default function PaymentForm() {
                           <CreditCardIcon />
                         </InputAdornment>
                       ),
-                      sx: paymentFormStyles.textInput,
+                      sx: PaymentFormStyles.textInput,
                     }}
                     error={!!errors.cardNumber}
                     helperText={errors.cardNumber}
@@ -133,7 +133,7 @@ export default function PaymentForm() {
                               <CreditCardIcon />
                             </InputAdornment>
                           ),
-                          sx: paymentFormStyles.textInput,
+                          sx: PaymentFormStyles.textInput,
                         },
                       },
                     }}
@@ -163,7 +163,7 @@ export default function PaymentForm() {
                           <CreditCardIcon />
                         </InputAdornment>
                       ),
-                      sx: paymentFormStyles.textInput,
+                      sx: PaymentFormStyles.textInput,
                     }}
                     error={!!errors.cvv}
                     helperText={errors.cvv}
@@ -192,7 +192,7 @@ export default function PaymentForm() {
                           <AccountCircleIcon />
                         </InputAdornment>
                       ),
-                      sx: paymentFormStyles.textInput,
+                      sx: PaymentFormStyles.textInput,
                     }}
                     error={!!errors.cardHolder}
                     helperText={errors.cardHolder}
@@ -224,7 +224,7 @@ export default function PaymentForm() {
                           />
                         </InputAdornment>
                       ),
-                      sx: paymentFormStyles.textInput,
+                      sx: PaymentFormStyles.textInput,
                     }}
                     error={!!errors.country}
                     helperText={errors.country}
@@ -258,7 +258,7 @@ export default function PaymentForm() {
               PAY_FORM_TEXT.handlePayNowAlertText
             )
           }
-          sx={paymentFormStyles.button}
+          sx={PaymentFormStyles.button}
         >
           {PAY_FORM_TEXT.payNowButton}
         </Button>

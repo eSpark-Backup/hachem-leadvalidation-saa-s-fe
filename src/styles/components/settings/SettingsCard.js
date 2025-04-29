@@ -1,4 +1,4 @@
-const styles = {
+const SettingCardStyles = {
   container: {
     my: 4,
   },
@@ -26,4 +26,4 @@ const styles = {
   },
   toolTip: { marginLeft: 8, cursor: 'pointer' },
 };
-export { styles };
+export { SettingCardStyles };

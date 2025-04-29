@@ -1,4 +1,4 @@
-export const paymentFormStyles = {
+export const PaymentFormStyles = {
   boxContainer: { pr: '30%' },
   description: { fontSize: 12, color: 'gray', mb: 2 },
   radioFieldset: { mb: 3 },
