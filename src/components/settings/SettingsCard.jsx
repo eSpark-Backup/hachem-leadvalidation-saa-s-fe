@@ -30,7 +30,7 @@ const SettingsCard = ({ title, description, children, toolToop }) => {
 
 SettingsCard.propTypes = {
   title: PropTypes.string.isRequired,
-  toolToop: PropTypes.string.isRequired,
+  toolToop: PropTypes.string,
   description: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 };

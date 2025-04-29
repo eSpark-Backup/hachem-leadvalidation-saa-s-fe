@@ -7,47 +7,31 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
+import {
+  clearAvatar,
+  handleDragOver,
+  handleDrop,
+  handleFileSelect,
+} from '../../utils/settings/SettingsUploadImages';
+import {
+  clearIconStyles,
+  uploadBoxStyles,
+} from '../../styles/components/settings/SettingsUploadImages';
+import { SETTINGS_UPLOAD_IMAGES } from '../../constants/components/settings/SettingsUploadImages';
 
 const SettingsUploadImages = () => {
   const [avatar, setAvatar] = useState('');
-  const fileInputRef = useRef(null); // Reference to the hidden file input
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith('image/')) {
-      const reader = new FileReader();
-      reader.onload = () => setAvatar(reader.result);
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handleDragOver = (e) => {
-    e.preventDefault();
-  };
-
-  const clearAvatar = () => {
-    setAvatar('');
-  };
-
-  const handleFileSelect = (e) => {
-    const file = e.target.files[0];
-    if (file && file.type.startsWith('image/')) {
-      const reader = new FileReader();
-      reader.onload = () => setAvatar(reader.result);
-      reader.readAsDataURL(file);
-    }
-  };
+  const fileInputRef = useRef(null);
 
   const triggerFileInput = () => {
-    fileInputRef.current.click(); // Trigger the file input when the box is clicked
+    fileInputRef.current.click();
   };
 
   return (
     <Grid item xs={12} my={1}>
       <Typography fontWeight={500} mb={1}>
-        Change Avatar
+        {SETTINGS_UPLOAD_IMAGES.title}
       </Typography>
 
       <Stack direction="row" spacing={5} alignItems="top">
@@ -57,15 +41,8 @@ const SettingsUploadImages = () => {
             {avatar && (
               <IconButton
                 size="small"
-                onClick={clearAvatar}
-                sx={{
-                  position: 'absolute',
-                  bottom: -10,
-                  right: -10,
-                  bgcolor: '#fff',
-                  border: '1px solid #ccc',
-                  zIndex: 1,
-                }}
+                onClick={() => clearAvatar(setAvatar)}
+                sx={clearIconStyles}
               >
                 <Clear fontSize="small" />
               </IconButton>
@@ -74,38 +51,24 @@ const SettingsUploadImages = () => {
         </Box>
 
         <Box
-          onDrop={handleDrop}
+          onDrop={(e) => handleDrop(e, setAvatar)}
           onDragOver={handleDragOver}
-          onClick={triggerFileInput} // Trigger the file input dialog on click
-          sx={{
-            border: '2px dashed  #CBD5E1',
-            gap: '10px',
-            borderRadius: '32px',
-            padding: 3,
-            textAlign: 'center',
-            color: '#666',
-            cursor: 'pointer',
-            transition: '0.3s',
-            minWidth: '70%',
-            '&:hover': {
-              backgroundColor: '#f9f9f9',
-              borderColor: '#CBD5E1',
-            },
-          }}
+          onClick={triggerFileInput}
+          sx={uploadBoxStyles}
         >
           <img src={'/src/assets/settings/upload-image.svg'} />
           <Typography variant="h6">
-            Click Here to upload your file or drag.
+            {SETTINGS_UPLOAD_IMAGES.uploadTitle}
           </Typography>
-          <Typography>Supported Format: SVG, JPG, PNG (10mb each)</Typography>
+          <Typography>{SETTINGS_UPLOAD_IMAGES.supportedFormat}</Typography>
         </Box>
 
         <input
-          ref={fileInputRef} // Reference to the file input
+          ref={fileInputRef}
           type="file"
           accept="image/*"
-          onChange={handleFileSelect} // Handle file selection
-          style={{ display: 'none' }} // Hide the input element
+          onChange={(e) => handleFileSelect(e, setAvatar)}
+          style={{ display: 'none' }}
         />
       </Stack>
     </Grid>

@@ -1,10 +1,9 @@
 'use client';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import '@fontsource/inter';
 
 let theme = createTheme({
   typography: {
-    fontFamily: ['Gilroy', 'inter', 'poppins', 'sans-serif'].join(','),
+    fontFamily: ['Gilroy', 'sans-serif'].join(','),
     h1: {
       fontSize: '40px',
       fontWeight: 700,

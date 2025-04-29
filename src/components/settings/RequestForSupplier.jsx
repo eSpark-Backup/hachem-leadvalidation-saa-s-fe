@@ -4,21 +4,13 @@ import SettingsSubmitButtons from './SettingsSubmitButtons';
 import SettingForm from './SettingForm';
 import { getSupplierInputFields } from './getProfileInputFields';
 import { useState } from 'react';
+import {
+  handleCancelRequest,
+  handleSendRequest,
+} from '../../utils/settings/PersonalInfo';
 
 export default function RequestForSupplier() {
   const [values, setValues] = useState({});
-
-  function handleSendRequest() {
-    localStorage.setItem('settings-supplier', JSON.stringify(values));
-    console.log('Cancelling request...');
-    console.log('Sending request...');
-  }
-
-  function handleCancelRequest() {
-    setValues('');
-    localStorage.removeItem('settings-supplier');
-    console.log('Cancelling request...');
-  }
 
   return (
     <Box>
@@ -29,8 +21,8 @@ export default function RequestForSupplier() {
           setValues={setValues}
         />
         <SettingsSubmitButtons
-          request={handleSendRequest}
-          cancel={handleCancelRequest}
+          request={() => handleSendRequest(values)}
+          cancel={() => handleCancelRequest(setValues)}
         />
       </Grid>
     </Box>

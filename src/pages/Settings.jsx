@@ -9,11 +9,9 @@ const Settings = () => {
       <SettingsCard
         title={SETTINGS.person.title}
         description={SETTINGS.person.description}
-        toolToop={SETTINGS.supplier.tooltip}
       >
         <PersonalInfo />
       </SettingsCard>
-
       <SettingsCard
         title={SETTINGS.supplier.title}
         description={SETTINGS.supplier.description}
