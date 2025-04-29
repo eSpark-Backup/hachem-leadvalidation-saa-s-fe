@@ -21,4 +21,7 @@ export const clearIconStyles = {
   bgcolor: '#fff',
   border: '1px solid #ccc',
   zIndex: 1,
+  '&:hover': {
+    backgroundColor: '#fff',
+  },
 };
