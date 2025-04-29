@@ -1,4 +1,3 @@
-// routes/index.js (ya jo file mein tum routes define kar rahe ho)
 import AuthLayout from '../layouts/AuthLayout';
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/Signup';
@@ -11,6 +10,19 @@ import ResetPassword from '../components/auth/ResetPassword';
 // import PrivateRoute from './PrivateRoute';
 import SignupForm from '../components/auth/SignupForm';
 import PrivateLayout from '../layouts/PrivateLayout';
+import Settings from '../pages/Settings';
+import UploadLeads from '../pages/UploadLeads';
+import BillingLogsRevenue from '../pages/BillingLogsRevenue';
+import KlaienManagement from '../pages/KlaienManagement';
+import LeadMonitoring from '../pages/LeadMonitoring';
+import LeadScoringSetting from '../pages/LeadScoringSetting';
+import LeadsStatusTracker from '../pages/LeadsStatusTracker';
+import ManageClients from '../pages/ManageClients';
+import MyLeads from '../pages/MyLeads';
+import SystemSetting from '../pages/SystemSetting';
+import ReportsAnalytics from '../pages/ReportsAnalytics';
+import ManageSuppliers from '../pages/ManageSuppliers';
+
 import { ROUTES } from '../constants/components/globals/Auth';
 import { AUTH_FORMS } from '../constants/auth';
 import PaymentLayout from '../layouts/PaymentLayout';
@@ -38,6 +50,18 @@ const {
 
   // dashboard routes
   dashboard,
+  settings,
+  billingLogsRevenue,
+  klaienManagement,
+  leadMonitoring,
+  leadScoringSetting,
+  leadsStatusTracker,
+  manageClients,
+  manageSuppliers,
+  myLeads,
+  reportsAnalytics,
+  systemSetting,
+  uploadLeads,
 } = ROUTES || {};
 
 const { forgot_password, verify_email } = AUTH_FORMS || {};
@@ -78,7 +102,21 @@ const routes = [
         <PrivateLayout />
       </PrivateRoute>
     ),
-    children: [{ index: true, element: <Dashboard /> }],
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: settings, element: <Settings /> },
+      { path: billingLogsRevenue, element: <BillingLogsRevenue /> },
+      { path: klaienManagement, element: <KlaienManagement /> },
+      { path: leadMonitoring, element: <LeadMonitoring /> },
+      { path: leadScoringSetting, element: <LeadScoringSetting /> },
+      { path: leadsStatusTracker, element: <LeadsStatusTracker /> },
+      { path: manageClients, element: <ManageClients /> },
+      { path: manageSuppliers, element: <ManageSuppliers /> },
+      { path: myLeads, element: <MyLeads /> },
+      { path: reportsAnalytics, element: <ReportsAnalytics /> },
+      { path: systemSetting, element: <SystemSetting /> },
+      { path: uploadLeads, element: <UploadLeads /> },
+    ],
   },
   { path: notFound, element: <NotFound /> },
 ];

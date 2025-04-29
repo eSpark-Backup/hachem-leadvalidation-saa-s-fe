@@ -9,11 +9,13 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useState } from 'react';
 import { AUTH_FORMS } from '../../constants/auth';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Link } from '@mui/material';
 import Checkbox from './Checkbox';
+import { handleLoginAsClient } from '../../utils/auth';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -48,6 +50,7 @@ const Login = () => {
       password: '',
       service_and_policy: false,
     });
+    handleLoginAsClient(navigate);
   };
 
   return (

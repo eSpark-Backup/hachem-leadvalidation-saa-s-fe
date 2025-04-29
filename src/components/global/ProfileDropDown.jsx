@@ -12,7 +12,6 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import PropTypes from 'prop-types';
 import {
   clickableBoxStyles,
   userInfoBoxStyles,
@@ -27,7 +26,7 @@ import {
 } from '../../styles/components/globals/ProfileDropDown';
 import { PROFILE } from '../../utils/auth';
 
-const ProfileDropDown = ({ profile }) => {
+const ProfileDropDown = () => {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredData, setFilteredData] = useState([]);
@@ -84,7 +83,7 @@ const ProfileDropDown = ({ profile }) => {
           <Box sx={dropdownBoxStyles(lgUp)}>
             <Box onClick={handleToggle} sx={clickableBoxStyles}>
               <Box sx={userInfoBoxStyles}>
-                <img src={profile.profileImage} alt="Profile" style={profile} />
+                <img src={PROFILE.profileImage} alt="Profile" />
                 {lgUp && (
                   <>
                     <Box>
@@ -118,10 +117,6 @@ const ProfileDropDown = ({ profile }) => {
       </Box>
     </Box>
   );
-};
-
-ProfileDropDown.propTypes = {
-  profile: PropTypes.string.isRequired,
 };
 
 export default ProfileDropDown;

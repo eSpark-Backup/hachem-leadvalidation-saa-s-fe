@@ -54,7 +54,7 @@ const TopBar = ({ open, setOpenNav }) => {
       </Box>
 
       {/* Right Section: Profile Dropdown */}
-      <ProfileDropDown profile={PROFILE} />
+      <ProfileDropDown />
     </Box>
   );
 };

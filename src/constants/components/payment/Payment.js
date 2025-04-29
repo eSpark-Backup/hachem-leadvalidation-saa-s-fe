@@ -21,7 +21,7 @@ const PAYMENT_DATA = {
     ],
     fields: [
       {
-        px: 1.5,
+        px: 1.8,
         label: 'Credit Card Number',
         name: 'credit_card_number',
         type: 'number',
@@ -41,21 +41,21 @@ const PAYMENT_DATA = {
         startAdornment: '/src/assets/images/payment/card.png',
       },
       {
-        px: 1.5,
+        px: 1.8,
         label: 'Country',
         name: 'country',
         type: 'text',
         placeholder: 'Country',
       },
       {
-        px: 1.5,
+        px: 1.8,
         label: 'Expiry Date',
         name: 'date',
         type: 'month',
         placeholder: 'MMMM YYYY',
       },
       {
-        px: 1.5,
+        px: 1.8,
         label: 'CVV',
         name: 'cvv',
         type: 'number',
