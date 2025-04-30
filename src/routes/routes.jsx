@@ -19,6 +19,7 @@ import LeadScoringSetting from '../pages/LeadScoringSetting';
 import LeadsStatusTracker from '../pages/LeadsStatusTracker';
 import ManageClients from '../pages/ManageClients';
 import MyLeads from '../pages/MyLeads';
+import MyLeadDetails from '../pages/MyLeadDetails';
 import SystemSetting from '../pages/SystemSetting';
 import ReportsAnalytics from '../pages/ReportsAnalytics';
 import ManageSuppliers from '../pages/ManageSuppliers';
@@ -59,6 +60,7 @@ const {
   manageClients,
   manageSuppliers,
   myLeads,
+  myLeadDetails,
   reportsAnalytics,
   systemSetting,
   uploadLeads,
@@ -112,7 +114,8 @@ const routes = [
       { path: leadsStatusTracker, element: <LeadsStatusTracker /> },
       { path: manageClients, element: <ManageClients /> },
       { path: manageSuppliers, element: <ManageSuppliers /> },
-      { path: myLeads, element: <MyLeads /> },
+      { path: myLeads, element: <MyLeads />, },
+      { path: myLeadDetails, element: <MyLeadDetails /> },
       { path: reportsAnalytics, element: <ReportsAnalytics /> },
       { path: systemSetting, element: <SystemSetting /> },
       { path: uploadLeads, element: <UploadLeads /> },
