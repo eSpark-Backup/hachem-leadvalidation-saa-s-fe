@@ -12,7 +12,7 @@ import { AUTH_FORMS } from '../../constants/auth';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Link } from '@mui/material';
 import Checkbox from './Checkbox';
-import { handleLoginAsClient, handleLoginAsSupplier } from '../../utils/auth';
+import { handleLoginAsClient } from '../../utils/auth';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -50,8 +50,7 @@ const Login = () => {
       password: '',
       service_and_policy: false,
     });
-    // handleLoginAsClient(navigate);
-    handleLoginAsSupplier(navigate);
+    handleLoginAsClient(navigate);
   };
 
   return (
@@ -147,7 +146,6 @@ const Login = () => {
                 sx={{
                   color: '#136BE5',
                   fontSize: { xs: '12px', sm: '14px', md: '17px' },
-                  fontFamily: 'Inter',
                   fontWeight: 400,
                   '@media(max-width: 319px)': {
                     fontSize: '10px',
