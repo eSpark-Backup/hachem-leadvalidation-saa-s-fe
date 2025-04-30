@@ -1,7 +1,7 @@
 import { Check, Close } from '@mui/icons-material';
 import { Box, Button, Grid } from '@mui/material';
-
 import PropTypes from 'prop-types';
+
 const SettingsSubmitButtons = ({ request, cancel }) => {
   return (
     <>

@@ -9,13 +9,18 @@ import {
   Button,
 } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardLogo from '../../assets/images/global/dashboard-logo.svg';
 import bar from '../../assets/images/global/bar.svg';
 
-import { handleLogout, MENU_ITEMS } from '../../utils/auth';
+import {
+  handleLoginAsAdmin,
+  handleLoginAsClient,
+  handleLoginAsSupplier,
+  handleLogout,
+  MENU_ITEMS,
+} from '../../utils/auth';
 import {
   logoContainerStyles,
   menuWrapperStyles,
@@ -91,7 +96,54 @@ const Sidebar = () => {
           ))}
         </Box>
       </Box>
-
+      <Box
+        sx={{
+          justifyContent: 'space-between',
+          gap: 1,
+        }}
+      >
+        <Typography
+          sx={{ ...logoutBtnStyles, color: '#000', fontSize: '14px' }}
+        >
+          {' Change User Type'}
+        </Typography>
+        <Button
+          onClick={() => handleLoginAsClient(navigate)}
+          sx={{
+            cursor: 'pointer',
+          }}
+        >
+          <Typography
+            sx={{ ...logoutBtnStyles, color: 'green', fontSize: '14px' }}
+          >
+            {' Client'}
+          </Typography>
+        </Button>
+        <Button
+          onClick={() => handleLoginAsSupplier(navigate)}
+          sx={{
+            cursor: 'pointer',
+          }}
+        >
+          <Typography
+            sx={{ ...logoutBtnStyles, color: 'green', fontSize: '14px' }}
+          >
+            {' Supplier'}
+          </Typography>
+        </Button>
+        <Button
+          onClick={() => handleLoginAsAdmin(navigate)}
+          sx={{
+            cursor: 'pointer',
+          }}
+        >
+          <Typography
+            sx={{ ...logoutBtnStyles, color: 'green', fontSize: '14px' }}
+          >
+            {'Admin'}
+          </Typography>
+        </Button>
+      </Box>
       <Box sx={logoutBoxStyles} onClick={openLogoutModal}>
         <LogoutIcon />
         <Typography sx={logoutBtnStyles}>

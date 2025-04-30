@@ -118,7 +118,6 @@ const AUTH_FORMS = {
     resendButtonStyle: {
       color: '#136BE5',
       fontSize: { xs: '15px', md: '18px', lg: '20px' },
-      fontFamily: 'Inter',
       fontWeight: 400,
       textTransform: 'capitalize',
       '&:hover': {

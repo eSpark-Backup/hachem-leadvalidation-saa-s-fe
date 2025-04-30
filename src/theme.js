@@ -1,7 +1,10 @@
 'use client';
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import {
+  createTheme as createTheme_default,
+  responsiveFontSizes,
+} from '@mui/material/styles';
 
-let theme = createTheme({
+let theme = createTheme_default({
   typography: {
     fontFamily: ['Gilroy', 'sans-serif'].join(','),
     h1: {
@@ -33,7 +36,6 @@ let theme = createTheme({
     body2: {
       fontSize: '31px',
       fontWeight: 700,
-      fontFamily: 'Inter',
     },
     button: {
       textTransform: 'normal',
@@ -61,7 +63,6 @@ let theme = createTheme({
           style: {
             backgroundColor: '#FFFFFF',
             borderRadius: '8px',
-            fontFamily: 'Inter',
             textTransform: 'capitalize',
             fontWeight: 600,
             color: '#475467',
@@ -76,7 +77,6 @@ let theme = createTheme({
           style: {
             backgroundColor: '#09102B',
             textTransform: 'capitalize',
-            fontFamily: 'Inter',
             fontWeight: 600,
             textWrap: 'nowrap',
             borderRadius: '8px',
@@ -92,7 +92,6 @@ let theme = createTheme({
           style: {
             backgroundColor: '#54D14D',
             textTransform: 'capitalize',
-            fontFamily: 'Inter',
             fontWeight: 700,
             textWrap: 'nowrap',
             borderRadius: '1234px',
@@ -117,7 +116,6 @@ let theme = createTheme({
             fontSize: '12px',
             color: '#212121',
             fontWeight: 500,
-            fontFamily: 'Inter',
           },
         },
       ],
@@ -158,7 +156,6 @@ let theme = createTheme({
             '& .MuiFormControlLabel-label': {
               fontSize: '11px',
               fontWeight: 400,
-              fontFamily: 'Inter',
               textAlign: 'left',
             },
             '@media (max-width: 400px)': {
