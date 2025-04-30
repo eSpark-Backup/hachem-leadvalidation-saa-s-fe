@@ -49,6 +49,9 @@ const GenericTable = ({
   detail,
   modal,
   detailAction,
+  dashboard,
+  fontWeight,
+  inDashboard
 }) => {
   const {
     paginatedData,
@@ -62,9 +65,15 @@ const GenericTable = ({
   } = useTableFilter(data);
 
   return (
-    <Box sx={tableContainerStyles}>
+    <Box sx={!inDashboard ? tableContainerStyles : {}}>
       <Box sx={headingBoxStyles}>
-        <Typography variant="h1" sx={tableHeadingStyles}>
+        <Typography
+          variant="h1"
+          sx={{
+            ...tableHeadingStyles,
+            fontWeight: fontWeight ? fontWeight : 600,
+          }}
+        >
           {title}
         </Typography>
 
@@ -143,11 +152,13 @@ const GenericTable = ({
           </Table>
         </TableContainer>
 
-        <TablePagination
-          page={page}
-          onChange={(e, val) => setPage(val)}
-          count={Math.ceil(filteredData.length / 10)}
-        />
+        {!dashboard && (
+          <TablePagination
+            page={page}
+            onChange={(e, val) => setPage(val)}
+            count={Math.ceil(filteredData.length / 10)}
+          />
+        )}
       </Box>
     </Box>
   );

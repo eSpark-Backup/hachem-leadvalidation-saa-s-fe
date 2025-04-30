@@ -29,6 +29,7 @@ const ROUTES = {
   systemSetting: 'system-setting',
   uploadLeads: 'upload-leads',
   charts: 'charts',
+  avalaibleLeadsDetails:"available-leads-deails"
 };
 const SUPPLIER_INFO = {
   role: 'supplier',

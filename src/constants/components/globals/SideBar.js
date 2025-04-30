@@ -125,6 +125,10 @@ const OTHER_PATHS = [
     label: 'My Leads',
     path: '/dashboard/my-lead-details',
   },
+  {
+    label: 'Dashboard',
+    path: '/dashboard/available-leads-deails',
+  },
 ];
 
 const SIDE_BAR_LOGOUT_BUTTON = { logoutBtn: 'Log Out' };

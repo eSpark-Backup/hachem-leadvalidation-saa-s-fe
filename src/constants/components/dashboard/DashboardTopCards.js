@@ -3,6 +3,21 @@ import card2Image1 from '../../../assets/images/dashboard/topcards/card2-image1.
 import card2Image2 from '../../../assets/images/dashboard/topcards/card2-image2.svg';
 import card3Image from '../../../assets/images/dashboard/topcards/card3-image.svg';
 
+import {
+  CLIENT_DASHBOARD_LEADS,
+  CLIENT_LEADS_FILTER_TYPES,
+  CLIENT_LEADS_SELECT_FILTERS,
+  CLIENT_LEADS_TABLE_BODY,
+  CLIENT_LEADS_TABLE_HEADER,
+} from '../../pages/ClientDashboard';
+import {
+  SUPPLIER_AVAILABLE_LEADS_FILTER_TYPES,
+  SUPPLIER_AVAILABLE_LEADS_SELECT_FILTERS,
+  SUPPLIER_AVAILABLE_LEADS_TABLE_BODY,
+  SUPPLIER_AVAILABLE_LEADS_TABLE_HEADER,
+  SUPPLIER_DASHBOARD_AVAILABLE_LEADS,
+} from '../../pages/SupplierDashboard';
+
 const CLIENT_CARDS = [
   {
     title: 'Current credit',
@@ -99,6 +114,24 @@ const CLIENT_CARDS_DATA = [682.5, 321, 86.23, 65.29];
 const SUPPLIER_CARDS_DATA = [682.5, 522.5, 422.5, 65250];
 const ADMIN_CARDS_DATA = [682.5, 522.5, 422.5, 65, 250];
 
+const CLIENT_LEADS = {
+  header: CLIENT_LEADS_TABLE_HEADER,
+  data: CLIENT_LEADS_TABLE_BODY,
+  title: CLIENT_DASHBOARD_LEADS.title,
+  filterTypes: CLIENT_LEADS_FILTER_TYPES,
+  select_filters: CLIENT_LEADS_SELECT_FILTERS,
+  filterType: CLIENT_DASHBOARD_LEADS.filterType,
+};
+
+const SUPPLIER_AVAILABLE_LEADS = {
+  header: SUPPLIER_AVAILABLE_LEADS_TABLE_HEADER,
+  data: SUPPLIER_AVAILABLE_LEADS_TABLE_BODY,
+  title: SUPPLIER_DASHBOARD_AVAILABLE_LEADS.title,
+  filterTypes: SUPPLIER_AVAILABLE_LEADS_FILTER_TYPES,
+  select_filters: SUPPLIER_AVAILABLE_LEADS_SELECT_FILTERS,
+  filterType: SUPPLIER_DASHBOARD_AVAILABLE_LEADS.filterType,
+};
+
 export {
   ADMIN_CARDS,
   CLIENT_CARDS,
@@ -106,4 +139,6 @@ export {
   CLIENT_CARDS_DATA,
   SUPPLIER_CARDS_DATA,
   ADMIN_CARDS_DATA,
+  CLIENT_LEADS,
+  SUPPLIER_AVAILABLE_LEADS,
 };
