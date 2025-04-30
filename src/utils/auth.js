@@ -25,6 +25,16 @@ const handleLoginAsAdmin = (navigate) => {
 };
 
 /**
+ * @function handleLogin
+ * @description Simulates login as client by saving a token and userType to localStorage.
+ * Navigates to the dashboard.
+ */
+const handleLogedin = (navigate) => {
+  localStorage.setItem('token', KEYS.tokenKey);
+  localStorage.setItem('userType', USER_TYPES.client);
+  navigate(ROUTES.dashboard);
+};
+/**
  * @function handleLoginAsClient
  * @description Simulates login as client by saving a token and userType to localStorage.
  * Navigates to the dashboard.
@@ -83,6 +93,7 @@ export {
   handleLoginAsAdmin,
   handleLoginAsClient,
   handleLoginAsSupplier,
+  handleLogedin,
   handleLogout,
   isAuthenticated,
   MENU_ITEMS,

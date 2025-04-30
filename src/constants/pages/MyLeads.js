@@ -20,7 +20,7 @@ export const TABLE_BODY = [
   {
     id: 1,
     supplier_id: 'SP: 43756',
-    country: 'United State',
+    country: 'United States',
     leads_validation: '78%',
     date: new Date('8/30/14'),
     status: 'Accepted',
