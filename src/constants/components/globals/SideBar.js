@@ -120,6 +120,13 @@ const SIDE_BAR_MENU_CLIENT = [
   },
 ];
 
+const OTHER_PATHS = [
+  {
+    label: 'My Leads',
+    path: '/dashboard/my-lead-details',
+  },
+];
+
 const SIDE_BAR_LOGOUT_BUTTON = { logoutBtn: 'Log Out' };
 
 const LOG_OUT_MODAL_INFO = {
@@ -138,4 +145,5 @@ export {
   SIDE_BAR_MENU_CLIENT,
   LOG_OUT_MODAL_INFO,
   SIDE_BAR_LOGOUT_BUTTON,
+  OTHER_PATHS,
 };
