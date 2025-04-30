@@ -24,10 +24,12 @@ const ROUTES = {
   manageClients: 'manage-clients',
   manageSuppliers: 'manage-suppliers',
   myLeads: 'my-leads',
+  myLeadDetails: 'my-lead-details',
   reportsAnalytics: 'reports-analytics',
   systemSetting: 'system-setting',
   uploadLeads: 'upload-leads',
   charts: 'charts',
+  avalaibleLeadsDetails:"available-leads-deails"
 };
 const SUPPLIER_INFO = {
   role: 'supplier',

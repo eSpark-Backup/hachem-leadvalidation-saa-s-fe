@@ -19,6 +19,7 @@ import LeadScoringSetting from '../pages/LeadScoringSetting';
 import LeadsStatusTracker from '../pages/LeadsStatusTracker';
 import ManageClients from '../pages/ManageClients';
 import MyLeads from '../pages/MyLeads';
+import LeadDetails from '../pages/MyLeadDetails';
 import SystemSetting from '../pages/SystemSetting';
 import ReportsAnalytics from '../pages/ReportsAnalytics';
 import ManageSuppliers from '../pages/ManageSuppliers';
@@ -60,10 +61,12 @@ const {
   manageClients,
   manageSuppliers,
   myLeads,
+  myLeadDetails,
   reportsAnalytics,
   systemSetting,
   uploadLeads,
   charts,
+  avalaibleLeadsDetails
 } = ROUTES || {};
 
 const { forgot_password, verify_email } = AUTH_FORMS || {};
@@ -115,6 +118,8 @@ const routes = [
       { path: manageClients, element: <ManageClients /> },
       { path: manageSuppliers, element: <ManageSuppliers /> },
       { path: myLeads, element: <MyLeads /> },
+      { path: myLeadDetails, element: <LeadDetails /> },
+      { path: avalaibleLeadsDetails, element: <LeadDetails /> },
       { path: reportsAnalytics, element: <ReportsAnalytics /> },
       { path: systemSetting, element: <SystemSetting /> },
       { path: uploadLeads, element: <UploadLeads /> },

@@ -36,6 +36,7 @@ import {
 } from '../../styles/components/globals/Sidebar';
 import {
   LOG_OUT_MODAL_INFO,
+  OTHER_PATHS,
   SIDE_BAR_LOGOUT_BUTTON,
 } from '../../constants/components/globals/SideBar';
 
@@ -48,6 +49,7 @@ const Sidebar = () => {
   const openLogoutModal = () => {
     setOpen(true);
   };
+
 
   return (
     <>
@@ -70,12 +72,21 @@ const Sidebar = () => {
                 key={index}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                sx={menuItemStyles(item?.path === pathname)}
+                sx={menuItemStyles(
+                  item?.path === pathname ||
+                    OTHER_PATHS.some(
+                      (p) => p.label === item.label && p.path === pathname
+                    )
+                )}
               >
                 <Box sx={menuItemContentStyles}>
                   <img
                     src={
-                      hoveredIndex === index || item?.path === pathname
+                      hoveredIndex === index ||
+                      item?.path === pathname ||
+                      OTHER_PATHS.some(
+                        (p) => p.label === item.label && p.path === pathname
+                      )
                         ? item?.hoverIcon
                         : item?.icon
                     }
@@ -84,7 +95,13 @@ const Sidebar = () => {
                   <Typography
                     sx={{
                       ...labelStyles,
-                      color: item?.path === pathname ? 'white' : '77797D',
+                      color:
+                        item?.path === pathname ||
+                        OTHER_PATHS.some(
+                          (p) => p.label === item.label && p.path === pathname
+                        )
+                          ? 'white'
+                          : '77797D',
                     }}
                   >
                     {item?.label}

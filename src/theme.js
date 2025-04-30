@@ -10,7 +10,6 @@ let theme = createTheme_default({
     h1: {
       fontSize: '40px',
       fontWeight: 700,
-      fontFamily: 'Inter',
     },
     h2: {
       fontSize: '28px',
