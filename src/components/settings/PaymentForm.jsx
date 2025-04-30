@@ -32,7 +32,7 @@ import {
   handleSwitchChange,
 } from '../../utils/settings/PaymentForm';
 
-export default function PaymentForm() {
+const PaymentForm = () => {
   const [formState, setFormState] = useState(FORM_STATE_DEFAULT);
   const [errors, setErrors] = useState({});
 
@@ -265,4 +265,5 @@ export default function PaymentForm() {
       </Box>
     </Box>
   );
-}
+};
+export default PaymentForm;

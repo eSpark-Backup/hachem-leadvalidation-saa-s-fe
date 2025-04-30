@@ -9,7 +9,6 @@ const ROUTES = {
   newpassword: '/new-password',
   resetPassword: '/reset-password',
   verifyEmail: '/verify-email',
-  dashboard: '/dashboard',
   onboardingCredits: '/onboarding/credits',
   onboardingPayment: '/onboarding/payment',
   notFound: '*',
@@ -25,9 +24,12 @@ const ROUTES = {
   manageClients: 'manage-clients',
   manageSuppliers: 'manage-suppliers',
   myLeads: 'my-leads',
+  myLeadDetails: 'my-lead-details',
   reportsAnalytics: 'reports-analytics',
   systemSetting: 'system-setting',
   uploadLeads: 'upload-leads',
+  charts: 'charts',
+  avalaibleLeadsDetails:"available-leads-deails"
 };
 const SUPPLIER_INFO = {
   role: 'supplier',
@@ -44,7 +46,7 @@ const ADMIN_INFO = {
 const CLIENT_INFO = {
   role: 'client',
   id: 'CL10234',
-  name: 'Client Name',
+  name: 'User Name',
   profileImage: '/src/assets/images/global/profile-Image-default.png',
 };
 
@@ -52,6 +54,7 @@ const USER_TYPES = {
   supplier: 'supplier',
   client: 'client',
   admin: 'admin',
+  user: 'User',
 };
 const KEYS = {
   token: 'token',

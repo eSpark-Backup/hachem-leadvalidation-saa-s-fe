@@ -1,7 +1,10 @@
 'use client';
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import {
+  createTheme as createTheme_default,
+  responsiveFontSizes,
+} from '@mui/material/styles';
 
-let theme = createTheme({
+let theme = createTheme_default({
   typography: {
     fontFamily: ['Gilroy', 'sans-serif'].join(','),
     h1: {

@@ -120,6 +120,17 @@ const SIDE_BAR_MENU_CLIENT = [
   },
 ];
 
+const OTHER_PATHS = [
+  {
+    label: 'My Leads',
+    path: '/dashboard/my-lead-details',
+  },
+  {
+    label: 'Dashboard',
+    path: '/dashboard/available-leads-deails',
+  },
+];
+
 const SIDE_BAR_LOGOUT_BUTTON = { logoutBtn: 'Log Out' };
 
 const LOG_OUT_MODAL_INFO = {
@@ -143,4 +154,5 @@ export {
   SIDE_BAR_LOGOUT_BUTTON,
   LOW_CREDITS,
   SETTINGS_PATH,
+  OTHER_PATHS,
 };

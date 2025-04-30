@@ -14,7 +14,13 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardLogo from '../../assets/images/global/dashboard-logo.svg';
 import bar from '../../assets/images/global/bar.svg';
 
-import { handleLogout, MENU_ITEMS } from '../../utils/auth';
+import {
+  handleLoginAsAdmin,
+  handleLoginAsClient,
+  handleLoginAsSupplier,
+  handleLogout,
+  MENU_ITEMS,
+} from '../../utils/auth';
 import {
   logoContainerStyles,
   menuWrapperStyles,
@@ -32,6 +38,7 @@ import {
   LOG_OUT_MODAL_INFO,
   LOW_CREDITS,
   SETTINGS_PATH,
+  OTHER_PATHS,
   SIDE_BAR_LOGOUT_BUTTON,
 } from '../../constants/components/globals/SideBar';
 import DotBadge from './DotBadge';
@@ -70,7 +77,12 @@ const Sidebar = () => {
                 key={index}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                sx={menuItemStyles(item?.path === pathname)}
+                sx={menuItemStyles(
+                  item?.path === pathname ||
+                    OTHER_PATHS.some(
+                      (p) => p.label === item.label && p.path === pathname
+                    )
+                )}
               >
                 <Box sx={menuItemContentStyles}>
                   {item?.path.startsWith(SETTINGS_PATH) &&
@@ -103,7 +115,13 @@ const Sidebar = () => {
                   <Typography
                     sx={{
                       ...labelStyles,
-                      color: item?.path === pathname ? 'white' : '77797D',
+                      color:
+                        item?.path === pathname ||
+                        OTHER_PATHS.some(
+                          (p) => p.label === item.label && p.path === pathname
+                        )
+                          ? 'white'
+                          : '77797D',
                     }}
                   >
                     {item?.label}
@@ -115,7 +133,54 @@ const Sidebar = () => {
           ))}
         </Box>
       </Box>
-
+      <Box
+        sx={{
+          justifyContent: 'space-between',
+          gap: 1,
+        }}
+      >
+        <Typography
+          sx={{ ...logoutBtnStyles, color: '#000', fontSize: '14px' }}
+        >
+          {' Change User Type'}
+        </Typography>
+        <Button
+          onClick={() => handleLoginAsClient(navigate)}
+          sx={{
+            cursor: 'pointer',
+          }}
+        >
+          <Typography
+            sx={{ ...logoutBtnStyles, color: 'green', fontSize: '14px' }}
+          >
+            {' Client'}
+          </Typography>
+        </Button>
+        <Button
+          onClick={() => handleLoginAsSupplier(navigate)}
+          sx={{
+            cursor: 'pointer',
+          }}
+        >
+          <Typography
+            sx={{ ...logoutBtnStyles, color: 'green', fontSize: '14px' }}
+          >
+            {' Supplier'}
+          </Typography>
+        </Button>
+        <Button
+          onClick={() => handleLoginAsAdmin(navigate)}
+          sx={{
+            cursor: 'pointer',
+          }}
+        >
+          <Typography
+            sx={{ ...logoutBtnStyles, color: 'green', fontSize: '14px' }}
+          >
+            {'Admin'}
+          </Typography>
+        </Button>
+      </Box>
       <Box sx={logoutBoxStyles} onClick={openLogoutModal}>
         <LogoutIcon />
         <Typography sx={logoutBtnStyles}>

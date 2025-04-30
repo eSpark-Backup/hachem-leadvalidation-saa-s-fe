@@ -20,6 +20,7 @@ import {
 const handleLoginAsAdmin = (navigate) => {
   localStorage.setItem('token', KEYS.tokenKey);
   localStorage.setItem('userType', USER_TYPES.admin);
+  window.location.reload();
   navigate(ROUTES.dashboard);
 };
 
@@ -31,6 +32,7 @@ const handleLoginAsAdmin = (navigate) => {
 const handleLoginAsClient = (navigate) => {
   localStorage.setItem('token', KEYS.tokenKey);
   localStorage.setItem('userType', USER_TYPES.client);
+  window.location.reload();
   navigate(ROUTES.dashboard);
 };
 
@@ -42,6 +44,7 @@ const handleLoginAsClient = (navigate) => {
 const handleLoginAsSupplier = (navigate) => {
   localStorage.setItem('token', KEYS.tokenKey);
   localStorage.setItem('userType', USER_TYPES.supplier);
+  window.location.reload();
   navigate(ROUTES.dashboard);
 };
 
