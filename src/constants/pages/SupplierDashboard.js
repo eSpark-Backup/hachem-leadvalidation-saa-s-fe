@@ -19,7 +19,7 @@ export const SUPPLIER_AVAILABLE_LEADS_TABLE_BODY = [
   {
     id: 1,
     client_id: 'Cl:51912',
-    country: 'United State',
+    country: 'United States',
     leads_validation: '78%',
     date: new Date('8/30/14'),
     status: 'Accepted',
