@@ -31,7 +31,6 @@ import ErrorBoundary from './components/global/ErrorBoundary.jsx';
 /**
  * Initializes a new instance of the React Query Client.
  * This client handles caching, background updates, and request deduplication.
- * @type {import('@tanstack/react-query').QueryClient}
  */
 const queryClient = new QueryClient();
 

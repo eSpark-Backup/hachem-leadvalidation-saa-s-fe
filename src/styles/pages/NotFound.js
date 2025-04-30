@@ -3,7 +3,7 @@ const notFoundBoxStyles = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '100vh',
+  height: '80vh',
   textAlign: 'center',
   padding: '50px',
 };

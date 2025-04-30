@@ -9,7 +9,7 @@ import {
 } from '../../utils/settings/PersonalInfo';
 import { getSupplierInputFields } from '../../constants/components/settings/getProfileInputFields';
 
-export default function RequestForSupplier() {
+const RequestForSupplier = () => {
   const [values, setValues] = useState({});
 
   return (
@@ -27,4 +27,5 @@ export default function RequestForSupplier() {
       </Grid>
     </Box>
   );
-}
+};
+export default RequestForSupplier;

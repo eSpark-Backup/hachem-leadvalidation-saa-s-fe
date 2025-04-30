@@ -35,6 +35,7 @@
     "react-select": "^5.8.0",
     "react-world-flags": "^1.6.0",
     "reactjs-otp-input": "^2.0.10",
+    "recharts": "^2.15.3",
     "redux-persist": "^6.0.0",
     "yup": "^1.3.3"
   },

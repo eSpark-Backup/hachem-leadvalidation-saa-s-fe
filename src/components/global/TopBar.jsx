@@ -18,13 +18,17 @@ import {
 
 import { TOP_BAR } from '../../constants/components/globals/TopBar';
 import { PROFILE, USER_TYPE } from '../../utils/auth';
+import { USER_TYPES } from '../../constants/components/globals/Auth';
 
 const TopBar = ({ open, setOpenNav }) => {
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
   const mdDown = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   const { comapnayName, ID } = TOP_BAR;
-  const userTypeCapitalized = capitalizeFirstLetter(USER_TYPE);
+  const userTypeCapitalized =
+    USER_TYPE === USER_TYPES.client
+      ? USER_TYPES.user
+      : capitalizeFirstLetter(USER_TYPE);
   const profileID = PROFILE.id || 'N/A';
 
   const fullTitle = `${comapnayName} ${userTypeCapitalized} ${ID} ${profileID}`;

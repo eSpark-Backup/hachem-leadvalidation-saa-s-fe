@@ -10,7 +10,7 @@ import {
 } from '../../utils/settings/PersonalInfo.js';
 import { getProfileInputFields } from '../../constants/components/settings/getProfileInputFields.js';
 
-export default function PersonalInfo() {
+const PersonalInfo = () => {
   const [values, setValues] = useState({});
   const inputFields = getProfileInputFields();
 
@@ -26,4 +26,5 @@ export default function PersonalInfo() {
       </Grid>
     </Box>
   );
-}
+};
+export default PersonalInfo;
