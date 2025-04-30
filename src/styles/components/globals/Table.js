@@ -9,7 +9,6 @@ const inputStyles = {
   letterSpacing: '-0.02em',
   fontWeight: 500,
   color: '#3A3A49',
-  fontFamily: 'Gilroy,sans-serif',
 };
 
 const tableContainerStyles = {
@@ -35,7 +34,6 @@ const tableHeadingStyles = {
   lineHeight: '32px',
   letterSpacing: '-0.02em',
   color: '#1B2559',
-  fontFamily: 'Gilroy,sans-serif',
 };
 
 const filterSearchStyles = {
@@ -54,7 +52,7 @@ const filterSearchStyles = {
     color: '#3A3A49',
     fontSize: '14px',
     fontWeight: 500,
-    fontFamily: 'Gilroy,sans-serif',
+
   },
 
   '& input': {
@@ -110,7 +108,6 @@ const dropdownStyle = {
 
 const tableHeaderStyles = {
   backgroundColor: 'rgba(192, 251, 198, 0.42)',
-  border: '2px solid rgba(62, 132, 69, 0.09)',
 };
 
 const tableHeaderHeadingStyles = {
@@ -119,7 +116,6 @@ const tableHeaderHeadingStyles = {
   fontWeight: 600,
   lineHeight: '17px',
   color: '#212332',
-  fontFamily: 'Gilroy,sans-serif',
 };
 
 const tableBodyItemStyles = {
@@ -128,20 +124,47 @@ const tableBodyItemStyles = {
   fontWeight: 500,
   color: '#212332',
   padding: '17px 13px',
-  fontFamily: 'Gilroy,sans-serif',
 };
 
 const tableStyles = {
   marginTop: '10px',
   borderCollapse: 'separate',
-  borderSpacing: '0px 7px',
+  borderSpacing: '0px 12px',
+
+  '& th:first-child, & td:first-child': {
+    borderTopLeftRadius: '5px',
+    borderBottomLeftRadius: '5px',
+    borderLeft: '2px solid rgba(62, 132, 69, 0.09)',
+  },
+
+  '& th:last-child, & td:last-child': {
+    borderTopRightRadius: '5px',
+    borderBottomRightRadius: '5px',
+    borderRight: '2px solid rgba(62, 132, 69, 0.09)',
+  },
+
+  '& th, & td': {
+    borderTop: '2px solid rgba(62, 132, 69, 0.09)',
+    borderBottom: '2px solid rgba(62, 132, 69, 0.09)',
+    borderLeft: 'none',
+    borderRight: 'none',
+  },
+
+  '& td': {
+    backgroundColor: 'white',
+  },
+
 };
 
 const tableBodyStyles = {
-  backgroundColor: 'white',
+  // backgroundColor: 'white',
 };
 
-const tableBodyRowStyles = { position: 'relative' };
+const tableBodyRowStyles = {
+  position: 'relative',
+  boxShadow: '0px 2px 9px rgba(0, 0, 0, 0.23)',
+  borderRadius: '5px',
+};
 
 const montSelectStyles = {
   marginLeft: '4px',
@@ -222,7 +245,7 @@ const paginationBox = {
     margin: 0,
     height: 'auto',
     minWidth: '10px',
-    fontFamily: 'Gilroy,sans-serif',
+
   },
 
   '& .Mui-selected': {

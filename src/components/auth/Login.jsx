@@ -146,7 +146,6 @@ const Login = () => {
                 sx={{
                   color: '#136BE5',
                   fontSize: { xs: '12px', sm: '14px', md: '17px' },
-                  fontFamily: 'Inter',
                   fontWeight: 400,
                   '@media(max-width: 319px)': {
                     fontSize: '10px',
