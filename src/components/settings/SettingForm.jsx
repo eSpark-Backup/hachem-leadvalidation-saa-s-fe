@@ -30,7 +30,11 @@ const SettingForm = ({ data, values, setValues }) => {
             {type === 'phone' ? (
               <Box display={'flex'} flexDirection={'column'} gap={1}>
                 <Typography
-                  sx={{ fontSize: '14px', fontWeight: 700, color: '#1E293B' }}
+                  sx={{
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    color: '#1E293B',
+                  }}
                 >
                   {label}
                 </Typography>

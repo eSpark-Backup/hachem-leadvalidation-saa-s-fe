@@ -89,6 +89,7 @@ const Signup = () => {
               variant="signupButton"
               disabled={!selectedOption?.supplier && !selectedOption?.client}
               sx={formSubmissionButtonStyle}
+              onClick={() => navigate('/signup/client')}
             >
               Next
             </Button>

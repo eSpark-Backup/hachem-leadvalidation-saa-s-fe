@@ -4,7 +4,7 @@ import PaymentFormSwitch from './PaymentFormSwitch';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
-const PaymentForm = ({ data, maxWidth, border, padding }) => {
+const PaymentForm = ({ data, maxWidth, border, padding, lowCreditText }) => {
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [paymentFormData, setPaymentFormData] = useState({
     payout: false,
@@ -25,7 +25,6 @@ const PaymentForm = ({ data, maxWidth, border, padding }) => {
 
   return (
     <Box
-      action="/dashboard"
       onSubmit={handleSubmit}
       component={'form'}
       sx={{
@@ -42,6 +41,8 @@ const PaymentForm = ({ data, maxWidth, border, padding }) => {
         p: padding || 3,
       }}
     >
+      {lowCreditText}
+
       <Box display={'flex'} flexDirection={'column'} gap={2}>
         {switchs?.map(({ title, text, name }, switchIndex) => (
           <PaymentFormSwitch
@@ -102,6 +103,7 @@ PaymentForm.propTypes = {
   maxWidth: PropTypes.any.isRequired,
   border: PropTypes.any.isRequired,
   padding: PropTypes.any.isRequired,
+  lowCreditText: PropTypes.node,
 };
 
 export default PaymentForm;

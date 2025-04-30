@@ -36,20 +36,25 @@ import {
 } from '../../styles/components/globals/Sidebar';
 import {
   LOG_OUT_MODAL_INFO,
+  LOW_CREDITS,
+  SETTINGS_PATH,
   OTHER_PATHS,
   SIDE_BAR_LOGOUT_BUTTON,
 } from '../../constants/components/globals/SideBar';
+import DotBadge from './DotBadge';
+import { USER_TYPES } from '../../constants/components/globals/Auth';
 
 const Sidebar = () => {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const navigate = useNavigate();
+  const userType = localStorage?.getItem('userType');
+  const client = USER_TYPES?.client;
 
   const openLogoutModal = () => {
     setOpen(true);
   };
-
 
   return (
     <>
@@ -80,18 +85,33 @@ const Sidebar = () => {
                 )}
               >
                 <Box sx={menuItemContentStyles}>
-                  <img
-                    src={
-                      hoveredIndex === index ||
-                      item?.path === pathname ||
-                      OTHER_PATHS.some(
-                        (p) => p.label === item.label && p.path === pathname
-                      )
-                        ? item?.hoverIcon
-                        : item?.icon
-                    }
-                    alt={item?.label}
-                  />
+                  {item?.path.startsWith(SETTINGS_PATH) &&
+                  userType === client &&
+                  LOW_CREDITS ? (
+                    <DotBadge
+                      color={'#FF0000'}
+                      icon={
+                        <img
+                          src={
+                            hoveredIndex === index || item?.path === pathname
+                              ? item?.hoverIcon
+                              : item?.icon
+                          }
+                          alt={item?.label}
+                        />
+                      }
+                    />
+                  ) : (
+                    <img
+                      src={
+                        hoveredIndex === index || item?.path === pathname
+                          ? item?.hoverIcon
+                          : item?.icon
+                      }
+                      alt={item?.label}
+                    />
+                  )}
+
                   <Typography
                     sx={{
                       ...labelStyles,
