@@ -3,7 +3,7 @@ import { Box, Pagination, PaginationItem } from '@mui/material';
 import ArrowLeftIcon from '../../../assets/images/global/table-icons/left.svg';
 import ArrowRightIcon from '../../../assets/images/global/table-icons/right.svg';
 
-import { paginationBox } from '../../../styles/components/globals/Table';
+import { paginationBoxStyles } from '../../../styles/components/globals/table/Pagination';
 
 const CustomPrevIcon = () => {
   return (
@@ -21,7 +21,7 @@ const CustomNextIcon = () => (
 
 const TablePagination = ({ page }) => {
   return (
-    <Box sx={paginationBox}>
+    <Box sx={paginationBoxStyles}>
       <Pagination
         count={1}
         page={page}

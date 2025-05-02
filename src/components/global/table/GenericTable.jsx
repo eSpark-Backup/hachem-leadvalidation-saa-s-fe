@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import dayjs from 'dayjs';
 
 import {
@@ -30,13 +28,13 @@ import {
   newLabelStyles,
   tableBodyItemStyles,
   tableBodyRowStyles,
-  tableBodyStyles,
   tableContainerStyles,
   tableHeaderHeadingStyles,
   tableHeaderStyles,
   tableHeadingStyles,
   tableStyles,
-} from '../../../styles/components/globals/Table';
+} from '../../../styles/components/globals/table/Table';
+
 import useTableFilter from '../../../hooks/useTableFilter';
 
 const GenericTable = ({
@@ -51,7 +49,7 @@ const GenericTable = ({
   detailAction,
   dashboard,
   fontWeight,
-  inDashboard
+  inDashboard,
 }) => {
   const {
     paginatedData,
@@ -101,7 +99,7 @@ const GenericTable = ({
               </TableRow>
             </TableHead>
 
-            <TableBody sx={tableBodyStyles}>
+            <TableBody>
               {paginatedData.map((row, i) => (
                 <TableRow key={i} sx={tableBodyRowStyles}>
                   {columns.map((col, colIndex) => (

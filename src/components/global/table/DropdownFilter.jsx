@@ -2,14 +2,14 @@ import { FormControl, MenuItem, Select } from '@mui/material';
 
 import ArrowDropdown from '../../../assets/images/global/table-icons/dropdown.svg';
 
-import { filterDropdownStyle } from '../../../styles/components/globals/Table';
+import { filterDropdownStyles } from '../../../styles/components/globals/table/DropdownFilter';
 
 const DropdownFilter = ({ label, value = null, onChange = null, options }) => (
   <FormControl size="small" sx={{ minWidth: 84 }}>
     <Select
       value={value || ''}
       onChange={(e) => onChange(e.target.value)}
-      sx={filterDropdownStyle}
+      sx={filterDropdownStyles}
       IconComponent={(ss) => (
         <img
           src={ArrowDropdown}

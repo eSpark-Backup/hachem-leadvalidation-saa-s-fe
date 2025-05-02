@@ -2,10 +2,9 @@ import { InputAdornment, TextField } from '@mui/material';
 
 import SearchIcon from '../../../assets/images/global/table-icons/search-icon.svg';
 
-import { filterSearchStyles } from '../../../styles/components/globals/Table';
+import { filterSearchStyles } from '../../../styles/components/globals/table/Searchbar';
 
 const SearchBar = ({ value, onChange }) => {
-  console.log(value)
   return (
     <TextField
       sx={filterSearchStyles}

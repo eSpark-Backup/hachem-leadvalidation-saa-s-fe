@@ -6,7 +6,7 @@ import DropdownFilter from './DropdownFilter';
 import CopyFilter from './CopyFilter';
 import DownloadFilter from './DownloadFilter';
 
-import { filterBoxStyles } from '../../../styles/components/globals/Table';
+import { filterBoxStyles } from '../../../styles/components/globals/table/FilterRenderer';
 
 const FilterRenderer = ({
   filters = [],

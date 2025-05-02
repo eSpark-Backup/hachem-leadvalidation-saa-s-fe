@@ -9,7 +9,7 @@ import {
   iconButtonStyles,
   monthHeadingStyles,
   montSelectStyles,
-} from '../../../styles/components/globals/Table';
+} from '../../../styles/components/globals/table/MonthSelector';
 
 const MonthSelector = ({ currentMonth, onChange }) => {
   const safeMonth = currentMonth ? dayjs(currentMonth) : dayjs();

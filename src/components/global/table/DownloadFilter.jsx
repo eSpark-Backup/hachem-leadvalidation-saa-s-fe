@@ -2,7 +2,9 @@ import { Box, Typography } from '@mui/material';
 
 import Download from '../../../assets/images/global/table-icons/download.svg';
 
-import { filterCommonBoxStyles, iconStyles, inputStyles } from '../../../styles/components/globals/Table';
+import { filterCommonBoxStyles } from '../../../styles/components/globals/table/Table';
+import { iconStyles } from '../../../styles/components/globals/table/DownloadCopy';
+import { inputStyles } from '../../../styles/components/globals/table/Common';
 
 const DownloadFilter = () => {
   return (
