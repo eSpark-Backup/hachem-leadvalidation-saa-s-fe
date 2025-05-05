@@ -35,14 +35,6 @@ const tableHeaderHeadingStyles = {
   color: '#212332',
 };
 
-const tableBodyItemStyles = {
-  fontSize: '14px !important',
-  lineHeight: '17px',
-  fontWeight: 500,
-  color: '#212332',
-  padding: '17px 13px',
-};
-
 const tableStyles = {
   marginTop: '10px',
   borderCollapse: 'separate',
@@ -158,7 +150,6 @@ export {
   tableHeadingStyles,
   tableHeaderStyles,
   tableHeaderHeadingStyles,
-  tableBodyItemStyles,
   tableStyles,
   buttonBoxStyles,
   actionButtonBoxStyles,

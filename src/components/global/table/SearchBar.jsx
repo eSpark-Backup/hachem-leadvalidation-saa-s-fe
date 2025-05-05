@@ -1,6 +1,12 @@
+import PropTypes from 'prop-types';
+
 import { InputAdornment, TextField } from '@mui/material';
 
-import SearchIcon from '../../../assets/images/global/table-icons/search-icon.svg';
+import {
+  ALT_ATTRIBUTE,
+  ICONS,
+  PLACEHOLDERS,
+} from '../../../constants/components/globals/Table';
 
 import { filterSearchStyles } from '../../../styles/components/globals/table/Searchbar';
 
@@ -9,18 +15,23 @@ const SearchBar = ({ value, onChange }) => {
     <TextField
       sx={filterSearchStyles}
       variant="outlined"
-      placeholder="Search"
+      placeholder={PLACEHOLDERS.search}
       value={value || ''}
       onChange={(e) => onChange(e.target.value)}
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
-            <img src={SearchIcon} alt="Search" />
+            <img src={ICONS.search} alt={ALT_ATTRIBUTE.search} />
           </InputAdornment>
         ),
       }}
     />
   );
+};
+
+SearchBar.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

@@ -1,10 +1,13 @@
+import PropTypes from 'prop-types';
+
 import { Box } from '@mui/material';
 
 import SearchBar from './SearchBar';
-import MonthSelector from './MonthSelector';
-import DropdownFilter from './DropdownFilter';
 import CopyFilter from './CopyFilter';
+import MonthSelector from './MonthSelector';
 import DownloadFilter from './DownloadFilter';
+import DropdownFilter from './DropdownFilter';
+import DatePickerFilter from './DatePickerFilter';
 
 import { filterBoxStyles } from '../../../styles/components/globals/table/FilterRenderer';
 
@@ -50,6 +53,15 @@ const FilterRenderer = ({
               />
             );
 
+          case filterType.date:
+            return (
+              <DatePickerFilter
+                key={filter.key}
+                currentMonth={currentMonth}
+                onChange={onMonthChange}
+              />
+            );
+
           case filterType.copy:
             return <CopyFilter key={filter.key} />;
 
@@ -62,6 +74,16 @@ const FilterRenderer = ({
       })}
     </Box>
   );
+};
+
+FilterRenderer.propTypes = {
+  filters: PropTypes.arrayOf(PropTypes.object),
+  dropdowns: PropTypes.arrayOf(PropTypes.object),
+  filterType: PropTypes.objectOf(PropTypes.string),
+  filterState: PropTypes.object,
+  onFilterChange: PropTypes.func,
+  currentMonth: PropTypes.object,
+  onMonthChange: PropTypes.func,
 };
 
 export default FilterRenderer;
