@@ -101,7 +101,7 @@ const Dashboard = () => {
           }
           detailAction={goToPage}
           dashboard={USER_TYPE === USER_TYPES.client}
-          inDashboard
+          noBg
           detail
           fontWeight={800}
         />
