@@ -1,6 +1,6 @@
 import { inputStyles } from './Common';
 
-export const filterSearchStyles = {
+const filterSearchStyles = {
   width: '131px',
   height: '25px',
   backgroundColor: 'white',
@@ -27,3 +27,5 @@ export const filterSearchStyles = {
     margin: 0,
   },
 };
+
+export { filterSearchStyles };

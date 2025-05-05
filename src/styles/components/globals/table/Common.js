@@ -1,4 +1,4 @@
-export const inputStyles = {
+const inputStyles = {
   height: '100%',
   fontSize: '14px',
   letterSpacing: '-0.02em',
@@ -6,8 +6,10 @@ export const inputStyles = {
   color: '#3A3A49',
 };
 
-export const placeholderStyles = {
+const placeholderStyles = {
   color: '#3A3A49',
   fontSize: '14px',
   fontWeight: 500,
 };
+
+export { inputStyles, placeholderStyles };

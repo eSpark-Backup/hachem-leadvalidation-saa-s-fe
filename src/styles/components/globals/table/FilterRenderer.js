@@ -1,6 +1,8 @@
 import { flexStyles } from './Table';
 
-export const filterBoxStyles = {
+const filterBoxStyles = {
   gap: '5px',
   ...flexStyles,
 };
+
+export { filterBoxStyles };

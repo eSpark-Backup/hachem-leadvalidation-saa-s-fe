@@ -1,6 +1,6 @@
 import { flexStyles } from './Table';
 
-export const paginationBoxStyles = {
+const paginationBoxStyles = {
   ...flexStyles,
   justifyContent: 'center',
 
@@ -24,3 +24,5 @@ export const paginationBoxStyles = {
     backgroundColor: 'transparent !important',
   },
 };
+
+export { paginationBoxStyles };

@@ -1,6 +1,6 @@
 import { inputStyles } from './Common';
 
-export const filterDropdownStyles = {
+const filterDropdownStyles = {
   backgroundColor: 'white',
   height: '25px',
 
@@ -25,3 +25,5 @@ export const filterDropdownStyles = {
     right: '13px',
   },
 };
+
+export { filterDropdownStyles };
