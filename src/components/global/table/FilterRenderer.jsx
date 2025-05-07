@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 
 import SearchBar from './SearchBar';
 import CopyFilter from './CopyFilter';
-import HistoryButton from './HistoryButton';
+import LeadMonitoringHeaderButtons from './LeadMonitoringHeaderButtons';
 import MonthSelector from './MonthSelector';
 import DownloadFilter from './DownloadFilter';
 import DropdownFilter from './DropdownFilter';
@@ -64,7 +64,7 @@ const FilterRenderer = ({
             );
 
           case filterType.history:
-            return <HistoryButton key={filter.key} />;
+            return <LeadMonitoringHeaderButtons key={filter.key} />;
 
           case filterType.copy:
             return <CopyFilter key={filter.key} />;
