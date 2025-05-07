@@ -5,7 +5,6 @@ const tableBodyItemStyles = {
   lineHeight: '17px',
   fontWeight: 500,
   color: '#212332',
-  padding: '0px 13px',
   height: '60px',
 };
 
@@ -22,7 +21,6 @@ const latestItemStyles = {
 
 const newLabelStyles = {
   fontSize: "9px",
-  letterSpacing: "-0.02em",
   color: "#FFFFFF",
   lineHeight: "12px",
 };
@@ -51,7 +49,6 @@ const buttonBoxStyles = (status) => {
       color: green ? "#54D14D" : blue ? "#136BE5" : "#FF4343",
       fontSize: "13px",
       lineHeight: "16px",
-      letterSpacing: "-0.02em",
       minWidth: 0,
       fontWeight: 600,
       backgroundColor: "transparent !important",
@@ -82,9 +79,8 @@ const trashButtonStyles = {
 };
 
 const fontStyles = {
-  fonstSize: "14px",
+  fontSize: "14px",
   lineHeight: "17px",
-  letterSpacing: "-0.02em",
 };
 
 const validTextStyles = {
@@ -95,6 +91,47 @@ const validTextStyles = {
 const positiveResultTextStyles = {
   ...fontStyles,
   color: "#136BE5",
+};
+
+const creditBoxStyles = {
+  padding: '10px 0px',
+  width: '90px',
+  textAlign: 'center',
+};
+
+const lowCreditBoxStyles = {
+  ...creditBoxStyles,
+  backgroundColor: 'rgba(255, 67, 67, 0.13)',
+  border: '1px solid #FBBEBE',
+  borderRadius: '5px',
+};
+
+const creditTextStyles = {
+  fontSize: '14px',
+  lineHeight: '17px',
+};
+
+const lowCreditTextStyles = {
+  ...creditTextStyles,
+  color: '#FF4343',
+};
+
+const scoringBoxStyles = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
+const scoringHeadStyles = {
+  ...fontStyles,
+  borderBottom: '1px solid rgba(0, 0, 0, 0.19)',
+  padding: '0px 13px',
+  color: '#212332',
+};
+
+const scoringPointsStyles = {
+  ...fontStyles,
+  padding: '0px 13px',
+  color: '#77797D',
 };
 
 export {
@@ -108,4 +145,11 @@ export {
   trashButtonStyles,
   validTextStyles,
   positiveResultTextStyles,
+  lowCreditBoxStyles,
+  creditBoxStyles,
+  lowCreditTextStyles,
+  creditTextStyles,
+  scoringBoxStyles,
+  scoringHeadStyles,
+  scoringPointsStyles
 };

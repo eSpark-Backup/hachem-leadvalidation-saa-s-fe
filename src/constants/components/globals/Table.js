@@ -1,16 +1,25 @@
 import CopyIcon from '../../../assets/images/global/table-icons/copy.svg';
 import DownloadIcon from '../../../assets/images/global/table-icons/download.svg';
 import DropdownIcon from '../../../assets/images/global/table-icons/dropdown.svg';
+import SearchIcon from '../../../assets/images/global/table-icons/search-icon.svg';
+import GradientDropdownIcon from '../../../assets/images/global/table-icons/gradient-dropdown.svg';
+// Table Row Icons
 import EyeIcon from '../../../assets/images/global/table-icons/eye.svg';
 import EditIcon from '../../../assets/images/global/table-icons/edit.svg';
 import TrashIcon from '../../../assets/images/global/table-icons/trash.svg';
-import SmallLeftArrowIcon from '../../../assets/images/global/table-icons/filter-left-arrow.svg';
-import SmallRightArrowIcon from '../../../assets/images/global/table-icons/filter-right-arrow.svg';
+// Pagination Icons
 import LargeLeftArrowIcon from '../../../assets/images/global/table-icons/large-left-arrow.svg';
 import LargeRightArrowIcon from '../../../assets/images/global/table-icons/large-right-arrow.svg';
-import SearchIcon from '../../../assets/images/global/table-icons/search-icon.svg';
+// Month Filter Icons
+import SmallLeftArrowIcon from '../../../assets/images/global/table-icons/filter-left-arrow.svg';
+import SmallRightArrowIcon from '../../../assets/images/global/table-icons/filter-right-arrow.svg';
+// Date Filter Button icons
 import UpArrowIcon from '../../../assets/images/global/table-icons/up-arrow.svg';
 import DownArrowIcon from '../../../assets/images/global/table-icons/down-arrow.svg';
+// Manage Client/Supplier icons
+import ServiceIcon from '../../../assets/images/admin/service.svg';
+import ContactIcon from '../../../assets/images/admin/contact.svg';
+import EmailIcon from '../../../assets/images/admin/mail.svg';
 
 const TABLE_TEXTS = {
   copy: 'Copy',
@@ -31,6 +40,9 @@ const ALT_ATTRIBUTE = {
   trash: 'Trash',
   left: 'Left',
   right: 'Right',
+  service: 'Service',
+  contact: 'Contact',
+  email: 'Email',
 };
 
 const ICONS = {
@@ -47,8 +59,32 @@ const ICONS = {
   search: SearchIcon,
   upArrow: UpArrowIcon,
   downArrow: DownArrowIcon,
+  service: ServiceIcon,
+  contact: ContactIcon,
+  email: EmailIcon,
+  gradientDropdown: GradientDropdownIcon,
+};
+
+const TABLE_STATIC_TEXTS = {
+  idText: "Klarin's User ID",
+  reject: 'Reject',
+  accept: 'Accept',
+  assign: 'Assign',
+  lowCredit: 'Low Credits',
+  bodyText: 'Send Recharge Alert to get Credits',
+  send: 'Send',
+  history: 'History',
+  this_month: 'This Month',
+  month: 'Month',
 };
 
 const BG_COLOR = 'linear-gradient(0deg, #E7F7EF, #E7F7EF), #FFFBFE';
 
-export { TABLE_TEXTS, PLACEHOLDERS, ALT_ATTRIBUTE, ICONS, BG_COLOR };
+export {
+  TABLE_TEXTS,
+  PLACEHOLDERS,
+  ALT_ATTRIBUTE,
+  ICONS,
+  TABLE_STATIC_TEXTS,
+  BG_COLOR,
+};

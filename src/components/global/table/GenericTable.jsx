@@ -37,10 +37,14 @@ const GenericTable = ({
   detail,
   edit,
   detailAction,
+  editAction,
+  deleteAction,
   dashboard,
   fontWeight,
   noBg,
   trash,
+  onEnterCursor,
+  hasPoints = false,
 }) => {
   const {
     paginatedData,
@@ -100,9 +104,13 @@ const GenericTable = ({
                       colKey={key}
                       detail={detail}
                       detailAction={detailAction}
+                      editAction={editAction}
+                      deleteAction={deleteAction}
                       edit={edit}
                       row={row}
                       trash={trash}
+                      onEnterCursor={onEnterCursor}
+                      hasPoints={hasPoints}
                     />
                   ))}
                 </TableRow>
@@ -142,6 +150,8 @@ GenericTable.propTypes = {
   fontWeight: PropTypes.number,
   noBg: PropTypes.bool,
   trash: PropTypes.bool,
+  onEnterCursor: PropTypes.func,
+  hasPoints: PropTypes.bool,
 };
 
 export default GenericTable;
