@@ -1,18 +1,26 @@
+import PropTypes from 'prop-types';
+
 import { Box, Typography } from '@mui/material';
 
-import Copy from '../../../assets/images/global/table-icons/copy.svg';
+import {
+  ALT_ATTRIBUTE,
+  ICONS,
+  TABLE_TEXTS,
+} from '../../../constants/components/globals/Table';
 
 import { filterCommonBoxStyles } from '../../../styles/components/globals/table/Table';
-import { iconStyles } from '../../../styles/components/globals/table/DownloadCopy';
 import { inputStyles } from '../../../styles/components/globals/table/Common';
+import { iconStyles } from '../../../styles/components/globals/table/DownloadCopy';
 
 const CopyFilter = () => {
   return (
     <Box sx={filterCommonBoxStyles}>
-      <Typography sx={{ ...inputStyles, height: 'auto' }}>Copy</Typography>
+      <Typography sx={{ ...inputStyles, height: 'auto' }}>
+        {TABLE_TEXTS.copy}
+      </Typography>
 
       <Box sx={iconStyles}>
-        <img src={Copy} alt="Copy" />
+        <img src={ICONS.copy} alt={ALT_ATTRIBUTE.copy} />
       </Box>
     </Box>
   );
