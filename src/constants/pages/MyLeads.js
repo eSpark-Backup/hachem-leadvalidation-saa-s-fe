@@ -25,6 +25,7 @@ export const TABLE_BODY = [
     date: new Date('8/30/14'),
     status: 'Accepted',
     isLatest: false,
+    isLatestText: 'New Leads',
   },
   {
     id: 2,
@@ -34,6 +35,7 @@ export const TABLE_BODY = [
     date: new Date('4/21/12'),
     status: 'Accepted',
     isLatest: false,
+    isLatestText: 'New Leads',
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ export const TABLE_BODY = [
     date: new Date('7/18/17'),
     status: 'Reject',
     isLatest: false,
+    isLatestText: 'New Leads',
   },
   {
     id: 4,
@@ -52,6 +55,7 @@ export const TABLE_BODY = [
     date: new Date('1/15/12'),
     status: 'Pending',
     isLatest: false,
+    isLatestText: 'New Leads',
   },
   {
     id: 5,
@@ -61,6 +65,7 @@ export const TABLE_BODY = [
     date: new Date('1/31/14'),
     status: 'Accepted',
     isLatest: false,
+    isLatestText: 'New Leads',
   },
   {
     id: 6,
@@ -70,6 +75,7 @@ export const TABLE_BODY = [
     date: new Date('4/4/18'),
     status: 'Accepted',
     isLatest: false,
+    isLatestText: 'New Leads',
   },
   {
     id: 7,
@@ -79,6 +85,7 @@ export const TABLE_BODY = [
     date: new Date('9/18/16'),
     status: 'Reject',
     isLatest: false,
+    isLatestText: 'New Leads',
   },
   {
     id: 8,
@@ -88,6 +95,7 @@ export const TABLE_BODY = [
     date: new Date('7/27/13'),
     status: 'Pending',
     isLatest: false,
+    isLatestText: 'New Leads',
   },
   {
     id: 9,
@@ -97,6 +105,7 @@ export const TABLE_BODY = [
     date: new Date('12/4/17'),
     status: 'Reject',
     isLatest: false,
+    isLatestText: 'New Leads',
   },
 ];
 

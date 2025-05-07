@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-import dayjs from 'dayjs';
+import PropTypes from 'prop-types';
 
 import {
   Table,
@@ -9,34 +7,24 @@ import {
   TableCell,
   TableBody,
   Box,
-  IconButton,
   TableContainer,
   Typography,
 } from '@mui/material';
 
 import FilterRenderer from './FilterRenderer';
 import TablePagination from './Pagination';
-
-import Eye from '../../../assets/images/global/table-icons/show.svg';
-import Edit from '../../../assets/images/global/table-icons/edit.svg';
+import FormatCell from './FormatCell';
 
 import {
-  actionButtonBoxStyles,
-  buttonBoxStyles,
-  editButtonStyles,
-  eyeButtonStyles,
   headingBoxStyles,
-  latestItemStyles,
-  newLabelStyles,
-  tableBodyItemStyles,
   tableBodyRowStyles,
-  tableBodyStyles,
   tableContainerStyles,
   tableHeaderHeadingStyles,
   tableHeaderStyles,
   tableHeadingStyles,
   tableStyles,
-} from '../../../styles/components/globals/Table';
+} from '../../../styles/components/globals/table/Table';
+
 import useTableFilter from '../../../hooks/useTableFilter';
 
 const GenericTable = ({
@@ -47,11 +35,16 @@ const GenericTable = ({
   data,
   columns,
   detail,
-  modal,
+  edit,
   detailAction,
+  editAction,
+  deleteAction,
   dashboard,
   fontWeight,
-  inDashboard
+  noBg,
+  trash,
+  onEnterCursor,
+  hasPoints = false,
 }) => {
   const {
     paginatedData,
@@ -65,7 +58,7 @@ const GenericTable = ({
   } = useTableFilter(data);
 
   return (
-    <Box sx={!inDashboard ? tableContainerStyles : {}}>
+    <Box sx={!noBg ? tableContainerStyles : {}}>
       <Box sx={headingBoxStyles}>
         <Typography
           variant="h1"
@@ -92,7 +85,7 @@ const GenericTable = ({
         <TableContainer sx={{ overflow: 'visible' }}>
           <Table sx={tableStyles}>
             <TableHead sx={tableHeaderStyles}>
-              <TableRow sx={{ marginBottom: '12px' }}>
+              <TableRow>
                 {columns.map((col) => (
                   <TableCell key={col.key} sx={tableHeaderHeadingStyles}>
                     {col.label}
@@ -101,50 +94,24 @@ const GenericTable = ({
               </TableRow>
             </TableHead>
 
-            <TableBody sx={tableBodyStyles}>
+            <TableBody>
               {paginatedData.map((row, i) => (
                 <TableRow key={i} sx={tableBodyRowStyles}>
-                  {columns.map((col, colIndex) => (
-                    <TableCell
-                      key={col.key}
-                      sx={{
-                        ...tableBodyItemStyles,
-                        position: colIndex === 0 ? 'relative' : 'static',
-                      }}
-                    >
-                      {colIndex === 0 && row.isLatest && (
-                        <Box sx={latestItemStyles}>
-                          <Typography sx={newLabelStyles}>New Leads</Typography>
-                        </Box>
-                      )}
-
-                      {col.key === 'date' ? (
-                        dayjs(row[col.key]).format('M/DD/YY')
-                      ) : col.key === 'status' ? (
-                        <Box sx={buttonBoxStyles(row['status'].toLowerCase())}>
-                          <Typography>{row['status']}</Typography>
-                        </Box>
-                      ) : col.key === 'action' ? (
-                        <Box sx={actionButtonBoxStyles}>
-                          {detail && (
-                            <IconButton
-                              sx={eyeButtonStyles}
-                              onClick={() => detailAction(row)}
-                            >
-                              <img src={Eye} alt="Show" />
-                            </IconButton>
-                          )}
-
-                          {modal && (
-                            <IconButton sx={editButtonStyles}>
-                              <img src={Edit} alt="Edit" />
-                            </IconButton>
-                          )}
-                        </Box>
-                      ) : (
-                        row[col.key]
-                      )}
-                    </TableCell>
+                  {columns.map(({ key }, colIndex) => (
+                    <FormatCell
+                      key={key}
+                      colIndex={colIndex}
+                      colKey={key}
+                      detail={detail}
+                      detailAction={detailAction}
+                      editAction={editAction}
+                      deleteAction={deleteAction}
+                      edit={edit}
+                      row={row}
+                      trash={trash}
+                      onEnterCursor={onEnterCursor}
+                      hasPoints={hasPoints}
+                    />
                   ))}
                 </TableRow>
               ))}
@@ -162,6 +129,29 @@ const GenericTable = ({
       </Box>
     </Box>
   );
+};
+
+GenericTable.propTypes = {
+  title: PropTypes.string,
+  filters: PropTypes.arrayOf(PropTypes.object),
+  select_filters: PropTypes.arrayOf(PropTypes.object),
+  filterType: PropTypes.object,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  detail: PropTypes.bool,
+  edit: PropTypes.bool,
+  detailAction: PropTypes.func,
+  dashboard: PropTypes.bool,
+  fontWeight: PropTypes.number,
+  noBg: PropTypes.bool,
+  trash: PropTypes.bool,
+  onEnterCursor: PropTypes.func,
+  hasPoints: PropTypes.bool,
 };
 
 export default GenericTable;

@@ -1,27 +1,28 @@
+import PropTypes from 'prop-types';
+
 import { Box, Pagination, PaginationItem } from '@mui/material';
 
-import ArrowLeftIcon from '../../../assets/images/global/table-icons/left.svg';
-import ArrowRightIcon from '../../../assets/images/global/table-icons/right.svg';
+import { ICONS } from '../../../constants/components/globals/Table';
 
-import { paginationBox } from '../../../styles/components/globals/Table';
+import { paginationBoxStyles } from '../../../styles/components/globals/table/Pagination';
 
 const CustomPrevIcon = () => {
   return (
     <Box mr={0.4}>
-      <img src={ArrowLeftIcon} />
+      <img src={ICONS.largeLeftArrow} />
     </Box>
   );
 };
 
 const CustomNextIcon = () => (
   <Box ml={0.4}>
-    <img src={ArrowRightIcon} />
+    <img src={ICONS.largeRightArrow} />
   </Box>
 );
 
 const TablePagination = ({ page }) => {
   return (
-    <Box sx={paginationBox}>
+    <Box sx={paginationBoxStyles}>
       <Pagination
         count={1}
         page={page}
@@ -36,6 +37,10 @@ const TablePagination = ({ page }) => {
       />
     </Box>
   );
+};
+
+TablePagination.propTypes = {
+  page: PropTypes.number.isRequired,
 };
 
 export default TablePagination;

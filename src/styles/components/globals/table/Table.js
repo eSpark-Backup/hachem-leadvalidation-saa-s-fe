@@ -3,14 +3,6 @@ const flexStyles = {
   alignItems: 'center',
 };
 
-const inputStyles = {
-  height: '100%',
-  fontSize: '14px',
-  letterSpacing: '-0.02em',
-  fontWeight: 500,
-  color: '#3A3A49',
-};
-
 const tableContainerStyles = {
   backgroundColor: 'rgba(9, 16, 43, 0.05)',
   border: '1px solid rgba(43, 49, 64, 0.05)',
@@ -24,86 +16,11 @@ const headingBoxStyles = {
   justifyContent: 'space-between',
 };
 
-const filterBoxStyles = {
-  gap: '5px',
-  ...flexStyles,
-};
-
 const tableHeadingStyles = {
   fontSize: '25px !important',
   lineHeight: '32px',
   letterSpacing: '-0.02em',
   color: '#1B2559',
-};
-
-const filterSearchStyles = {
-  width: '131px',
-  height: '25px',
-  backgroundColor: 'white',
-  borderRadius: '5px',
-  padding: '4px 11px 6px 10px',
-
-  '& .MuiInputBase-root': {
-    height: '100%',
-    padding: 0,
-  },
-
-  '& ::placeholder': {
-    color: '#3A3A49',
-    fontSize: '14px',
-    fontWeight: 500,
-
-  },
-
-  '& input': {
-    ...inputStyles,
-    lineHeight: '12px',
-    padding: '0px 5px 0px 0px',
-  },
-
-  '& fieldset': {
-    border: 'none !important',
-    padding: 0,
-  },
-
-  '& .MuiInputAdornment-root': {
-    margin: 0,
-  },
-};
-
-const filterDropdownStyle = {
-  backgroundColor: 'white',
-  height: '25px',
-
-  '& input': {
-    height: '100%',
-    padding: 0,
-    border: 'none',
-    ...inputStyles,
-  },
-
-  '& .MuiInputBase-input': {
-    ...inputStyles,
-  },
-
-  '& fieldset': {
-    border: 'none !important',
-    padding: 0,
-  },
-
-  '& .MuiSelect-icon': {
-    position: 'relative',
-    top: 0,
-    right: '13px',
-  },
-};
-
-const dropdownStyle = {
-  ...flexStyles,
-  justifyContent: 'center',
-  width: '24px',
-  height: '24px',
-  display: 'block',
 };
 
 const tableHeaderStyles = {
@@ -116,14 +33,6 @@ const tableHeaderHeadingStyles = {
   fontWeight: 600,
   lineHeight: '17px',
   color: '#212332',
-};
-
-const tableBodyItemStyles = {
-  fontSize: '14px !important',
-  lineHeight: '17px',
-  fontWeight: 500,
-  color: '#212332',
-  padding: '17px 13px',
 };
 
 const tableStyles = {
@@ -153,37 +62,12 @@ const tableStyles = {
   '& td': {
     backgroundColor: 'white',
   },
-
-};
-
-const tableBodyStyles = {
-  // backgroundColor: 'white',
 };
 
 const tableBodyRowStyles = {
   position: 'relative',
   boxShadow: '0px 2px 9px rgba(0, 0, 0, 0.23)',
   borderRadius: '5px',
-};
-
-const montSelectStyles = {
-  marginLeft: '4px',
-};
-
-const monthHeadingStyles = {
-  border: '0.541722px solid #09102B',
-  borderRadius: '5px',
-  padding: '5px 8px',
-  fontSize: '14px',
-  lineHeight: '12px',
-  letterSpacing: '-0.02em',
-  color: '#09102B',
-  fontWeight: 500,
-};
-
-const iconButtonStyles = {
-  backgroundColor: 'transparent !important',
-  padding: 0,
 };
 
 const buttonBoxStyles = (status) => {
@@ -231,32 +115,6 @@ const editButtonStyles = {
   backgroundColor: 'transparent !important',
 };
 
-const paginationBox = {
-  ...flexStyles,
-  justifyContent: 'center',
-
-  '& button': {
-    color: '#09102B !important',
-    fontSize: '16px',
-    lineHeight: '28px',
-    letterSpacing: '-0.02em',
-    fontWeight: 500,
-    padding: "4px 0px",
-    margin: 0,
-    height: 'auto',
-    minWidth: '10px',
-
-  },
-
-  '& .Mui-selected': {
-    width: '20px',
-    height: '19px',
-    border: '0.5px solid #09102B',
-    borderRadius: '4px',
-    backgroundColor: 'transparent !important',
-  },
-};
-
 const filterCommonBoxStyles = {
   display: 'flex',
   alignItems: 'center',
@@ -266,8 +124,6 @@ const filterCommonBoxStyles = {
   padding: '4px 11px 6px 10px',
   height: '25px',
 };
-
-const iconStyles = { marginLeft: '10px', display: 'flex' };
 
 const latestItemStyles = {
   position: 'absolute',
@@ -292,26 +148,14 @@ export {
   tableContainerStyles,
   headingBoxStyles,
   tableHeadingStyles,
-  filterSearchStyles,
-  filterDropdownStyle,
-  filterBoxStyles,
-  dropdownStyle,
   tableHeaderStyles,
   tableHeaderHeadingStyles,
-  tableBodyItemStyles,
   tableStyles,
-  tableBodyStyles,
-  montSelectStyles,
-  monthHeadingStyles,
-  iconButtonStyles,
   buttonBoxStyles,
   actionButtonBoxStyles,
   eyeButtonStyles,
   editButtonStyles,
-  paginationBox,
   filterCommonBoxStyles,
-  inputStyles,
-  iconStyles,
   tableBodyRowStyles,
   latestItemStyles,
   newLabelStyles,
