@@ -1,22 +1,23 @@
 import { useRef, useState } from 'react';
 
+import dayjs from 'dayjs';
+
 import { Box, Button, ClickAwayListener, Popover } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-import { BG_COLOR, ICONS } from '../../../constants/components/globals/Table';
+import { BG_COLOR, ICONS, TABLE_STATIC_TEXTS } from '../../../constants/components/globals/Table';
 
 import {
   buttonStyles,
   calenderActionButtonStyles,
   calenderHeaderStyles,
   monthYearButtonStyles,
-  paperPropsStyles,
+  paperPropsPickerStyles,
   pickerLayoutStyles,
-  slotsPropsStyles,
+  slotsPropsPickerStyles,
 } from '../../../styles/components/globals/table/DatePickerFilter';
-import dayjs from 'dayjs';
 
 const DatePickerFilter = () => {
   const { upArrow, downArrow } = ICONS;
@@ -47,9 +48,11 @@ const DatePickerFilter = () => {
             : 'rgba(179, 199, 255, 0.41) !important',
           ...buttonStyles,
         }}
-        endIcon={<Box component={'img'} src={!anchorEl ? downArrow : upArrow} />}
+        endIcon={
+          <Box component={'img'} src={!anchorEl ? downArrow : upArrow} />
+        }
       >
-        This Month
+        {TABLE_STATIC_TEXTS.this_month}
       </Button>
 
       <Popover
@@ -64,12 +67,12 @@ const DatePickerFilter = () => {
           vertical: 'top',
           horizontal: 'left',
         }}
-        PaperProps={{
-          sx: paperPropsStyles,
-        }}
         slotProps={{
           root: {
-            sx: slotsPropsStyles,
+            sx: slotsPropsPickerStyles,
+          },
+          paper: {
+            sx: paperPropsPickerStyles,
           },
         }}
       >

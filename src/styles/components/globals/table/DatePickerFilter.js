@@ -1,3 +1,5 @@
+import { paperCommonPropsStyles, slotsCommonPropsStyles } from "./Common";
+
 const buttonStyles = {
   border: '0.5px solid #136BE5',
   borderRadius: '3px',
@@ -11,26 +13,13 @@ const buttonStyles = {
   },
 };
 
-const paperPropsStyles = {
+const paperPropsPickerStyles = {
   ml: '-16px',
-  zIndex: 1302,
-  backgroundColor: 'transparent',
-  boxShadow: 'none',
+  ...paperCommonPropsStyles,
 };
 
-const slotsPropsStyles = {
-  '&::before': {
-    content: '""',
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    background: 'rgba(9, 16, 43, 0.37)',
-    backdropFilter: 'blur(1.90861px)',
-    zIndex: 1301,
-  },
-
+const slotsPropsPickerStyles = {
+  ...slotsCommonPropsStyles,
   marginTop: '14px',
 };
 
@@ -81,8 +70,8 @@ const monthYearButtonStyles = {
 
 export {
   buttonStyles,
-  paperPropsStyles,
-  slotsPropsStyles,
+  paperPropsPickerStyles,
+  slotsPropsPickerStyles,
   pickerLayoutStyles,
   calenderHeaderStyles,
   calenderActionButtonStyles,
