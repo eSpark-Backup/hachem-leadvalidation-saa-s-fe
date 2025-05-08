@@ -3,7 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-const CircularProgressWithLabel = ({ value, color }) => {
+const CircularProgressWithLabel = ({ value, color, isPerAllowed }) => {
   return (
     <>
       <Box
@@ -58,7 +58,7 @@ const CircularProgressWithLabel = ({ value, color }) => {
             component="div"
             sx={{ color: 'primary', fontSize: 13 }}
           >
-            {`${value}%`}
+            {`${value}${isPerAllowed ? '%' : ''}`}
           </Typography>
         </Box>
       </Box>
@@ -69,6 +69,7 @@ const CircularProgressWithLabel = ({ value, color }) => {
 CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
+  isPerAllowed: PropTypes.bool,
 };
 
 export default CircularProgressWithLabel;

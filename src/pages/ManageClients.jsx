@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { Box } from '@mui/material';
 
@@ -11,6 +11,9 @@ import {
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/ClientManagement';
+import NotFound from './NotFound';
+import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
+import { USER_TYPE } from '../utils/auth';
 
 const ManageClients = () => {
   const [details, setDetails] = useState(null);
@@ -33,36 +36,42 @@ const ManageClients = () => {
   };
 
   return (
-    <Box px={2}>
-      <GenericTable
-        title={CLIENT_MANAGEMENT.title}
-        columns={TABLE_HEADER}
-        data={TABLE_BODY}
-        noBg
-        edit
-        editAction={requestHandler}
-        onEnterCursor={(event, type) => {
-          if (type === 'pointerenter') handlePopoverOpen(event);
-          // if (type === 'pointerleave') handleClose();
-        }}
-      />
+    <>
+      {USER_TYPE === USER_TYPES.admin ? (
+        <Box px={2}>
+          <GenericTable
+            title={CLIENT_MANAGEMENT.title}
+            columns={TABLE_HEADER}
+            data={TABLE_BODY}
+            noBg
+            edit
+            editAction={requestHandler}
+            onEnterCursor={(event, type) => {
+              if (type === 'pointerenter') handlePopoverOpen(event);
+              // if (type === 'pointerleave') handleClose();
+            }}
+          />
 
-      {anchorEl && (
-        <ManageModal
-          item={{ ...details, id: details?.client_id }}
-          client
-          anchorEl={anchorEl}
-          handleClose={handleClose}
-        />
-      )}
+          {anchorEl && (
+            <ManageModal
+              item={{ ...details, id: details?.client_id }}
+              client
+              anchorEl={anchorEl}
+              handleClose={handleClose}
+            />
+          )}
 
-      {lowCreditAnchorEl && (
-        <LowCreditModal
-          anchorEl={lowCreditAnchorEl}
-          handleClose={handleClose}
-        />
+          {lowCreditAnchorEl && (
+            <LowCreditModal
+              anchorEl={lowCreditAnchorEl}
+              handleClose={handleClose}
+            />
+          )}
+        </Box>
+      ) : (
+        <NotFound btnLink={ROUTES.dashboard} />
       )}
-    </Box>
+    </>
   );
 };
 

@@ -1,46 +1,50 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  Typography,
-} from '@mui/material';
+import { Box, Card, Grid } from '@mui/material';
 import PropTypes from 'prop-types';
 import { SUPPLIER_REPORTS_ANALYTICS } from '../../constants/pages/ReportsAnalytics';
-import LeadsChart from '../charts/LeadsChart';
-import { LEADS_CHART } from '../../constants/components/charts/LeadsChart';
-import { KeyboardArrowDown } from '@mui/icons-material';
+
+import HeaderActions from './HeaderActions';
+import { useState } from 'react';
+import ChartsModal from '../global/ChartsModal';
 import {
-  PENDING_LEADS_DATA,
-  REJECTED_LEADS_DATA,
-  VALID_LEADS_DATA,
-} from '../../constants/components/charts/SingleLineChart';
+  chartCardStyle,
+  cardStyle,
+  containerStyle,
+  wrapperStyle,
+  cardStyles,
+} from '../../styles/components/report-analytics/SupplierReports';
+import PerformenceLead from './PerformenceLead';
+import LeadsOverview from './LeadsOverview';
+import MostGenerateLeads from './MostGenerateLeads';
+import { VALID_LEADS_DATA } from '../../constants/components/charts/SingleLineChart';
+import {
+  DASHBOARD_TEXT,
+  TEXT_CONSTANTS,
+} from '../../constants/components/reports/SupplierReports';
 import SingleLineChart from '../charts/SingleLineChart';
-import { LEADS_OVERVIEW_CHART2 } from '../../constants/components/charts/SingleLineChart2';
+import PerformanceCard from './PerformenceCard';
+import { PENDING_LEADS_DATA } from '../../constants/components/charts/SingleLineChart';
+import { REJECTED_LEADS_DATA } from '../../constants/components/charts/SingleLineChart';
 import {
   PIE_CHARTS,
   PIE_CHARTS_COLORS,
 } from '../../constants/components/charts/PieCharts';
-import DonutChartWithText from '../charts/DonutChartWithText';
-import LeadsTable from '../charts/LeadsTable';
 import {
   HEADERS,
   LEADS_TABLE,
 } from '../../constants/components/charts/LeadsTable';
-import SingleLineChart2 from '../charts/SingleLineChart2';
-import HeaderActions from './HeaderActions';
-import {
-  boxStyle,
-  buttonStyle,
-  cardContentStyle,
-  cardStyle,
-  performanceBoxStyle,
-  typographyMainStyle,
-  typographySubStyle,
-} from '../../styles/components/report-analytics/SupplierReports';
 
-const SupplierReports = ({ handleOpen, handleCopy, handleDownload }) => {
+const SupplierReports = ({ handleCopy, handleDownload }) => {
+  const [open, setOpen] = useState(false);
+  const [children, setChildren] = useState(<></>);
+
+  const handleOpenChartModal = (component) => {
+    setChildren(component);
+    setOpen(true);
+  };
+
+  const handleCloseChartModal = () => setOpen(false);
+  // styles.js or at top of the file
+
   return (
     <>
       <Box>
@@ -59,239 +63,202 @@ const SupplierReports = ({ handleOpen, handleCopy, handleDownload }) => {
             },
           ]}
         />
-        <Box sx={{ py: 2 }}>
+        <Box sx={wrapperStyle}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={3}>
               <Card sx={cardStyle}>
-                <CardContent sx={cardContentStyle}>
-                  <Box sx={boxStyle}>
-                    <Typography variant="h4" fontWeight="bold">
-                      {'Leads Performance'}
-                    </Typography>
-                    <Typography
-                      onClick={handleOpen}
-                      variant="subtitle2"
-                      color="textSecondary"
-                    >
-                      {'This month'}
-                    </Typography>
-                  </Box>
-                  <LeadsChart
-                    data={LEADS_CHART}
-                    lineColor={'#FFA500'}
-                    barColor={'#EAECFB'}
-                  />
-                  <Box sx={performanceBoxStyle}>
-                    <Typography
-                      sx={{ ...typographyMainStyle, color: '#FFA500' }}
-                    >
-                      {'30%'}
-                    </Typography>
-                    <Typography sx={typographySubStyle}>
-                      {`Your leads performance is 30% better compare to last month`}
-                    </Typography>
-                  </Box>
-                </CardContent>
+                <PerformenceLead
+                  open={open}
+                  modalOpen={() => {
+                    handleOpenChartModal(<PerformenceLead />);
+                  }}
+                  handleOpenChartModalDropDown={() => {}}
+                />
               </Card>
             </Grid>
+
             <Grid item xs={12} sm={6} md={3}>
               <Card sx={cardStyle}>
-                <CardContent sx={cardContentStyle}>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    mb={2}
-                  >
-                    <Box>
-                      <Typography variant="h4" fontWeight="bold">
-                        {'Valid Leads'}
-                      </Typography>
-                    </Box>
-                    <Button sx={buttonStyle} onClick={handleOpen}>
-                      <Typography sx={{ fontWeight: 400, fontSize: '14px' }}>
-                        {'This Month'}
-                      </Typography>
-                      <KeyboardArrowDown />
-                    </Button>
-                  </Box>
-                  <SingleLineChart
-                    data={VALID_LEADS_DATA}
-                    color={'#126D30'}
-                    fillColor={'#54D14D'}
-                  />
-                  <Box sx={performanceBoxStyle}>
-                    <Typography
-                      sx={{ ...typographyMainStyle, color: '#126D30' }}
-                    >
-                      {'30%'}
-                    </Typography>
-                    <Typography sx={typographySubStyle}>
-                      {`Your leads performance is 40% better compare to last week`}
-                    </Typography>
-                  </Box>
-                </CardContent>
+                <PerformanceCard
+                  title={TEXT_CONSTANTS.validLeads}
+                  chart={SingleLineChart}
+                  chartProps={{
+                    data: VALID_LEADS_DATA,
+                    color: '#126D30',
+                    fillColor: '#54D14D',
+                  }}
+                  percent={'40%'}
+                  percentColor="#126D30"
+                  improvementText={TEXT_CONSTANTS.leadsImprovement(
+                    '40%',
+                    'last week'
+                  )}
+                  open={open}
+                  modalOpen={() => {
+                    handleOpenChartModal(
+                      <PerformanceCard
+                        title={TEXT_CONSTANTS.validLeads}
+                        chart={SingleLineChart}
+                        chartProps={{
+                          data: VALID_LEADS_DATA,
+                          color: '#126D30',
+                          fillColor: '#54D14D',
+                        }}
+                        percent={'40%'}
+                        percentColor="#126D30"
+                        improvementText={TEXT_CONSTANTS.leadsImprovement(
+                          '40%',
+                          'last week'
+                        )}
+                        open={open}
+                        modalOpen={() => {
+                          handleOpenChartModal();
+                        }}
+                        handleOpenChartModalDropDown={() => {}}
+                      />
+                    );
+                  }}
+                  handleOpenChartModalDropDown={() => {}}
+                />
               </Card>
             </Grid>
+
             <Grid item xs={12} sm={6} md={3}>
               <Card sx={cardStyle}>
-                <CardContent sx={cardContentStyle}>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    mb={2}
-                  >
-                    <Box>
-                      <Typography variant="h4" fontWeight="bold">
-                        {'Pending Leads'}
-                      </Typography>
-                    </Box>
-                    <Button sx={buttonStyle} onClick={handleOpen}>
-                      <Typography sx={{ fontWeight: 400, fontSize: '14px' }}>
-                        {'This Month'}
-                      </Typography>
-                      <KeyboardArrowDown />
-                    </Button>
-                  </Box>
-                  <SingleLineChart
-                    data={PENDING_LEADS_DATA}
-                    color={'#1E2875'}
-                    fillColor={'#5188D4'}
-                  />
-                  <Box sx={performanceBoxStyle}>
-                    <Typography
-                      sx={{ ...typographyMainStyle, color: '#1E2875' }}
-                    >
-                      {'30%'}
-                    </Typography>
-                    <Typography sx={typographySubStyle}>
-                      {`Your leads performance is 20% better compare to last week`}
-                    </Typography>
-                  </Box>
-                </CardContent>
+                <PerformanceCard
+                  title={TEXT_CONSTANTS.pendingLeads}
+                  chart={SingleLineChart}
+                  chartProps={{
+                    data: PENDING_LEADS_DATA,
+                    color: '#1E2875',
+                    fillColor: '#5188D4',
+                  }}
+                  percent={'20%'}
+                  percentColor="#1E2875"
+                  improvementText={TEXT_CONSTANTS.leadsImprovement(
+                    '20%',
+                    'last week'
+                  )}
+                  open={open}
+                  modalOpen={() => {
+                    handleOpenChartModal(
+                      <PerformanceCard
+                        title={TEXT_CONSTANTS.pendingLeads}
+                        chart={SingleLineChart}
+                        chartProps={{
+                          data: PENDING_LEADS_DATA,
+                          color: '#1E2875',
+                          fillColor: '#5188D4',
+                        }}
+                        percent={'20%'}
+                        percentColor="#1E2875"
+                        improvementText={TEXT_CONSTANTS.leadsImprovement(
+                          '20%',
+                          'last week'
+                        )}
+                        modalOpen={() => {
+                          handleOpenChartModal();
+                        }}
+                        handleOpenChartModalDropDown={() => {}}
+                      />
+                    );
+                  }}
+                  handleOpenChartModalDropDown={() => {}}
+                />
               </Card>
             </Grid>
+
             <Grid item xs={12} sm={6} md={3}>
               <Card sx={cardStyle}>
-                <CardContent sx={cardContentStyle}>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    mb={2}
-                  >
-                    <Box>
-                      <Typography variant="h4" fontWeight="bold">
-                        {'Rejected Leads'}
-                      </Typography>
-                    </Box>
-                    <Button sx={buttonStyle} onClick={handleOpen}>
-                      <Typography sx={{ fontWeight: 400, fontSize: '14px' }}>
-                        {'This Month'}
-                      </Typography>
-                      <KeyboardArrowDown />
-                    </Button>
-                  </Box>
-                  <SingleLineChart
-                    data={REJECTED_LEADS_DATA}
-                    color={'#FF4343'}
-                    fillColor={'#F35F5F'}
-                  />
-                  <Box sx={performanceBoxStyle}>
-                    <Typography
-                      sx={{ ...typographyMainStyle, color: '#FF4343' }}
-                    >
-                      {'30%'}
-                    </Typography>
-                    <Typography sx={typographySubStyle}>
-                      {`Your leads performance is 20% better compare to last week`}
-                    </Typography>
-                  </Box>
-                </CardContent>
+                <PerformanceCard
+                  title={TEXT_CONSTANTS.rejectedLeads}
+                  chart={SingleLineChart}
+                  chartProps={{
+                    data: REJECTED_LEADS_DATA,
+                    color: '#FF4343',
+                    fillColor: '#F35F5F',
+                  }}
+                  percent={'20%'}
+                  percentColor="#FF4343"
+                  improvementText={TEXT_CONSTANTS.leadsImprovement(
+                    '20%',
+                    'last week'
+                  )}
+                  open={open}
+                  modalOpen={() => {
+                    handleOpenChartModal(
+                      <PerformanceCard
+                        title={TEXT_CONSTANTS.rejectedLeads}
+                        chart={SingleLineChart}
+                        chartProps={{
+                          data: REJECTED_LEADS_DATA,
+                          color: '#FF4343',
+                          fillColor: '#F35F5F',
+                        }}
+                        percent={'20%'}
+                        percentColor="#FF4343"
+                        improvementText={TEXT_CONSTANTS.leadsImprovement(
+                          '20%',
+                          'last week'
+                        )}
+                      />
+                    );
+                  }}
+                  handleOpenChartModalDropDown={() => {}}
+                />
               </Card>
             </Grid>
           </Grid>
         </Box>
-        <Box sx={{ py: 2 }}>
+
+        <Box sx={containerStyle}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={9}>
-              <Card sx={cardStyle}>
-                <CardContent sx={cardContentStyle}>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    mb={2}
-                  >
-                    <Box>
-                      <Typography variant="h4" fontWeight="bold">
-                        {'Leads overview'}
-                      </Typography>
-                    </Box>
-                    <Button sx={buttonStyle} onClick={handleOpen}>
-                      <Typography sx={{ fontWeight: 400, fontSize: '14px' }}>
-                        {'This Year'}
-                      </Typography>
-                      <KeyboardArrowDown />
-                    </Button>
-                  </Box>
-                  <SingleLineChart2
-                    data={LEADS_OVERVIEW_CHART2}
-                    color="#09102B"
-                    fillColor="#136BE5"
-                    strokeWidth={3.38}
+              <Box sx={{ p: 2, background: ' #09102B0D', borderRadius: 4 }}>
+                <Card sx={chartCardStyle}>
+                  <LeadsOverview
+                    open={open}
+                    modalOpen={() => {
+                      handleOpenChartModal(<LeadsOverview />);
+                    }}
+                    handleOpenChartModalDropDown={() => {}}
                   />
-                </CardContent>
-              </Card>
+                </Card>
+              </Box>
             </Grid>
+
             <Grid item xs={12} sm={6} md={3}>
-              <Card sx={{ borderRadius: 4 }}>
-                <CardContent>
-                  <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    mb={2}
-                  >
-                    <Box>
-                      <Typography variant="h4" fontWeight="bold">
-                        {'Most Generate Leads'}
-                      </Typography>
-                    </Box>
-                    <Button sx={buttonStyle} onClick={handleOpen}>
-                      <Typography sx={{ fontWeight: 400, fontSize: '14px' }}>
-                        {'This Month'}
-                      </Typography>
-                      <KeyboardArrowDown />
-                    </Button>
-                  </Box>
-                  <Box
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    flexDirection="column"
-                    py={5}
-                  >
-                    <DonutChartWithText
-                      data={PIE_CHARTS}
-                      colors={PIE_CHARTS_COLORS}
-                    />
-                  </Box>
-                  <Box
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                    flexDirection="column"
-                    py={1}
-                  >
-                    <LeadsTable data={LEADS_TABLE} headers={HEADERS} />
-                  </Box>
-                </CardContent>
+              <Card sx={cardStyles}>
+                <MostGenerateLeads
+                  open={open}
+                  modalOpen={() => {
+                    handleOpenChartModal(
+                      <MostGenerateLeads
+                        open={open}
+                        title={DASHBOARD_TEXT.MOST_GENERATE_LEADS}
+                        buttonText={DASHBOARD_TEXT.THIS_MONTH}
+                        chartData={PIE_CHARTS}
+                        chartColors={PIE_CHARTS_COLORS}
+                        tableData={LEADS_TABLE}
+                        tableHeaders={HEADERS}
+                      />
+                    );
+                  }}
+                  handleOpenChartModalDropDown={() => {}}
+                  title={DASHBOARD_TEXT.MOST_GENERATE_LEADS}
+                  buttonText={DASHBOARD_TEXT.THIS_MONTH}
+                  chartData={PIE_CHARTS}
+                  chartColors={PIE_CHARTS_COLORS}
+                  tableData={LEADS_TABLE}
+                  tableHeaders={HEADERS}
+                />
               </Card>
             </Grid>
           </Grid>
         </Box>
+        <ChartsModal handleCloseChartModal={handleCloseChartModal} open={open}>
+          {children}
+        </ChartsModal>
       </Box>
     </>
   );
@@ -299,7 +266,7 @@ const SupplierReports = ({ handleOpen, handleCopy, handleDownload }) => {
 
 SupplierReports.propTypes = {
   handleDownload: PropTypes.func.isRequired,
-  handleOpen: PropTypes.func.isRequired,
+  handleOpenChartModal: PropTypes.func.isRequired,
   handleCopy: PropTypes.func.isRequired,
 };
 

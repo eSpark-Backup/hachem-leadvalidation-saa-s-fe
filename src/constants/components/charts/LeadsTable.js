@@ -19,3 +19,25 @@ export const LEADS_TABLE = [
   }, // red
 ];
 export const HEADERS = ['Leads', 'Total Leads', 'Valid Rate'];
+
+export const CLIENT_LEADS_TABLE = [
+  {
+    leadType: 'Iceland',
+    totalLeads: 13170,
+    validRate: 60,
+    color: '#0E5FD9',
+  }, // green
+  {
+    leadType: 'Germany',
+    totalLeads: 4390,
+    validRate: 20,
+    color: '#FF9500',
+  }, // blue
+  {
+    leadType: 'Reunion',
+    totalLeads: 4390,
+    validRate: 20,
+    color: '#E84646',
+  }, // red
+];
+export const CLIENT_HEADERS = ['Country', 'Total Leads', 'Valid Rate'];

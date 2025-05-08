@@ -1,19 +1,5 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  MenuItem,
-  Select,
-  Typography,
-} from '@mui/material';
-import { useState } from 'react';
-import {
-  HEADERS,
-  LEADS_TABLE,
-} from '../../constants/components/charts/LeadsTable';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import PropTypes from 'prop-types';
-import LeadsTable from './LeadsTable';
 
 const COLORS = ['#54D14D', '#136BE5', '#88B8F9', '#B3F2AF', '#09451C'];
 
@@ -27,6 +13,7 @@ const renderCustomizedLabel = ({
   innerRadius,
   outerRadius,
   percent,
+  isPerAllowed = true,
   // index,
 }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -43,18 +30,12 @@ const renderCustomizedLabel = ({
       fontSize={14}
       fontWeight="bold"
     >
-      {`${(percent * 100).toFixed(0)}%`}
+      {`${(percent * 100).toFixed(0)}${isPerAllowed ? '%' : ''}`}
     </text>
   );
 };
 
-const DonutChart = ({ data = [] }) => {
-  const [month, setMonth] = useState('This Month');
-
-  const handleChange = (event) => {
-    setMonth(event.target.value);
-  };
-
+const DonutChart = ({ data = [], colors }) => {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <PieChart>
@@ -63,7 +44,7 @@ const DonutChart = ({ data = [] }) => {
           cx="50%"
           cy="50%"
           innerRadius={50}
-          outerRadius={120}
+          outerRadius={100}
           fill="#8884d8"
           paddingAngle={2}
           dataKey="value"
@@ -71,7 +52,12 @@ const DonutChart = ({ data = [] }) => {
           labelLine={false}
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            <Cell
+              key={`cell-${index}`}
+              fill={
+                colors[index % colors.length] || COLORS[index % COLORS.length]
+              }
+            />
           ))}
         </Pie>
         <Tooltip />
@@ -81,6 +67,8 @@ const DonutChart = ({ data = [] }) => {
 };
 DonutChart.propTypes = {
   data: PropTypes.array.isRequired,
+  isPerAllowed: PropTypes.bool,
+  colors: PropTypes.any,
 };
 
 export default DonutChart;

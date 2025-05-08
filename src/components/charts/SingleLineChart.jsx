@@ -1,11 +1,20 @@
 import PropTypes from 'prop-types';
 import { ResponsiveContainer, XAxis, Tooltip, AreaChart, Area } from 'recharts';
 
-const SingleLineChart = ({ data, color, fillColor }) => {
+const SingleLineChart = ({
+  data,
+  color = '#22C55E',
+  fillColor = '#ff0000',
+  dataKey = 'value',
+  xAxisKey = 'key',
+  height = 220,
+  showXAxis = false,
+  tooltipFormatter = (value) => [`${value}`, 'Value'],
+}) => {
   const gradientId = `colorA-${fillColor.replace('#', '')}`;
 
   return (
-    <ResponsiveContainer width="100%" height={220}>
+    <ResponsiveContainer width="100%" height={height}>
       <AreaChart data={data}>
         <defs>
           <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
@@ -13,14 +22,14 @@ const SingleLineChart = ({ data, color, fillColor }) => {
             <stop offset="95%" stopColor={fillColor} stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="key" hide />
+        <XAxis dataKey={xAxisKey} hide={!showXAxis} />
         <Tooltip
           contentStyle={{ fontSize: '12px', borderRadius: '8px' }}
-          formatter={(value) => [`${value}`, 'Value']}
+          formatter={tooltipFormatter}
         />
         <Area
           type="monotone"
-          dataKey="value"
+          dataKey={dataKey}
           stroke={color}
           fillOpacity={1}
           fill={`url(#${gradientId})`}
@@ -34,10 +43,11 @@ SingleLineChart.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
   color: PropTypes.string,
   fillColor: PropTypes.string,
+  dataKey: PropTypes.string,
+  xAxisKey: PropTypes.string,
+  height: PropTypes.number,
+  showXAxis: PropTypes.bool,
+  tooltipFormatter: PropTypes.func,
 };
 
-SingleLineChart.defaultProps = {
-  color: '#22C55E', // Line color
-  fillColor: '#ff0000', // Fill gradient color
-};
 export default SingleLineChart;

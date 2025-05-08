@@ -5,73 +5,93 @@ import {
   Area,
   XAxis,
   YAxis,
-  // CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
 import PropTypes from 'prop-types';
 
-const ClientStaticsChart = ({ data = [] }) => {
+const DEFAULT_COLORS = [
+  '#FF7E5C',
+  '#54D14D',
+  '#314CFF',
+  '#FFB443',
+  '#845EC2',
+  '#00C9A7',
+];
+
+const ClientStaticsChart = ({
+  data = [],
+  xAxisKey = 'key',
+  excludeKeys = [xAxisKey],
+  colors = DEFAULT_COLORS,
+  height = '100%',
+  showTooltip = true,
+  showXAxis = false,
+  showYAxis = false,
+  stackId = '1',
+}) => {
+  if (!data.length) return null;
+
+  const areaKeys = Object.keys(data[0]).filter(
+    (key) => !excludeKeys.includes(key)
+  );
+
   return (
-    <>
-      <ResponsiveContainer width={'100%'} height={'100%'}>
-        <AreaChart data={data}>
-          <defs>
-            <linearGradient id="colorA" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#FF7E5C" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#FF7E5C" stopOpacity={0} />
+    <ResponsiveContainer width="100%" height={height}>
+      <AreaChart data={data}>
+        <defs>
+          {areaKeys.map((key, index) => (
+            <linearGradient
+              key={key}
+              id={`color${key}`}
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="1"
+            >
+              <stop
+                offset="5%"
+                stopColor={colors[index % colors.length]}
+                stopOpacity={0.8}
+              />
+              <stop
+                offset="95%"
+                stopColor={colors[index % colors.length]}
+                stopOpacity={0}
+              />
             </linearGradient>
-            <linearGradient id="colorB" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#54D14D" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#54D14D" stopOpacity={0} />
-            </linearGradient>
-            <linearGradient id="colorC" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#314CFF" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#314CFF" stopOpacity={0} />
-            </linearGradient>
-            <linearGradient id="colorD" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#FFB443" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#FFB443" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <XAxis dataKey="name" hide />
-          <YAxis hide />
-          {/* <CartesianGrid strokeDasharray="3 3" hide /> */}
-          <Tooltip />
+          ))}
+        </defs>
+
+        {showXAxis && <XAxis dataKey={xAxisKey} />}
+        {showYAxis && <YAxis />}
+        {showTooltip && <Tooltip />}
+
+        {areaKeys.map((key, index) => (
           <Area
+            key={key}
             type="monotone"
-            dataKey="a"
-            stackId="1"
-            stroke="#FF7E5C"
-            fill="url(#colorA)"
+            dataKey={key}
+            stackId={stackId}
+            stroke={colors[index % colors.length]}
+            fill={`url(#color${key})`}
           />
-          <Area
-            type="monotone"
-            dataKey="b"
-            stackId="1"
-            stroke="#54D14D"
-            fill="url(#colorB)"
-          />
-          <Area
-            type="monotone"
-            dataKey="c"
-            stackId="1"
-            stroke="#314CFF"
-            fill="url(#colorC)"
-          />
-          <Area
-            type="monotone"
-            dataKey="d"
-            stackId="1"
-            stroke="#FFB443"
-            fill="url(#colorD)"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
-    </>
+        ))}
+      </AreaChart>
+    </ResponsiveContainer>
   );
 };
+
 ClientStaticsChart.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  xAxisKey: PropTypes.string,
+  excludeKeys: PropTypes.arrayOf(PropTypes.string),
+  colors: PropTypes.arrayOf(PropTypes.string),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  showTooltip: PropTypes.bool,
+  showXAxis: PropTypes.bool,
+  showYAxis: PropTypes.bool,
+  stackId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
+
 export default ClientStaticsChart;

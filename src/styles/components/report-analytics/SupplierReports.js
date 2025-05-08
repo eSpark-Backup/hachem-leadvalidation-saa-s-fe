@@ -1,28 +1,70 @@
-// Extracted styles for reuse
-export const cardStyle = { borderRadius: 4, p: 1 };
-export const cardContentStyle = { p: 1 };
-export const boxStyle = {
+export const wrapperStyle = { py: 2 };
+
+export const cardStyle = {
+  borderRadius: 4,
+};
+export const cardStyles = {
+  borderRadius: '16px',
+  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+  padding: 1,
+  backgroundColor: '#fff',
+};
+
+export const simpleBoxStyle = {
   display: 'flex',
-  justifyContent: 'center',
-  flexDirection: 'column',
+  justifyContent: 'space-between',
   alignItems: 'center',
   mb: 2,
 };
+
 export const performanceBoxStyle = {
+  mt: 2,
   display: 'flex',
-  justifyContent: 'start',
+  justifyContent: 'space-between',
   alignItems: 'center',
-  gap: '5px',
+  gap: '10px',
 };
+
 export const typographyMainStyle = {
   fontWeight: 600,
-  fontSize: '30px',
+  fontSize: '25px',
 };
+
 export const typographySubStyle = {
-  fontWeight: 400,
-  fontSize: '13px',
+  fontSize: '14px',
+  color: 'textSecondary',
 };
+
+export const containerStyle = { py: 2 };
+
+export const chartCardStyle = {
+  borderRadius: 4,
+};
+
+export const cardContentStyle = {
+  px: 2,
+  py: 3,
+};
+
 export const buttonStyle = {
-  color: '#4A5154',
-  background: '#F5F6F7',
+  backgroundColor: '#F5F5F5',
+  textTransform: 'none',
+  px: 2,
+  py: 1,
+  borderRadius: 2,
 };
+
+export const headerBoxStyle = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  mb: 2,
+};
+
+export const centerBoxStyle = (py = 5) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column',
+  py,
+});

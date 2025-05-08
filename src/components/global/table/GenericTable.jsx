@@ -152,6 +152,9 @@ GenericTable.propTypes = {
   trash: PropTypes.bool,
   onEnterCursor: PropTypes.func,
   hasPoints: PropTypes.bool,
+  inDashboard: PropTypes.bool,
+  editAction: PropTypes.any,
+  deleteAction: PropTypes.any,
 };
 
 export default GenericTable;

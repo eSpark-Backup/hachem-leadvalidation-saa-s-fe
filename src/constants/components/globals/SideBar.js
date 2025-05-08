@@ -9,12 +9,12 @@ const SIDE_BAR_MENU_SUPPLIER = [
     icon: '/src/assets/images/global/menu-icons/dashboard-gray-icon.svg',
     hoverIcon: '/src/assets/images/global/menu-icons/dashboard-white-icon.svg',
   },
-  {
-    label: 'Upload Leads',
-    path: '/dashboard/upload-leads',
-    icon: '/src/assets/images/global/menu-icons/filter-gray-icon.svg',
-    hoverIcon: '/src/assets/images/global/menu-icons/filter-white-icon.svg',
-  },
+  // {
+  //   label: 'Upload Leads',
+  //   path: '/dashboard/upload-leads',
+  //   icon: '/src/assets/images/global/menu-icons/filter-gray-icon.svg',
+  //   hoverIcon: '/src/assets/images/global/menu-icons/filter-white-icon.svg',
+  // },
   {
     label: 'Reports & Analytics ',
     path: '/dashboard/reports-analytics',
@@ -93,12 +93,12 @@ const SIDE_BAR_MENU_CLIENT = [
     icon: '/src/assets/images/global/menu-icons/filter-gray-icon.svg',
     hoverIcon: '/src/assets/images/global/menu-icons/filter-white-icon.svg',
   },
-  {
-    label: 'Upload Leads',
-    path: '/dashboard/upload-leads',
-    icon: '/src/assets/images/global/menu-icons/add-filter-gray-icon.svg',
-    hoverIcon: '/src/assets/images/global/menu-icons/add-filter-white-icon.svg',
-  },
+  // {
+  //   label: 'Upload Leads',
+  //   path: '/dashboard/upload-leads',
+  //   icon: '/src/assets/images/global/menu-icons/add-filter-gray-icon.svg',
+  //   hoverIcon: '/src/assets/images/global/menu-icons/add-filter-white-icon.svg',
+  // },
   {
     label: 'Report & Analytics',
     path: '/dashboard/reports-analytics',

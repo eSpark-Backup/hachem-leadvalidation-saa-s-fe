@@ -1,37 +1,37 @@
+// layouts/PaymentLayout.js
+
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
+import {
+  containerStyle,
+  contentWrapperStyle,
+  logoImageStyle,
+  logoWrapperStyle,
+} from '../styles/layouts/PaymentLayout';
+
+/**
+ * Layout wrapper for payment-related pages.
+ * Displays a centered logo at the top and renders children using React Router's <Outlet />.
+ *
+ * @component
+ * @returns {JSX.Element} A layout with a logo and routed page content.
+ */
 
 const PaymentLayout = () => {
   return (
-    <Box sx={{ backgroundColor: '#F4F7FE' }}>
-      <Box
-        sx={{
-          width: '100%',
-          height: '100%',
-          minHeight: '64px',
-          p: 3.5,
-          maxWidth: '1400px',
-          mx: 'auto',
-        }}
-      >
+    <Box sx={containerStyle}>
+      {/* Logo Section */}
+      <Box sx={logoWrapperStyle}>
         <Box
           alt="logo"
-          component={'img'}
-          sx={{ width: '120px', height: '34px' }}
+          component="img"
+          sx={logoImageStyle}
           src="/src/assets/images/auth/Group.png"
         />
       </Box>
-      <Box
-        sx={{
-          width: '85%',
-          minHeight: 'calc(100vh - 97px)',
-          display: 'flex',
-          flexDirection: 'column',
-          py: { xs: 0, md: 1.5 },
-          maxWidth: '1190px',
-          mx: 'auto',
-        }}
-      >
+
+      {/* Page Content Section */}
+      <Box sx={contentWrapperStyle}>
         <Outlet />
       </Box>
     </Box>

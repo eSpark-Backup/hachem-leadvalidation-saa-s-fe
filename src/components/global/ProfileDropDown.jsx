@@ -48,7 +48,7 @@ const ProfileDropDown = () => {
   }, [searchTerm]);
 
   const handleToggle = () => setOpen((prev) => !prev);
-  const handleClose = () => setOpen(false);
+  const handleCloseChartModal = () => setOpen(false);
   const handleClear = () => setSearchTerm('');
 
   return (
@@ -79,7 +79,7 @@ const ProfileDropDown = () => {
           />
         )}
 
-        <ClickAwayListener onClickAway={handleClose}>
+        <ClickAwayListener onClickAway={handleCloseChartModal}>
           <Box sx={dropdownBoxStyles(lgUp)}>
             <Box onClick={handleToggle} sx={clickableBoxStyles}>
               <Box sx={userInfoBoxStyles}>
@@ -105,7 +105,7 @@ const ProfileDropDown = () => {
                   <MenuItem
                     key={index}
                     sx={menuItemStyles}
-                    onClick={handleClose}
+                    onClick={handleCloseChartModal}
                   >
                     {item?.label}
                   </MenuItem>

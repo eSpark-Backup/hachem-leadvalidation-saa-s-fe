@@ -77,7 +77,7 @@ export const CREDIT_USAGE_DATA = [
   { key: '2025-04-28', value: 925 },
 ];
 
-function generateRandomMonthData() {
+export const generateRandomMonthData = () => {
   const data = [];
   const startDate = new Date(); // today
   startDate.setDate(startDate.getDate() - 29); // go back 29 days
@@ -93,7 +93,7 @@ function generateRandomMonthData() {
   }
 
   return data;
-}
+};
 
 // Example usage:
 const randomData = generateRandomMonthData();

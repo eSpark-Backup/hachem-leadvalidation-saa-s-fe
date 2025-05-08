@@ -8,12 +8,6 @@ import {
   Typography,
 } from '@mui/material';
 import { useRef, useState } from 'react';
-import {
-  clearAvatar,
-  handleChange,
-  handleClick,
-  handleDrop,
-} from '../../utils/settings/SettingsUploadImages';
 import { clearIconStyles } from '../../styles/components/settings/SettingsUploadImages';
 import { SETTINGS_UPLOAD_IMAGES } from '../../constants/components/settings/SettingsUploadImages';
 

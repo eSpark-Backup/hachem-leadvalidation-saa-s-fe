@@ -10,6 +10,9 @@ import {
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/SupplierManagement';
+import NotFound from './NotFound';
+import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
+import { USER_TYPE } from '../utils/auth';
 
 const ManageSuppliers = () => {
   const [details, setDetails] = useState(null);
@@ -26,24 +29,30 @@ const ManageSuppliers = () => {
   };
 
   return (
-    <Box px={2}>
-      <GenericTable
-        title={SUPPLIER_MANAGEMENT.title}
-        columns={TABLE_HEADER}
-        data={TABLE_BODY}
-        noBg
-        edit
-        editAction={requestHandler}
-      />
+    <>
+      {USER_TYPE === USER_TYPES.admin ? (
+        <Box px={2}>
+          <GenericTable
+            title={SUPPLIER_MANAGEMENT.title}
+            columns={TABLE_HEADER}
+            data={TABLE_BODY}
+            noBg
+            edit
+            editAction={requestHandler}
+          />
 
-      {anchorEl && (
-        <ManageModal
-          item={{ ...details, id: details?.supplier_id }}
-          anchorEl={anchorEl}
-          handleClose={handleClose}
-        />
+          {anchorEl && (
+            <ManageModal
+              item={{ ...details, id: details?.supplier_id }}
+              anchorEl={anchorEl}
+              handleClose={handleClose}
+            />
+          )}
+        </Box>
+      ) : (
+        <NotFound btnLink={ROUTES.dashboard} />
       )}
-    </Box>
+    </>
   );
 };
 

@@ -1,9 +1,9 @@
 export const DONUT_CHART = [
-  { name: 'Section 1', value: 20 },
-  { name: 'Section 2', value: 25 },
-  { name: 'Section 3', value: 15 },
-  { name: 'Section 4', value: 30 },
-  { name: 'Section 5', value: 10 },
+  { key: 'Section 1', value: 20 },
+  { key: 'Section 2', value: 25 },
+  { key: 'Section 3', value: 15 },
+  { key: 'Section 4', value: 30 },
+  { key: 'Section 5', value: 10 },
 ];
 
 export const DONUT_CHART_COLORS = [

@@ -1,7 +1,7 @@
 export const PENDING_LEADS_CARD = [
-  { name: 'Mon', value: 30 },
-  { name: 'Tues', value: 40 },
-  { name: 'Weds', value: 35 },
-  { name: 'Thurs', value: 28 },
-  { name: 'Fri', value: 25 },
+  { key: 'Mon', value: 30 },
+  { key: 'Tues', value: 40 },
+  { key: 'Weds', value: 35 },
+  { key: 'Thurs', value: 28 },
+  { key: 'Fri', value: 25 },
 ];

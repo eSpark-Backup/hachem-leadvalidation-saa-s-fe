@@ -8,9 +8,9 @@ import {
   ComposedChart,
 } from 'recharts';
 import PropTypes from 'prop-types';
-const LeadsChart = ({ data = [], color = '#FFA500' }) => {
+const BarLineChart = ({ data = [], color = '#FFA500', height }) => {
   return (
-    <ResponsiveContainer width="100%" height={200}>
+    <ResponsiveContainer width="100%" height={height || 200}>
       <ComposedChart data={data}>
         <XAxis dataKey="week" axisLine={false} tickLine={false} />
         {/* <Tooltip content={
@@ -37,8 +37,9 @@ const LeadsChart = ({ data = [], color = '#FFA500' }) => {
   );
 };
 
-LeadsChart.propTypes = {
+BarLineChart.propTypes = {
   data: PropTypes.array.isRequired,
   color: PropTypes.string.isRequired,
+  height: PropTypes.any,
 };
-export default LeadsChart;
+export default BarLineChart;

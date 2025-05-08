@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types';
-import {
-  ResponsiveContainer,
-  XAxis,
-  Tooltip,
-  AreaChart,
-  Area,
-  YAxis,
-} from 'recharts';
+import { ResponsiveContainer, XAxis, Tooltip, AreaChart, Area } from 'recharts';
 
-const SingleChart = ({ data, color, fillColor }) => {
+const DotedLineChart = ({
+  data = [],
+  color = '#8884d8',
+  fillColor = '#8884d8',
+  height = 220,
+  dataKey = 'value',
+  xAxisKey = 'key',
+  showXAxis = false,
+  tooltipFormatter = (value) => [`${value}`, 'Value'],
+}) => {
   const gradientId = `colorA-${fillColor.replace('#', '')}`;
 
   return (
-    <ResponsiveContainer width="100%" height={220}>
+    <ResponsiveContainer width="100%" height={height}>
       <AreaChart
         data={data}
         margin={{
@@ -28,13 +30,13 @@ const SingleChart = ({ data, color, fillColor }) => {
             <stop offset="95%" stopColor={fillColor} stopOpacity={0} />
           </linearGradient>
         </defs>
-        <XAxis dataKey="key" hide />
+        <XAxis dataKey={xAxisKey} hide={!showXAxis} />
         <Tooltip
           contentStyle={{ fontSize: '12px', borderRadius: '8px' }}
-          formatter={(value) => [`${value}`, 'Value']}
+          formatter={tooltipFormatter}
         />
         <Area
-          dataKey="value"
+          dataKey={dataKey}
           stroke={color}
           fillOpacity={1}
           fill={`url(#${gradientId})`}
@@ -44,14 +46,15 @@ const SingleChart = ({ data, color, fillColor }) => {
   );
 };
 
-SingleChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+DotedLineChart.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
   color: PropTypes.string,
   fillColor: PropTypes.string,
+  height: PropTypes.number,
+  dataKey: PropTypes.string,
+  xAxisKey: PropTypes.string,
+  showXAxis: PropTypes.bool,
+  tooltipFormatter: PropTypes.func,
 };
 
-SingleChart.defaultProps = {
-  color: '#22C55E', // Line color
-  fillColor: '#ff0000', // Fill gradient color
-};
-export default SingleChart;
+export default DotedLineChart;

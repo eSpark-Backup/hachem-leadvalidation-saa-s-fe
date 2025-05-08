@@ -3,10 +3,6 @@ import { Box, Grid } from '@mui/material';
 import SettingsSubmitButtons from './SettingsSubmitButtons';
 import SettingForm from './SettingForm';
 import { useState } from 'react';
-import {
-  handleCancelRequest,
-  handleSendRequest,
-} from '../../utils/settings/PersonalInfo';
 
 import PropTypes from 'prop-types';
 

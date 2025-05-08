@@ -26,7 +26,7 @@ const handleLoginAsAdmin = (navigate) => {
 
 /**
  * @function handleLogin
- * @description Simulates login as client by saving a token and userType to localStorage.
+ * @description Simulates login by saving a token and userType to localStorage.
  * Navigates to the dashboard.
  */
 const handleLogedin = (navigate) => {
@@ -85,6 +85,11 @@ const PROFILE =
       ? CLIENT_INFO
       : ADMIN_INFO;
 
+/**
+ * Checks if the user is authenticated by verifying the presence of a token in local storage.
+ *
+ * @returns {string | null} The token from local storage if it exists, otherwise null.
+ */
 const isAuthenticated = () => {
   return localStorage.getItem('token');
 };

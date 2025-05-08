@@ -19,51 +19,65 @@ import {
   stackContainerStyles,
   validRateStyles,
 } from '../styles/pages/LeadScoringSetting';
+import NotFound from './NotFound';
+import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
+import { USER_TYPE } from '../utils/auth';
 
 const LeadScoringSetting = () => {
   return (
-    <Box px={2}>
-      <Typography
-        variant="h1"
-        sx={{
-          ...tableHeadingStyles,
-          fontWeight: 600,
-        }}
-      >
-        {LEAD_SCORING_SETTING.title}
-      </Typography>
-
-      <Stack sx={stackContainerStyles}>
-        <Box sx={scoringInputBoxStyles}>
-          {TABLE_HEADER.map((inp) => (
-            <InputField placeholder={`Valid ${inp.label}`} />
-          ))}
-        </Box>
-
-        <Stack gap={1}>
-          <Button
-            endIcon={<Box component={'img'} src={ICONS.dropdown} />}
-            sx={scoringButtonStyles}
+    <>
+      {USER_TYPE === USER_TYPES.client ? (
+        <Box px={2}>
+          <Typography
+            variant="h1"
+            sx={{
+              ...tableHeadingStyles,
+              fontWeight: 600,
+            }}
           >
-            <Box>
-              <Typography variant="body2" sx={validRateStyles}>
-                Validation rate
-              </Typography>
+            {LEAD_SCORING_SETTING.title}
+          </Typography>
 
-              <Typography variant="body2" sx={pointsStyles}>
-                +70
-              </Typography>
+          <Stack sx={stackContainerStyles}>
+            <Box sx={scoringInputBoxStyles}>
+              {TABLE_HEADER.map((inp, index) => (
+                <InputField key={index} placeholder={`Valid ${inp.label}`} />
+              ))}
             </Box>
-          </Button>
 
-          <Button sx={actionButtonStyles}>
-            {LEAD_SCORING_SETTING.buttonText}
-          </Button>
-        </Stack>
-      </Stack>
+            <Stack gap={1}>
+              <Button
+                endIcon={<Box component={'img'} src={ICONS.dropdown} />}
+                sx={scoringButtonStyles}
+              >
+                <Box>
+                  <Typography variant="body2" sx={validRateStyles}>
+                    Validation rate
+                  </Typography>
 
-      <GenericTable columns={TABLE_HEADER} data={TABLE_BODY} noBg hasPoints />
-    </Box>
+                  <Typography variant="body2" sx={pointsStyles}>
+                    +70
+                  </Typography>
+                </Box>
+              </Button>
+
+              <Button sx={actionButtonStyles}>
+                {LEAD_SCORING_SETTING.buttonText}
+              </Button>
+            </Stack>
+          </Stack>
+
+          <GenericTable
+            columns={TABLE_HEADER}
+            data={TABLE_BODY}
+            noBg
+            hasPoints
+          />
+        </Box>
+      ) : (
+        <NotFound btnLink={ROUTES.dashboard} />
+      )}
+    </>
   );
 };
 

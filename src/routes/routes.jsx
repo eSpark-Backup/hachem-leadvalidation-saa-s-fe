@@ -11,7 +11,7 @@ import PrivateRoute from './PrivateRoute';
 import SignupForm from '../components/auth/SignupForm';
 import PrivateLayout from '../layouts/PrivateLayout';
 import Settings from '../pages/Settings';
-import UploadLeads from '../pages/UploadLeads';
+// import UploadLeads from '../pages/UploadLeads';
 import BillingLogsRevenue from '../pages/BillingLogsRevenue';
 import KlaienManagement from '../pages/KlaienManagement';
 import LeadMonitoring from '../pages/LeadMonitoring';
@@ -23,14 +23,12 @@ import LeadDetails from '../pages/MyLeadDetails';
 import SystemSetting from '../pages/SystemSetting';
 import ReportsAnalytics from '../pages/ReportsAnalytics';
 import ManageSuppliers from '../pages/ManageSuppliers';
-import { ROUTES } from '../constants/components/globals/Auth';
-import { AUTH_FORMS } from '../constants/auth';
-import Charts from '../pages/Charts';
 import PaymentLayout from '../layouts/PaymentLayout';
 import Credit from '../components/payment/Credit';
 import Payment from '../components/payment/Payment';
-import SupplierReports from '../components/report-analytics/SupplierReports';
-import ClientReports from '../components/report-analytics/ClientReports';
+
+import { ROUTES } from '../constants/components/globals/Auth';
+import { AUTH_FORMS } from '../constants/auth';
 
 const {
   // publich paths --->
@@ -64,9 +62,8 @@ const {
   myLeadDetails,
   reportsAnalytics,
   systemSetting,
-  uploadLeads,
-  charts,
-  avalaibleLeadsDetails
+  // uploadLeads,
+  avalaibleLeadsDetails,
 } = ROUTES || {};
 
 const { forgot_password, verify_email } = AUTH_FORMS || {};
@@ -122,15 +119,11 @@ const routes = [
       { path: avalaibleLeadsDetails, element: <LeadDetails /> },
       { path: reportsAnalytics, element: <ReportsAnalytics /> },
       { path: systemSetting, element: <SystemSetting /> },
-      { path: uploadLeads, element: <UploadLeads /> },
-
-      //Temperary routes will be removed after testing
-      { path: charts, element: <Charts /> },
-      { path: 'client-reports', element: <ClientReports /> },
-      { path: 'supplier-reports', element: <SupplierReports /> },
+      // { path: uploadLeads, element: <UploadLeads /> },
+      { path: notFound, element: <NotFound btnLink={dashboard} /> },
     ],
   },
-  { path: notFound, element: <NotFound /> },
+  { path: notFound, element: <NotFound btnLink={dashboard} /> },
 ];
 
 export default routes;

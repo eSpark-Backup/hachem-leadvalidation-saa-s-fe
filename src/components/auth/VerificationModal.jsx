@@ -5,13 +5,13 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const VerificationModal = ({ open, setOpen, data, link, text }) => {
   const { title, image } = data || {};
-  const handleClose = () => setOpen(false);
+  const handleCloseChartModal = () => setOpen(false);
 
   return (
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={handleCloseChartModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -47,7 +47,7 @@ const VerificationModal = ({ open, setOpen, data, link, text }) => {
             }}
           >
             <IconButton
-              onClick={handleClose}
+              onClick={handleCloseChartModal}
               disableRipple
               sx={{
                 width: '20px',

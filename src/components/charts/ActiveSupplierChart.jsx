@@ -10,30 +10,40 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-// Define a list of default colors for lines
-const COLORS = ['#7987FF', '#FFA5CB', '#E697FF'];
+const DEFAULT_COLORS = ['#7987FF', '#FFA5CB', '#E697FF'];
 
-const ActiveSupplierChart = ({ data = [] }) => {
-  // Extract all unique data keys except 'week'
+const ActiveSupplierChart = ({
+  data = [],
+  height = 250,
+  xAxisKey = 'week',
+  colors = DEFAULT_COLORS,
+  strokeWidth = 2,
+  showGrid = true,
+  showTooltip = true,
+  showLegend = true,
+  showDots = true,
+}) => {
   const lineKeys =
-    data.length > 0 ? Object.keys(data[0]).filter((key) => key !== 'week') : [];
+    data.length > 0
+      ? Object.keys(data[0]).filter((key) => key !== xAxisKey)
+      : [];
 
   return (
-    <ResponsiveContainer width="100%" height={250}>
+    <ResponsiveContainer width="100%" height={height}>
       <LineChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-        <XAxis dataKey="week" />
+        {showGrid && <CartesianGrid strokeDasharray="3 3" vertical={false} />}
+        <XAxis dataKey={xAxisKey} />
         <YAxis />
-        <Tooltip />
-        <Legend verticalAlign="bottom" height={36} />
+        {showTooltip && <Tooltip />}
+        {showLegend && <Legend verticalAlign="bottom" height={36} />}
         {lineKeys.map((key, index) => (
           <Line
             key={key}
             type="monotone"
             dataKey={key}
-            stroke={COLORS[index % COLORS.length]}
-            strokeWidth={2}
-            dot:true
+            stroke={colors[index % colors.length]}
+            strokeWidth={strokeWidth}
+            dot={showDots}
           />
         ))}
       </LineChart>
@@ -42,8 +52,15 @@ const ActiveSupplierChart = ({ data = [] }) => {
 };
 
 ActiveSupplierChart.propTypes = {
-  data: PropTypes.array.isRequired,
-  colors: PropTypes.array.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  height: PropTypes.number,
+  xAxisKey: PropTypes.string,
+  colors: PropTypes.arrayOf(PropTypes.string),
+  strokeWidth: PropTypes.number,
+  showGrid: PropTypes.bool,
+  showTooltip: PropTypes.bool,
+  showLegend: PropTypes.bool,
+  showDots: PropTypes.bool,
 };
 
 export default ActiveSupplierChart;

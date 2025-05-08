@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-
 import { InputAdornment, TextField } from '@mui/material';
-
 import {
   ALT_ATTRIBUTE,
   ICONS,
@@ -27,6 +25,10 @@ const SearchBar = ({ value, onChange }) => {
       }}
     />
   );
+};
+SearchBar.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.any.isRequired,
 };
 
 SearchBar.propTypes = {

@@ -6,7 +6,7 @@ import SettingsCard from '../components/settings/SettingsCard';
 import { PAYMENT_DATA } from '../constants/components/payment/Payment';
 import { SETTINGS } from '../constants/components/settings/SettingsPage';
 import LowCreditsText from '../components/payment/LowCreditsText';
-import { USER_TYPES } from '../constants/components/globals/Auth';
+import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 import {
   LOW_CREDITS,
   SETTINGS_PATH,
@@ -17,6 +17,8 @@ import {
   SUPPLIER_COMPANY_INPUT_FIELDS,
   SUPPLIER_REQUEST_INPUT_FIELDS,
 } from '../constants/components/settings/getProfileInputFields';
+import { USER_TYPE } from '../utils/auth';
+import NotFound from './NotFound';
 
 const Settings = () => {
   const { formData } = PAYMENT_DATA || {};
@@ -27,29 +29,31 @@ const Settings = () => {
 
   return (
     <>
-      {userType?.startsWith(client) ? (
+      {USER_TYPE === USER_TYPES.client && (
         <SettingsCard
           title={SETTINGS?.person?.title}
           description={SETTINGS?.person?.description}
         >
           <PersonalInfo />
         </SettingsCard>
-      ) : null}
+      )}
+      {USER_TYPE === USER_TYPES.client ||
+        (USER_TYPE === USER_TYPES.client && (
+          <SettingsCard
+            title={SETTINGS?.[userType]?.title}
+            description={SETTINGS?.[userType]?.description}
+          >
+            <RequestForSupplier
+              data={
+                userType?.startsWith(client)
+                  ? CLIENT_INPUT_FIELDS
+                  : SUPPLIER_REQUEST_INPUT_FIELDS
+              }
+            />
+          </SettingsCard>
+        ))}
 
-      <SettingsCard
-        title={SETTINGS?.[userType]?.title}
-        description={SETTINGS?.[userType]?.description}
-      >
-        <RequestForSupplier
-          data={
-            userType?.startsWith(client)
-              ? CLIENT_INPUT_FIELDS
-              : SUPPLIER_REQUEST_INPUT_FIELDS
-          }
-        />
-      </SettingsCard>
-
-      {userType?.startsWith(supplier) ? (
+      {USER_TYPE === USER_TYPES.supplier && (
         <SettingsCard
           title={SETTINGS?.Company_info?.title}
           description={SETTINGS?.Company_info?.description}
@@ -61,9 +65,9 @@ const Settings = () => {
             data={SUPPLIER_COMPANY_INPUT_FIELDS}
           />
         </SettingsCard>
-      ) : null}
+      )}
 
-      {userType?.startsWith(client) ? (
+      {USER_TYPE === USER_TYPES.client && (
         <SettingsCard
           title={SETTINGS?.payment?.title}
           description={SETTINGS?.payment?.description}
@@ -85,7 +89,11 @@ const Settings = () => {
             />
           </Box>
         </SettingsCard>
-      ) : null}
+      )}
+
+      {USER_TYPE === USER_TYPES.admin && (
+        <NotFound btnLink={ROUTES.dashboard} />
+      )}
     </>
   );
 };

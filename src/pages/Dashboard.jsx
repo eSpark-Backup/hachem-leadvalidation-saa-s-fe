@@ -28,6 +28,7 @@ import { TableCard } from '../styles/components/dashboard/DashboardPage.js';
 // Import user type constants and the current user type utility
 import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth.js';
 import { USER_TYPE } from '../utils/auth.js';
+import AdminDashboard from '../components/dashboard/admin/AdminDashboard.jsx';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -65,48 +66,50 @@ const Dashboard = () => {
           }
         />
       </Box>
-
       {/* Table card with style applied */}
-      <Box sx={TableCard}>
-        <GenericTable
-          title={
-            USER_TYPE === USER_TYPES.client
-              ? CLIENT_LEADS.title
-              : SUPPLIER_AVAILABLE_LEADS.title
-          }
-          filters={
-            USER_TYPE === USER_TYPES.client
-              ? CLIENT_LEADS.filterTypes
-              : SUPPLIER_AVAILABLE_LEADS.filterTypes
-          }
-          select_filters={
-            USER_TYPE === USER_TYPES.client
-              ? CLIENT_LEADS.select_filters
-              : SUPPLIER_AVAILABLE_LEADS.select_filters
-          }
-          filterType={
-            USER_TYPE === USER_TYPES.client
-              ? CLIENT_LEADS.filterType
-              : SUPPLIER_AVAILABLE_LEADS.filterType
-          }
-          columns={
-            USER_TYPE === USER_TYPES.client
-              ? CLIENT_LEADS.header
-              : SUPPLIER_AVAILABLE_LEADS.header
-          }
-          data={
-            USER_TYPE === USER_TYPES.client
-              ? CLIENT_LEADS.data
-              : SUPPLIER_AVAILABLE_LEADS.data
-          }
-          detailAction={goToPage}
-          dashboard={USER_TYPE === USER_TYPES.client}
-          noBg
-          detail
-          fontWeight={800}
-        />
-      </Box>
+      {USER_TYPE != USER_TYPES.admin && (
+        <Box sx={TableCard}>
+          <GenericTable
+            title={
+              USER_TYPE === USER_TYPES.client
+                ? CLIENT_LEADS.title
+                : SUPPLIER_AVAILABLE_LEADS.title
+            }
+            filters={
+              USER_TYPE === USER_TYPES.client
+                ? CLIENT_LEADS.filterTypes
+                : SUPPLIER_AVAILABLE_LEADS.filterTypes
+            }
+            select_filters={
+              USER_TYPE === USER_TYPES.client
+                ? CLIENT_LEADS.select_filters
+                : SUPPLIER_AVAILABLE_LEADS.select_filters
+            }
+            filterType={
+              USER_TYPE === USER_TYPES.client
+                ? CLIENT_LEADS.filterType
+                : SUPPLIER_AVAILABLE_LEADS.filterType
+            }
+            columns={
+              USER_TYPE === USER_TYPES.client
+                ? CLIENT_LEADS.header
+                : SUPPLIER_AVAILABLE_LEADS.header
+            }
+            data={
+              USER_TYPE === USER_TYPES.client
+                ? CLIENT_LEADS.data
+                : SUPPLIER_AVAILABLE_LEADS.data
+            }
+            detailAction={goToPage}
+            dashboard={USER_TYPE === USER_TYPES.client}
+            noBg
+            detail
+            fontWeight={800}
+          />
+        </Box>
+      )}
 
+      {USER_TYPE == USER_TYPES.admin && <AdminDashboard />}
       {/* Show stat cards only if user is a client */}
       {USER_TYPE === USER_TYPES.client && <DashboardStaticsCards />}
     </>

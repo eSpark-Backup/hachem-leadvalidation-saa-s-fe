@@ -33,6 +33,10 @@ const MonthSelector = ({ currentMonth, onChange }) => {
     </Box>
   );
 };
+MonthSelector.propTypes = {
+  currentMonth: PropTypes.any.isRequired,
+  onChange: PropTypes.any.isRequired,
+};
 
 MonthSelector.propTypes = {
   currentMonth: PropTypes.object.isRequired,

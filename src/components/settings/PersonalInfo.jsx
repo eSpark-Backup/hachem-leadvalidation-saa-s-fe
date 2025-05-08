@@ -7,7 +7,7 @@ import SettingForm from './SettingForm.jsx';
 import {
   handleCancelRequest,
   handleSendRequest,
-} from '../../utils/settings/PersonalInfo.js';
+} from '../../utils/components/settings/PersonalInfo.js';
 import { getProfileInputFields } from '../../constants/components/settings/getProfileInputFields.js';
 
 const PersonalInfo = () => {

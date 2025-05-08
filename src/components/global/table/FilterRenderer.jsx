@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-
 import { Box } from '@mui/material';
-
 import SearchBar from './SearchBar';
 import CopyFilter from './CopyFilter';
 import LeadMonitoringHeaderButtons from './LeadMonitoringHeaderButtons';
@@ -78,6 +76,15 @@ const FilterRenderer = ({
       })}
     </Box>
   );
+};
+FilterRenderer.propTypes = {
+  filters: PropTypes.any.isRequired,
+  dropdowns: PropTypes.any.isRequired,
+  filterType: PropTypes.any.isRequired,
+  filterState: PropTypes.any.isRequired,
+  onFilterChange: PropTypes.any.isRequired,
+  currentMonth: PropTypes.any.isRequired,
+  onMonthChange: PropTypes.any.isRequired,
 };
 
 FilterRenderer.propTypes = {
