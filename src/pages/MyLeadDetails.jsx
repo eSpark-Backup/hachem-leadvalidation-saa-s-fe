@@ -2,21 +2,21 @@ import { useLocation } from 'react-router-dom';
 
 import GenericTable from '../components/global/table/GenericTable';
 
+import { USER_TYPE } from '../utils/auth';
+
+import { USER_TYPES } from '../constants/components/globals/Auth';
 import {
   MY_LEAD_DETAILS,
   TABLE_HEADER,
   TABLE_BODY,
   FILTER_TYPES,
 } from '../constants/pages/MyLeadsDetail';
-import { USER_TYPES } from '../constants/components/globals/Auth';
 import {
   AVAILABLE_LEAD_DETAILS,
   AVAILABLE_LEAD_FILTER_TYPES,
   AVAILABLE_LEAD_TABLE_BODY,
   AVAILABLE_LEAD_TABLE_HEADER,
 } from '../constants/pages/AvailableLeadsDetail';
-
-import { USER_TYPE } from '../utils/auth';
 
 const LeadDetails = () => {
   const { state } = useLocation();
@@ -44,6 +44,8 @@ const LeadDetails = () => {
       data={
         USER_TYPE === USER_TYPES.client ? TABLE_BODY : AVAILABLE_LEAD_TABLE_BODY
       }
+      excelFilter
+      marginTop={{ xs: '30px', sm: '14px' }}
     />
   );
 };

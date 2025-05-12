@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import {
   Box,
   Button,
@@ -6,18 +8,18 @@ import {
   Typography,
 } from '@mui/material';
 
-import { TABLE_STATIC_TEXTS } from '../../../constants/components/globals/Table';
+import { TABLE_STATIC_TEXTS } from '../../../../constants/components/globals/Table';
 
 import {
   actionButtonStyles,
   bodyStyles,
   boxContainerSyles,
   headingStyles,
-} from '../../../styles/components/globals/table/LowCreditModal';
+} from '../../../../styles/components/globals/table/popovers/LowCreditModal';
 import {
   paperPropsStyles,
   slotsCommonPropsStyles,
-} from '../../../styles/components/globals/table/Common';
+} from '../../../../styles/components/globals/table/Common';
 
 const LowCreditModal = ({ anchorEl, handleClose }) => {
   const open = Boolean(anchorEl);
@@ -59,6 +61,11 @@ const LowCreditModal = ({ anchorEl, handleClose }) => {
       </ClickAwayListener>
     </Popover>
   );
+};
+
+LowCreditModal.propTypes = {
+  anchorEl: PropTypes.object,
+  handleClose: PropTypes.func,
 };
 
 export default LowCreditModal;

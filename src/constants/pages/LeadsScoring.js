@@ -1,8 +1,31 @@
-import Dropdown from "../../assets/images/client/dropdown.svg"
+import DropdownIcon from '../../assets/images/client/dropdown.svg';
+import CloseIcon from '../../assets/images/client/close.svg';
+import DocumentIcon from '../../assets/images/client/document-text.svg';
+import TrashIcon from '../../assets/images/client/trash.svg';
+import CheckIcon from '../../assets/images/client/check.svg';
+import SuccessfullIcon from "../../assets/images/auth/Verified_image.svg"
 
 export const LEAD_SCORING_SETTING = {
   title: 'Leads Scoring Setting',
   buttonText: 'Score with AI',
+  rate: 'Validation rate',
+  points: '+70',
+  leadWithAi: 'Scoring leads with AI',
+  standard: {
+    heading: 'Standard AI Validation',
+    label: 'Quick and efficient validation using a single AI engine.',
+  },
+  advance: {
+    heading: 'Advanced AI Validation',
+    label:
+      'Double-checked scoring powered by two AI engines for extra reliability.',
+  },
+  start: 'Start',
+  generateLeadAI: 'Generating AI Valid Leads',
+  engineCheck: 'AI ENGINE CHECKING',
+  toView: 'Click to view',
+  successfullAILead: 'Successfully Generated AI Valid Leads Score',
+  ok: 'OK',
 };
 
 export const TABLE_HEADER = [
@@ -96,7 +119,54 @@ export const TABLE_BODY = [
   },
 ];
 
+export const ALT_ATTRIBUTE = {
+  dropdown: 'Dropdown',
+  close: 'Close',
+  document: 'Document',
+  trash: 'Trash',
+  check: 'Check',
+};
 
 export const ICONS = {
-  dropdown: Dropdown,
+  dropdown: DropdownIcon,
+  close: CloseIcon,
+  document: DocumentIcon,
+  trash: TrashIcon,
+  check: CheckIcon,
+  successfull: SuccessfullIcon,
 };
+
+export const SCORING_SETTINGS = [
+  {
+    name: 'name',
+    placeholder: 'Valid Name\t+05 pts',
+  },
+  {
+    name: 'duplicate',
+    placeholder: 'No Duplicate\t+02 pts',
+  },
+  {
+    name: 'blacklised',
+    placeholder: 'No Blacklised\t+30 pts',
+  },
+  {
+    name: 'phone',
+    placeholder: 'Valid Phone\t+30 pts',
+  },
+  {
+    name: 'address',
+    placeholder: 'Valid Address\t+10 pts',
+  },
+  {
+    name: 'email',
+    placeholder: 'Valid Email\t+30 pts',
+  },
+  {
+    name: 'zip_code',
+    placeholder: 'Valid Zip Code\t+30 pts',
+  },
+  {
+    name: 'mandatory_fields',
+    placeholder: 'Mandatory fields filled\t+30 pts',
+  },
+];

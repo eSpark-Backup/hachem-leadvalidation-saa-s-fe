@@ -20,17 +20,17 @@ const CustomNextIcon = () => (
   </Box>
 );
 
-const TablePagination = ({ page }) => {
+const TablePagination = ({ page, onChange, count }) => {
   return (
     <Box sx={paginationBoxStyles}>
       <Pagination
-        count={1}
+        count={count}
         page={page}
-        onChange={(e, val) => console.log(val)}
-        color="primary"
+        onChange={(e, val) => onChange(e, val)}
         renderItem={(item) => (
           <PaginationItem
             slots={{ previous: CustomPrevIcon, next: CustomNextIcon }}
+            disableRipple
             {...item}
           />
         )}
@@ -41,6 +41,8 @@ const TablePagination = ({ page }) => {
 
 TablePagination.propTypes = {
   page: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
+  count: PropTypes.number.isRequired,
 };
 
 export default TablePagination;

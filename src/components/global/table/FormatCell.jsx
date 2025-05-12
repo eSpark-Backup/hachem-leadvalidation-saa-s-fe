@@ -4,7 +4,9 @@ import dayjs from 'dayjs';
 
 import { Box, IconButton, TableCell, Typography } from '@mui/material';
 
-import { ICONS } from '../../../constants/components/globals/Table';
+import DotBadge from '../DotBadge';
+
+import { ALT_ATTRIBUTE, ICONS } from '../../../constants/components/globals/Table';
 
 import {
   actionButtonBoxStyles,
@@ -26,6 +28,19 @@ import {
   validTextStyles,
 } from '../../../styles/components/globals/table/FormatCell';
 
+const EditIconButton = ({ myLeads, editAction, row }) => (
+  <IconButton
+    sx={{
+      ...editButtonStyles,
+      display: myLeads ? 'none' : 'block',
+    }}
+    onClick={(event) => editAction(row, event)}
+    className="edit-icon"
+  >
+    <img src={ICONS.edit} alt={ALT_ATTRIBUTE.edit} />
+  </IconButton>
+);
+
 const formatCellItem = (
   colKey,
   row,
@@ -35,7 +50,8 @@ const formatCellItem = (
   detailAction,
   editAction,
   deleteAction,
-  onEnterCursor
+  onEnterCursor,
+  myLeads
 ) => {
   if (colKey === 'date' && typeof row[colKey] !== 'string') {
     return dayjs(row[colKey]).format('M/DD/YY');
@@ -106,14 +122,26 @@ const formatCellItem = (
           </IconButton>
         )}
 
-        {edit && (
-          <IconButton
-            sx={editButtonStyles}
-            onClick={(event) => editAction(row, event)}
-          >
-            <img src={ICONS.edit} alt="Edit" />
-          </IconButton>
-        )}
+        {(edit || myLeads) &&
+          (row?.isLowCredit ? (
+            <DotBadge
+              color="#FF0000"
+              horizontal="right"
+              icon={
+                <EditIconButton
+                  myLeads={myLeads}
+                  editAction={editAction}
+                  row={row}
+                />
+              }
+            />
+          ) : (
+            <EditIconButton
+              myLeads={myLeads}
+              editAction={editAction}
+              row={row}
+            />
+          ))}
 
         {trash && (
           <IconButton sx={trashButtonStyles} onClick={() => deleteAction(row)}>
@@ -139,24 +167,10 @@ const FormatCell = ({
   deleteAction,
   onEnterCursor,
   hasPoints,
+  myLeads,
 }) => {
   return (
-    <TableCell
-      key={colKey}
-      sx={{
-        ...tableBodyItemStyles,
-        position: colIndex === 0 ? 'relative' : 'static',
-        padding: hasPoints ? '0px' : '0px 13px',
-
-        '&:first-child': {
-          paddingLeft: hasPoints ? '6px' : '13px',
-        },
-
-        '&:last-child': {
-          paddingRight: hasPoints ? '6px' : '13px',
-        },
-      }}
-    >
+    <TableCell key={colKey} sx={tableBodyItemStyles(hasPoints)}>
       {colIndex === 0 && row.isLatest && (
         <Box sx={latestItemStyles}>
           <Typography sx={newLabelStyles}>{row.isLatestText}</Typography>
@@ -172,7 +186,8 @@ const FormatCell = ({
         detailAction,
         editAction,
         deleteAction,
-        onEnterCursor
+        onEnterCursor,
+        myLeads
       )}
     </TableCell>
   );
@@ -189,6 +204,8 @@ FormatCell.propTypes = {
   editAction: PropTypes.func,
   deleteAction: PropTypes.func,
   onEnterCursor: PropTypes.func,
+  hasPoints: PropTypes.bool,
+  myLeads: PropTypes.bool,
 };
 
 export default FormatCell;

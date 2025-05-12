@@ -7,13 +7,14 @@ import {
 
 import {
   historyButtonStyles,
+  leadMonitoringButtonStackStyles,
   monthButtonSpanStyles,
   monthButtonStyles,
 } from '../../../styles/components/globals/table/LeadMonitoringHeaderButtons';
 
 const LeadMonitoringHeaderButtons = () => {
   return (
-    <Stack flexDirection={'row'} gap={'11px'}>
+    <Stack sx={leadMonitoringButtonStackStyles}>
       <Button sx={historyButtonStyles}>{TABLE_STATIC_TEXTS.history}</Button>
 
       <Button

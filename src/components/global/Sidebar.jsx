@@ -104,7 +104,11 @@ const Sidebar = () => {
                   ) : (
                     <img
                       src={
-                        hoveredIndex === index || item?.path === pathname
+                        hoveredIndex === index ||
+                        item?.path === pathname ||
+                        OTHER_PATHS.some(
+                          (p) => p.label === item.label && p.path === pathname
+                        )
                           ? item?.hoverIcon
                           : item?.icon
                       }

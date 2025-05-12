@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
-import SearchBar from './SearchBar';
-import CopyFilter from './CopyFilter';
-import LeadMonitoringHeaderButtons from './LeadMonitoringHeaderButtons';
-import MonthSelector from './MonthSelector';
-import DownloadFilter from './DownloadFilter';
-import DropdownFilter from './DropdownFilter';
-import DatePickerFilter from './DatePickerFilter';
 
-import { filterBoxStyles } from '../../../styles/components/globals/table/FilterRenderer';
+import { Box } from '@mui/material';
+
+import SearchBar from './SearchBar';
+import CopyFilter from './filters/CopyFilter';
+import MonthSelector from './MonthSelector';
+import DownloadFilter from './filters/DownloadFilter';
+import DropdownFilter from './filters/DropdownFilter';
+import DatePickerFilter from './DatePickerFilter';
+import LeadMonitoringHeaderButtons from './LeadMonitoringHeaderButtons';
+
+import { externalActionButtonsStyles, filterBoxStyles } from '../../../styles/components/globals/table/FilterRenderer';
 
 const FilterRenderer = ({
   filters = [],
@@ -18,6 +20,10 @@ const FilterRenderer = ({
   onFilterChange,
   currentMonth,
   onMonthChange,
+  tableHeader,
+  tableBody,
+  setSelectedRows,
+  selectedRows,
 }) => {
   return (
     <Box sx={filterBoxStyles}>
@@ -45,11 +51,15 @@ const FilterRenderer = ({
 
           case filterType.month:
             return (
-              <MonthSelector
+              <Box
                 key={filter.key}
-                currentMonth={currentMonth}
-                onChange={onMonthChange}
-              />
+                sx={{ display: { xs: 'none', sm: 'block' } }}
+              >
+                <MonthSelector
+                  currentMonth={currentMonth}
+                  onChange={onMonthChange}
+                />
+              </Box>
             );
 
           case filterType.date:
@@ -64,11 +74,25 @@ const FilterRenderer = ({
           case filterType.history:
             return <LeadMonitoringHeaderButtons key={filter.key} />;
 
-          case filterType.copy:
-            return <CopyFilter key={filter.key} />;
+          case filterType.copy || filterType.download:
+            return (
+              <Box sx={externalActionButtonsStyles}>
+                <CopyFilter
+                  key={filter.key}
+                  tableHeader={tableHeader}
+                  tableBody={tableBody}
+                  setSelectedRows={setSelectedRows}
+                  selectedRows={selectedRows}
+                />
 
-          case filterType.download:
-            return <DownloadFilter key={filter.key} />;
+                <DownloadFilter
+                  key={filter.key}
+                  tableHeader={tableHeader}
+                  tableBody={tableBody}
+                  setSelectedRows={setSelectedRows}
+                />
+              </Box>
+            );
 
           default:
             return null;
@@ -76,15 +100,6 @@ const FilterRenderer = ({
       })}
     </Box>
   );
-};
-FilterRenderer.propTypes = {
-  filters: PropTypes.any.isRequired,
-  dropdowns: PropTypes.any.isRequired,
-  filterType: PropTypes.any.isRequired,
-  filterState: PropTypes.any.isRequired,
-  onFilterChange: PropTypes.any.isRequired,
-  currentMonth: PropTypes.any.isRequired,
-  onMonthChange: PropTypes.any.isRequired,
 };
 
 FilterRenderer.propTypes = {
@@ -95,6 +110,10 @@ FilterRenderer.propTypes = {
   onFilterChange: PropTypes.func,
   currentMonth: PropTypes.object,
   onMonthChange: PropTypes.func,
+  tableHeader: PropTypes.arrayOf(PropTypes.object),
+  tableBody: PropTypes.arrayOf(PropTypes.object),
+  setSelectedRows: PropTypes.func,
+  selectedRows: PropTypes.array,
 };
 
 export default FilterRenderer;

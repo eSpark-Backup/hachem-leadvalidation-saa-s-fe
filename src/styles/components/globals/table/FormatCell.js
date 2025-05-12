@@ -1,21 +1,33 @@
 import { flexStyles } from "./Table";
 
-const tableBodyItemStyles = {
-  fontSize: '14px !important',
-  lineHeight: '17px',
-  fontWeight: 500,
-  color: '#212332',
-  height: '60px',
+const tableBodyItemStyles = (hasPoints) => {
+  return {
+    fontSize: '14px !important',
+    lineHeight: '17px',
+    fontWeight: 500,
+    color: '#212332',
+    height: { xs: hasPoints ? '85px' : '60px', md: '60px' },
+    minWidth: '100px',
+    padding: hasPoints ? '0px' : '0px 18px',
+
+    '&:first-of-type': {
+      paddingLeft: hasPoints ? '6px' : '18px',
+    },
+
+    '&:last-child': {
+      paddingRight: hasPoints ? '6px' : '18px',
+    },
+  };
 };
 
 const latestItemStyles = {
-  position: "absolute",
+  position: 'absolute',
   top: 0,
-  left: "-30px",
-  backgroundColor: "#136BE5",
-  boxShadow: "inset 0px 3.27407px 10.5589px #5D9DF5",
-  borderRadius: "20px",
-  padding: "3px 13px",
+  left: '0px',
+  backgroundColor: '#136BE5',
+  boxShadow: 'inset 0px 3.27407px 10.5589px #5D9DF5',
+  borderRadius: '20px',
+  padding: '3px 13px',
   zIndex: 100,
 };
 
@@ -27,7 +39,7 @@ const newLabelStyles = {
 
 const actionButtonBoxStyles = {
   ...flexStyles,
-  justifyContent: "space-between",
+  gap: '12px',
 };
 
 const buttonBoxStyles = (status) => {
@@ -36,8 +48,7 @@ const buttonBoxStyles = (status) => {
 
   return {
     boxShadow: "1px 2px 3px rgba(70, 118, 251, 0.41)",
-    width: "auto",
-    maxWidth: "104px",
+    width: "104px",
     ...flexStyles,
     justifyContent: "center",
     borderRadius: "7px",
@@ -57,7 +68,8 @@ const buttonBoxStyles = (status) => {
 };
 
 const editButtonStyles = {
-  backgroundColor: "transparent !important",
+  backgroundColor: 'transparent !important',
+  padding: 0,
 };
 
 const eyeButtonStyles = {
@@ -85,12 +97,14 @@ const fontStyles = {
 
 const validTextStyles = {
   ...fontStyles,
-  color: "#54D14D",
+  color: '#54D14D',
+  whiteSpace: 'nowrap',
 };
 
 const positiveResultTextStyles = {
   ...fontStyles,
   color: "#136BE5",
+  whiteSpace: 'nowrap',
 };
 
 const creditBoxStyles = {
@@ -124,13 +138,15 @@ const scoringBoxStyles = {
 const scoringHeadStyles = {
   ...fontStyles,
   borderBottom: '1px solid rgba(0, 0, 0, 0.19)',
-  padding: '0px 13px',
+  padding: { xs: '0px 9px 7px', md: '0px 13px 7px' },
+  marginBottom: '8px',
   color: '#212332',
+  height: { xs: '40px', md: 'auto' },
 };
 
 const scoringPointsStyles = {
   ...fontStyles,
-  padding: '0px 13px',
+  padding: { xs: '0px 9px', md: '0px 13px' },
   color: '#77797D',
 };
 

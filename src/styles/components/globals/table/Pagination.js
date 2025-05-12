@@ -8,7 +8,6 @@ const paginationBoxStyles = {
     color: '#09102B !important',
     fontSize: '16px',
     lineHeight: '28px',
-    letterSpacing: '-0.02em',
     fontWeight: 500,
     padding: '4px 0px',
     margin: 0,
@@ -21,6 +20,15 @@ const paginationBoxStyles = {
     height: '19px',
     border: '0.5px solid #09102B',
     borderRadius: '4px',
+    backgroundColor: 'transparent !important',
+  },
+
+  '& .MuiPagination-ul': {
+    gap: '7px',
+    alignItems: 'baseline',
+  },
+
+  '& .MuiPaginationItem-root': {
     backgroundColor: 'transparent !important',
   },
 };

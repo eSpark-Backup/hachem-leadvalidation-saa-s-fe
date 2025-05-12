@@ -1,11 +1,20 @@
+import { useState } from 'react';
+
 import { Box, Button, Stack, Typography } from '@mui/material';
 
-import GenericTable from '../components/global/table/GenericTable';
+import GenerateAILeadModal from '../components/leadScoringSetting/GenerateAILeadModal';
+import ScoringModal from '../components/leadScoringSetting/ScoringModal';
 import InputField from '../components/leadScoringSetting/InputField';
+import GenericTable from '../components/global/table/GenericTable';
+import NotFound from './NotFound';
 
+import { USER_TYPE } from '../utils/auth';
+
+import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 import {
   ICONS,
   LEAD_SCORING_SETTING,
+  SCORING_SETTINGS,
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/LeadsScoring';
@@ -19,15 +28,27 @@ import {
   stackContainerStyles,
   validRateStyles,
 } from '../styles/pages/LeadScoringSetting';
-import NotFound from './NotFound';
-import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
-import { USER_TYPE } from '../utils/auth';
 
 const LeadScoringSetting = () => {
+  const [scoringModal, setScoringModal] = useState(false);
+  const [generatAiModal, setGeneratAiModal] = useState(false);
+
+  const handleOpenScoringModal = () => setScoringModal(true);
+
+  const handleOpenGeneratedAIModal = () => {
+    setScoringModal(false);
+    setGeneratAiModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setScoringModal(false);
+    setGeneratAiModal(false);
+  };
+
   return (
     <>
       {USER_TYPE === USER_TYPES.client ? (
-        <Box px={2}>
+        <Box sx={{ marginTop: { xs: '24px', sm: '8px' } }}>
           <Typography
             variant="h1"
             sx={{
@@ -40,8 +61,12 @@ const LeadScoringSetting = () => {
 
           <Stack sx={stackContainerStyles}>
             <Box sx={scoringInputBoxStyles}>
-              {TABLE_HEADER.map((inp, index) => (
-                <InputField key={index} placeholder={`Valid ${inp.label}`} />
+              {SCORING_SETTINGS.map((inp, index) => (
+                <InputField
+                  key={index}
+                  placeholder={inp.placeholder}
+                  incWidth={inp.name === 'mandatory_fields'}
+                />
               ))}
             </Box>
 
@@ -52,16 +77,16 @@ const LeadScoringSetting = () => {
               >
                 <Box>
                   <Typography variant="body2" sx={validRateStyles}>
-                    Validation rate
+                    {LEAD_SCORING_SETTING.rate}
                   </Typography>
 
                   <Typography variant="body2" sx={pointsStyles}>
-                    +70
+                    {LEAD_SCORING_SETTING.points}
                   </Typography>
                 </Box>
               </Button>
 
-              <Button sx={actionButtonStyles}>
+              <Button sx={actionButtonStyles} onClick={handleOpenScoringModal}>
                 {LEAD_SCORING_SETTING.buttonText}
               </Button>
             </Stack>
@@ -77,6 +102,17 @@ const LeadScoringSetting = () => {
       ) : (
         <NotFound btnLink={ROUTES.dashboard} />
       )}
+
+      <ScoringModal
+        open={scoringModal}
+        handleClose={handleCloseModal}
+        startGeneratedAI={handleOpenGeneratedAIModal}
+      />
+
+      <GenerateAILeadModal
+        open={generatAiModal}
+        handleClose={handleCloseModal}
+      />
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -12,10 +13,12 @@ import {
 } from '@mui/material';
 
 import FilterRenderer from './FilterRenderer';
+import MonthSelector from './MonthSelector';
 import TablePagination from './Pagination';
 import FormatCell from './FormatCell';
 
 import {
+  genericTableHeadingBoxStyles,
   headingBoxStyles,
   tableBodyRowStyles,
   tableContainerStyles,
@@ -45,6 +48,11 @@ const GenericTable = ({
   trash,
   onEnterCursor,
   hasPoints = false,
+  excelFilter = false,
+  marginTop,
+  leadMonitoring = false,
+  leadStatus = false,
+  myLeads = false,
 }) => {
   const {
     paginatedData,
@@ -57,18 +65,42 @@ const GenericTable = ({
     handleMonthChange,
   } = useTableFilter(data);
 
+  const [selectedRows, setSelectedRows] = useState([]);
+
+  const toggleRow = (rowId) => {
+    setSelectedRows((prev) =>
+      prev.includes(rowId)
+        ? prev.filter((id) => id !== rowId)
+        : [...prev, rowId]
+    );
+  };
+
   return (
-    <Box sx={!noBg ? tableContainerStyles : {}}>
-      <Box sx={headingBoxStyles}>
-        <Typography
-          variant="h1"
-          sx={{
-            ...tableHeadingStyles,
-            fontWeight: fontWeight ? fontWeight : 600,
-          }}
-        >
-          {title}
-        </Typography>
+    <Box sx={!noBg ? { ...tableContainerStyles, marginTop } : { marginTop }}>
+      <Box sx={headingBoxStyles(leadMonitoring, leadStatus)}>
+        <Box sx={genericTableHeadingBoxStyles}>
+          <Typography
+            variant="h1"
+            sx={{
+              ...tableHeadingStyles,
+              fontWeight: fontWeight ? fontWeight : 600,
+            }}
+          >
+            {title}
+          </Typography>
+
+          {filterType?.month && (
+            <Box
+              key={filterType.month}
+              sx={{ display: { xs: 'block', sm: 'none' } }}
+            >
+              <MonthSelector
+                currentMonth={currentMonth}
+                onChange={handleMonthChange}
+              />
+            </Box>
+          )}
+        </Box>
 
         <FilterRenderer
           filters={filters}
@@ -78,11 +110,15 @@ const GenericTable = ({
           onFilterChange={handleFilterChange}
           currentMonth={currentMonth}
           onMonthChange={handleMonthChange}
+          tableHeader={columns}
+          tableBody={paginatedData}
+          setSelectedRows={setSelectedRows}
+          selectedRows={selectedRows}
         />
       </Box>
 
       <Box>
-        <TableContainer sx={{ overflow: 'visible' }}>
+        <TableContainer sx={{ overflow: 'auto' }}>
           <Table sx={tableStyles}>
             <TableHead sx={tableHeaderStyles}>
               <TableRow>
@@ -96,7 +132,16 @@ const GenericTable = ({
 
             <TableBody>
               {paginatedData.map((row, i) => (
-                <TableRow key={i} sx={tableBodyRowStyles}>
+                <TableRow
+                  key={i}
+                  sx={tableBodyRowStyles(
+                    excelFilter,
+                    selectedRows.includes(row.id),
+                    myLeads &&
+                      (row.status === 'Pending' || row.status === 'Reject')
+                  )}
+                  onClick={() => excelFilter && toggleRow(row.id)}
+                >
                   {columns.map(({ key }, colIndex) => (
                     <FormatCell
                       key={key}
@@ -111,6 +156,10 @@ const GenericTable = ({
                       trash={trash}
                       onEnterCursor={onEnterCursor}
                       hasPoints={hasPoints}
+                      myLeads={
+                        myLeads &&
+                        (row.status === 'Pending' || row.status === 'Reject')
+                      }
                     />
                   ))}
                 </TableRow>
@@ -153,8 +202,13 @@ GenericTable.propTypes = {
   onEnterCursor: PropTypes.func,
   hasPoints: PropTypes.bool,
   inDashboard: PropTypes.bool,
-  editAction: PropTypes.any,
-  deleteAction: PropTypes.any,
+  editAction: PropTypes.func,
+  deleteAction: PropTypes.func,
+  excelFilter: PropTypes.bool,
+  marginTop: PropTypes.object,
+  leadMonitoring: PropTypes.bool,
+  leadStatus: PropTypes.bool,
+  myLeads: PropTypes.bool,
 };
 
 export default GenericTable;

@@ -1,7 +1,6 @@
 export const CLIENT_DASHBOARD_LEADS = {
     title: 'Leads',
     filterType: {
-      search: 'search',
       dropdown: 'dropdown',
       month: 'month',
     },
@@ -21,7 +20,7 @@ export const CLIENT_DASHBOARD_LEADS = {
   export const CLIENT_LEADS_TABLE_BODY = [
     {
       id: 1,
-      supplier_id: 'SP: 43756',
+      supplier_id: 'SP43756',
       lead_id: '10025',
       country: 'United States',
       services: 'EV Charger',
@@ -31,7 +30,7 @@ export const CLIENT_DASHBOARD_LEADS = {
     },
     {
       id: 2,
-      supplier_id: 'SP: 43178',
+      supplier_id: 'SP43178',
       lead_id: '12025',
       country: 'Greece',
       services: 'EV Charger',
@@ -41,7 +40,7 @@ export const CLIENT_DASHBOARD_LEADS = {
     },
     {
       id: 3,
-      supplier_id: 'SP: 22739',
+      supplier_id: 'SP22739',
       lead_id: '10035',
       country: 'Saint Barthélemy',
       services: 'EV Charger',
@@ -51,7 +50,7 @@ export const CLIENT_DASHBOARD_LEADS = {
     },
     {
       id: 4,
-      supplier_id: 'SP: 97174',
+      supplier_id: 'SP97174',
       lead_id: '10048',
       country: 'Russian Federation',
       services: 'EV Charger',
@@ -62,7 +61,6 @@ export const CLIENT_DASHBOARD_LEADS = {
   ];
   
   export const CLIENT_LEADS_FILTER_TYPES = [
-    { type: 'search', key: 'search' },
     {
       type: 'dropdown',
       key: 'dropdown',
@@ -71,6 +69,7 @@ export const CLIENT_DASHBOARD_LEADS = {
   ];
   
   export const CLIENT_LEADS_SELECT_FILTERS = [
+    { options: [], label: 'Services', key: 'service' },
     { options: [], label: 'Validation', key: 'validation' },
     { options: [], label: 'Select Location', key: 'location' },
   ];

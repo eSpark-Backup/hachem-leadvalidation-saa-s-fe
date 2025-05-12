@@ -24,7 +24,7 @@ export const TABLE_BODY = [
     leads_validation: '78%',
     date: new Date('8/30/14'),
     status: 'Accepted',
-    isLatest: false,
+    isLatest: true,
     isLatestText: 'New Leads',
   },
   {
@@ -34,7 +34,7 @@ export const TABLE_BODY = [
     leads_validation: '80%',
     date: new Date('4/21/12'),
     status: 'Accepted',
-    isLatest: false,
+    isLatest: true,
     isLatestText: 'New Leads',
   },
   {
@@ -44,7 +44,7 @@ export const TABLE_BODY = [
     leads_validation: '75%',
     date: new Date('7/18/17'),
     status: 'Reject',
-    isLatest: false,
+    isLatest: true,
     isLatestText: 'New Leads',
   },
   {

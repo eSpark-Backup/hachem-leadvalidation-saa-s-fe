@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Badge from '@mui/material/Badge';
 import PropTypes from 'prop-types';
 
-const DotBadge = ({ icon, color }) => {
+const DotBadge = ({ icon, color, horizontal = 'left' }) => {
   return (
     <Box sx={{ color: 'action.active' }}>
       <Badge
@@ -10,7 +10,7 @@ const DotBadge = ({ icon, color }) => {
         variant="dot"
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'left',
+          horizontal,
         }}
         sx={{
           '& .MuiBadge-dot': {

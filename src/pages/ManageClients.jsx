@@ -2,18 +2,19 @@ import { useState } from 'react';
 
 import { Box } from '@mui/material';
 
-import LowCreditModal from '../components/global/table/LowCreditModal';
+import LowCreditModal from '../components/global/table/popovers/LowCreditModal';
+import ManageModal from '../components/global/table/popovers/ManageModal';
 import GenericTable from '../components/global/table/GenericTable';
-import ManageModal from '../components/global/table/ManageModal';
+import NotFound from './NotFound';
 
+import { USER_TYPE } from '../utils/auth';
+
+import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 import {
   CLIENT_MANAGEMENT,
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/ClientManagement';
-import NotFound from './NotFound';
-import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
-import { USER_TYPE } from '../utils/auth';
 
 const ManageClients = () => {
   const [details, setDetails] = useState(null);
@@ -38,7 +39,7 @@ const ManageClients = () => {
   return (
     <>
       {USER_TYPE === USER_TYPES.admin ? (
-        <Box px={2}>
+        <Box>
           <GenericTable
             title={CLIENT_MANAGEMENT.title}
             columns={TABLE_HEADER}
@@ -50,6 +51,7 @@ const ManageClients = () => {
               if (type === 'pointerenter') handlePopoverOpen(event);
               // if (type === 'pointerleave') handleClose();
             }}
+            marginTop={{ xs: '30px', sm: '14px' }}
           />
 
           {anchorEl && (

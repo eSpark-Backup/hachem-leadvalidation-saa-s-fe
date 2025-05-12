@@ -1,5 +1,7 @@
 const montSelectStyles = {
-  marginLeft: '4px',
+  marginLeft: { xs: 0, sm: '4px' },
+  alignItems: 'center',
+  gap: '5px',
 };
 
 const iconButtonStyles = {
@@ -13,10 +15,8 @@ const monthHeadingStyles = {
   padding: '5px 8px',
   fontSize: '14px',
   lineHeight: '12px',
-  letterSpacing: '-0.02em',
   color: '#09102B',
   fontWeight: 500,
 };
-
 
 export { montSelectStyles, iconButtonStyles, monthHeadingStyles };

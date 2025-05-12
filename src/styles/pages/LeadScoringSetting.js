@@ -3,8 +3,8 @@ const stackContainerStyles = {
   border: '2px solid rgba(62, 132, 69, 0.09)',
   borderRadius: '16px',
   padding: '21px 17px 12px',
-  flexDirection: 'row',
-  gap: '62px',
+  flexDirection: { xs: 'column', sm: 'row' },
+  gap: { xs: '44px', sm: '62px' },
   marginTop: '25px',
   marginBottom: '16px',
 };
@@ -13,7 +13,7 @@ const scoringInputBoxStyles = {
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
-  columnGap: '13px',
+  gap: '13px',
   justifyContent: 'center',
 };
 
@@ -30,28 +30,41 @@ const actionButtonStyles = {
   '&:hover': {
     backgroundColor: 'rgba(19, 107, 229, 0.8)',
   },
-};
 
-const scoringInputStyles = {
-  backgroundColor: '#FFFFFF',
-  boxShadow: '0px -2px 4px rgba(0, 0, 0, 0.25)',
-  borderRadius: '6px',
-  color: '#09102B',
-  fontSize: '12px',
-  lineHeight: '15px',
-  fontWeight: 500,
-  padding: '7px 16px',
-  height: 'fit-content',
-
-  '& input': {
-    height: 'auto',
-    padding: 0,
-  },
-
-  '&::before, &::after': {
-    border: 'none !important',
+  '@media(max-width:500px)': {
+    width: '100%',
   },
 };
+
+const scoringInputStyles = (incWidth) => {
+  return {
+    backgroundColor: '#FFFFFF',
+    boxShadow: '0px -2px 4px rgba(0, 0, 0, 0.25)',
+    borderRadius: '6px',
+    color: '#09102B',
+    fontSize: '12px',
+    lineHeight: '15px',
+    fontWeight: 500,
+    padding: '7px 16px',
+    height: 'fit-content',
+    whiteSpace: 'pre',
+    width: incWidth ? { xs: 'auto', md: '215px' } : 'auto',
+
+    '& input': {
+      height: 'auto',
+      padding: 0,
+    },
+
+    '&::before, &::after': {
+      border: 'none !important',
+    },
+
+    '@media(max-width:500px)': {
+      width: '100%',
+      height: '40px',
+    },
+  };
+}
 
 const scoringButtonStyles = {
   backgroundColor: 'rgba(255, 255, 255, 0.5)',
@@ -76,6 +89,35 @@ const pointsStyles = {
   textAlign: 'left',
 };
 
+const modalStyles = {
+  borderRadius: '20px',
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  bgcolor: 'background.paper',
+  zIndex: 1310,
+};
+
+const headingStyles = {
+  fontSize: '25px !important',
+  lineHeight: '31px',
+};
+
+const buttonStyles = {
+  backgroundColor: '#136be5',
+  boxShadow: '1px 2px 3px rgba(70, 118, 251, 0.41)',
+  border: '1px solid #FFFFFF',
+  borderRadius: '7px',
+  lineHeight: '16px',
+  color: '#FFFFFF',
+  fontWeight: 600,
+
+  '&:hover': {
+    backgroundColor: 'rgba(19, 107, 229, 0.8)',
+  },
+};
+
 export {
   stackContainerStyles,
   scoringInputBoxStyles,
@@ -84,4 +126,7 @@ export {
   scoringButtonStyles,
   validRateStyles,
   pointsStyles,
+  modalStyles,
+  headingStyles,
+  buttonStyles,
 };

@@ -2,17 +2,18 @@ import { useState } from 'react';
 
 import { Box } from '@mui/material';
 
+import ManageModal from '../components/global/table/popovers/ManageModal';
 import GenericTable from '../components/global/table/GenericTable';
-import ManageModal from '../components/global/table/ManageModal';
+import NotFound from './NotFound';
 
+import { USER_TYPE } from '../utils/auth';
+
+import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 import {
   SUPPLIER_MANAGEMENT,
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/SupplierManagement';
-import NotFound from './NotFound';
-import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
-import { USER_TYPE } from '../utils/auth';
 
 const ManageSuppliers = () => {
   const [details, setDetails] = useState(null);
@@ -31,7 +32,7 @@ const ManageSuppliers = () => {
   return (
     <>
       {USER_TYPE === USER_TYPES.admin ? (
-        <Box px={2}>
+        <Box>
           <GenericTable
             title={SUPPLIER_MANAGEMENT.title}
             columns={TABLE_HEADER}
@@ -39,6 +40,7 @@ const ManageSuppliers = () => {
             noBg
             edit
             editAction={requestHandler}
+            marginTop={{ xs: '30px', sm: '14px' }}
           />
 
           {anchorEl && (

@@ -38,7 +38,7 @@ const DatePickerFilter = () => {
   const open = Boolean(anchorEl);
 
   return (
-    <Box>
+    <Box sx={{ width: '100%', textAlign: 'end' }}>
       <Button
         ref={buttonRef}
         onClick={!anchorEl ? handleToggle : null}

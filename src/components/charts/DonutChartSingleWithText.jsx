@@ -6,6 +6,7 @@ const DonutChartSingleWithText = ({
   data = [],
   text = '',
   color = '#8884d8',
+  inActiveColor = '#ffffff',
   colors = [],
   width = 100,
   height = 100,
@@ -17,7 +18,7 @@ const DonutChartSingleWithText = ({
   dataKey = 'value',
   isPerAllowed = true,
 }) => {
-  const fallbackColors = [color, '#ffffff'];
+  const fallbackColors = [color, inActiveColor];
 
   return (
     <Box position="relative" display="inline-flex">

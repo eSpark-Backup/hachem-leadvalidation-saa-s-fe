@@ -3,6 +3,13 @@ const buttonStyles = {
   fontSize: '13px',
   lineHeight: '16px',
   fontWeight: 600,
+  width: '100%',
+};
+
+const leadMonitoringButtonStackStyles = {
+  width: '100%',
+  flexDirection: 'row',
+  gap: '11px',
 };
 
 const historyButtonStyles = {
@@ -38,4 +45,9 @@ const monthButtonSpanStyles = {
   textFillColor: 'transparent',
 };
 
-export { historyButtonStyles, monthButtonStyles, monthButtonSpanStyles };
+export {
+  leadMonitoringButtonStackStyles,
+  historyButtonStyles,
+  monthButtonStyles,
+  monthButtonSpanStyles,
+};

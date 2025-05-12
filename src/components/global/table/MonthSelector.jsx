@@ -1,5 +1,6 @@
-import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
+
+import dayjs from 'dayjs';
 
 import { IconButton, Typography, Box } from '@mui/material';
 
@@ -14,11 +15,11 @@ import {
   montSelectStyles,
 } from '../../../styles/components/globals/table/MonthSelector';
 
-const MonthSelector = ({ currentMonth, onChange }) => {
+const MonthSelector = ({ currentMonth, onChange, display = 'flex' }) => {
   const safeMonth = currentMonth ? dayjs(currentMonth) : dayjs();
 
   return (
-    <Box display="flex" alignItems="center" gap={'5px'} sx={montSelectStyles}>
+    <Box sx={{ ...montSelectStyles, display }}>
       <IconButton onClick={() => onChange('prev')} sx={iconButtonStyles}>
         <img src={ICONS.smallLeftArrow} alt={ALT_ATTRIBUTE.left} />
       </IconButton>
@@ -32,10 +33,6 @@ const MonthSelector = ({ currentMonth, onChange }) => {
       </IconButton>
     </Box>
   );
-};
-MonthSelector.propTypes = {
-  currentMonth: PropTypes.any.isRequired,
-  onChange: PropTypes.any.isRequired,
 };
 
 MonthSelector.propTypes = {

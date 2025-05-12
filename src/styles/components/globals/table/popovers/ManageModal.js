@@ -1,11 +1,19 @@
 const boxContainerSyles = {
   backgroundColor: ' #FFFFFF',
-  border: '2px solid rgba(0, 0, 0, 0.37)',
-  boxShadow: '0px 2px 9px rgba(0, 0, 0, 0.23)',
-  borderRadius: '14px',
   display: 'inline-block',
   textAlign: 'center',
   padding: '37px 39px 29px',
+  width: '100%',
+
+  '@media(max-width:400px)': {
+    padding: '34px 22px 29px',
+  },
+};
+
+const manageModalPaperPropsStyles = {
+  border: '2px solid rgba(0, 0, 0, 0.37)',
+  boxShadow: '0px 2px 9px rgba(0, 0, 0, 0.23)',
+  borderRadius: '14px',
 };
 
 const imageBoxStyles = {
@@ -13,6 +21,11 @@ const imageBoxStyles = {
   height: '145px',
   margin: '0px auto 6px',
   borderRadius: '50%',
+
+  '@media(max-width:400px)': {
+    width: '125px',
+    height: '125px',
+  },
 };
 
 const imageStyles = {
@@ -38,10 +51,18 @@ const itemIdStyles = {
 
 const contactDetailsBoxStyles = {
   gap: '23px',
+
+  '@media(max-width:400px)': {
+    gap: '19px',
+  },
 };
 
 const iconStyles = {
   marginRight: '27px',
+
+  '@media(max-width: 400px)': {
+    marginRight: '17px',
+  },
 };
 
 const detailStyles = {
@@ -49,6 +70,10 @@ const detailStyles = {
   fontSize: '16px',
   lineHeight: '20px',
   fontWeight: 500,
+
+  '@media(max-width:400px)': {
+    fontSize: '15px',
+  },
 };
 
 const actionButtonStackStyles = {
@@ -101,6 +126,7 @@ const assignButtonStyles = {
 
 export {
   boxContainerSyles,
+  manageModalPaperPropsStyles,
   imageBoxStyles,
   imageStyles,
   itemNameStyles,

@@ -11,15 +11,33 @@ const tableContainerStyles = {
   padding: '17px 10px 29px 13px',
 };
 
-const headingBoxStyles = {
-  ...flexStyles,
+const headingBoxStyles = (leadMonitoring, leadStatus) => {
+  return {
+    ...flexStyles,
+    justifyContent: 'space-between',
+    flexDirection: {
+      xs: leadMonitoring || leadStatus ? 'row' : 'column',
+      sm: 'row',
+    },
+    gap: { xs: 1.5, sm: 0 },
+    alignItems: { xs: 'flex-start', sm: 'center' },
+
+    '@media(max-width: 400px)': {
+      flexDirection: leadMonitoring && 'column',
+    },
+  };
+};
+
+const genericTableHeadingBoxStyles = {
+  display: 'flex',
   justifyContent: 'space-between',
+  alignItems: 'center',
+  width: { xs: '100%', sm: 'auto' },
 };
 
 const tableHeadingStyles = {
   fontSize: '25px !important',
   lineHeight: '32px',
-  letterSpacing: '-0.02em',
   color: '#1B2559',
 };
 
@@ -33,14 +51,16 @@ const tableHeaderHeadingStyles = {
   fontWeight: 600,
   lineHeight: '17px',
   color: '#212332',
+  minWidth: '100px',
 };
 
 const tableStyles = {
   marginTop: '10px',
   borderCollapse: 'separate',
   borderSpacing: '0px 12px',
+  minWidth: 800,
 
-  '& th:first-child, & td:first-child': {
+  '& th:first-of-type, & td:first-of-type': {
     borderTopLeftRadius: '5px',
     borderBottomLeftRadius: '5px',
     borderLeft: '2px solid rgba(62, 132, 69, 0.09)',
@@ -58,16 +78,22 @@ const tableStyles = {
     borderLeft: 'none',
     borderRight: 'none',
   },
-
-  '& td': {
-    backgroundColor: 'white',
-  },
 };
 
-const tableBodyRowStyles = {
-  position: 'relative',
-  boxShadow: '0px 2px 9px rgba(0, 0, 0, 0.23)',
-  borderRadius: '5px',
+const tableBodyRowStyles = (excelFilter, isSelected, lead) => {
+  return {
+    position: 'relative',
+    boxShadow: '0px 2px 9px rgba(0, 0, 0, 0.23)',
+    borderRadius: '5px',
+    cursor: excelFilter ? 'pointer' : 'auto',
+    backgroundColor: isSelected ? 'rgba(0, 0, 0, 0.04)' : '#ffffff',
+
+    '&:hover': {
+      '& .edit-icon': {
+        display: lead && 'block',
+      },
+    },
+  };
 };
 
 const buttonBoxStyles = (status) => {
@@ -89,7 +115,6 @@ const buttonBoxStyles = (status) => {
       color: green ? '#54D14D' : blue ? '#136BE5' : '#FF4343',
       fontSize: '13px',
       lineHeight: '16px',
-      letterSpacing: '-0.02em',
       minWidth: 0,
       fontWeight: 600,
       backgroundColor: 'transparent !important',
@@ -122,7 +147,8 @@ const filterCommonBoxStyles = {
   backgroundColor: 'white',
   borderRadius: '5px',
   padding: '4px 11px 6px 10px',
-  height: '25px',
+  height: { xs: '35px', sm: '25px' },
+  width: { xs: '100%', sm: 'auto' },
 };
 
 const latestItemStyles = {
@@ -138,7 +164,6 @@ const latestItemStyles = {
 
 const newLabelStyles = {
   fontSize: '9px',
-  letterSpacing: '-0.02em',
   color: '#FFFFFF',
   lineHeight: '12px',
 };
@@ -147,6 +172,7 @@ export {
   flexStyles,
   tableContainerStyles,
   headingBoxStyles,
+  genericTableHeadingBoxStyles,
   tableHeadingStyles,
   tableHeaderStyles,
   tableHeaderHeadingStyles,

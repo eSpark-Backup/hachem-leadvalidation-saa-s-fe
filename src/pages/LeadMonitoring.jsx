@@ -2,23 +2,23 @@ import { useState } from 'react';
 
 import { Box } from '@mui/material';
 
+import CommonDialog from '../components/global/table/dialog/CommonDialog';
 import GenericTable from '../components/global/table/GenericTable';
-import DeleteDialog from '../components/global/table/DeleteDialog';
+import NotFound from './NotFound';
 
+import { USER_TYPE } from '../utils/auth';
+
+import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 import {
   LEAD_MONITORING,
   LEAD_MONITORING_FILTER_TYPES,
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/LeadMonitoring';
-import NotFound from './NotFound';
-import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
-import { USER_TYPE } from '../utils/auth';
 
 const LeadMonitoring = () => {
   const [open, setOpen] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
-  console.log(deleteItemId);
 
   const deleteItemHandler = (row) => {
     setDeleteItemId(row.cl_sp_id);
@@ -32,7 +32,7 @@ const LeadMonitoring = () => {
   return (
     <>
       {USER_TYPE === USER_TYPES.admin ? (
-        <Box px={2}>
+        <Box>
           <GenericTable
             title={LEAD_MONITORING.title}
             filters={LEAD_MONITORING_FILTER_TYPES}
@@ -42,9 +42,11 @@ const LeadMonitoring = () => {
             noBg
             trash
             deleteAction={deleteItemHandler}
+            marginTop={{ xs: '30px', sm: '14px' }}
+            leadMonitoring
           />
 
-          <DeleteDialog open={open} handleClose={handleClose} />
+          <CommonDialog open={open} handleClose={handleClose} />
         </Box>
       ) : (
         <NotFound btnLink={ROUTES.dashboard} />

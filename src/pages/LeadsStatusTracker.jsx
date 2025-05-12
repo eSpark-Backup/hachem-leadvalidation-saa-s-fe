@@ -1,14 +1,15 @@
 import GenericTable from '../components/global/table/GenericTable';
-import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
+import NotFound from './NotFound';
 
+import { USER_TYPE } from '../utils/auth';
+
+import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 import {
   FILTER_TYPES,
   LEAD_STATUS,
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/LeadStatus';
-import { USER_TYPE } from '../utils/auth';
-import NotFound from './NotFound';
 
 const LeadsStatusTracker = () => {
   return (
@@ -21,6 +22,8 @@ const LeadsStatusTracker = () => {
           columns={TABLE_HEADER}
           data={TABLE_BODY}
           noBg
+          leadStatus
+          marginTop={{ xs: '30px', sm: '14px' }}
         />
       ) : (
         <NotFound btnLink={ROUTES.dashboard} />

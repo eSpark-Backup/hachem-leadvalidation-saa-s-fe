@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import {
   Box,
   Button,
@@ -11,7 +13,7 @@ import {
   ALT_ATTRIBUTE,
   ICONS,
   TABLE_STATIC_TEXTS,
-} from '../../../constants/components/globals/Table';
+} from '../../../../constants/components/globals/Table';
 
 import {
   acceptButtonStyles,
@@ -25,17 +27,19 @@ import {
   imageStyles,
   itemIdStyles,
   itemNameStyles,
+  manageModalPaperPropsStyles,
   rejectButtonStyles,
-} from '../../../styles/components/globals/table/ManageModal';
+} from '../../../../styles/components/globals/table/popovers/ManageModal';
 import {
   paperPropsStyles,
   slotsCommonPropsStyles,
-} from '../../../styles/components/globals/table/Common';
+} from '../../../../styles/components/globals/table/Common';
 
 const ManageModal = ({ item, client, anchorEl, handleClose }) => {
   const { profile, name, id, service, contact, email } = item;
 
   const open = Boolean(anchorEl);
+
   return (
     <Popover
       open={open}
@@ -54,7 +58,7 @@ const ManageModal = ({ item, client, anchorEl, handleClose }) => {
           sx: slotsCommonPropsStyles,
         },
         paper: {
-          sx: paperPropsStyles,
+          sx: { ...paperPropsStyles, ...manageModalPaperPropsStyles },
         },
       }}
     >
@@ -146,6 +150,13 @@ const ManageModal = ({ item, client, anchorEl, handleClose }) => {
       </ClickAwayListener>
     </Popover>
   );
+};
+
+ManageModal.propTypes = {
+  item: PropTypes.object,
+  client: PropTypes.bool,
+  anchorEl: PropTypes.object,
+  handleClose: PropTypes.func,
 };
 
 export default ManageModal;

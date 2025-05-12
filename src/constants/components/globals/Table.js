@@ -76,6 +76,12 @@ const TABLE_STATIC_TEXTS = {
   history: 'History',
   this_month: 'This Month',
   month: 'Month',
+  confirmDelete: 'Do you want to delete this lead?',
+  delete: 'Delete',
+  cancel: 'Cancel',
+  confirmLead: 'Do you want to accept this lead?',
+  accept: 'Accept',
+  reject: 'Reject',
 };
 
 const BG_COLOR = 'linear-gradient(0deg, #E7F7EF, #E7F7EF), #FFFBFE';

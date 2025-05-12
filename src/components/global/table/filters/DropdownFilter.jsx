@@ -5,12 +5,12 @@ import { FormControl, MenuItem, Select } from '@mui/material';
 import {
   ALT_ATTRIBUTE,
   ICONS,
-} from '../../../constants/components/globals/Table';
+} from '../../../../constants/components/globals/Table';
 
-import { filterDropdownStyles } from '../../../styles/components/globals/table/DropdownFilter';
+import { filterDropdownStyles } from '../../../../styles/components/globals/table/filters/DropdownFilter';
 
 const DropdownFilter = ({ label, value = null, onChange = null, options }) => (
-  <FormControl size="small" sx={{ minWidth: 84 }}>
+  <FormControl size="small" sx={{ width: { xs: '100%', sm: 'auto' } }}>
     <Select
       value={value || ''}
       onChange={(e) => onChange(e.target.value)}
@@ -38,10 +38,10 @@ const DropdownFilter = ({ label, value = null, onChange = null, options }) => (
 );
 
 DropdownFilter.propTypes = {
-  value: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
   label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default DropdownFilter;
