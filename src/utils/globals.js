@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 /**
  * Capitalizes the first letter of the given string.
  *
@@ -17,4 +19,14 @@ export const capitalizeFirstLetter = (str) => {
  */
 export const formatNumber = (value) => {
   return value?.toLocaleString();
+};
+
+/**
+ * Formats a given date value into a 'YYYY-MM-DD' string format.
+ *
+ * @param {string|Date|number} value - The date value to format. Can be a string, Date object, or timestamp.
+ * @returns {string} The formatted date string in 'YYYY-MM-DD' format.
+ */
+export const dateFormator = (value) => {
+  return dayjs(value).format('YYYY-MM-DD');
 };

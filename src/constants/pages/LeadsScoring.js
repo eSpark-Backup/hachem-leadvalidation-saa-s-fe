@@ -3,7 +3,7 @@ import CloseIcon from '../../assets/images/client/close.svg';
 import DocumentIcon from '../../assets/images/client/document-text.svg';
 import TrashIcon from '../../assets/images/client/trash.svg';
 import CheckIcon from '../../assets/images/client/check.svg';
-import SuccessfullIcon from "../../assets/images/auth/Verified_image.svg"
+import SuccessfullIcon from '../../assets/images/auth/Verified_image.svg';
 
 export const LEAD_SCORING_SETTING = {
   title: 'Leads Scoring Setting',

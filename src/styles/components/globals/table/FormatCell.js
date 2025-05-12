@@ -1,4 +1,4 @@
-import { flexStyles } from "./Table";
+import { flexStyles } from './Table';
 
 const tableBodyItemStyles = (hasPoints) => {
   return {
@@ -32,9 +32,9 @@ const latestItemStyles = {
 };
 
 const newLabelStyles = {
-  fontSize: "9px",
-  color: "#FFFFFF",
-  lineHeight: "12px",
+  fontSize: '9px',
+  color: '#FFFFFF',
+  lineHeight: '12px',
 };
 
 const actionButtonBoxStyles = {
@@ -43,26 +43,26 @@ const actionButtonBoxStyles = {
 };
 
 const buttonBoxStyles = (status) => {
-  const green = status === "accepted" || status === "active";
-  const blue = status === "pending" || status === "non-active";
+  const green = status === 'accepted' || status === 'active';
+  const blue = status === 'pending' || status === 'non-active';
 
   return {
-    boxShadow: "1px 2px 3px rgba(70, 118, 251, 0.41)",
-    width: "104px",
+    boxShadow: '1px 2px 3px rgba(70, 118, 251, 0.41)',
+    width: '104px',
     ...flexStyles,
-    justifyContent: "center",
-    borderRadius: "7px",
-    border: "1px solid",
-    borderColor: green ? "#54D14D" : blue ? "#136BE5" : "#FF4343",
-    height: "32px",
+    justifyContent: 'center',
+    borderRadius: '7px',
+    border: '1px solid',
+    borderColor: green ? '#54D14D' : blue ? '#136BE5' : '#FF4343',
+    height: '32px',
 
-    "& p": {
-      color: green ? "#54D14D" : blue ? "#136BE5" : "#FF4343",
-      fontSize: "13px",
-      lineHeight: "16px",
+    '& p': {
+      color: green ? '#54D14D' : blue ? '#136BE5' : '#FF4343',
+      fontSize: '13px',
+      lineHeight: '16px',
       minWidth: 0,
       fontWeight: 600,
-      backgroundColor: "transparent !important",
+      backgroundColor: 'transparent !important',
     },
   };
 };
@@ -73,26 +73,26 @@ const editButtonStyles = {
 };
 
 const eyeButtonStyles = {
-  backgroundColor: "rgba(84, 209, 77, 0.1) !important",
-  width: "30px",
-  height: "30px",
+  backgroundColor: 'rgba(84, 209, 77, 0.1) !important',
+  width: '30px',
+  height: '30px',
   padding: 0,
   ...flexStyles,
-  justifyContent: "center",
+  justifyContent: 'center',
 };
 
 const trashButtonStyles = {
-  backgroundColor: "rgba(255, 0, 0, 0.05) !important",
-  width: "30px",
-  height: "30px",
+  backgroundColor: 'rgba(255, 0, 0, 0.05) !important',
+  width: '30px',
+  height: '30px',
   padding: 0,
   ...flexStyles,
-  justifyContent: "center",
+  justifyContent: 'center',
 };
 
 const fontStyles = {
-  fontSize: "14px",
-  lineHeight: "17px",
+  fontSize: '14px',
+  lineHeight: '17px',
 };
 
 const validTextStyles = {
@@ -103,7 +103,7 @@ const validTextStyles = {
 
 const positiveResultTextStyles = {
   ...fontStyles,
-  color: "#136BE5",
+  color: '#136BE5',
   whiteSpace: 'nowrap',
 };
 
@@ -167,5 +167,5 @@ export {
   creditTextStyles,
   scoringBoxStyles,
   scoringHeadStyles,
-  scoringPointsStyles
+  scoringPointsStyles,
 };

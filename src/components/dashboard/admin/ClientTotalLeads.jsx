@@ -9,43 +9,49 @@ const ClientTotalLeads = ({
   title,
   btnTitle,
   modalOpen,
-  handleOpenChartModalDropDown,
   open,
-}) => (
-  <CardContent sx={cardContentStyle}>
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      mb={2}
-    >
-      <Typography variant="h4" fontWeight="bold">
-        {title}
-      </Typography>
-      <DropdownButton
-        onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
-        label={btnTitle}
-      />
-    </Box>
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        mb: 2,
-        gap: 1,
-      }}
-    >
-      <BarPipeChart data={chartData} />
-    </Box>
-  </CardContent>
-);
+  anchorRef,
+
+  handleOpenChartModalDropDown,
+}) => {
+  return (
+    <CardContent sx={cardContentStyle}>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mb={2}
+      >
+        <Typography variant="h4" fontWeight="bold">
+          {title}
+        </Typography>
+        <DropdownButton
+          ref={anchorRef}
+          onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
+          label={btnTitle}
+        />
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          mb: 2,
+          gap: 1,
+        }}
+      >
+        <BarPipeChart data={chartData} />
+      </Box>
+    </CardContent>
+  );
+};
 ClientTotalLeads.propTypes = {
-  handleOpenChartModalDropDown: PropTypes.any,
   chartData: PropTypes.any,
   title: PropTypes.any,
   btnTitle: PropTypes.any,
   modalOpen: PropTypes.any,
   open: PropTypes.any,
+  handleOpenChartModalDropDown: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 
 export default ClientTotalLeads;

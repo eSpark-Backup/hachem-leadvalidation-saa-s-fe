@@ -23,6 +23,8 @@ const FmoMonth = ({
   supplierColor,
   innerRadius,
   outerRadius,
+  anchorRef,
+
   centerValue,
   supplierChangeDirection, // 'up' or 'down'
 }) => (
@@ -37,6 +39,7 @@ const FmoMonth = ({
         {title}
       </Typography>
       <DropdownButton
+        ref={anchorRef}
         onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
         label={btnTitle}
       />
@@ -150,6 +153,7 @@ FmoMonth.propTypes = {
   innerRadius: PropTypes.any,
   outerRadius: PropTypes.any,
   centerValue: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 
 export default FmoMonth;

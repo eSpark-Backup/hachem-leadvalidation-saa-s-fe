@@ -7,7 +7,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-import { BG_COLOR, ICONS, TABLE_STATIC_TEXTS } from '../../../../constants/components/globals/Table';
+import {
+  BG_COLOR,
+  ICONS,
+  TABLE_STATIC_TEXTS,
+} from '../../../../constants/components/globals/Table';
 
 import {
   buttonStyles,

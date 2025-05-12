@@ -19,6 +19,7 @@ import {
 const LeadMonitoring = () => {
   const [open, setOpen] = useState(false);
   const [deleteItemId, setDeleteItemId] = useState(null);
+  console.log(deleteItemId);
 
   const deleteItemHandler = (row) => {
     setDeleteItemId(row.cl_sp_id);

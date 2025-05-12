@@ -19,6 +19,7 @@ const TotalClientSupplier = ({
   supplierColor,
   cardStyle,
   centerValue,
+  anchorRef,
 }) => {
   return (
     <CardContent sx={cardStyle}>
@@ -34,6 +35,7 @@ const TotalClientSupplier = ({
           {title}
         </Typography>
         <DropdownButton
+          ref={anchorRef}
           onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
           label={dropdownLabel}
         />
@@ -58,7 +60,7 @@ const TotalClientSupplier = ({
           centerValue={centerValue}
           valueFontSize={'20px'}
           labelFontSize={'10px'}
-          isPerAllowed={1}
+          isPerAllowed={true}
         />
         <Box
           display="flex"
@@ -124,6 +126,7 @@ TotalClientSupplier.propTypes = {
   supplierColor: PropTypes.string,
   cardStyle: PropTypes.object,
   centerValue: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 
 export default TotalClientSupplier;

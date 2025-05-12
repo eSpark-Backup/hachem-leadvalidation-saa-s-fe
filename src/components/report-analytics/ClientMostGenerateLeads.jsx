@@ -15,6 +15,7 @@ const ClientMostGenerateLeads = ({
   chartColors,
   tableData,
   tableHeaders,
+  anchorRef,
 }) => {
   return (
     <>
@@ -22,6 +23,7 @@ const ClientMostGenerateLeads = ({
         title={title}
         label={label}
         onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
+        anchorRef={anchorRef}
       />
       <Box sx={centerColumnBox}>
         <DonutChart data={chartData} colors={chartColors} />
@@ -42,6 +44,7 @@ ClientMostGenerateLeads.propTypes = {
   chartColors: PropTypes.any,
   tableData: PropTypes.any,
   tableHeaders: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 
 export default ClientMostGenerateLeads;

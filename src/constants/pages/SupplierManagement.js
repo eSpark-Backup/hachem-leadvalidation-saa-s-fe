@@ -1,4 +1,4 @@
-import SupplierImage from "../../assets/images/admin/supplier.png"
+import SupplierImage from '../../assets/images/admin/supplier.png';
 
 export const SUPPLIER_MANAGEMENT = {
   title: 'Supplier Management',

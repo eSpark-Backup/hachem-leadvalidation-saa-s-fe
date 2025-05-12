@@ -14,6 +14,7 @@ const TopClientsByRevenue = ({
   title,
   dropdownLabel,
   tableHeader,
+  anchorRef,
 }) => {
   return (
     <CardContent sx={cardStyle}>
@@ -28,6 +29,7 @@ const TopClientsByRevenue = ({
           {title}
         </Typography>
         <DropdownButton
+          ref={anchorRef}
           onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
           label={dropdownLabel}
         />
@@ -54,6 +56,8 @@ TopClientsByRevenue.propTypes = {
   chartColors: PropTypes.array,
   cardStyle: PropTypes.object,
   title: PropTypes.string,
+  anchorRef: PropTypes.any,
+
   dropdownLabel: PropTypes.string,
   boxItems: PropTypes.arrayOf(
     PropTypes.shape({

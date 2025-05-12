@@ -1,26 +1,19 @@
 import { Box, IconButton, Modal } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
-import {
-  closeIconStyle,
-  modalBoxStyle,
-} from '../../styles/components/globals/ChartsModal';
+import { modalBoxStyle } from '../../styles/components/globals/ChartsModal';
 
-const ChartsModal = ({ handleCloseChartModal, open, children }) => {
+const ChartsModal = ({ handleCloseChartModal, open, children, width }) => {
   return (
     <Modal open={open} onClose={handleCloseChartModal}>
-      <Box sx={modalBoxStyle}>
+      <Box sx={modalBoxStyle(width)}>
         <Box
           sx={{
             alignItems: 'end',
             textAlign: 'end',
           }}
         >
-          <IconButton
-            onClick={handleCloseChartModal}
-            // sx={closeIconStyle}
-            aria-label="close"
-          >
+          <IconButton onClick={handleCloseChartModal} aria-label="close">
             <CloseIcon />
           </IconButton>
         </Box>
@@ -35,6 +28,7 @@ ChartsModal.propTypes = {
   handleCloseChartModal: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   children: PropTypes.node,
+  width: PropTypes.any,
 };
 
 export default ChartsModal;

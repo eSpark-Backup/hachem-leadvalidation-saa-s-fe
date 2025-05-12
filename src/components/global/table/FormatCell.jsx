@@ -6,7 +6,10 @@ import { Box, IconButton, TableCell, Typography } from '@mui/material';
 
 import DotBadge from '../DotBadge';
 
-import { ALT_ATTRIBUTE, ICONS } from '../../../constants/components/globals/Table';
+import {
+  ALT_ATTRIBUTE,
+  ICONS,
+} from '../../../constants/components/globals/Table';
 
 import {
   actionButtonBoxStyles,

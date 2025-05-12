@@ -13,3 +13,12 @@ export const TEXT_CONSTANTS = {
   leadsImprovement: (percent, duration) =>
     `Your leads performance is ${percent} better compare to ${duration}`,
 };
+
+export const SUPPLIER_REPORTS = {
+  PerformenceLead: 'PerformenceLead',
+  ValidLeads: 'ValidLeads',
+  PendingLeads: 'PendingLeads',
+  RejectedLeads: 'RejectedLeads',
+  LeadsOverview: 'LeadsOverview',
+  MostGenerateLeads: 'MostGenerateLeads',
+};

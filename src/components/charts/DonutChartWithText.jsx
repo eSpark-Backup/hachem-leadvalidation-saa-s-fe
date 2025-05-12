@@ -65,18 +65,18 @@ const DonutChartWithText = ({
 };
 
 DonutChartWithText.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  width: PropTypes.number,
-  height: PropTypes.number,
-  innerRadius: PropTypes.number,
-  outerRadius: PropTypes.number,
-  dataKey: PropTypes.string,
+  data: PropTypes.arrayOf(PropTypes.any).isRequired,
+  width: PropTypes.any,
+  height: PropTypes.any,
+  innerRadius: PropTypes.any,
+  outerRadius: PropTypes.any,
+  dataKey: PropTypes.any,
   colors: PropTypes.arrayOf(PropTypes.string),
-  centerValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  centerLabel: PropTypes.string,
-  valueFontSize: PropTypes.string,
-  labelFontSize: PropTypes.string,
-  isPerAllowed: PropTypes.string,
+  centerValue: PropTypes.oneOfType([PropTypes.any, PropTypes.any]),
+  centerLabel: PropTypes.any,
+  valueFontSize: PropTypes.any,
+  labelFontSize: PropTypes.any,
+  isPerAllowed: PropTypes.any,
 };
 
 export default DonutChartWithText;

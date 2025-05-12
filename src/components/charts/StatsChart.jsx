@@ -1,4 +1,3 @@
-// StatsChart.jsx
 import { Box } from '@mui/material';
 import {
   BarChart,
@@ -15,19 +14,31 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 const StatsChart = ({
-  data,
-  height,
-  margin,
-  xAxisProps,
-  yAxisProps,
-  gridProps,
-  tooltipProps,
-  barProps,
-  labelListProps,
+  data = [],
+  height = 250,
+  margin = { top: 20, right: 20, bottom: 5, left: 20 },
+  xAxisProps = { type: 'number' },
+  yAxisProps = { type: 'category', dataKey: 'key', hide: true },
+  gridProps = { strokeDasharray: '3 3', vertical: false },
+  tooltipProps = {},
+  barProps = {
+    dataKey: 'value',
+    radius: [0, 5, 2, 0],
+    isAnimationActive: false,
+    barSize: 20,
+  },
+  labelListProps = {
+    dataKey: 'key',
+    position: 'top',
+    right: true,
+    fill: '#64748B',
+    style: { fontSize: 12 },
+  },
   activeColor,
   color,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+
   return (
     <Box sx={{ height }}>
       <ResponsiveContainer width="100%" height="100%">
@@ -70,29 +81,6 @@ StatsChart.propTypes = {
   labelListProps: PropTypes.object,
   color: PropTypes.string,
   activeColor: PropTypes.string,
-};
-
-StatsChart.defaultProps = {
-  data: [],
-  height: 250,
-  margin: { top: 20, right: 20, bottom: 5, left: 20 },
-  xAxisProps: { type: 'number' },
-  yAxisProps: { type: 'category', dataKey: 'key', hide: true },
-  gridProps: { strokeDasharray: '3 3', vertical: false },
-  tooltipProps: {},
-  barProps: {
-    dataKey: 'value',
-    radius: [0, 5, 2, 0],
-    isAnimationActive: false,
-    barSize: 20,
-  },
-  labelListProps: {
-    dataKey: 'key',
-    position: 'top',
-    right: true,
-    fill: '#64748B',
-    style: { fontSize: 12 },
-  },
 };
 
 export default StatsChart;

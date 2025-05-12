@@ -11,6 +11,7 @@ const ReportCard = ({
   open,
   handleOpenChartModalDropDown,
   modalOpen,
+  anchorRef,
 }) => (
   <CardContent>
     <Box
@@ -34,6 +35,7 @@ const ReportCard = ({
         </Typography>
       </Box>
       <DropdownButton
+        ref={anchorRef}
         onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
         label={label}
       />
@@ -52,6 +54,7 @@ ReportCard.propTypes = {
   handleOpenChartModalDropDown: PropTypes.any,
   modalOpen: PropTypes.any,
   open: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 
 export default ReportCard;

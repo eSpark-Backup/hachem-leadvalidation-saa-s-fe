@@ -1,7 +1,6 @@
-import { Box, Button, CardContent, Typography } from '@mui/material';
+import { Box, CardContent, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import {
-  buttonStyle,
   cardContentStyle,
   performanceBoxStyle,
   simpleBoxStyle,
@@ -9,7 +8,7 @@ import {
   typographySubStyle,
 } from '../../styles/components/report-analytics/SupplierReports';
 import { TEXT_CONSTANTS } from '../../constants/components/reports/SupplierReports';
-import { KeyboardArrowDown } from '@mui/icons-material';
+import DropdownButton from './DropdownButton';
 
 const PerformanceCard = ({
   title,
@@ -21,23 +20,18 @@ const PerformanceCard = ({
   modalOpen,
   open,
   handleOpenChartModalDropDown,
+  anchorRef,
 }) => (
   <CardContent sx={cardContentStyle}>
     <Box sx={simpleBoxStyle}>
       <Typography variant="h4" fontWeight="bold">
         {title}
       </Typography>
-      <Button
-        sx={buttonStyle}
+      <DropdownButton
         onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
-      >
-        <Typography
-          sx={{ fontWeight: 400, fontSize: '14px', color: '#4A5154' }}
-        >
-          {TEXT_CONSTANTS.thisMonth}
-        </Typography>
-        <KeyboardArrowDown sx={{ color: '#4A5154' }} />
-      </Button>
+        label={TEXT_CONSTANTS.thisMonth}
+        ref={anchorRef}
+      />
     </Box>
 
     <ChartComponent {...chartProps} />
@@ -61,5 +55,6 @@ PerformanceCard.propTypes = {
   handleOpenChartModalDropDown: PropTypes.any,
   modalOpen: PropTypes.any,
   open: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 export default PerformanceCard;

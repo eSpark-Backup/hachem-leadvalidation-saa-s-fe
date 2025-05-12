@@ -19,6 +19,7 @@ const ClientSupplierRatio = ({
   isPerAllowed,
   handleOpenChartModalDropDown,
   open,
+  anchorRef,
 }) => (
   <CardContent sx={{ p: 2 }}>
     <Box
@@ -33,6 +34,7 @@ const ClientSupplierRatio = ({
       <DropdownButton
         onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
         label={btntitle || 'This Month'}
+        ref={anchorRef}
       />
     </Box>
 
@@ -108,6 +110,7 @@ ClientSupplierRatio.propTypes = {
   supplierColor: PropTypes.any,
   clientLegnedTitle: PropTypes.any,
   supplierLegnedTitle: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 
 export default ClientSupplierRatio;

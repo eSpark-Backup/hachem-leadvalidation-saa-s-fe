@@ -19,6 +19,7 @@ const SalesAnalysis = ({
   totalSales,
   inPer,
   curreny,
+  anchorRef,
 }) => {
   return (
     <>
@@ -72,6 +73,7 @@ const SalesAnalysis = ({
             </Box>
           </Box>
           <DropdownButton
+            ref={anchorRef}
             onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
             label={btnTitle}
           />
@@ -100,5 +102,6 @@ SalesAnalysis.propTypes = {
   totalSales: PropTypes.any,
   inPer: PropTypes.any,
   curreny: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 export default SalesAnalysis;

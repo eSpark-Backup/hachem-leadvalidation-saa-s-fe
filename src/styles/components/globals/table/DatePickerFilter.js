@@ -1,4 +1,4 @@
-import { paperCommonPropsStyles, slotsCommonPropsStyles } from "./Common";
+import { paperCommonPropsStyles, slotsCommonPropsStyles } from './Common';
 
 const buttonStyles = {
   border: '0.5px solid #136BE5',

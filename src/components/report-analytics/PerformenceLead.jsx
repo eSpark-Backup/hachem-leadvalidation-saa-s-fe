@@ -1,36 +1,34 @@
 import PropTypes from 'prop-types';
 import { TEXT_CONSTANTS } from '../../constants/components/reports/SupplierReports';
 import {
-  buttonStyle,
   cardContentStyle,
   performanceBoxStyle,
   simpleBoxStyle,
   typographyMainStyle,
   typographySubStyle,
 } from '../../styles/components/report-analytics/SupplierReports';
-import { Box, Button, CardContent, Typography } from '@mui/material';
+import { Box, CardContent, Typography } from '@mui/material';
 import BarLineChart from '../charts/BarLineChart';
 import { LEADS_CHART } from '../../constants/components/charts/LeadsPerformanceChart';
-import { KeyboardArrowDown } from '@mui/icons-material';
+import DropdownButton from './DropdownButton';
 
-const PerformenceLead = ({ open, modalOpen, handleOpenChartModalDropDown }) => {
+const PerformenceLead = ({
+  open,
+  modalOpen,
+  handleOpenChartModalDropDown,
+  anchorRef,
+}) => {
   return (
     <CardContent sx={cardContentStyle}>
       <Box sx={{ ...simpleBoxStyle, flexDirection: 'column' }}>
         <Typography variant="h4" fontWeight="bold">
           {TEXT_CONSTANTS.leadsPerformance}
         </Typography>
-        <Button
-          sx={buttonStyle}
+        <DropdownButton
           onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
-        >
-          <Typography
-            sx={{ fontWeight: 400, fontSize: '14px', color: '#4A5154' }}
-          >
-            {TEXT_CONSTANTS.thisMonth}
-          </Typography>
-          <KeyboardArrowDown sx={{ color: '#4A5154' }} />
-        </Button>
+          label={TEXT_CONSTANTS.thisMonth}
+          ref={anchorRef}
+        />
       </Box>
       <BarLineChart
         data={LEADS_CHART}
@@ -53,5 +51,6 @@ PerformenceLead.propTypes = {
   open: PropTypes.any,
   modalOpen: PropTypes.any,
   handleOpenChartModalDropDown: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 export default PerformenceLead;

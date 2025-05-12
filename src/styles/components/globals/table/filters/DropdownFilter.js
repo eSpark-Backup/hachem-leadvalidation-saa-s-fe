@@ -2,7 +2,7 @@ import { inputStyles } from '../Common';
 
 const filterDropdownStyles = {
   backgroundColor: 'white',
- height: { xs: '35px', sm: '25px' },
+  height: { xs: '35px', sm: '25px' },
 
   '& input': {
     padding: 0,

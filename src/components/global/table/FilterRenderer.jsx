@@ -10,7 +10,10 @@ import DropdownFilter from './filters/DropdownFilter';
 import DatePickerFilter from './DatePickerFilter';
 import LeadMonitoringHeaderButtons from './LeadMonitoringHeaderButtons';
 
-import { externalActionButtonsStyles, filterBoxStyles } from '../../../styles/components/globals/table/FilterRenderer';
+import {
+  externalActionButtonsStyles,
+  filterBoxStyles,
+} from '../../../styles/components/globals/table/FilterRenderer';
 
 const FilterRenderer = ({
   filters = [],

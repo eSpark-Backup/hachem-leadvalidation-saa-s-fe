@@ -45,22 +45,13 @@ const LeadsPerformanceChart = ({
 };
 
 LeadsPerformanceChart.propTypes = {
-  color: PropTypes.string.isRequired,
+  color: PropTypes.string,
   data: PropTypes.array.isRequired,
   height: PropTypes.number,
   fillOpacity: PropTypes.number,
   gradientOffsetStart: PropTypes.string,
   gradientOffsetEnd: PropTypes.string,
   dataKey: PropTypes.string,
-};
-
-LeadsPerformanceChart.defaultProps = {
-  color: '#ff7c7c',
-  height: 70,
-  fillOpacity: 0.8,
-  gradientOffsetStart: '5%',
-  gradientOffsetEnd: '95%',
-  dataKey: 'a',
 };
 
 export default LeadsPerformanceChart;

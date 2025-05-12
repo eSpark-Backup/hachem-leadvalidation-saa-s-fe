@@ -13,6 +13,7 @@ const SupplierTotalLeads = ({
   rejectColor,
   handleOpenChartModalDropDown,
   open,
+  anchorRef,
 }) => (
   <CardContent sx={cardContentStyle}>
     <Box
@@ -25,6 +26,7 @@ const SupplierTotalLeads = ({
         {title || 'Supplier'}
       </Typography>
       <DropdownButton
+        ref={anchorRef}
         onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
         label={btnTitle || 'This Month'}
       />
@@ -54,6 +56,7 @@ SupplierTotalLeads.propTypes = {
   open: PropTypes.any,
   validColor: PropTypes.any,
   rejectColor: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 
 export default SupplierTotalLeads;

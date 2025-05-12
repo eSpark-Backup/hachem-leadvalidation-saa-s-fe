@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@mui/material';
+import { CardContent } from '@mui/material';
 import SupplierHeaderSection from './SupplierHeaderSection';
 import PropTypes from 'prop-types';
 import CenteredBox from './CenteredBox';
@@ -15,10 +15,12 @@ const MostGenerateLeads = ({
   chartColors,
   tableData,
   tableHeaders,
+  anchorRef,
 }) => {
   return (
     <CardContent>
       <SupplierHeaderSection
+        anchorRef={anchorRef}
         title={title}
         buttonText={buttonText}
         onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
@@ -43,6 +45,7 @@ MostGenerateLeads.propTypes = {
   chartColors: PropTypes.array,
   tableData: PropTypes.array,
   tableHeaders: PropTypes.array,
+  anchorRef: PropTypes.array,
 };
 
 export default MostGenerateLeads;

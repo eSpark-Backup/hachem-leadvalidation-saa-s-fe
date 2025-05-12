@@ -5,13 +5,19 @@ import { LEADS_OVERVIEW_CHART2 } from '../../constants/components/charts/SingleL
 import { DASHBOARD_TEXT } from '../../constants/components/reports/SupplierReports';
 import { cardContentStyle } from '../../styles/components/report-analytics/SupplierReports';
 import PropTypes from 'prop-types';
-const LeadsOverview = ({ open, modalOpen, handleOpenChartModalDropDown }) => {
+const LeadsOverview = ({
+  open,
+  modalOpen,
+  handleOpenChartModalDropDown,
+  anchorRef,
+}) => {
   return (
     <CardContent sx={cardContentStyle}>
       <SupplierHeaderSection
         title={DASHBOARD_TEXT.LEADS_OVERVIEW}
         buttonText={DASHBOARD_TEXT.THIS_YEAR}
         onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
+        anchorRef={anchorRef}
       />
       <SingleLineChart2
         data={LEADS_OVERVIEW_CHART2}
@@ -26,5 +32,6 @@ LeadsOverview.propTypes = {
   open: PropTypes.any,
   modalOpen: PropTypes.any,
   handleOpenChartModalDropDown: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 export default LeadsOverview;

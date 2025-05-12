@@ -58,9 +58,10 @@ const cancelButtonStyles = (lead) => {
     ...buttonStyles,
     backgroundColor: lead ? 'transparent' : '#FFFFFF',
     color: lead ? '#FF4343' : '#136BE5',
-    boxShadow: lead ? '1px 2px 3px rgba(70, 118, 251, 0.41)' : '1px 2px 3px rgba(70, 118, 251, 0.41)',
+    boxShadow: lead
+      ? '1px 2px 3px rgba(70, 118, 251, 0.41)'
+      : '1px 2px 3px rgba(70, 118, 251, 0.41)',
     border: lead ? '1px solid #FF4343' : '1px solid #136BE5',
-
   };
 };
 

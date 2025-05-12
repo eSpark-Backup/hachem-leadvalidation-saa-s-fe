@@ -12,12 +12,14 @@ const CreditUsage = ({
   handleOpenChartModalDropDown,
   open,
   modalOpen,
+  anchorRef,
 }) => {
   return (
     <>
       <ClientCardHeader
         title={title}
         label={label}
+        anchorRef={anchorRef}
         onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
       />
       <SingleLineChartWeeks
@@ -40,6 +42,7 @@ CreditUsage.propTypes = {
   handleOpenChartModalDropDown: PropTypes.func,
   open: PropTypes.any,
   modalOpen: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 
 export default CreditUsage;

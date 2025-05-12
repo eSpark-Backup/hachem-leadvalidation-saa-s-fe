@@ -18,6 +18,7 @@ const EngagementRatio = ({
   handleOpenChartModalDropDown,
   innerRadius,
   outerRadius,
+  anchorRef,
 }) => {
   return (
     <CardContent sx={cardContentStyle}>
@@ -31,6 +32,7 @@ const EngagementRatio = ({
           {title}
         </Typography>
         <DropdownButton
+          ref={anchorRef}
           onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
           label={btntitle}
         />
@@ -51,7 +53,7 @@ const EngagementRatio = ({
           centerLabel={centerLabel}
           innerRadius={innerRadius}
           outerRadius={outerRadius}
-          isPerAllowed={1}
+          isPerAllowed={true}
         />
         <Box mt={2} display="flex" gap={2}>
           {chartData.map((item, index) => (
@@ -77,22 +79,23 @@ const EngagementRatio = ({
 };
 
 EngagementRatio.propTypes = {
-  title: PropTypes.string,
-  btntitle: PropTypes.string,
-  centerValue: PropTypes.string,
-  centerLabel: PropTypes.string,
+  title: PropTypes.any,
+  btntitle: PropTypes.any,
+  centerValue: PropTypes.any,
+  centerLabel: PropTypes.any,
   chartData: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string,
-      value: PropTypes.number,
+      label: PropTypes.any,
+      value: PropTypes.any,
     })
   ),
-  chartColors: PropTypes.arrayOf(PropTypes.string),
-  modalOpen: PropTypes.func,
+  chartColors: PropTypes.arrayOf(PropTypes.any),
+  modalOpen: PropTypes.any,
   open: PropTypes.bool,
-  handleOpenChartModalDropDown: PropTypes.func,
-  innerRadius: PropTypes.func,
-  outerRadius: PropTypes.func,
+  handleOpenChartModalDropDown: PropTypes.any,
+  innerRadius: PropTypes.any,
+  outerRadius: PropTypes.any,
+  anchorRef: PropTypes.any,
 };
 
 export default EngagementRatio;

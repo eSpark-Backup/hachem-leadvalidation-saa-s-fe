@@ -24,6 +24,7 @@ const StatisticsCard = ({
   modalOpen,
   open,
   handleOpenChartModalDropDown,
+  anchorRef,
 }) => {
   const getIcon = (direction) =>
     direction === 'up' ? (
@@ -58,6 +59,7 @@ const StatisticsCard = ({
           >
             {open == false && (
               <Box
+                ref={anchorRef}
                 onClick={
                   open == false ? modalOpen : handleOpenChartModalDropDown
                 }
@@ -139,6 +141,8 @@ StatisticsCard.propTypes = {
   chartData: PropTypes.array,
   modalOpen: PropTypes.any,
   open: PropTypes.any,
+  anchorRef: PropTypes.any,
+
   handleOpenChartModalDropDown: PropTypes.any,
 };
 

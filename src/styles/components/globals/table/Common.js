@@ -20,7 +20,7 @@ const backdropStyles = {
   background: 'rgba(9, 16, 43, 0.37)',
   backdropFilter: 'blur(2px)',
   zIndex: 1301,
-}
+};
 
 const slotsCommonPropsStyles = {
   '&::before': {

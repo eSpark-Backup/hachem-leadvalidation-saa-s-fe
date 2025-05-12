@@ -64,7 +64,7 @@ const scoringInputStyles = (incWidth) => {
       height: '40px',
     },
   };
-}
+};
 
 const scoringButtonStyles = {
   backgroundColor: 'rgba(255, 255, 255, 0.5)',

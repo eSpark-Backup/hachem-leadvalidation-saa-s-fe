@@ -1,12 +1,12 @@
 import { USER_TYPE } from '../utils/auth';
 import { USER_TYPES } from '../constants/components/globals/Auth';
-import SupplierReports from '../components/report-analytics/SupplierReports';
-import ClientReports from '../components/report-analytics/ClientReports';
 import {
   copyReportDataToClipboard,
   downloadReportData,
 } from '../utils/pages/reports/reports';
 import NotFound from './NotFound';
+import ClientReports from '../components/report-analytics/pages/ClientReports';
+import SupplierReports from '../components/report-analytics/pages/SupplierReports';
 
 const ReportsAnalytics = () => {
   const handleDownload = () => downloadReportData('USER_TYPE');
