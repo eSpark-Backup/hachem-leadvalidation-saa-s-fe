@@ -7,7 +7,10 @@ import {
   ICONS,
 } from '../../../../constants/components/globals/Table';
 
-import { filterDropdownStyles } from '../../../../styles/components/globals/table/filters/DropdownFilter';
+import {
+  filterDropdownStyles,
+  menuItemsStyles,
+} from '../../../../styles/components/globals/table/filters/DropdownFilter';
 
 const DropdownFilter = ({ label, value = null, onChange = null, options }) => (
   <FormControl size="small" sx={{ width: { xs: '100%', sm: 'auto' } }}>
@@ -24,12 +27,12 @@ const DropdownFilter = ({ label, value = null, onChange = null, options }) => (
       )}
       displayEmpty
     >
-      <MenuItem value="" disabled>
+      <MenuItem value="" disabled sx={menuItemsStyles}>
         {label}
       </MenuItem>
 
-      {options?.map((opt) => (
-        <MenuItem key={opt.value} value={opt.value}>
+      {options?.map((opt, i) => (
+        <MenuItem key={i} value={opt.value} sx={menuItemsStyles}>
           {opt.label}
         </MenuItem>
       ))}

@@ -26,4 +26,17 @@ const filterDropdownStyles = {
   },
 };
 
-export { filterDropdownStyles };
+const menuItemsStyles = {
+  ...inputStyles,
+  borderLeft: '5px solid',
+  borderColor: 'transparent',
+  transition: 'border-color 0.3s ease',
+  padding: '5px 8px',
+
+  '&:hover': {
+    backgroundColor: 'transparent',
+    borderColor: '#54D14D',
+  },
+};
+
+export { filterDropdownStyles, menuItemsStyles };

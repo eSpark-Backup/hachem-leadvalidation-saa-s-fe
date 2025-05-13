@@ -66,6 +66,8 @@ const LeadScoringSetting = () => {
                   key={index}
                   placeholder={inp.placeholder}
                   incWidth={inp.name === 'mandatory_fields'}
+                  type={inp.type}
+                  name={inp.name}
                 />
               ))}
             </Box>
