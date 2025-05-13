@@ -1,3 +1,5 @@
+import { location, validation } from './DropdownOptions';
+
 export const SUPPLIER_DASHBOARD_AVAILABLE_LEADS = {
   title: 'Available Leads',
   filterType: {
@@ -97,6 +99,6 @@ export const SUPPLIER_AVAILABLE_LEADS_FILTER_TYPES = [
 ];
 
 export const SUPPLIER_AVAILABLE_LEADS_SELECT_FILTERS = [
-  { options: [], label: 'Validation', key: 'validation' },
-  { options: [], label: 'Select Location', key: 'location' },
+  { options: validation, label: 'Validation', key: 'validation' },
+  { options: location, label: 'Select Location', key: 'location' },
 ];
