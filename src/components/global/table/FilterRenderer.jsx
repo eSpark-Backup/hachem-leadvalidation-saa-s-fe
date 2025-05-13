@@ -7,8 +7,7 @@ import CopyFilter from './filters/CopyFilter';
 import MonthSelector from './MonthSelector';
 import DownloadFilter from './filters/DownloadFilter';
 import DropdownFilter from './filters/DropdownFilter';
-import DatePickerFilter from './DatePickerFilter';
-import LeadMonitoringHeaderButtons from './LeadMonitoringHeaderButtons';
+import DatePickerFilter from './popovers/DatePickerFilter';
 
 import {
   externalActionButtonsStyles,
@@ -27,6 +26,9 @@ const FilterRenderer = ({
   tableBody,
   setSelectedRows,
   selectedRows,
+  leadMonitoring,
+  pickerObjects,
+  actions
 }) => {
   return (
     <Box sx={filterBoxStyles}>
@@ -69,30 +71,27 @@ const FilterRenderer = ({
             return (
               <DatePickerFilter
                 key={filter.key}
-                currentMonth={currentMonth}
-                onChange={onMonthChange}
+                leadMonitoring={leadMonitoring}
+                pickerObjects={pickerObjects}
               />
             );
 
-          case filterType.history:
-            return <LeadMonitoringHeaderButtons key={filter.key} />;
-
           case filterType.copy || filterType.download:
             return (
-              <Box sx={externalActionButtonsStyles}>
+              <Box sx={externalActionButtonsStyles} key={filter.key}>
                 <CopyFilter
-                  key={filter.key}
                   tableHeader={tableHeader}
                   tableBody={tableBody}
                   setSelectedRows={setSelectedRows}
                   selectedRows={selectedRows}
+                  actions={actions}
                 />
 
                 <DownloadFilter
-                  key={filter.key}
                   tableHeader={tableHeader}
                   tableBody={tableBody}
                   setSelectedRows={setSelectedRows}
+                  actions={actions}
                 />
               </Box>
             );
@@ -117,6 +116,9 @@ FilterRenderer.propTypes = {
   tableBody: PropTypes.arrayOf(PropTypes.object),
   setSelectedRows: PropTypes.func,
   selectedRows: PropTypes.array,
+  leadMonitoring: PropTypes.bool,
+  pickerObjects: PropTypes.object,
+  actions: PropTypes.object,
 };
 
 export default FilterRenderer;

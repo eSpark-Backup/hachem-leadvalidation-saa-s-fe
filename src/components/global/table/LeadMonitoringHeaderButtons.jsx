@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Box, Button, Stack } from '@mui/material';
 
 import {
@@ -12,12 +14,24 @@ import {
   monthButtonStyles,
 } from '../../../styles/components/globals/table/LeadMonitoringHeaderButtons';
 
-const LeadMonitoringHeaderButtons = () => {
+const LeadMonitoringHeaderButtons = ({
+  buttonRef,
+  onClick,
+  setIsViewingHistory,
+  isViewingHistory,
+}) => {
   return (
     <Stack sx={leadMonitoringButtonStackStyles}>
-      <Button sx={historyButtonStyles}>{TABLE_STATIC_TEXTS.history}</Button>
+      <Button
+        sx={historyButtonStyles(isViewingHistory)}
+        onClick={() => setIsViewingHistory(!isViewingHistory)}
+      >
+        {TABLE_STATIC_TEXTS.history}
+      </Button>
 
       <Button
+        ref={buttonRef}
+        onClick={onClick}
         sx={monthButtonStyles}
         endIcon={<Box component={'img'} src={ICONS.gradientDropdown} />}
       >
@@ -25,6 +39,13 @@ const LeadMonitoringHeaderButtons = () => {
       </Button>
     </Stack>
   );
+};
+
+LeadMonitoringHeaderButtons.propTypes = {
+  buttonRef: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  setIsViewingHistory: PropTypes.func.isRequired,
+  isViewingHistory: PropTypes.bool.isRequired,
 };
 
 export default LeadMonitoringHeaderButtons;

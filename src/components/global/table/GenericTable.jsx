@@ -53,6 +53,8 @@ const GenericTable = ({
   leadMonitoring = false,
   leadStatus = false,
   myLeads = false,
+  pickerObjects,
+  actions
 }) => {
   const {
     paginatedData,
@@ -114,6 +116,9 @@ const GenericTable = ({
           tableBody={paginatedData}
           setSelectedRows={setSelectedRows}
           selectedRows={selectedRows}
+          leadMonitoring={leadMonitoring}
+          pickerObjects={pickerObjects}
+          actions={actions}
         />
       </Box>
 
@@ -209,6 +214,8 @@ GenericTable.propTypes = {
   leadMonitoring: PropTypes.bool,
   leadStatus: PropTypes.bool,
   myLeads: PropTypes.bool,
+  pickerObjects: PropTypes.object,
+  actions: PropTypes.object,
 };
 
 export default GenericTable;
