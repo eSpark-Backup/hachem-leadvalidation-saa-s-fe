@@ -14,7 +14,14 @@ import { filterCommonBoxStyles } from '../../../../styles/components/globals/tab
 import { iconStyles } from '../../../../styles/components/globals/table/filters/DownloadCopy';
 import { inputStyles } from '../../../../styles/components/globals/table/Common';
 
-const DownloadFilter = ({ tableHeader, tableBody, setSelectedRows }) => {
+const DownloadFilter = ({
+  tableHeader,
+  tableBody,
+  setSelectedRows,
+  actions,
+}) => {
+  const { handleOpen, setProgress } = actions;
+
   const exportableKeys = tableHeader
     ?.filter((h) => h.key !== 'action')
     .map((h) => h.key);
@@ -30,7 +37,14 @@ const DownloadFilter = ({ tableHeader, tableBody, setSelectedRows }) => {
   return (
     <Button
       sx={filterCommonBoxStyles}
-      onClick={() => downloadTableDataToCSV([headerLabels, ...prepareData()])}
+      onClick={() =>
+        downloadTableDataToCSV(
+          [headerLabels, ...prepareData()],
+          'leads.csv',
+          handleOpen,
+          setProgress,
+        )
+      }
     >
       <Typography sx={{ ...inputStyles, height: 'auto' }}>
         {TABLE_TEXTS.download}
@@ -47,6 +61,7 @@ DownloadFilter.propTypes = {
   tableHeader: PropTypes.arrayOf(PropTypes.object).isRequired,
   tableBody: PropTypes.arrayOf(PropTypes.object).isRequired,
   // setSelectedRows: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
 export default DownloadFilter;

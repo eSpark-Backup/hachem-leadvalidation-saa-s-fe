@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Box, Button, Typography } from '@mui/material';
 
 import {
@@ -10,7 +12,7 @@ import {
   okButtonStyles,
 } from '../../styles/components/leadScoringSetting/GenerateAILeadModal';
 
-const GeneratedAILeadSuccess = () => {
+const GeneratedAILeadSuccess = ({ handleClose }) => {
   return (
     <Box textAlign={'center'}>
       <Typography variant="h1" sx={generateLeadAIHeadingStyles}>
@@ -20,10 +22,16 @@ const GeneratedAILeadSuccess = () => {
       <Box component={'img'} src={ICONS.successfull} />
 
       <Box>
-        <Button sx={okButtonStyles}>{LEAD_SCORING_SETTING.ok}</Button>
+        <Button sx={okButtonStyles} onClick={handleClose}>
+          {LEAD_SCORING_SETTING.ok}
+        </Button>
       </Box>
     </Box>
   );
+};
+
+GeneratedAILeadSuccess.propTypes = {
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default GeneratedAILeadSuccess;
