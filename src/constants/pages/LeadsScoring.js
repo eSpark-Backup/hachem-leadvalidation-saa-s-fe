@@ -125,6 +125,7 @@ export const ALT_ATTRIBUTE = {
   document: 'Document',
   trash: 'Trash',
   check: 'Check',
+  successfull:"Successfull"
 };
 
 export const ICONS = {
@@ -140,33 +141,41 @@ export const SCORING_SETTINGS = [
   {
     name: 'name',
     placeholder: 'Valid Name\t+05 pts',
+    type: 'number',
   },
   {
     name: 'duplicate',
     placeholder: 'No Duplicate\t+02 pts',
+    type: 'number',
   },
   {
     name: 'blacklised',
     placeholder: 'No Blacklised\t+30 pts',
+    type: 'number',
   },
   {
     name: 'phone',
     placeholder: 'Valid Phone\t+30 pts',
+    type: 'number',
   },
   {
     name: 'address',
     placeholder: 'Valid Address\t+10 pts',
+    type: 'number',
   },
   {
     name: 'email',
     placeholder: 'Valid Email\t+30 pts',
+    type: 'number',
   },
   {
     name: 'zip_code',
     placeholder: 'Valid Zip Code\t+30 pts',
+    type: 'number',
   },
   {
     name: 'mandatory_fields',
     placeholder: 'Mandatory fields filled\t+30 pts',
+    type: 'number',
   },
 ];

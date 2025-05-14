@@ -1,3 +1,5 @@
+import { location, service, validation } from './DropdownOptions';
+
 export const CLIENT_DASHBOARD_LEADS = {
   title: 'Leads',
   filterType: {
@@ -69,7 +71,7 @@ export const CLIENT_LEADS_FILTER_TYPES = [
 ];
 
 export const CLIENT_LEADS_SELECT_FILTERS = [
-  { options: [], label: 'Services', key: 'service' },
-  { options: [], label: 'Validation', key: 'validation' },
-  { options: [], label: 'Select Location', key: 'location' },
+  { options: service, label: 'Services', key: 'services' },
+  { options: validation, label: 'Validation', key: 'leads_validation' },
+  { options: location, label: 'Select Location', key: 'country' },
 ];

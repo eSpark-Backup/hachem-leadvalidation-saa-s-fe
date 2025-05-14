@@ -10,9 +10,6 @@ import TrashIcon from '../../../assets/images/global/table-icons/trash.svg';
 // Pagination Icons
 import LargeLeftArrowIcon from '../../../assets/images/global/table-icons/large-left-arrow.svg';
 import LargeRightArrowIcon from '../../../assets/images/global/table-icons/large-right-arrow.svg';
-// Month Filter Icons
-import SmallLeftArrowIcon from '../../../assets/images/global/table-icons/filter-left-arrow.svg';
-import SmallRightArrowIcon from '../../../assets/images/global/table-icons/filter-right-arrow.svg';
 // Date Filter Button icons
 import UpArrowIcon from '../../../assets/images/global/table-icons/up-arrow.svg';
 import DownArrowIcon from '../../../assets/images/global/table-icons/down-arrow.svg';
@@ -52,8 +49,6 @@ const ICONS = {
   eye: EyeIcon,
   edit: EditIcon,
   trash: TrashIcon,
-  smallLeftArrow: SmallLeftArrowIcon,
-  smallRightArrow: SmallRightArrowIcon,
   largeLeftArrow: LargeLeftArrowIcon,
   largeRightArrow: LargeRightArrowIcon,
   search: SearchIcon,
@@ -84,13 +79,4 @@ const TABLE_STATIC_TEXTS = {
   reject: 'Reject',
 };
 
-const BG_COLOR = 'linear-gradient(0deg, #E7F7EF, #E7F7EF), #FFFBFE';
-
-export {
-  TABLE_TEXTS,
-  PLACEHOLDERS,
-  ALT_ATTRIBUTE,
-  ICONS,
-  TABLE_STATIC_TEXTS,
-  BG_COLOR,
-};
+export { TABLE_TEXTS, PLACEHOLDERS, ALT_ATTRIBUTE, ICONS, TABLE_STATIC_TEXTS };

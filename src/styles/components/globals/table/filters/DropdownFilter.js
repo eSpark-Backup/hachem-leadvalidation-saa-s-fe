@@ -26,4 +26,23 @@ const filterDropdownStyles = {
   },
 };
 
-export { filterDropdownStyles };
+const menuItemsStyles = {
+  ...inputStyles,
+  borderLeft: '5px solid',
+  borderColor: 'transparent',
+  transition: 'border-color 0.3s ease',
+  padding: '5px 8px',
+
+  '&:hover': {
+    backgroundColor: 'transparent',
+    borderColor: '#54D14D',
+  },
+};
+
+const clearIconStyles = {
+  padding: 0,
+  fontSize: 'inherit',
+  backgroundColor: 'transparent !important',
+};
+
+export { filterDropdownStyles, menuItemsStyles, clearIconStyles };

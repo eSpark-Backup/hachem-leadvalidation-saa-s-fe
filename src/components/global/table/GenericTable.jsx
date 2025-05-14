@@ -20,6 +20,8 @@ import FormatCell from './FormatCell';
 import {
   genericTableHeadingBoxStyles,
   headingBoxStyles,
+  noDataRowStyles,
+  noDataTextStyles,
   tableBodyRowStyles,
   tableContainerStyles,
   tableHeaderHeadingStyles,
@@ -53,6 +55,8 @@ const GenericTable = ({
   leadMonitoring = false,
   leadStatus = false,
   myLeads = false,
+  pickerObjects,
+  actions,
 }) => {
   const {
     paginatedData,
@@ -76,7 +80,7 @@ const GenericTable = ({
   };
 
   return (
-    <Box sx={!noBg ? { ...tableContainerStyles, marginTop } : { marginTop }}>
+    <Box sx={!noBg ? tableContainerStyles(marginTop) : { marginTop }}>
       <Box sx={headingBoxStyles(leadMonitoring, leadStatus)}>
         <Box sx={genericTableHeadingBoxStyles}>
           <Typography
@@ -114,6 +118,9 @@ const GenericTable = ({
           tableBody={paginatedData}
           setSelectedRows={setSelectedRows}
           selectedRows={selectedRows}
+          leadMonitoring={leadMonitoring}
+          pickerObjects={pickerObjects}
+          actions={actions}
         />
       </Box>
 
@@ -131,39 +138,47 @@ const GenericTable = ({
             </TableHead>
 
             <TableBody>
-              {paginatedData.map((row, i) => (
-                <TableRow
-                  key={i}
-                  sx={tableBodyRowStyles(
-                    excelFilter,
-                    selectedRows.includes(row.id),
-                    myLeads &&
-                      (row.status === 'Pending' || row.status === 'Reject')
-                  )}
-                  onClick={() => excelFilter && toggleRow(row.id)}
-                >
-                  {columns.map(({ key }, colIndex) => (
-                    <FormatCell
-                      key={key}
-                      colIndex={colIndex}
-                      colKey={key}
-                      detail={detail}
-                      detailAction={detailAction}
-                      editAction={editAction}
-                      deleteAction={deleteAction}
-                      edit={edit}
-                      row={row}
-                      trash={trash}
-                      onEnterCursor={onEnterCursor}
-                      hasPoints={hasPoints}
-                      myLeads={
-                        myLeads &&
+              {paginatedData?.length ? (
+                paginatedData.map((row, i) => (
+                  <TableRow
+                    key={i}
+                    sx={tableBodyRowStyles(
+                      excelFilter,
+                      selectedRows.includes(row.id),
+                      myLeads &&
                         (row.status === 'Pending' || row.status === 'Reject')
-                      }
-                    />
-                  ))}
+                    )}
+                    onClick={() => excelFilter && toggleRow(row.id)}
+                  >
+                    {columns.map(({ key }, colIndex) => (
+                      <FormatCell
+                        key={key}
+                        colIndex={colIndex}
+                        colKey={key}
+                        detail={detail}
+                        detailAction={detailAction}
+                        editAction={editAction}
+                        deleteAction={deleteAction}
+                        edit={edit}
+                        row={row}
+                        trash={trash}
+                        onEnterCursor={onEnterCursor}
+                        hasPoints={hasPoints}
+                        myLeads={
+                          myLeads &&
+                          (row.status === 'Pending' || row.status === 'Reject')
+                        }
+                      />
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow sx={noDataRowStyles}>
+                  <TableCell colSpan={columns.length}>
+                    <Typography sx={noDataTextStyles}>No Data Found</Typography>
+                  </TableCell>
                 </TableRow>
-              ))}
+              )}
             </TableBody>
           </Table>
         </TableContainer>
@@ -209,6 +224,8 @@ GenericTable.propTypes = {
   leadMonitoring: PropTypes.bool,
   leadStatus: PropTypes.bool,
   myLeads: PropTypes.bool,
+  pickerObjects: PropTypes.object,
+  actions: PropTypes.object,
 };
 
 export default GenericTable;
