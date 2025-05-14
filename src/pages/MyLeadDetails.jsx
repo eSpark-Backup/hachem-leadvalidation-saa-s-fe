@@ -26,7 +26,7 @@ const LeadDetails = () => {
 
   return (
     <>
-      {USER_TYPE === USER_TYPES.supplier ? (
+      {USER_TYPE === USER_TYPES.supplier || USER_TYPE === USER_TYPES.client ? (
         <GenericTable
           title={
             USER_TYPE === USER_TYPES.client ? `Klairn’s ID ${mergeTitle}` : ''
