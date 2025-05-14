@@ -39,4 +39,10 @@ const menuItemsStyles = {
   },
 };
 
-export { filterDropdownStyles, menuItemsStyles };
+const clearIconStyles = {
+  padding: 0,
+  fontSize: 'inherit',
+  backgroundColor: 'transparent !important',
+};
+
+export { filterDropdownStyles, menuItemsStyles, clearIconStyles };

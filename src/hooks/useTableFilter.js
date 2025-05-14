@@ -32,6 +32,27 @@ const useTableFilter = (data, itemsPerPage = 10) => {
       const matchesDropdowns = Object.entries(filterState).every(
         ([key, val]) => {
           if (!val || key === 'search') return true;
+
+          if (key === 'leads_validation') {
+            const leadVal = parseFloat(item.leads_validation?.replace('%', ''));
+
+            if (val === '100%') {
+              return leadVal === 100;
+            }
+
+            const match = val.match(/^(\d+)%-(\d+)%?$/);
+
+            if (match) {
+              const [_, minStr, maxStr] = match;
+              const min = Number(minStr);
+              const max = Number(maxStr);
+
+              return leadVal >= min && leadVal <= max;
+            }
+
+            return true;
+          }
+
           return item[key]
             ?.toString()
             .toLowerCase()

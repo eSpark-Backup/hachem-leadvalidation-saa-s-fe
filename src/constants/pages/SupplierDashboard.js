@@ -99,6 +99,6 @@ export const SUPPLIER_AVAILABLE_LEADS_FILTER_TYPES = [
 ];
 
 export const SUPPLIER_AVAILABLE_LEADS_SELECT_FILTERS = [
-  { options: validation, label: 'Validation', key: 'validation' },
-  { options: location, label: 'Select Location', key: 'location' },
+  { options: validation, label: 'Validation', key: 'leads_validation' },
+  { options: location, label: 'Select Location', key: 'country' },
 ];

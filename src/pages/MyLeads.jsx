@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import CommonDialog from '../components/global/table/dialog/CommonDialog';
@@ -14,7 +15,6 @@ import {
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/MyLeads';
-import { useState } from 'react';
 
 const MyLeads = () => {
   const navigate = useNavigate();

@@ -121,7 +121,7 @@ export const FILTER_TYPES = [
 ];
 
 export const SELECT_FILTERS = [
-  { options: service, label: 'Services', key: 'service' },
-  { options: validation, label: 'Validation', key: 'validation' },
-  { options: location, label: 'Select Location', key: 'location' },
+  // { options: service, label: 'Services', key: 'services' },
+  { options: validation, label: 'Validation', key: 'leads_validation' },
+  { options: location, label: 'Select Location', key: 'country' },
 ];

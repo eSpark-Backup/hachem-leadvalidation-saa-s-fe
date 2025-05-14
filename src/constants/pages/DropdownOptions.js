@@ -32,15 +32,15 @@ export const service = [
 export const validation = [
   {
     id: 1,
-    label: '70-75%',
+    label: '70%-75%',
   },
   {
     id: 2,
-    label: '80-85%',
+    label: '80%-85%',
   },
   {
     id: 3,
-    label: '90-95%',
+    label: '90%-95%',
   },
   {
     id: 4,
