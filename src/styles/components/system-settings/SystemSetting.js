@@ -75,5 +75,15 @@ const styles = {
       color: '#09102B',
     },
   },
+  resetButton: {
+    background: '#fff',
+    border: '1px solid #77797D',
+    color: ' #77797D',
+    '&:hover': {
+      background: '#fff',
+      border: '1px solid #77797D',
+      color: ' #77797D',
+    },
+  },
 };
 export { styles, modalStyle };

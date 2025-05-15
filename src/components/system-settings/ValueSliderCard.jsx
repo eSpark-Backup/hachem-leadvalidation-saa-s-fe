@@ -31,6 +31,8 @@ const ValueSliderCard = ({
   unit,
   value = 33,
   onChange,
+  startTitle,
+  endTitle,
 }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -70,19 +72,24 @@ const ValueSliderCard = ({
               sx={sliderStyles}
             />
             <Box display="flex" justifyContent="space-between">
-              <Typography sx={valueLabelStyles}>{min}</Typography>
-              <Typography sx={valueLabelStyles}>{max}</Typography>
+              <Typography sx={valueLabelStyles}>
+                {startTitle ? startTitle : min}
+              </Typography>
+              <Typography sx={valueLabelStyles}>
+                {endTitle ? endTitle : max}
+              </Typography>
             </Box>
           </Box>
-
-          <Box
-            mt={isMobile ? 1 : 0}
-            ml={isMobile ? 0 : 1}
-            sx={sliderValueBoxBase}
-          >
-            <Typography sx={sliderValueTextStyles}>{value}</Typography>
-            <Typography sx={sliderUnitTextStyles}>{formattedUnit}</Typography>
-          </Box>
+          {unit && (
+            <Box
+              mt={isMobile ? 1 : 0}
+              ml={isMobile ? 0 : 1}
+              sx={sliderValueBoxBase}
+            >
+              <Typography sx={sliderValueTextStyles}>{value}</Typography>
+              <Typography sx={sliderUnitTextStyles}>{formattedUnit}</Typography>
+            </Box>
+          )}
         </Box>
       </Box>
     </Card>
@@ -97,6 +104,8 @@ ValueSliderCard.propTypes = {
   min: PropTypes.any,
   max: PropTypes.any,
   unit: PropTypes.any,
+  startTitle: PropTypes.any,
+  endTitle: PropTypes.any,
 };
 
 export default ValueSliderCard;

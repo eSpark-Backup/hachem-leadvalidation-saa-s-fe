@@ -191,7 +191,11 @@ const SystemSetting = () => {
                 />
               ))}
               <Box mt={2} sx={styles.buttonGroup}>
-                <Button variant="outlined" onClick={handleResetLeads}>
+                <Button
+                  variant="outlined"
+                  onClick={handleResetLeads}
+                  sx={styles.resetButton}
+                >
                   {SYSTEM_SETTING.reset}
                 </Button>
                 <Button variant="contained" onClick={handleSaveLeads}>
@@ -228,7 +232,11 @@ const SystemSetting = () => {
                 />
               ))}
               <Box mt={2} sx={styles.buttonGroup}>
-                <Button variant="outlined" onClick={handleResetFraud}>
+                <Button
+                  variant="outlined"
+                  onClick={handleResetFraud}
+                  sx={styles.resetButton}
+                >
                   {SYSTEM_SETTING.reset}
                 </Button>
                 <Button variant="contained" onClick={handleSaveFraud}>
@@ -289,7 +297,11 @@ const SystemSetting = () => {
             </Stack>
 
             <Box mt={2} sx={styles.buttonGroup}>
-              <Button variant="outlined" onClick={handleResetMessages}>
+              <Button
+                variant="outlined"
+                onClick={handleResetMessages}
+                sx={styles.resetButton}
+              >
                 {SYSTEM_SETTING.reset}
               </Button>
               <Button variant="contained" onClick={handleSaveMessages}>
@@ -366,7 +378,11 @@ const SystemSetting = () => {
           />
 
           <Stack direction="row" justifyContent="flex-end" spacing={2} mt={3}>
-            <Button variant="outlined" onClick={handleCloseModal}>
+            <Button
+              variant="outlined"
+              onClick={handleCloseModal}
+              sx={styles.resetButton}
+            >
               {SYSTEM_SETTING.modalCancel}
             </Button>
             <Button variant="contained" onClick={handleCardSave}>
