@@ -9,12 +9,9 @@ import {
   Select,
   TextField,
   Typography,
-  Switch,
-  FormControlLabel,
   InputAdornment,
 } from '@mui/material';
 import { useState } from 'react';
-
 import { USER_TYPE } from '../utils/auth';
 import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 import {
@@ -42,34 +39,31 @@ import {
 import SettingToggleCard from '../components/system-settings/SettingToggleCard';
 import { CustomSwitch } from '../components/system-settings/CustomSwitch';
 import ValueSliderCard from '../components/system-settings/ValueSliderCard';
+import { PaymentFormStyles } from '../styles/components/settings/PaymentForm';
 
 const KlaienManagement = () => {
   const [activeBox, setActiveBox] = useState(1);
   const [enabled, setEnabled] = useState(false);
-  const [voiceDetection, setVoiceDetection] = useState(false);
-  const [callRecording, setCallRecording] = useState(false);
+  const [errors, setErrors] = useState({});
   const [phoneNumber, setPhoneNumber] = useState('+44 (123) 456-9878');
+
+  const handleClick = (id) => setActiveBox(id);
 
   const handleToggle = (event) => {
     const checked = event.target.checked;
     setEnabled(checked);
   };
+
   const [speedSettingsValues, setSpeedSettingsValues] = useState(() =>
     getDefaultLeadSettings(LEADS_SETTINGS)
   );
   const [settingsState, setSettingsState] = useState(() =>
     getDefaultFraudSettings(FRAUD_SETTINGS)
   );
-  const handleResetLeads = () => {
-    setSpeedSettingsValues(getDefaultLeadSettings(LEADS_SETTINGS));
-  };
   const handleResetAudioPreview = () => {};
-  const handleClick = (id) => setActiveBox(id);
   const handleResetTwilloSetting = () => {};
   const handleSaveAudioPreview = () => {};
-  const handleSaveLeads = () => {};
   const handleSaveTwilloSetting = () => {};
-  const handleVoiceChange = () => {};
 
   if (USER_TYPE !== USER_TYPES.admin)
     return <NotFound btnLink={ROUTES.dashboard} />;
@@ -140,23 +134,6 @@ const KlaienManagement = () => {
             ))}
           </Box>
         )}
-        {activeBox == 3 && (
-          <Box
-            container
-            spacing={2}
-            mt={5}
-            p={1}
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <Typography sx={styles.sectionTitle}>
-              {SYSTEM_SETTING.rejectionMessagesTitle}
-            </Typography>
-            <Typography sx={styles.sectionSubtitle}>
-              {SYSTEM_SETTING.rejectionMessagesDesc}
-            </Typography>
-          </Box>
-        )}
 
         <Collapse in={activeBox === 1}>
           <Box
@@ -209,12 +186,12 @@ const KlaienManagement = () => {
             <Box p={1} sx={{ display: 'flex' }}>
               <Box mt={0}>
                 <Box mt={2} sx={styles.buttonGroup}>
-                  <Button variant="contained" onClick={handleSaveLeads}>
+                  <Button variant="contained" onClick={''}>
                     {`Generate AI`}
                   </Button>
                   <Button
                     variant="outlined"
-                    onClick={handleResetLeads}
+                    onClick={''}
                     sx={{
                       background: '#fff',
                       border: '1px solid #77797D',
@@ -232,7 +209,7 @@ const KlaienManagement = () => {
               <Box mt={2} sx={styles.buttonGroup}>
                 <Button
                   variant="outlined"
-                  onClick={handleResetLeads}
+                  onClick={''}
                   sx={{
                     background: '#fff',
                     border: '1px solid #77797D',
@@ -241,7 +218,7 @@ const KlaienManagement = () => {
                 >
                   {SYSTEM_SETTING.reset}
                 </Button>
-                <Button variant="contained" onClick={handleSaveLeads}>
+                <Button variant="contained" onClick={''}>
                   {SYSTEM_SETTING.save}
                 </Button>
               </Box>
@@ -276,7 +253,7 @@ const KlaienManagement = () => {
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       value={voice.defaultValue}
-                      onChange={handleVoiceChange}
+                      onChange={''}
                     >
                       {voice.opions.map((opt, ind) => (
                         <MenuItem key={ind} value={opt.value}>
@@ -345,112 +322,210 @@ const KlaienManagement = () => {
         </Collapse>
 
         <Collapse in={activeBox === 3}>
-          <Box mt={5} p={1}>
-            <Box
-              mt={2}
-              sx={{
-                borderRadius: '32px',
-                background: ' #D9D9D9',
-                p: 5,
-              }}
-            >
-              <Grid container spacing={4}>
-                {/* Twilio Credentials */}
-                <Grid item xs={12} md={6}>
-                  <Typography variant="h6" gutterBottom color="primary">
-                    Twilio Credentials
+          <Box
+            container
+            spacing={2}
+            mt={5}
+            p={1}
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <Typography sx={styles.sectionTitle}>
+              {SYSTEM_SETTING.rejectionMessagesTitle}
+            </Typography>
+            <Typography sx={styles.sectionSubtitle}>
+              {SYSTEM_SETTING.rejectionMessagesDesc}
+            </Typography>
+          </Box>
+          <Box
+            mt={2}
+            sx={{
+              borderRadius: '32px',
+              background: ' #D9D9D9',
+              p: 5,
+            }}
+          >
+            <Grid container spacing={20}>
+              {/* Twilio Credentials */}
+              <Grid item xs={12} md={6}>
+                <Typography
+                  gutterBottom
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: '19.49px',
+                    color: '#1B2559',
+                  }}
+                >
+                  Twilio Credentials
+                </Typography>
+
+                <Box mb={2}>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      color: '#1E293B',
+                      py: 1,
+                    }}
+                  >
+                    Account SID
                   </Typography>
+                  <TextField
+                    fullWidth
+                    placeholder="Enter your Twilio SID"
+                    variant="outlined"
+                    // size="small"
+                    sx={{
+                      backgroundColor: 'white',
+                      borderRadius: '32px',
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: '32px',
+                      },
+                    }}
+                  />
+                </Box>
 
-                  <Box mb={2}>
-                    <Typography variant="body2">Account SID</Typography>
-                    <TextField
-                      fullWidth
-                      placeholder="Enter your Twilio SID"
-                      variant="outlined"
-                      size="small"
-                    />
-                  </Box>
-
-                  <Box mb={2}>
-                    <Typography variant="body2">Token</Typography>
-                    <TextField
-                      fullWidth
-                      placeholder="Enter your Token Number"
-                      variant="outlined"
-                      size="small"
-                    />
-                  </Box>
-
-                  <Box mb={2}>
-                    <Typography variant="body2">Twilio Phone Number</Typography>
-                    <TextField
-                      fullWidth
-                      placeholder="+44 (123) 456-9878"
-                      variant="outlined"
-                      size="small"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">🇬🇧</InputAdornment>
-                        ),
-                      }}
-                    />
-                  </Box>
-                </Grid>
-
-                {/* Call Settings */}
-                <Grid item xs={12} md={6}>
-                  <Typography variant="h6" gutterBottom color="primary">
-                    Call Settings
+                <Box mb={2}>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      color: '#1E293B',
+                      py: 1,
+                    }}
+                  >
+                    Token
                   </Typography>
+                  <TextField
+                    fullWidth
+                    placeholder="Enter your Token Number"
+                    variant="outlined"
+                    // size="small"
+                    sx={{
+                      backgroundColor: 'white',
+                      borderRadius: '32px',
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: '32px',
+                      },
+                    }}
+                  />
+                </Box>
 
-                  <Box mb={2}>
-                    <Typography variant="body2">Call Time Out (sec)</Typography>
-                    <TextField
-                      fullWidth
-                      placeholder="30"
-                      variant="outlined"
-                      size="small"
-                      type="number"
-                    />
-                  </Box>
-
-                  <Box>
-                    <FormControlLabel
-                      control={
-                        <Switch
-                          checked={voiceDetection}
-                          onChange={(e) => setVoiceDetection(e.target.checked)}
-                        />
-                      }
-                      label="Voice Detection"
-                    />
-                  </Box>
-
-                  <Box>
-                    <FormControlLabel
-                      control={
-                        <Switch
-                          checked={callRecording}
-                          onChange={(e) => setCallRecording(e.target.checked)}
-                        />
-                      }
-                      label="Call Recordings"
-                    />
-                  </Box>
-                </Grid>
+                <Box mb={2}>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      color: '#1E293B',
+                      py: 1,
+                    }}
+                  >
+                    Twilio Phone Number
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    placeholder="+44 (123) 456-9878"
+                    variant="outlined"
+                    // size="small"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">🇬🇧</InputAdornment>
+                      ),
+                    }}
+                    sx={{
+                      backgroundColor: 'white',
+                      borderRadius: '32px',
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: '32px',
+                      },
+                    }}
+                  />
+                </Box>
               </Grid>
-            </Box>
-            <Box mt={2}>
-              <Box mt={2} sx={styles.buttonGroup}>
-                <Button variant="outlined" onClick={handleResetTwilloSetting}>
-                  {SYSTEM_SETTING.reset}
-                </Button>
-                <Button variant="contained" onClick={handleSaveTwilloSetting}>
-                  {SYSTEM_SETTING.save}
-                </Button>
-              </Box>
+              {/* Call Settings */}
+              <Grid item xs={12} md={6}>
+                <Typography
+                  gutterBottom
+                  sx={{
+                    fontWeight: 600,
+                    fontSize: '19.49px',
+                    color: '#1B2559',
+                  }}
+                >
+                  Call Settings
+                </Typography>
+
+                <Box mb={2}>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: '16px',
+                      color: '#1E293B',
+                      py: 1,
+                    }}
+                  >
+                    Call Time Out (sec)
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    placeholder="30"
+                    variant="outlined"
+                    // size="small"
+                    type="number"
+                    slotProps={{
+                      textField: {
+                        fullWidth: true,
+                        error: !!errors.expDate,
+                        helperText: errors.expDate,
+                        InputProps: {
+                          sx: PaymentFormStyles.textInput,
+                        },
+                      },
+                    }}
+                    sx={{
+                      backgroundColor: 'white',
+                      borderRadius: '32px',
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: '32px',
+                      },
+                    }}
+                  />
+                </Box>
+
+                {[
+                  { title: 'Voice Detection', state: true },
+                  { title: 'Call Recordings', state: true },
+                ].map((item, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'start',
+                      gap: '30px',
+                      p: 1,
+                    }}
+                  >
+                    <CustomSwitch
+                      checked={enabled}
+                      onChange={handleToggle}
+                      color="primary"
+                    />
+                    <Typography>{item.title}</Typography>
+                  </Box>
+                ))}
+              </Grid>
+            </Grid>
+          </Box>
+          <Box mt={2}>
+            <Box mt={2} sx={styles.buttonGroup}>
+              <Button variant="outlined" onClick={handleResetTwilloSetting}>
+                {SYSTEM_SETTING.reset}
+              </Button>
+              <Button variant="contained" onClick={handleSaveTwilloSetting}>
+                {SYSTEM_SETTING.save}
+              </Button>
             </Box>
           </Box>
         </Collapse>
