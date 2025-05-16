@@ -40,6 +40,7 @@ import SettingToggleCard from '../components/system-settings/SettingToggleCard';
 import { CustomSwitch } from '../components/system-settings/CustomSwitch';
 import ValueSliderCard from '../components/system-settings/ValueSliderCard';
 import { PaymentFormStyles } from '../styles/components/settings/PaymentForm';
+import OptionCard from '../components/klaien-managment/OptionCard';
 
 const KlaienManagement = () => {
   const [activeBox, setActiveBox] = useState(1);
@@ -54,17 +55,6 @@ const KlaienManagement = () => {
     setEnabled(checked);
   };
 
-  const [speedSettingsValues, setSpeedSettingsValues] = useState(() =>
-    getDefaultLeadSettings(LEADS_SETTINGS)
-  );
-  const [settingsState, setSettingsState] = useState(() =>
-    getDefaultFraudSettings(FRAUD_SETTINGS)
-  );
-  const handleResetAudioPreview = () => {};
-  const handleResetTwilloSetting = () => {};
-  const handleSaveAudioPreview = () => {};
-  const handleSaveTwilloSetting = () => {};
-
   if (USER_TYPE !== USER_TYPES.admin)
     return <NotFound btnLink={ROUTES.dashboard} />;
 
@@ -75,46 +65,12 @@ const KlaienManagement = () => {
       </Box>
 
       <Box sx={styles.outerBox}>
-        <Grid
-          container
-          spacing={2}
-          sx={{
-            px: { xs: 1, sm: 2, md: 3 },
-            background: '#C0FBC66B',
-            padding: 0,
-            margin: 0,
-            border: '2px solid #3E844517',
-            borderRadius: '5px',
-          }}
-        >
-          {OPTIONS.map((opt) => (
-            <Grid item xs={12} sm={6} md={4} key={opt.id} sx={styles.gridItem}>
-              <Box
-                onClick={() => handleClick(opt.id)}
-                sx={{
-                  ...styles.optionBox,
-                  background: opt.id === activeBox ? '#FFFFFF' : '#00000000',
-                  border: `2px solid ${opt.id === activeBox ? '#FFFFFF' : '#00000000'}`,
-                  '&:hover': {
-                    border: `2px solid ${opt.id === activeBox ? '#FFFFFF' : '#00000000'}`,
-                    transform: 'scale(1.02)',
-                  },
-                }}
-              >
-                <Box component="img" src={opt.icon} alt={opt.label} />
-                <Typography
-                  variant="subtitle1"
-                  sx={{
-                    ...styles.optionText,
-                  }}
-                >
-                  {opt.label}
-                </Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-
+        <OptionCard
+          data={OPTIONS}
+          styles={styles}
+          activeBox={activeBox}
+          handleClick={handleClick}
+        />
         {(activeBox === 1 || activeBox === 2) && (
           <Box mt={10}>
             {AUDIO_PREVIEW.map((setting, index) => (
@@ -123,13 +79,8 @@ const KlaienManagement = () => {
                 title={setting.title}
                 description={setting.description}
                 icon={setting.icon}
-                initialValue={settingsState[setting.key]}
-                onToggle={(value) =>
-                  setSettingsState((prev) => ({
-                    ...prev,
-                    [setting.key]: value,
-                  }))
-                }
+                initialValue={''}
+                onToggle={''}
               />
             ))}
           </Box>
@@ -275,13 +226,8 @@ const KlaienManagement = () => {
                   startTitle={'Slow'}
                   endTitle={'Fast'}
                   defaultValue={lead.defaultValue}
-                  value={speedSettingsValues[lead.key]}
-                  onChange={(value) =>
-                    setSpeedSettingsValues((prev) => ({
-                      ...prev,
-                      [lead.key]: value,
-                    }))
-                  }
+                  value={''}
+                  onChange={''}
                 />
               ))}
               {[
@@ -310,10 +256,10 @@ const KlaienManagement = () => {
           <Box mt={5} p={1}>
             <Box mt={2}>
               <Box mt={2} sx={styles.buttonGroup}>
-                <Button variant="outlined" onClick={handleResetAudioPreview}>
+                <Button variant="outlined" onClick={''}>
                   {SYSTEM_SETTING.reset}
                 </Button>
-                <Button variant="contained" onClick={handleSaveAudioPreview}>
+                <Button variant="contained" onClick={''}>
                   {SYSTEM_SETTING.save}
                 </Button>
               </Box>
@@ -520,10 +466,10 @@ const KlaienManagement = () => {
           </Box>
           <Box mt={2}>
             <Box mt={2} sx={styles.buttonGroup}>
-              <Button variant="outlined" onClick={handleResetTwilloSetting}>
+              <Button variant="outlined" onClick={''}>
                 {SYSTEM_SETTING.reset}
               </Button>
-              <Button variant="contained" onClick={handleSaveTwilloSetting}>
+              <Button variant="contained" onClick={''}>
                 {SYSTEM_SETTING.save}
               </Button>
             </Box>

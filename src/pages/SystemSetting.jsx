@@ -35,6 +35,7 @@ import {
   getDefaultLeadSettings,
   updateCardList,
 } from '../utils/pages/system-settings/SystemSettings';
+import OptionCard from '../components/klaien-managment/OptionCard';
 
 const SystemSetting = () => {
   const [activeBox, setActiveBox] = useState('lead');
@@ -126,45 +127,12 @@ const SystemSetting = () => {
       </Box>
 
       <Box sx={styles.outerBox}>
-        <Grid
-          container
-          spacing={2}
-          sx={{
-            px: { xs: 1, sm: 2, md: 3 },
-            background: '#C0FBC66B',
-            padding: 0,
-            margin: 0,
-            border: '2px solid #3E844517',
-            borderRadius: '5px',
-          }}
-        >
-          {OPTIONS.map((opt) => (
-            <Grid item xs={12} sm={6} md={4} key={opt.id} sx={styles.gridItem}>
-              <Box
-                onClick={() => handleClick(opt.id)}
-                sx={{
-                  ...styles.optionBox,
-                  background: opt.id === activeBox ? '#FFFFFF' : '#00000000',
-                  border: `2px solid ${opt.id === activeBox ? '#FFFFFF' : '#00000000'}`,
-                  '&:hover': {
-                    border: `2px solid ${opt.id === activeBox ? '#FFFFFF' : '#00000000'}`,
-                    transform: 'scale(1.02)',
-                  },
-                }}
-              >
-                <Box component="img" src={opt.icon} alt={opt.label} />
-                <Typography
-                  variant="subtitle1"
-                  sx={{
-                    ...styles.optionText,
-                  }}
-                >
-                  {opt.label}
-                </Typography>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
+        <OptionCard
+          data={OPTIONS}
+          styles={styles}
+          activeBox={activeBox}
+          handleClick={handleClick}
+        />
 
         <Collapse in={activeBox === 'lead'}>
           <Box mt={5} p={1}>
