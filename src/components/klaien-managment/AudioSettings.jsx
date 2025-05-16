@@ -11,16 +11,18 @@ import {
 import { useState } from 'react';
 import {
   AUDIO_PREVIEW,
+  AUDIO_SETTINGS,
   SPEED_SETTINGS,
   VOICE_SETTINGS,
 } from '../../constants/pages/KlaienManagement';
-import { styles } from '../../styles/components/system-settings/SystemSetting';
+import { styles as systemSettingStyles } from '../../styles/components/system-settings/SystemSetting';
 import { SYSTEM_SETTING } from '../../constants/pages/SystemSetting';
 import { CustomSwitch } from '../system-settings/CustomSwitch';
 
 import ValueSliderCard from '../system-settings/ValueSliderCard';
 import SettingToggleCard from '../system-settings/SettingToggleCard';
 import PropTypes from 'prop-types';
+import { AudioSetting } from '../../styles/components/klaien-managment/AudioSetting';
 
 const AudioSettings = ({ activeBox }) => {
   const [payload, setPayload] = useState({});
@@ -31,6 +33,7 @@ const AudioSettings = ({ activeBox }) => {
       return acc;
     }, {})
   );
+
   const handleToggleChange = (key, value) => {
     setToggleStates((prev) => ({
       ...prev,
@@ -95,19 +98,12 @@ const AudioSettings = ({ activeBox }) => {
         ))}
       </Box>
 
-      <Box mt={2} sx={{ borderRadius: '32px', background: '#D9D9D9', p: 5 }}>
+      <Box mt={2} sx={AudioSetting.grayBox}>
         <Box mt={2}>
           {VOICE_SETTINGS.map((voice, index) => (
-            <Card sx={{ p: 4, my: 2.5 }} key={index}>
+            <Card sx={AudioSetting.card} key={index}>
               <FormControl fullWidth>
-                <Typography
-                  sx={{
-                    py: 1,
-                    color: '#09102B',
-                    fontWeight: 600,
-                    fontSize: '18px',
-                  }}
-                >
+                <Typography sx={AudioSetting.selectLabel}>
                   {voice.name}
                 </Typography>
                 <Select
@@ -131,31 +127,20 @@ const AudioSettings = ({ activeBox }) => {
               tooltip={lead.desc}
               min={lead.min}
               max={lead.max}
-              startTitle="Slow"
-              endTitle="Fast"
+              startTitle={AUDIO_SETTINGS.sliders.start}
+              endTitle={AUDIO_SETTINGS.sliders.end}
               defaultValue={lead.defaultValue}
               value={
                 typeof payload[lead.name] === 'number'
                   ? payload[lead.name]
-                  : undefined // make it work as uncontrolled if not present
+                  : undefined
               }
               onChange={handleSliderChange(lead.key)}
             />
           ))}
 
-          {[
-            { title: 'Voice Enhancement', state: true },
-            { title: 'Noice Deduction', state: true },
-          ].map((item, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-                gap: '30px',
-                p: 1,
-              }}
-            >
+          {AUDIO_SETTINGS.toggles.map((item, index) => (
+            <Box key={index} sx={AudioSetting.toggleRow}>
               <CustomSwitch
                 checked={payload[item.title] || false}
                 onChange={handleToggle(item.title)}
@@ -168,7 +153,7 @@ const AudioSettings = ({ activeBox }) => {
       </Box>
 
       <Box mt={5} p={1}>
-        <Box mt={2} sx={styles.buttonGroup}>
+        <Box mt={2} sx={systemSettingStyles.buttonGroup}>
           <Button variant="outlined" onClick={handleReset}>
             {SYSTEM_SETTING.reset}
           </Button>
@@ -180,7 +165,9 @@ const AudioSettings = ({ activeBox }) => {
     </Collapse>
   );
 };
+
 AudioSettings.propTypes = {
   activeBox: PropTypes.any,
 };
+
 export default AudioSettings;

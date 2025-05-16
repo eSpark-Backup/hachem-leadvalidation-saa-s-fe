@@ -3,8 +3,12 @@ import { Box, Button, Collapse, TextField } from '@mui/material';
 import { SYSTEM_SETTING } from '../../constants/pages/SystemSetting';
 import { styles } from '../../styles/components/system-settings/SystemSetting';
 import SettingToggleCard from '../system-settings/SettingToggleCard';
-import { AUDIO_PREVIEW } from '../../constants/pages/KlaienManagement';
+import {
+  AUDIO_PREVIEW,
+  SCRIPT_AI,
+} from '../../constants/pages/KlaienManagement';
 import PropTypes from 'prop-types';
+import ScriptAi from '../../styles/components/klaien-managment/ScriptAI';
 
 const ScriptAI = ({ activeBox }) => {
   const [scriptText, setScriptText] = useState('');
@@ -52,23 +56,8 @@ const ScriptAI = ({ activeBox }) => {
         ))}
       </Box>
 
-      <Box
-        mt={2}
-        sx={{
-          borderRadius: '32px',
-          background: ' #D9D9D9',
-          p: 5,
-        }}
-      >
-        <Box
-          sx={{
-            fontWeight: 500,
-            fontSize: '40px',
-            p: 1,
-          }}
-        >
-          Script AI
-        </Box>
+      <Box mt={2} sx={ScriptAi.containerBox}>
+        <Box sx={ScriptAi.titleBox}>{SCRIPT_AI.scriptAI}</Box>
 
         <TextField
           multiline
@@ -77,52 +66,26 @@ const ScriptAI = ({ activeBox }) => {
           placeholder="Enter text here..."
           value={scriptText}
           onChange={(e) => setScriptText(e.target.value)}
-          sx={{
-            p: 2,
-            borderRadius: '20px',
-            background: '#fff',
-            width: '100%',
-            '& .MuiOutlinedInput-root': {
-              height: '100%',
-              alignItems: 'flex-start',
-              fontSize: '18px',
-              color: '#333',
-              '& fieldset': {
-                border: 'none',
-              },
-              '& textarea': {
-                fontSize: '18px',
-                color: '#000',
-                '&::placeholder': {
-                  color: '#333',
-                  opacity: 1,
-                },
-              },
-            },
-          }}
+          sx={ScriptAi.textField}
         />
 
         <Box p={1} sx={{ display: 'flex' }}>
           <Box mt={0}>
-            <Box mt={2} sx={styles.buttonGroup}>
+            <Box mt={2} sx={ScriptAi.buttonGroup}>
               <Button
                 variant="contained"
                 onClick={() => {
-                  // Add AI generation logic here
+                  /* AI generation logic */
                 }}
               >
-                {`Generate AI`}
+                {SCRIPT_AI.generateAI}
               </Button>
               <Button
                 variant="outlined"
                 onClick={handleSaveScript}
-                sx={{
-                  background: '#fff',
-                  border: '1px solid #77797D',
-                  color: ' #77797D',
-                }}
+                sx={ScriptAi.outlinedButton}
               >
-                {`Save Script`}
+                {SCRIPT_AI.saveScript}
               </Button>
             </Box>
           </Box>
@@ -135,11 +98,7 @@ const ScriptAI = ({ activeBox }) => {
             <Button
               variant="outlined"
               onClick={handleReset}
-              sx={{
-                background: '#fff',
-                border: '1px solid #77797D',
-                color: ' #77797D',
-              }}
+              sx={ScriptAi.outlinedButton}
             >
               {SYSTEM_SETTING.reset}
             </Button>

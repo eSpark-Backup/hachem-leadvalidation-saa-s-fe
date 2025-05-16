@@ -1,49 +1,30 @@
 import { Box, Grid, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
+import {
+  containerStyles,
+  getBoxStyles,
+} from '../../styles/components/klaien-managment/OptionCard';
 
 const OptionCard = ({ data, styles, activeBox, handleClick }) => {
   return (
-    <>
-      <Grid
-        container
-        spacing={2}
-        sx={{
-          px: { xs: 1, sm: 2, md: 3 },
-          background: '#C0FBC66B',
-          padding: 0,
-          margin: 0,
-          border: '2px solid #3E844517',
-          borderRadius: '5px',
-        }}
-      >
-        {data.map((opt) => (
+    <Grid container spacing={2} sx={containerStyles}>
+      {data.map((opt) => {
+        const isActive = opt.id === activeBox;
+        return (
           <Grid item xs={12} sm={6} md={4} key={opt.id} sx={styles.gridItem}>
             <Box
               onClick={() => handleClick(opt.id)}
-              sx={{
-                ...styles.optionBox,
-                background: opt.id === activeBox ? '#FFFFFF' : '#00000000',
-                border: `2px solid ${opt.id === activeBox ? '#FFFFFF' : '#00000000'}`,
-                '&:hover': {
-                  border: `2px solid ${opt.id === activeBox ? '#FFFFFF' : '#00000000'}`,
-                  transform: 'scale(1.02)',
-                },
-              }}
+              sx={{ ...styles.optionBox, ...getBoxStyles(isActive) }}
             >
               <Box component="img" src={opt.icon} alt={opt.label} />
-              <Typography
-                variant="subtitle1"
-                sx={{
-                  ...styles.optionText,
-                }}
-              >
+              <Typography variant="subtitle1" sx={{ ...styles.optionText }}>
                 {opt.label}
               </Typography>
             </Box>
           </Grid>
-        ))}
-      </Grid>
-    </>
+        );
+      })}
+    </Grid>
   );
 };
 

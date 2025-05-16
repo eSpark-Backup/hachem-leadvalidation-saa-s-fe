@@ -1,3 +1,41 @@
+export const KLAIEN_MANAGEMENT = { title: 'Klairn Call Management' };
+export const TWILLO_DATA = {
+  accountSid: '',
+  token: '',
+  phoneNumber: '',
+  callTimeout: '',
+  voiceDetection: true,
+  callRecordings: true,
+};
+export const SCRIPT_AI = {
+  scriptAI: 'Script AI',
+  generateAI: 'Generate AI',
+  saveScript: 'Save Script',
+};
+export const AUDIO_SETTINGS = {
+  sliders: {
+    start: 'Slow',
+    end: 'Fast',
+  },
+  toggles: [
+    { title: 'Voice Enhancement', state: true },
+    { title: 'Noice Deduction', state: true },
+  ],
+};
+export const TWILLO_SETUP = {
+  twilioTitle: 'Twilio Credentials',
+  accountSid: 'Account SID',
+  accountSidPlaceholder: 'Enter your Twilio SID',
+  token: 'Token',
+  tokenPlaceholder: 'Enter your Token Number',
+  phoneNumber: 'Twilio Phone Number',
+  phoneNumberPlaceholder: '+44 (123) 456-9878',
+  callTitle: 'Call Settings',
+  timeout: 'Call Time Out (sec)',
+  timeoutPlaceholder: '30',
+  voiceDetection: 'Voice Detection',
+  callRecordings: 'Call Recordings',
+};
 export const OPTIONS = [
   {
     id: 1,

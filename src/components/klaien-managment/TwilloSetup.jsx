@@ -7,21 +7,19 @@ import {
   InputAdornment,
   TextField,
   Typography,
-} from '@mui/material'; // assuming it's a custom switch component
+} from '@mui/material';
 import { SYSTEM_SETTING } from '../../constants/pages/SystemSetting';
-import { styles } from '../../styles/components/system-settings/SystemSetting';
+import { styles as sharedStyles } from '../../styles/components/system-settings/SystemSetting';
 import { CustomSwitch } from '../system-settings/CustomSwitch';
 import PropTypes from 'prop-types';
+import {
+  TWILLO_DATA,
+  TWILLO_SETUP,
+} from '../../constants/pages/KlaienManagement';
+import { TwilloStyles } from '../../styles/components/klaien-managment/TwilloSetup';
 
 const TwilloSetup = ({ activeBox }) => {
-  const [formData, setFormData] = useState({
-    accountSid: '',
-    token: '',
-    phoneNumber: '',
-    callTimeout: '',
-    voiceDetection: true,
-    callRecordings: true,
-  });
+  const [formData, setFormData] = useState(TWILLO_DATA);
 
   const handleChange = (field) => (event) => {
     const value =
@@ -37,117 +35,66 @@ const TwilloSetup = ({ activeBox }) => {
 
   const handleSave = () => {
     console.log('Saving payload:', formData);
-    // API call or state update can go here
   };
 
   const handleReset = () => {
-    setFormData({
-      accountSid: '',
-      token: '',
-      phoneNumber: '',
-      callTimeout: '',
-      voiceDetection: true,
-      callRecordings: true,
-    });
+    setFormData(TWILLO_DATA);
   };
 
   return (
     <Collapse in={activeBox === 3}>
-      <Box
-        container
-        spacing={2}
-        mt={5}
-        p={1}
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <Typography sx={styles.sectionTitle}>
+      <Box sx={TwilloStyles.sectionBox}>
+        <Typography sx={sharedStyles.sectionTitle}>
           {SYSTEM_SETTING.rejectionMessagesTitle}
         </Typography>
-        <Typography sx={styles.sectionSubtitle}>
+        <Typography sx={sharedStyles.sectionSubtitle}>
           {SYSTEM_SETTING.rejectionMessagesDesc}
         </Typography>
       </Box>
 
-      <Box mt={2} sx={{ borderRadius: '32px', background: '#D9D9D9', p: 5 }}>
+      <Box sx={TwilloStyles.wrapper}>
         <Grid container spacing={20}>
           {/* Twilio Credentials */}
           <Grid item xs={12} md={6}>
-            <Typography
-              gutterBottom
-              sx={{ fontWeight: 600, fontSize: '19.49px', color: '#1B2559' }}
-            >
-              Twilio Credentials
+            <Typography gutterBottom sx={TwilloStyles.sectionTitle}>
+              {TWILLO_SETUP.twilioTitle}
             </Typography>
 
             <Box mb={2}>
-              <Typography
-                sx={{
-                  fontWeight: 700,
-                  fontSize: '16px',
-                  color: '#1E293B',
-                  py: 1,
-                }}
-              >
-                Account SID
+              <Typography sx={TwilloStyles.label}>
+                {TWILLO_SETUP.accountSid}
               </Typography>
               <TextField
                 fullWidth
-                placeholder="Enter your Twilio SID"
+                placeholder={TWILLO_SETUP.accountSidPlaceholder}
                 variant="outlined"
                 value={formData.accountSid}
                 onChange={handleChange('accountSid')}
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: '32px',
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: '32px',
-                  },
-                }}
+                sx={TwilloStyles.input}
               />
             </Box>
 
             <Box mb={2}>
-              <Typography
-                sx={{
-                  fontWeight: 700,
-                  fontSize: '16px',
-                  color: '#1E293B',
-                  py: 1,
-                }}
-              >
-                Token
+              <Typography sx={TwilloStyles.label}>
+                {TWILLO_SETUP.token}
               </Typography>
               <TextField
                 fullWidth
-                placeholder="Enter your Token Number"
+                placeholder={TWILLO_SETUP.tokenPlaceholder}
                 variant="outlined"
                 value={formData.token}
                 onChange={handleChange('token')}
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: '32px',
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: '32px',
-                  },
-                }}
+                sx={TwilloStyles.input}
               />
             </Box>
 
             <Box mb={2}>
-              <Typography
-                sx={{
-                  fontWeight: 700,
-                  fontSize: '16px',
-                  color: '#1E293B',
-                  py: 1,
-                }}
-              >
-                Twilio Phone Number
+              <Typography sx={TwilloStyles.label}>
+                {TWILLO_SETUP.phoneNumber}
               </Typography>
               <TextField
                 fullWidth
-                placeholder="+44 (123) 456-9878"
+                placeholder={TWILLO_SETUP.phoneNumberPlaceholder}
                 variant="outlined"
                 value={formData.phoneNumber}
                 onChange={handleChange('phoneNumber')}
@@ -156,63 +103,33 @@ const TwilloSetup = ({ activeBox }) => {
                     <InputAdornment position="start">🇬🇧</InputAdornment>
                   ),
                 }}
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: '32px',
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: '32px',
-                  },
-                }}
+                sx={TwilloStyles.input}
               />
             </Box>
           </Grid>
 
           {/* Call Settings */}
           <Grid item xs={12} md={6}>
-            <Typography
-              gutterBottom
-              sx={{ fontWeight: 600, fontSize: '19.49px', color: '#1B2559' }}
-            >
-              Call Settings
+            <Typography gutterBottom sx={TwilloStyles.sectionTitle}>
+              {TWILLO_SETUP.callTitle}
             </Typography>
 
             <Box mb={2}>
-              <Typography
-                sx={{
-                  fontWeight: 700,
-                  fontSize: '16px',
-                  color: '#1E293B',
-                  py: 1,
-                }}
-              >
-                Call Time Out (sec)
+              <Typography sx={TwilloStyles.label}>
+                {TWILLO_SETUP.timeout}
               </Typography>
               <TextField
                 fullWidth
-                placeholder="30"
                 type="number"
+                placeholder={TWILLO_SETUP.timeoutPlaceholder}
                 variant="outlined"
                 value={formData.callTimeout}
                 onChange={handleChange('callTimeout')}
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: '32px',
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: '32px',
-                  },
-                }}
+                sx={TwilloStyles.input}
               />
             </Box>
 
-            {/* Switches */}
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-                gap: '30px',
-                p: 1,
-              }}
-            >
+            <Box sx={TwilloStyles.switchBox}>
               <CustomSwitch
                 checked={formData.voiceDetection}
                 onChange={() =>
@@ -223,17 +140,10 @@ const TwilloSetup = ({ activeBox }) => {
                 }
                 color="primary"
               />
-              <Typography>Voice Detection</Typography>
+              <Typography>{TWILLO_SETUP.voiceDetection}</Typography>
             </Box>
 
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-                gap: '30px',
-                p: 1,
-              }}
-            >
+            <Box sx={TwilloStyles.switchBox}>
               <CustomSwitch
                 checked={formData.callRecordings}
                 onChange={() =>
@@ -244,13 +154,13 @@ const TwilloSetup = ({ activeBox }) => {
                 }
                 color="primary"
               />
-              <Typography>Call Recordings</Typography>
+              <Typography>{TWILLO_SETUP.callRecordings}</Typography>
             </Box>
           </Grid>
         </Grid>
       </Box>
 
-      <Box mt={2} sx={styles.buttonGroup}>
+      <Box mt={2} sx={sharedStyles.buttonGroup}>
         <Button variant="outlined" onClick={handleReset}>
           {SYSTEM_SETTING.reset}
         </Button>
@@ -261,6 +171,7 @@ const TwilloSetup = ({ activeBox }) => {
     </Collapse>
   );
 };
+
 TwilloSetup.propTypes = {
   activeBox: PropTypes.any,
 };

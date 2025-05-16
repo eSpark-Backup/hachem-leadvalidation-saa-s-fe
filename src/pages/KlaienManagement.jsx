@@ -11,7 +11,10 @@ import AudioSettings from '../components/klaien-managment/AudioSettings';
 import ScriptAI from '../components/klaien-managment/ScriptAI';
 
 import { styles } from '../styles/components/system-settings/SystemSetting';
-import {OPTIONS } from '../constants/pages/KlaienManagement';
+import {
+  KLAIEN_MANAGEMENT,
+  OPTIONS,
+} from '../constants/pages/KlaienManagement';
 
 const KlaienManagement = () => {
   const [activeBox, setActiveBox] = useState(1);
@@ -24,7 +27,7 @@ const KlaienManagement = () => {
   return (
     <>
       <Box sx={styles.outerBox}>
-        <HeaderActions title={'Klairn Call Management'} />
+        <HeaderActions title={KLAIEN_MANAGEMENT.title} />
       </Box>
 
       <Box sx={styles.outerBox}>
