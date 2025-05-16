@@ -4,7 +4,6 @@ import {
   Button,
   Collapse,
   Grid,
-  InputAdornment,
   TextField,
   Typography,
 } from '@mui/material';
@@ -16,6 +15,9 @@ import {
   TWILLO_DATA,
   TWILLO_SETUP,
 } from '../../constants/pages/KlaienManagement';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+
 import { TwilloStyles } from '../../styles/components/klaien-managment/TwilloSetup';
 
 const TwilloSetup = ({ activeBox }) => {
@@ -53,7 +55,7 @@ const TwilloSetup = ({ activeBox }) => {
       </Box>
 
       <Box sx={TwilloStyles.wrapper}>
-        <Grid container spacing={20}>
+        <Grid container spacing={{ xs: 0, md: 10, lg: 20 }}>
           {/* Twilio Credentials */}
           <Grid item xs={12} md={6}>
             <Typography gutterBottom sx={TwilloStyles.sectionTitle}>
@@ -92,18 +94,11 @@ const TwilloSetup = ({ activeBox }) => {
               <Typography sx={TwilloStyles.label}>
                 {TWILLO_SETUP.phoneNumber}
               </Typography>
-              <TextField
-                fullWidth
-                placeholder={TWILLO_SETUP.phoneNumberPlaceholder}
-                variant="outlined"
+              <PhoneInput
+                placeholder="Enter phone number"
                 value={formData.phoneNumber}
-                onChange={handleChange('phoneNumber')}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">🇬🇧</InputAdornment>
-                  ),
-                }}
-                sx={TwilloStyles.input}
+                onChange={() => handleChange('phoneNumber')}
+                style={TwilloStyles.input}
               />
             </Box>
           </Grid>
@@ -161,7 +156,11 @@ const TwilloSetup = ({ activeBox }) => {
       </Box>
 
       <Box mt={2} sx={sharedStyles.buttonGroup}>
-        <Button variant="outlined" onClick={handleReset}>
+        <Button
+          variant="outlined"
+          onClick={handleReset}
+          sx={sharedStyles.resetButton}
+        >
           {SYSTEM_SETTING.reset}
         </Button>
         <Button variant="contained" onClick={handleSave}>

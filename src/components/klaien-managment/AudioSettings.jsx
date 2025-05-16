@@ -154,7 +154,11 @@ const AudioSettings = ({ activeBox }) => {
 
       <Box mt={5} p={1}>
         <Box mt={2} sx={systemSettingStyles.buttonGroup}>
-          <Button variant="outlined" onClick={handleReset}>
+          <Button
+            variant="outlined"
+            onClick={handleReset}
+            sx={systemSettingStyles.resetButton}
+          >
             {SYSTEM_SETTING.reset}
           </Button>
           <Button variant="contained" onClick={handleSave}>

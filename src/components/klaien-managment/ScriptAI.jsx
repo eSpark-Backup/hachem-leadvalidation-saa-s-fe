@@ -83,7 +83,7 @@ const ScriptAI = ({ activeBox }) => {
               <Button
                 variant="outlined"
                 onClick={handleSaveScript}
-                sx={ScriptAi.outlinedButton}
+                sx={ScriptAi.resetButton}
               >
                 {SCRIPT_AI.saveScript}
               </Button>
@@ -98,7 +98,7 @@ const ScriptAI = ({ activeBox }) => {
             <Button
               variant="outlined"
               onClick={handleReset}
-              sx={ScriptAi.outlinedButton}
+              sx={ScriptAi.resetButton}
             >
               {SYSTEM_SETTING.reset}
             </Button>

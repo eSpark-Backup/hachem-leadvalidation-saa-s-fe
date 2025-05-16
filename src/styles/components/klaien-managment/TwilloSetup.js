@@ -102,4 +102,24 @@ export const TwilloStyles = {
       lg: 1,
     },
   },
+  addButton: {
+    backgroundColor: '#F7F7F7',
+    color: '#09102B',
+    boxShadow: '1px 2px 3px 0px #4676FB69', // Custom red shadow
+    '&:hover': {
+      boxShadow: '1px 2px 3px 0px #4676FB69', // On hover
+      backgroundColor: '#F7F7F7',
+      color: '#09102B',
+    },
+  },
+  resetButton: {
+    background: '#fff',
+    border: '1px solid #77797D',
+    color: ' #77797D',
+    '&:hover': {
+      background: '#fff',
+      border: '1px solid #77797D',
+      color: ' #77797D',
+    },
+  },
 };
