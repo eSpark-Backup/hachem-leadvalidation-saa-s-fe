@@ -29,9 +29,10 @@ const ValueSliderCard = ({
   min,
   max,
   unit,
-  value = 33,
+  value,
   onChange,
   startTitle,
+  defaultValue,
   endTitle,
 }) => {
   const theme = useTheme();
@@ -63,9 +64,9 @@ const ValueSliderCard = ({
             }}
           >
             <Slider
-              value={value}
-              defaultValue={value}
-              onChange={(e, newVal) => onChange(newVal)}
+              value={typeof value === 'number' ? value : undefined}
+              defaultValue={defaultValue}
+              onChange={(e, newVal) => onChange?.(newVal)}
               min={min}
               max={max}
               aria-label={`${label} slider`}
@@ -106,6 +107,7 @@ ValueSliderCard.propTypes = {
   unit: PropTypes.any,
   startTitle: PropTypes.any,
   endTitle: PropTypes.any,
+  defaultValue: PropTypes.any,
 };
 
 export default ValueSliderCard;
