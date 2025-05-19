@@ -29,4 +29,5 @@ const ViewToggle = () => {
     </Box>
   );
 };
+
 export default ViewToggle;

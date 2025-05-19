@@ -1,4 +1,4 @@
-export const CLIENT_REPORTS = {
+const CLIENT_REPORTS = {
   reportCards: {
     activeSuppliers: {
       title: 'ACTIVE SUPPLIERS',
@@ -39,21 +39,22 @@ export const CLIENT_REPORTS = {
   suppliersMostGenerateLeads: 'SupplierMostGenerateLeads',
 };
 // Text Constants
-export const MODAL_WIDTHS = {
+const MODAL_WIDTHS = {
   CreditUsage: 800,
   Default: 400,
 };
 
-export const CHART_COLORS = {
+const CHART_COLORS = {
   creditBar: '#0E5FD9',
   creditFill: '#CFDFF7',
   weeklyCredit: '#8884d8',
   leadColor: '#0FAF62',
 };
 
-export const styles = {
+const styles = {
   section: { py: 2 },
   card: { borderRadius: 4, p: 1 },
   clientCardWrapper: { p: 1 },
   popper: { zIndex: 99999 },
 };
+export { MODAL_WIDTHS, CHART_COLORS, styles, CLIENT_REPORTS };

@@ -26,6 +26,7 @@ const FORM_STATE_DEFAULT = {
   cardHolder: '',
   country: 'GB',
 };
+
 const PAY_FORM_TEXT = {
   handlePayNowAlertText: 'Payment info saved to localStorage!',
   paymentMethodLegend: 'Payment Method',
@@ -50,6 +51,7 @@ const PAY_FORM_TEXT = {
   paymentMethod: 'paymentMethod',
   stripe: 'stripe',
 };
+
 const PAY_FORM_ERROR_TEXT = {
   paymentInfo: 'paymentInfo',
   selectCountry: 'Select a country',

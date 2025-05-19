@@ -70,7 +70,9 @@ const handleLogout = (navigate) => {
 };
 
 const TOKEN = localStorage.getItem('token');
+
 const USER_TYPE = localStorage.getItem('userType');
+
 const MENU_ITEMS =
   USER_TYPE === USER_TYPES.supplier
     ? SIDE_BAR_MENU_SUPPLIER

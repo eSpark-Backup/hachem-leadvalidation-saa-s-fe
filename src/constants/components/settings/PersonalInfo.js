@@ -3,4 +3,5 @@ const PersonalInfo = {
   logSendRequest: 'Sending request...',
   logCancelRequest: 'Cancelling request...',
 };
+
 export { PersonalInfo };

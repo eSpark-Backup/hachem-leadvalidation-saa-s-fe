@@ -1,5 +1,6 @@
-export const KLAIEN_MANAGEMENT = { title: 'Klairn Call Management' };
-export const TWILLO_DATA = {
+const KLAIEN_MANAGEMENT = { title: 'Klairn Call Management' };
+
+const TWILLO_DATA = {
   accountSid: '',
   token: '',
   phoneNumber: '',
@@ -7,12 +8,14 @@ export const TWILLO_DATA = {
   voiceDetection: true,
   callRecordings: true,
 };
-export const SCRIPT_AI = {
+
+const SCRIPT_AI = {
   scriptAI: 'Script AI',
   generateAI: 'Generate AI',
   saveScript: 'Save Script',
 };
-export const AUDIO_SETTINGS = {
+
+const AUDIO_SETTINGS = {
   sliders: {
     start: 'Slow',
     end: 'Fast',
@@ -22,7 +25,8 @@ export const AUDIO_SETTINGS = {
     { title: 'Noice Deduction', state: true },
   ],
 };
-export const TWILLO_SETUP = {
+
+const TWILLO_SETUP = {
   twilioTitle: 'Twilio Credentials',
   accountSid: 'Account SID',
   accountSidPlaceholder: 'Enter your Twilio SID',
@@ -36,7 +40,8 @@ export const TWILLO_SETUP = {
   voiceDetection: 'Voice Detection',
   callRecordings: 'Call Recordings',
 };
-export const OPTIONS = [
+
+const OPTIONS = [
   {
     id: 1,
     label: 'Script AI',
@@ -54,7 +59,7 @@ export const OPTIONS = [
   },
 ];
 
-export const AUDIO_PREVIEW = [
+const AUDIO_PREVIEW = [
   {
     title: 'Audio Preview',
     description: 'Listen to your script with different voice settings',
@@ -64,7 +69,7 @@ export const AUDIO_PREVIEW = [
   },
 ];
 
-export const SPEED_SETTINGS = [
+const SPEED_SETTINGS = [
   {
     key: 'speed',
     name: 'Speed',
@@ -75,7 +80,7 @@ export const SPEED_SETTINGS = [
   },
 ];
 
-export const VOICE_SETTINGS = [
+const VOICE_SETTINGS = [
   {
     key: 'voice-type',
     name: 'Voice Type',
@@ -95,3 +100,15 @@ export const VOICE_SETTINGS = [
     ],
   },
 ];
+
+export {
+  AUDIO_PREVIEW,
+  SPEED_SETTINGS,
+  VOICE_SETTINGS,
+  OPTIONS,
+  TWILLO_SETUP,
+  AUDIO_SETTINGS,
+  SCRIPT_AI,
+  TWILLO_DATA,
+  KLAIEN_MANAGEMENT,
+};

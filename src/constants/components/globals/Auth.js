@@ -31,18 +31,21 @@ const ROUTES = {
   charts: 'charts',
   avalaibleLeadsDetails: 'available-leads-deails',
 };
+
 const SUPPLIER_INFO = {
   role: 'supplier',
   id: 'SP10234',
   name: 'Supplier Name',
   profileImage: '/src/assets/images/global/profile-Image-default.png',
 };
+
 const ADMIN_INFO = {
   role: 'admin',
   id: 'AD10234',
   name: 'Admin Name',
   profileImage: '/src/assets/images/global/profile-Image-default.png',
 };
+
 const CLIENT_INFO = {
   role: 'client',
   id: 'CL10234',
@@ -56,6 +59,7 @@ const USER_TYPES = {
   admin: 'admin',
   user: 'User',
 };
+
 const KEYS = {
   token: 'token',
   userType: 'userType',

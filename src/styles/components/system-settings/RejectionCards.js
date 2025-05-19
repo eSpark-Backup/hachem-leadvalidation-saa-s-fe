@@ -26,6 +26,7 @@ const deleteButtonStyles = {
 const deleteIconStyles = {
   color: 'red',
 };
+
 const gridBoxStyles = {
   display: 'flex',
   justifyContent: 'space-between',

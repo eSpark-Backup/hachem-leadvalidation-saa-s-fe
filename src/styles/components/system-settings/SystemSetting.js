@@ -10,6 +10,7 @@ const modalStyle = {
   p: 4,
   px: 8,
 };
+
 const styles = {
   outerBox: {
     py: 2,
@@ -86,4 +87,5 @@ const styles = {
     },
   },
 };
+
 export { styles, modalStyle };

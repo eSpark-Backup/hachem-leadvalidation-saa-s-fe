@@ -64,12 +64,17 @@ const dialogContentStyles = {
   color: '#77797D',
   fontSize: 16,
 };
+
 const logoutBtnStyles = { fontSize: '20px' };
+
 const labelStyles = {
   fontSize: '16px',
 };
+
 const growBoxSTyles = { flexGrow: 1 };
+
 const logoStyles = { width: '100%', maxWidth: '150px' };
+
 export {
   logoContainerStyles,
   menuWrapperStyles,

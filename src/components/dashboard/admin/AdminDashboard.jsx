@@ -630,4 +630,5 @@ const AdminDashboard = () => {
 AdminDashboard.propTypes = {
   handleOpenChartModal: PropTypes.any,
 };
+
 export default AdminDashboard;

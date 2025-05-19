@@ -163,6 +163,6 @@ const fontFaces = `
   }
 `;
 
-export const CustomFontStyles = () => (
-  <GlobalStyles styles={{ __html: fontFaces }} />
-);
+const CustomFontStyles = () => <GlobalStyles styles={{ __html: fontFaces }} />;
+
+export { CustomFontStyles };

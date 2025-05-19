@@ -5,6 +5,7 @@ import { LEADS_OVERVIEW_CHART2 } from '../../constants/components/charts/SingleL
 import { DASHBOARD_TEXT } from '../../constants/components/reports/SupplierReports';
 import { cardContentStyle } from '../../styles/components/report-analytics/SupplierReports';
 import PropTypes from 'prop-types';
+
 const LeadsOverview = ({
   open,
   modalOpen,
@@ -34,4 +35,5 @@ LeadsOverview.propTypes = {
   handleOpenChartModalDropDown: PropTypes.any,
   anchorRef: PropTypes.any,
 };
+
 export default LeadsOverview;

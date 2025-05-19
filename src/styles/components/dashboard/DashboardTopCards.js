@@ -20,6 +20,7 @@ const titleStyles = (color) => ({
   },
   color: color || '#A3AED0',
 });
+
 const valueStyles = (color) => ({
   color: color || '#1B2559',
   fontSize: {
@@ -28,6 +29,7 @@ const valueStyles = (color) => ({
   },
   fontWeight: '700',
 });
+
 const unitStyles = (color) => ({
   color: color || '#212332',
   fontSize: {
@@ -36,6 +38,7 @@ const unitStyles = (color) => ({
   },
   fontWeight: '500',
 });
+
 const layoutStyles = (isInverted) => ({
   display: 'flex',
   flexDirection: isInverted ? 'row-reverse' : 'row',
@@ -44,11 +47,13 @@ const layoutStyles = (isInverted) => ({
   alignItems: 'center',
   width: '100%',
 });
+
 const textColumnStyles = (hasChartTitle) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: hasChartTitle ? 2 : 0,
 });
+
 const chartTitleStyles = (color) => ({
   fontWeight: 500,
   fontSize: {
@@ -59,6 +64,7 @@ const chartTitleStyles = (color) => ({
   cursor: 'pointer',
   textDecoration: 'none',
 });
+
 const iconBoxStyles = {
   display: 'flex',
   alignItems: 'end',

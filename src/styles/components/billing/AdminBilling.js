@@ -1,5 +1,4 @@
-// styles/components/report-analytics/adminBillingStyles.js
-export const styles = {
+const styles = {
   outerBox: {
     py: 2,
   },
@@ -39,3 +38,5 @@ export const styles = {
     zIndex: 99999,
   },
 };
+
+export { styles };

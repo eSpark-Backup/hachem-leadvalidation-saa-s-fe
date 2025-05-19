@@ -7,7 +7,7 @@ import {
   mobileDrawerStyles,
 } from '../../styles/components/globals/SideNav';
 
-export const SideNav = ({ open, onClose }) => {
+const SideNav = ({ open, onClose }) => {
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
   if (lgUp) {
@@ -53,3 +53,5 @@ SideNav.propTypes = {
   open: PropTypes.node.isRequired,
   onClose: PropTypes.func.isRequired,
 };
+
+export default SideNav;

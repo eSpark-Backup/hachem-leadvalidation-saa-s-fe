@@ -1,4 +1,4 @@
-export const MY_LEADS = {
+const MY_LEADS = {
   title: 'Leads',
   filterType: {
     search: 'search',
@@ -7,7 +7,7 @@ export const MY_LEADS = {
   },
 };
 
-export const TABLE_HEADER = [
+const TABLE_HEADER = [
   { key: 'supplier_id', label: 'Supplier’s ID' },
   { key: 'country', label: 'Country' },
   { key: 'leads_validation', label: 'Leads Validation Rate' },
@@ -16,7 +16,7 @@ export const TABLE_HEADER = [
   { key: 'action', label: '' },
 ];
 
-export const TABLE_BODY = [
+const TABLE_BODY = [
   {
     id: 1,
     supplier_id: 'SP: 43756',
@@ -109,7 +109,7 @@ export const TABLE_BODY = [
   },
 ];
 
-export const FILTER_TYPES = [
+const FILTER_TYPES = [
   { type: 'search', key: 'search' },
   {
     type: 'dropdown',
@@ -118,8 +118,10 @@ export const FILTER_TYPES = [
   { type: 'month', key: 'month' },
 ];
 
-export const SELECT_FILTERS = [
+const SELECT_FILTERS = [
   { options: [], label: 'Services', key: 'service' },
   { options: [], label: 'Validation', key: 'validation' },
   { options: [], label: 'Select Location', key: 'location' },
 ];
+
+export { TABLE_BODY, TABLE_HEADER, FILTER_TYPES, SELECT_FILTERS, MY_LEADS };

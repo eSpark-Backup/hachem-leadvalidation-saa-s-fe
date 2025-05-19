@@ -1,4 +1,4 @@
-export const SINGLE_LINE_CHART2 = [
+const SINGLE_LINE_CHART2 = [
   { key: 1, value: 60 },
   { key: 2, value: 70 },
   { key: 3, value: 19 },
@@ -30,7 +30,8 @@ export const SINGLE_LINE_CHART2 = [
   { key: 9, value: 45 },
   { key: 10, value: 70 },
 ];
-export const LEADS_OVERVIEW_CHART2 = [
+
+const LEADS_OVERVIEW_CHART2 = [
   { key: 'JAN', value: 20 },
   { key: 'FEB', value: 50 },
   { key: 'MAR', value: 40 },
@@ -44,7 +45,8 @@ export const LEADS_OVERVIEW_CHART2 = [
   { key: 'NOV', value: 100 },
   { key: 'DEC', value: 104 },
 ];
-export const CREDIT_USAGE_DATA = [
+
+const CREDIT_USAGE_DATA = [
   { key: '2025-03-30', value: 784 },
   { key: '2025-03-31', value: 921 },
   { key: '2025-04-01', value: 567 },
@@ -77,7 +79,7 @@ export const CREDIT_USAGE_DATA = [
   { key: '2025-04-28', value: 925 },
 ];
 
-export const generateRandomMonthData = () => {
+const generateRandomMonthData = () => {
   const data = [];
   const startDate = new Date(); // today
   startDate.setDate(startDate.getDate() - 29); // go back 29 days
@@ -97,4 +99,12 @@ export const generateRandomMonthData = () => {
 
 // Example usage:
 const randomData = generateRandomMonthData();
+
 console.log(randomData);
+
+export {
+  generateRandomMonthData,
+  SINGLE_LINE_CHART2,
+  CREDIT_USAGE_DATA,
+  LEADS_OVERVIEW_CHART2,
+};

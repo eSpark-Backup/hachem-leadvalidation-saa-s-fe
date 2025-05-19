@@ -87,17 +87,21 @@ const menuItemStyles = {
   color: '#373B5C',
   fontWeight: 500,
 };
+
 const profileImgStyles = {
   width: '32px',
   height: '32px',
   borderRadius: '50%',
 };
+
 const welcomdeTextStyles = { fontSize: '12px', color: '#373B5C' };
+
 const profileNameStyles = {
   fontSize: { xs: '14px', sm: '15px', md: '16px' },
   color: '#373B5C',
   fontWeight: 500,
 };
+
 export {
   clickableBoxStyles,
   profileNameStyles,

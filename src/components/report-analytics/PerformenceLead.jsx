@@ -53,4 +53,5 @@ PerformenceLead.propTypes = {
   handleOpenChartModalDropDown: PropTypes.any,
   anchorRef: PropTypes.any,
 };
+
 export default PerformenceLead;

@@ -8,4 +8,5 @@ const SETTINGS_UPLOAD_IMAGES = {
   alertTypeText: 'Only SVG, JPG, and PNG formats are allowed.',
   alertSIzeText: 'File size must be less than 10MB.',
 };
+
 export { SETTINGS_UPLOAD_IMAGES };

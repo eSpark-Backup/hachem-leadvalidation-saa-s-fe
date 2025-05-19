@@ -1,4 +1,4 @@
-export const LEADS_PERFORMANCE_CHART = [
+const LEADS_PERFORMANCE_CHART = [
   { key: '1', a: 30, b: 50, c: 20 },
   { key: '2', a: 32, b: 53, c: 21.5 },
   { key: '3', a: 34, b: 56, c: 23 },
@@ -30,7 +30,8 @@ export const LEADS_PERFORMANCE_CHART = [
   { key: '29', a: 86, b: 134, c: 62 },
   { key: '30', a: 88, b: 137, c: 63.5 },
 ];
-export const LEADS_CHART = [
+
+const LEADS_CHART = [
   { week: 'week 1', leads: 3750, background: 6000 },
   { week: 'week 1a', leads: 4320, background: 6100 },
   { week: 'week 2', leads: 4860, background: 6800 },
@@ -39,3 +40,5 @@ export const LEADS_CHART = [
   { week: 'week 3a', leads: 3900, background: 6100 },
   { week: 'week 4', leads: 3120, background: 5300 },
 ];
+
+export { LEADS_PERFORMANCE_CHART, LEADS_CHART };

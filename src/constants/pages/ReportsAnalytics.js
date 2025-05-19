@@ -3,6 +3,7 @@ const CLIENT_REPORTS_ANALYTICS = {
   downBtnTitle: `Download`,
   downBtnIcon: '/src/assets/images/dashboard/download-file.svg',
 };
+
 const SUPPLIER_REPORTS_ANALYTICS = {
   title: 'Reports & Analytics',
   downBtnTitle: `Download`,
@@ -10,4 +11,5 @@ const SUPPLIER_REPORTS_ANALYTICS = {
   copyBtnTitle: `Copy`,
   copyBtnIcon: '/src/assets/images/dashboard/download-file.svg',
 };
+
 export { CLIENT_REPORTS_ANALYTICS, SUPPLIER_REPORTS_ANALYTICS };

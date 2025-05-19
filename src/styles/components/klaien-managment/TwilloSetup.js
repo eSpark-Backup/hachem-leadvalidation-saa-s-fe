@@ -1,4 +1,4 @@
-export const TwilloStyles = {
+const TwilloStyles = {
   sectionBox: {
     container: true,
     spacing: {
@@ -123,3 +123,5 @@ export const TwilloStyles = {
     },
   },
 };
+
+export { TwilloStyles };

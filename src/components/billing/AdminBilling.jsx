@@ -25,8 +25,8 @@ import ChartsModal from '../global/ChartsModal';
 import {
   ADMIN_BILLING,
   ADMIN_DASHBOARD,
-  clientsData,
-  data,
+  CLIENTS_DATA,
+  PROFIT_LOSS_OVERVIEW_DATA,
 } from '../../constants/components/billing/AdminBilling';
 import SalesAnalysis from './SalesAnalysis';
 import ProfitLossOverview from './ProfitLossOverview';
@@ -106,7 +106,7 @@ const AdminBilling = () => {
             </Card>
             <Card sx={styles.profitLossCard}>
               <ProfitLossOverview
-                data={data}
+                data={PROFIT_LOSS_OVERVIEW_DATA}
                 title={ADMIN_BILLING.ProfitLossOverview.title}
               />
             </Card>
@@ -221,7 +221,7 @@ const AdminBilling = () => {
             <TotalClientsRevenue
               title={ADMIN_BILLING.TotalClientsRevenue.title}
               tableHead={ADMIN_BILLING.TotalClientsRevenue.headers}
-              tableData={clientsData}
+              tableData={CLIENTS_DATA}
             />
           </Grid>
         </Grid>
@@ -264,4 +264,5 @@ AdminBilling.propTypes = {
   handleOpenChartModal: PropTypes.func.isRequired,
   children: PropTypes.any,
 };
+
 export default AdminBilling;

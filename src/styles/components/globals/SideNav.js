@@ -1,4 +1,5 @@
 const backDropStyles = { backgroundColor: 'rgba(0, 0, 0, 0.04)' };
+
 const drawerPropsStyles = {
   bgcolor: '#FFF',
   color: 'red',
@@ -13,6 +14,7 @@ const drawerPropsStyles = {
   overflowX: 'hidden',
   overflowY: 'hidden',
 };
+
 const mobileDrawerStyles = { zIndex: (theme) => theme?.zIndex?.appBar + 100 };
 
 export { backDropStyles, drawerPropsStyles, mobileDrawerStyles };

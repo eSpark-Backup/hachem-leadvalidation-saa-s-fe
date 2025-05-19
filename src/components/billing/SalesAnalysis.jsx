@@ -5,6 +5,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 import PropTypes from 'prop-types';
 import { formatNumber } from '../../utils/globals';
+
 const SalesAnalysis = ({
   chartData,
   modalOpen,
@@ -104,4 +105,5 @@ SalesAnalysis.propTypes = {
   curreny: PropTypes.any,
   anchorRef: PropTypes.any,
 };
+
 export default SalesAnalysis;

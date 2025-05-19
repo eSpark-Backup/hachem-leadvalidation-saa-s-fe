@@ -57,4 +57,5 @@ PerformanceCard.propTypes = {
   open: PropTypes.any,
   anchorRef: PropTypes.any,
 };
+
 export default PerformanceCard;

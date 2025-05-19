@@ -27,4 +27,5 @@ const SettingCardStyles = {
   },
   toolTip: { marginLeft: 3, cursor: 'pointer' },
 };
+
 export { SettingCardStyles };

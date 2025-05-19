@@ -27,4 +27,5 @@ const PersonalInfo = () => {
     </Box>
   );
 };
+
 export default PersonalInfo;

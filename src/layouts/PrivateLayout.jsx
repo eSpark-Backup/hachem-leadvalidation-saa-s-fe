@@ -3,7 +3,7 @@
 import { Box } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { SideNav } from '/src/components/global/SideNav';
+import SideNav from '/src/components/global/SideNav';
 import TopBar from '/src/components/global/TopBar';
 import {
   LayoutBodyRoot,

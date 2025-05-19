@@ -4,7 +4,7 @@
  *
  * @constant {number[]} years - Array of years.
  */
-export const years = Array.from({ length: 200 }, (_, i) => 2000 + i);
+const years = Array.from({ length: 200 }, (_, i) => 2000 + i);
 
 /**
  * Calculates the number of days in a given month of a specific year.
@@ -13,8 +13,7 @@ export const years = Array.from({ length: 200 }, (_, i) => 2000 + i);
  * @param {number} year - The full year (e.g., 2023).
  * @returns {number} The number of days in the specified month and year.
  */
-export const daysInMonth = (month, year) =>
-  new Date(year, month + 1, 0).getDate();
+const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
 
 /**
  * Determines if a given day is selected based on the provided parameters.
@@ -29,7 +28,7 @@ export const daysInMonth = (month, year) =>
  * @param {boolean} params.isSeries - Indicates whether the selection is a date range (true) or a single date (false).
  * @returns {boolean} - Returns `true` if the day is selected, otherwise `false`.
  */
-export const getIsSelected = ({
+const getIsSelected = ({
   day,
   viewingMonth,
   viewingYear,
@@ -58,7 +57,7 @@ export const getIsSelected = ({
  * @param {number} delta - The number of months to add (positive) or subtract (negative).
  * @returns {{ newMonth: number, newYear: number }} An object containing the updated month and year.
  */
-export const getChangedMonthYear = (viewingMonth, viewingYear, delta) => {
+const getChangedMonthYear = (viewingMonth, viewingYear, delta) => {
   let newMonth = viewingMonth + delta;
   let newYear = viewingYear;
 
@@ -80,7 +79,7 @@ export const getChangedMonthYear = (viewingMonth, viewingYear, delta) => {
  * @param {number} delta - The change to apply to the viewing year (positive or negative).
  * @returns {number} The updated year after applying the delta.
  */
-export const getChangedYear = (viewingYear, delta) => viewingYear + delta;
+const getChangedYear = (viewingYear, delta) => viewingYear + delta;
 
 /**
  * Updates the currently viewed year by applying a delta and setting the new year.
@@ -90,12 +89,16 @@ export const getChangedYear = (viewingYear, delta) => viewingYear + delta;
  * @param {Function} getChangedYear - A function that calculates the new year based on the current year and delta.
  * @param {number} viewingYear - The current year being viewed.
  */
-export const changeYear = (
-  delta,
-  setViewingYear,
-  getChangedYear,
-  viewingYear
-) => {
+const changeYear = (delta, setViewingYear, getChangedYear, viewingYear) => {
   const newYear = getChangedYear(viewingYear, delta);
   setViewingYear(newYear);
+};
+
+export {
+  getChangedMonthYear,
+  getChangedYear,
+  changeYear,
+  getIsSelected,
+  daysInMonth,
+  years,
 };

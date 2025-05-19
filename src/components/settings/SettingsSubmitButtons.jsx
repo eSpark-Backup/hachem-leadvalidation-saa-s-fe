@@ -51,4 +51,5 @@ SettingsSubmitButtons.propTypes = {
   request: PropTypes.func.isRequired,
   cancel: PropTypes.func.isRequired,
 };
+
 export default SettingsSubmitButtons;

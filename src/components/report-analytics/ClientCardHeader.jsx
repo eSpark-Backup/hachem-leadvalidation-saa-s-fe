@@ -20,4 +20,5 @@ ClientCardHeader.propTypes = {
   onClick: PropTypes.any.isRequired,
   anchorRef: PropTypes.any,
 };
+
 export default ClientCardHeader;

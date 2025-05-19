@@ -20,4 +20,5 @@ const stats = [
     light: '/src/assets/images/dashboard/statics-card/pending-light.svg',
   },
 ];
+
 export { stats };

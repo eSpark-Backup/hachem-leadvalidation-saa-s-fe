@@ -1,4 +1,5 @@
 const SIDE_NAV_WIDTH = 0;
+
 const BODY_WIDTH = 280;
 
 // Menus
@@ -140,6 +141,7 @@ const LOG_OUT_MODAL_INFO = {
   cancelBtn: 'Cancel',
   confirmBtn: 'Yes, Log Out',
 };
+
 const LOW_CREDITS = true;
 
 const SETTINGS_PATH = '/dashboard/settings';

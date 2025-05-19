@@ -1,5 +1,5 @@
 // Style constants
-export const containerStyle = (bgImage) => ({
+const containerStyle = (bgImage) => ({
   width: '100%',
   height: '100%',
   backgroundImage: `url(${bgImage})`,
@@ -9,7 +9,7 @@ export const containerStyle = (bgImage) => ({
   minHeight: '100vh',
 });
 
-export const gridContainerStyle = {
+const gridContainerStyle = {
   px: '5%',
   width: '100%',
   height: '100%',
@@ -17,3 +17,5 @@ export const gridContainerStyle = {
   gap: { xs: '9%', md: '9%' },
   py: { xs: '3.5%', sm: '1.5%' },
 };
+
+export { containerStyle, gridContainerStyle };

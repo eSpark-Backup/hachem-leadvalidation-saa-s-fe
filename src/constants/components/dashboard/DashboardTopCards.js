@@ -46,6 +46,7 @@ const CLIENT_CARDS = [
     unitColor: '#fff',
   },
 ];
+
 const SUPPLIER_CARDS = [
   {
     title: 'Valid Leads',
@@ -111,7 +112,9 @@ const ADMIN_CARDS = [
 ];
 
 const CLIENT_CARDS_DATA = [682.5, 321, 86.23, 65.29];
+
 const SUPPLIER_CARDS_DATA = [682.5, 522.5, 422.5, 65250];
+
 const ADMIN_CARDS_DATA = [682.5, 522.5, 422.5, 65, 250];
 
 const CLIENT_LEADS = {

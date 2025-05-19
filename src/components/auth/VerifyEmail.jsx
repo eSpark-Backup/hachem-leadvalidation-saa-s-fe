@@ -128,4 +128,5 @@ const VerifyEmail = ({ title }) => {
 VerifyEmail.propTypes = {
   title: PropTypes.string.isRequired,
 };
+
 export default VerifyEmail;

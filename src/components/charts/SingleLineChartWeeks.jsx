@@ -63,4 +63,5 @@ SingleLineChartWeeks.propTypes = {
   color: PropTypes.string.isRequired,
   strokeWidth: PropTypes.number,
 };
+
 export default SingleLineChartWeeks;

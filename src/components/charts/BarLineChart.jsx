@@ -8,6 +8,7 @@ import {
   ComposedChart,
 } from 'recharts';
 import PropTypes from 'prop-types';
+
 const BarLineChart = ({ data = [], color = '#FFA500', height }) => {
   return (
     <ResponsiveContainer width="100%" height={height || 200}>
@@ -42,4 +43,5 @@ BarLineChart.propTypes = {
   color: PropTypes.string.isRequired,
   height: PropTypes.any,
 };
+
 export default BarLineChart;

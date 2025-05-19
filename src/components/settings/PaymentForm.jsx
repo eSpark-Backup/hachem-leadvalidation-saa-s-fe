@@ -266,4 +266,5 @@ const PaymentForm = () => {
     </Box>
   );
 };
+
 export default PaymentForm;

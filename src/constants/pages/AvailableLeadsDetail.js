@@ -1,4 +1,4 @@
-export const AVAILABLE_LEAD_DETAILS = {
+const AVAILABLE_LEAD_DETAILS = {
   filterType: {
     search: 'search',
     copy: 'copy',
@@ -7,7 +7,7 @@ export const AVAILABLE_LEAD_DETAILS = {
   },
 };
 
-export const AVAILABLE_LEAD_TABLE_HEADER = [
+const AVAILABLE_LEAD_TABLE_HEADER = [
   { key: 'name', label: 'Name' },
   { key: 'supplier_id', label: 'Klairn’s ID' },
   { key: 'address', label: 'Address' },
@@ -19,7 +19,7 @@ export const AVAILABLE_LEAD_TABLE_HEADER = [
   { key: 'zip_code', label: 'ZIP Code' },
 ];
 
-export const AVAILABLE_LEAD_TABLE_BODY = [
+const AVAILABLE_LEAD_TABLE_BODY = [
   {
     id: 1,
     name: 'Annette Black',
@@ -130,7 +130,7 @@ export const AVAILABLE_LEAD_TABLE_BODY = [
   },
 ];
 
-export const AVAILABLE_LEAD_FILTER_TYPES = [
+const AVAILABLE_LEAD_FILTER_TYPES = [
   { type: 'search', key: 'search' },
   {
     type: 'copy',
@@ -139,3 +139,10 @@ export const AVAILABLE_LEAD_FILTER_TYPES = [
   { type: 'download', key: 'download' },
   { type: 'month', key: 'month' },
 ];
+
+export {
+  AVAILABLE_LEAD_FILTER_TYPES,
+  AVAILABLE_LEAD_TABLE_BODY,
+  AVAILABLE_LEAD_TABLE_HEADER,
+  AVAILABLE_LEAD_DETAILS,
+};

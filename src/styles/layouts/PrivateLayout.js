@@ -14,6 +14,7 @@ const LayoutRoot = styled('div')(({ theme }) => ({
     paddingLeft: SIDE_NAV_WIDTH,
   },
 }));
+
 const LayoutBodyRoot = styled('div')(({ theme }) => ({
   display: 'flex',
   flex: '1 1 auto',
@@ -22,6 +23,7 @@ const LayoutBodyRoot = styled('div')(({ theme }) => ({
     paddingLeft: BODY_WIDTH,
   },
 }));
+
 const LayoutContainer = styled('div')({
   display: 'flex',
   flex: '1 1 auto',
@@ -41,6 +43,7 @@ const privateLayoutOutletBoxStyles = {
   p: { xs: 0, sm: 2 },
   overflowY: 'auto',
 };
+
 export {
   privateLayoutBoxStyles,
   privateLayoutOutletBoxStyles,

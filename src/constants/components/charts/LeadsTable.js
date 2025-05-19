@@ -1,4 +1,4 @@
-export const LEADS_TABLE = [
+const LEADS_TABLE = [
   {
     leadType: 'Accepted',
     totalLeads: 13170,
@@ -18,9 +18,10 @@ export const LEADS_TABLE = [
     color: '#D50000',
   }, // red
 ];
-export const HEADERS = ['Leads', 'Total Leads', 'Valid Rate'];
 
-export const CLIENT_LEADS_TABLE = [
+const HEADERS = ['Leads', 'Total Leads', 'Valid Rate'];
+
+const CLIENT_LEADS_TABLE = [
   {
     leadType: 'Iceland',
     totalLeads: 13170,
@@ -40,4 +41,7 @@ export const CLIENT_LEADS_TABLE = [
     color: '#E84646',
   }, // red
 ];
-export const CLIENT_HEADERS = ['Country', 'Total Leads', 'Valid Rate'];
+
+const CLIENT_HEADERS = ['Country', 'Total Leads', 'Valid Rate'];
+
+export { LEADS_TABLE, HEADERS, CLIENT_LEADS_TABLE, CLIENT_HEADERS };

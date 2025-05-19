@@ -1,4 +1,4 @@
-export const modalBoxStyle = (width) => ({
+const modalBoxStyle = (width) => ({
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -13,9 +13,11 @@ export const modalBoxStyle = (width) => ({
   outline: 'none',
 });
 
-export const closeIconStyle = {
+const closeIconStyle = {
   position: 'absolute',
   top: 8,
   right: 8,
   zIndex: 1,
 };
+
+export { modalBoxStyle, closeIconStyle };

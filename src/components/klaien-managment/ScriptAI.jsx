@@ -114,4 +114,5 @@ const ScriptAI = ({ activeBox }) => {
 ScriptAI.propTypes = {
   activeBox: PropTypes.any,
 };
+
 export default ScriptAI;

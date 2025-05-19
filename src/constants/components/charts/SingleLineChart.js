@@ -1,4 +1,4 @@
-export const SINGLE_LINE_CHART = [
+const SINGLE_LINE_CHART = [
   { key: 1, value: 60 },
   { key: 2, value: 70 },
   { key: 3, value: 19 },
@@ -30,7 +30,8 @@ export const SINGLE_LINE_CHART = [
   { key: 9, value: 45 },
   { key: 10, value: 70 },
 ];
-export const VALID_LEADS_DATA = [
+
+const VALID_LEADS_DATA = [
   { key: 1, value: 187 },
   { key: 2, value: 93 },
   { key: 3, value: 412 },
@@ -62,7 +63,8 @@ export const VALID_LEADS_DATA = [
   { key: 29, value: 154 },
   { key: 30, value: 198 },
 ];
-export const PENDING_LEADS_DATA = [
+
+const PENDING_LEADS_DATA = [
   { key: 1, value: 187 },
   { key: 2, value: 93 },
   { key: 3, value: 412 },
@@ -94,7 +96,8 @@ export const PENDING_LEADS_DATA = [
   { key: 29, value: 154 },
   { key: 30, value: 198 },
 ];
-export const REJECTED_LEADS_DATA = [
+
+const REJECTED_LEADS_DATA = [
   { key: 1, value: 187 },
   { key: 2, value: 93 },
   { key: 3, value: 412 },
@@ -126,7 +129,8 @@ export const REJECTED_LEADS_DATA = [
   { key: 29, value: 154 },
   { key: 30, value: 198 },
 ];
-export const LEADS_USAGE_DATA = [
+
+const LEADS_USAGE_DATA = [
   { key: 1, value: 187 },
   { key: 2, value: 93 },
   { key: 3, value: 412 },
@@ -135,3 +139,11 @@ export const LEADS_USAGE_DATA = [
   { key: 6, value: 149 },
   { key: 7, value: 279 },
 ];
+
+export {
+  SINGLE_LINE_CHART,
+  VALID_LEADS_DATA,
+  PENDING_LEADS_DATA,
+  REJECTED_LEADS_DATA,
+  LEADS_USAGE_DATA,
+};

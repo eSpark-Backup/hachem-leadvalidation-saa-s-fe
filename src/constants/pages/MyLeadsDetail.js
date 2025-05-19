@@ -1,4 +1,4 @@
-export const MY_LEAD_DETAILS = {
+const MY_LEAD_DETAILS = {
   filterType: {
     search: 'search',
     copy: 'copy',
@@ -7,7 +7,7 @@ export const MY_LEAD_DETAILS = {
   },
 };
 
-export const TABLE_HEADER = [
+const TABLE_HEADER = [
   { key: 'name', label: 'Name' },
   { key: 'supplier_id', label: 'Klairn’s ID' },
   { key: 'address', label: 'Address' },
@@ -19,7 +19,7 @@ export const TABLE_HEADER = [
   { key: 'zip_code', label: 'ZIP Code' },
 ];
 
-export const TABLE_BODY = [
+const TABLE_BODY = [
   {
     id: 1,
     name: 'Annette Black',
@@ -130,7 +130,7 @@ export const TABLE_BODY = [
   },
 ];
 
-export const FILTER_TYPES = [
+const FILTER_TYPES = [
   { type: 'search', key: 'search' },
   {
     type: 'copy',
@@ -139,3 +139,5 @@ export const FILTER_TYPES = [
   { type: 'download', key: 'download' },
   { type: 'month', key: 'month' },
 ];
+
+export { FILTER_TYPES, TABLE_BODY, TABLE_HEADER, MY_LEAD_DETAILS };

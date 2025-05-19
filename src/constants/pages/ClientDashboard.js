@@ -1,4 +1,4 @@
-export const CLIENT_DASHBOARD_LEADS = {
+const CLIENT_DASHBOARD_LEADS = {
   title: 'Leads',
   filterType: {
     dropdown: 'dropdown',
@@ -6,7 +6,7 @@ export const CLIENT_DASHBOARD_LEADS = {
   },
 };
 
-export const CLIENT_LEADS_TABLE_HEADER = [
+const CLIENT_LEADS_TABLE_HEADER = [
   { key: 'supplier_id', label: 'Supplier’s ID' },
   { key: 'lead_id', label: 'Lead ID' },
   { key: 'country', label: 'Country' },
@@ -17,7 +17,7 @@ export const CLIENT_LEADS_TABLE_HEADER = [
   { key: 'action', label: '' },
 ];
 
-export const CLIENT_LEADS_TABLE_BODY = [
+const CLIENT_LEADS_TABLE_BODY = [
   {
     id: 1,
     supplier_id: 'SP43756',
@@ -60,7 +60,7 @@ export const CLIENT_LEADS_TABLE_BODY = [
   },
 ];
 
-export const CLIENT_LEADS_FILTER_TYPES = [
+const CLIENT_LEADS_FILTER_TYPES = [
   {
     type: 'dropdown',
     key: 'dropdown',
@@ -68,8 +68,16 @@ export const CLIENT_LEADS_FILTER_TYPES = [
   { type: 'month', key: 'month' },
 ];
 
-export const CLIENT_LEADS_SELECT_FILTERS = [
+const CLIENT_LEADS_SELECT_FILTERS = [
   { options: [], label: 'Services', key: 'service' },
   { options: [], label: 'Validation', key: 'validation' },
   { options: [], label: 'Select Location', key: 'location' },
 ];
+
+export {
+  CLIENT_LEADS_FILTER_TYPES,
+  CLIENT_LEADS_SELECT_FILTERS,
+  CLIENT_DASHBOARD_LEADS,
+  CLIENT_LEADS_TABLE_BODY,
+  CLIENT_LEADS_TABLE_HEADER,
+};

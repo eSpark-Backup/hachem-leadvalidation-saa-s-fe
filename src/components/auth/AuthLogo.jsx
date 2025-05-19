@@ -1,7 +1,10 @@
 import { Box } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+
 import { AUTH_FORMS } from '../../constants/auth';
 import { ROUTES } from '../../constants/components/globals/Auth';
+
+import AuthLogoStyles from '../../styles/components/auth/AuthLogo';
 
 const AuthLogo = () => {
   const { splash } = ROUTES || {};
@@ -11,22 +14,7 @@ const AuthLogo = () => {
     <Box
       src={auth_image}
       component={'img'}
-      sx={{
-        width: pathname === splash ? '55%' : '35%',
-        maxWidth: pathname === splash ? '512px' : '360px',
-        height: 'auto',
-        position: 'relative',
-        aspectRatio: pathname === splash ? '512 / 145' : '360 / 100',
-        mx: { xs: 2, sm: 0 },
-        mt: {
-          xs: pathname === splash ? 'calc(-100vh * 0.15)' : 'auto',
-          sm: `calc(-100vh * ${pathname === splash ? 0.19 : 0.1})`,
-        },
-        mb: {
-          xs: pathname === splash ? 0 : '6%',
-          sm: 0,
-        },
-      }}
+      sx={AuthLogoStyles(pathname, splash)}
     />
   );
 };
