@@ -1,15 +1,17 @@
+import  DownloadFile  from '/src/assets/images/dashboard/download-file.svg';
+
 const CLIENT_REPORTS_ANALYTICS = {
   title: 'Reports & Analytics',
   downBtnTitle: `Download`,
-  downBtnIcon: '/src/assets/images/dashboard/download-file.svg',
+  downBtnIcon: DownloadFile,
 };
 
 const SUPPLIER_REPORTS_ANALYTICS = {
   title: 'Reports & Analytics',
   downBtnTitle: `Download`,
-  downBtnIcon: '/src/assets/images/dashboard/download-file.svg',
+  downBtnIcon: DownloadFile,
   copyBtnTitle: `Copy`,
-  copyBtnIcon: '/src/assets/images/dashboard/download-file.svg',
+  copyBtnIcon: DownloadFile,
 };
 
 export { CLIENT_REPORTS_ANALYTICS, SUPPLIER_REPORTS_ANALYTICS };

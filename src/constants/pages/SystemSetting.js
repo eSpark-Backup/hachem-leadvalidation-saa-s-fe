@@ -1,3 +1,9 @@
+import CautionIcon from '/src/assets/images/system-setting/caution-icon.svg';
+import GearIcon from '/src/assets/images/system-setting/gear-icon.svg';
+import LightIcon from '/src/assets/images/system-setting/light-icon.svg';
+import MessageIcon from '/src/assets/images/system-setting/message-icon.svg';
+import SheildIcon from '/src/assets/images/system-setting/sheild-icon.svg';
+
 const LEADS_SETTINGS = [
   {
     key: 'valid-name',
@@ -54,7 +60,7 @@ const FRAUD_SETTINGS = [
     title: 'Disposable Email Detection',
     description:
       'Flag leads using known disposable or temporary email services',
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: { SheildIcon },
     initialValue: true,
     key: 'disposable-email-detection',
   },
@@ -62,7 +68,7 @@ const FRAUD_SETTINGS = [
     title: 'Multiple Submissions',
     description:
       'Flag leads with multiple submissions from the same IP address within a time period',
-    icon: '/src/assets/images/system-setting/light-icon.svg',
+    icon: { LightIcon },
     initialValue: false,
     key: 'multiple-submissions',
   },
@@ -70,21 +76,21 @@ const FRAUD_SETTINGS = [
     title: 'Suspicious Data Patterns',
     description:
       'Detect suspicious patterns in form submissions like keyboard smashing',
-    icon: '/src/assets/images/system-setting/caution-icon.svg',
+    icon: { CautionIcon },
     initialValue: true,
     key: 'suspicious-data-patterns',
   },
   {
     title: 'Geographic IP Mismatch',
     description: `Flag when IP location doesn't match submitted location data`,
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: { SheildIcon },
     initialValue: true,
     key: 'geographic-ip-mismatch',
   },
   {
     title: 'Suspicious Referrers',
     description: 'Flag leads from known suspicious or spam referrer sources',
-    icon: '/src/assets/images/system-setting/caution-icon.svg',
+    icon: { CautionIcon },
     initialValue: true,
     key: 'suspicious-referrers',
   },
@@ -94,17 +100,17 @@ const OPTIONS = [
   {
     id: 'lead',
     label: 'Lead Scoring',
-    icon: '/src/assets/images/system-setting/gear-icon.svg',
+    icon: { GearIcon },
   },
   {
     id: 'fraud',
     label: 'Fraud Detection',
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: { SheildIcon },
   },
   {
     id: 'reject',
     label: 'Rejection Messages',
-    icon: '/src/assets/images/system-setting/message-icon.svg',
+    icon: { MessageIcon },
   },
 ];
 

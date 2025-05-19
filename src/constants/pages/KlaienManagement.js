@@ -1,3 +1,7 @@
+import GearIcon from '/src/assets/images/system-setting/gear-icon.svg';
+import SheildIcon from '/src/assets/images/system-setting/sheild-icon.svg';
+import MessageIcon from '/src/assets/images/system-setting/message-icon.svg';
+
 const KLAIEN_MANAGEMENT = { title: 'Klairn Call Management' };
 
 const TWILLO_DATA = {
@@ -45,17 +49,17 @@ const OPTIONS = [
   {
     id: 1,
     label: 'Script AI',
-    icon: '/src/assets/images/system-setting/gear-icon.svg',
+    icon: GearIcon,
   },
   {
     id: 2,
     label: 'Audio Preview',
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: SheildIcon,
   },
   {
     id: 3,
     label: 'Twilio Setup',
-    icon: '/src/assets/images/system-setting/message-icon.svg',
+    icon: MessageIcon,
   },
 ];
 
@@ -63,7 +67,7 @@ const AUDIO_PREVIEW = [
   {
     title: 'Audio Preview',
     description: 'Listen to your script with different voice settings',
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: SheildIcon,
     initialValue: true,
     key: 'audio-preview',
   },

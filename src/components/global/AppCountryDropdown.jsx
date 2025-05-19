@@ -5,6 +5,7 @@ import { APP_COUNTRY_DROPDOWN_STYLE } from '../../constants/components/globals/A
 import TooltipText from './TooltipText';
 import LanguageIcon from '@mui/icons-material/Language';
 import PropTypes from 'prop-types';
+import DownArrow from '/src/assets/images/payment/down_arrow.png';
 
 const AppCountryDropdown = ({ title, paymentFormData, onChange, labels }) => {
   const [value, setvalue] = useState();
@@ -58,7 +59,7 @@ const AppCountryDropdown = ({ title, paymentFormData, onChange, labels }) => {
                 width={14}
                 height={8}
                 style={{ marginTop: '2px' }}
-                src="/src/assets/images/payment/down_arrow.png"
+                src={DownArrow}
               />
             </Box>
             <Box sx={selectTypoBoxStyle}>
@@ -77,7 +78,7 @@ const AppCountryDropdown = ({ title, paymentFormData, onChange, labels }) => {
               <img
                 width={14}
                 height={8}
-                src="/src/assets/images/payment/down_arrow.png"
+                src={DownArrow}
                 style={{ marginTop: '2px' }}
               />
             </Box>

@@ -11,7 +11,6 @@ import PrivateRoute from './PrivateRoute';
 import SignupForm from '../components/auth/SignupForm';
 import PrivateLayout from '../layouts/PrivateLayout';
 import Settings from '../pages/Settings';
-// import UploadLeads from '../pages/UploadLeads';
 import BillingLogsRevenue from '../pages/BillingLogsRevenue';
 import KlaienManagement from '../pages/KlaienManagement';
 import LeadMonitoring from '../pages/LeadMonitoring';

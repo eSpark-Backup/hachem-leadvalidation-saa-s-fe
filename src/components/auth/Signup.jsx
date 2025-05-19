@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES, USER_TYPES } from '../../constants/components/globals/Auth';
 
+import  SignupButtonArrow  from '/src/assets/images/auth/signup_button_arrow.png';
+
 const Signup = () => {
   const [selectedOption, setSelectedOption] = useState({
     supplier: false,
@@ -73,7 +75,7 @@ const Signup = () => {
                 endIcon={
                   <Box
                     component={'img'}
-                    src="/src/assets/images/auth/signup_button_arrow.png"
+                    src={SignupButtonArrow}
                     sx={{ width: { xs: '28px', md: 'auto' }, height: 'auto' }}
                   />
                 }

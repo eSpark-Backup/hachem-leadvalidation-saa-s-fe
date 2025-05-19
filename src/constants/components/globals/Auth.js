@@ -1,3 +1,5 @@
+import ProfileImageDefault from '/src/assets/images/global/profile-Image-default.png';
+
 const ROUTES = {
   // public paths
   splash: '/',
@@ -36,21 +38,21 @@ const SUPPLIER_INFO = {
   role: 'supplier',
   id: 'SP10234',
   name: 'Supplier Name',
-  profileImage: '/src/assets/images/global/profile-Image-default.png',
+  profileImage: ProfileImageDefault,
 };
 
 const ADMIN_INFO = {
   role: 'admin',
   id: 'AD10234',
   name: 'Admin Name',
-  profileImage: '/src/assets/images/global/profile-Image-default.png',
+  profileImage: ProfileImageDefault,
 };
 
 const CLIENT_INFO = {
   role: 'client',
   id: 'CL10234',
   name: 'User Name',
-  profileImage: '/src/assets/images/global/profile-Image-default.png',
+  profileImage: ProfileImageDefault,
 };
 
 const USER_TYPES = {

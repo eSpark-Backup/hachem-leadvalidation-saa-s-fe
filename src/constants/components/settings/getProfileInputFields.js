@@ -1,3 +1,8 @@
+import UserIcon from '/src/assets/settings/user.png';
+import EmailIcon from '/src/assets/settings/email.png';
+import LocationIcon from '/src/assets/settings/location.png';
+import DownArrow from '/src/assets/images/payment/down_arrow.png';
+
 const getProfileInputFields = () => [
   {
     label: 'Full Name',
@@ -5,14 +10,14 @@ const getProfileInputFields = () => [
     name: 'name',
     type: 'text',
     startAdornment: true,
-    icon: '/src/assets/settings/user.png',
+    icon: UserIcon,
     px: 0.5,
   },
   {
     label: 'Email Address',
     placeholder: 'Your Email',
     startAdornment: true,
-    icon: '/src/assets/settings/email.png',
+    icon: EmailIcon,
     name: 'email',
     type: 'email',
     px: 0.5,
@@ -31,7 +36,7 @@ const getProfileInputFields = () => [
     placeholder: 'Select Account Type',
     px: 1.8,
     value: 'regular',
-    endAdornment: ['/src/assets/images/payment/down_arrow.png'],
+    endAdornment: [DownArrow],
     options: [
       { value: 'regular', label: 'Regular' },
       { value: 'admin', label: 'Admin' },
@@ -44,7 +49,7 @@ const CLIENT_INPUT_FIELDS = [
     label: 'Full Name',
     placeholder: 'Your Name',
     startAdornment: true,
-    icon: '/src/assets/settings/user.png',
+    icon: UserIcon,
     name: 'name',
     type: 'text',
     px: 0.5,
@@ -53,7 +58,7 @@ const CLIENT_INPUT_FIELDS = [
     label: 'Email Address',
     placeholder: 'Your Email',
     startAdornment: true,
-    icon: '/src/assets/settings/email.png',
+    icon: EmailIcon,
     name: 'email',
     type: 'email',
     px: 0.5,
@@ -79,7 +84,7 @@ const SUPPLIER_REQUEST_INPUT_FIELDS = [
     label: 'Full Name',
     placeholder: 'Your Name',
     startAdornment: true,
-    icon: '/src/assets/settings/user.png',
+    icon: UserIcon,
     name: 'name',
     type: 'text',
     px: 0.5,
@@ -88,7 +93,7 @@ const SUPPLIER_REQUEST_INPUT_FIELDS = [
     label: 'Email Address',
     placeholder: 'Your Email',
     startAdornment: true,
-    icon: '/src/assets/settings/email.png',
+    icon: EmailIcon,
     name: 'email',
     type: 'email',
     px: 0.5,
@@ -114,7 +119,7 @@ const SUPPLIER_COMPANY_INPUT_FIELDS = [
     label: 'Company Name',
     placeholder: 'Company Name',
     startAdornment: true,
-    icon: '/src/assets/settings/user.png',
+    icon: UserIcon,
     name: 'company_name',
     type: 'text',
     px: 0.5,
@@ -123,7 +128,7 @@ const SUPPLIER_COMPANY_INPUT_FIELDS = [
     label: 'Email Address',
     placeholder: 'Your Email',
     startAdornment: true,
-    icon: '/src/assets/settings/email.png',
+    icon: EmailIcon,
     name: 'email',
     type: 'email',
     px: 0.5,
@@ -142,7 +147,7 @@ const SUPPLIER_COMPANY_INPUT_FIELDS = [
     placeholder: 'Select Business Type',
     px: 1.8,
     value: 'electronic',
-    endAdornment: ['/src/assets/images/payment/down_arrow.png'],
+    endAdornment: [DownArrow],
     options: [{ value: 'electronic', label: 'Electronic' }],
   },
   {
@@ -150,7 +155,7 @@ const SUPPLIER_COMPANY_INPUT_FIELDS = [
     label: 'Company Address',
     placeholder: 'Location',
     startAdornment: true,
-    icon: '/src/assets/settings/location.png',
+    icon: LocationIcon,
     type: 'text',
     px: 0.5,
   },

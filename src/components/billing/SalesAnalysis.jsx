@@ -2,6 +2,8 @@ import SingleLineChartWeeks from '../charts/SingleLineChartWeeks';
 import { Box, CardContent, Typography } from '@mui/material';
 import DropdownButton from '../report-analytics/DropdownButton';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import UpIcons from '/src/assets/images/billing/upIcons.svg'
+import DownIcons from '/src/assets/images/billing/downIcons.svg';
 
 import PropTypes from 'prop-types';
 import { formatNumber } from '../../utils/globals';
@@ -66,8 +68,8 @@ const SalesAnalysis = ({
               <img
                 src={
                   up
-                    ? '/src/assets/images/billing/upIcons.svg'
-                    : '/src/assets/images/billing/downIcons.svg'
+                    ? UpIcons
+                    : DownIcons
                 }
               />
               <Typography sx={{ color: '#FF4E4E' }}>{inPer}</Typography>

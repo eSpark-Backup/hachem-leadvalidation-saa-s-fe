@@ -2,6 +2,8 @@
 
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
+import KlairnLogo from '/src/assets/images/auth/KlairnLogo.png';
+
 import {
   containerStyle,
   contentWrapperStyle,
@@ -22,12 +24,7 @@ const PaymentLayout = () => {
     <Box sx={containerStyle}>
       {/* Logo Section */}
       <Box sx={logoWrapperStyle}>
-        <Box
-          alt="logo"
-          component="img"
-          sx={logoImageStyle}
-          src="/src/assets/images/auth/Group.png"
-        />
+        <Box alt="logo" component="img" sx={logoImageStyle} src={KlairnLogo} />
       </Box>
 
       {/* Page Content Section */}

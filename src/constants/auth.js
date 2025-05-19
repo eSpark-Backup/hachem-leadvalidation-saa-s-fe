@@ -1,8 +1,10 @@
-// Authentication forms constant
+import KlairnLogo from '/src/assets/images/auth/KlairnLogo.png';
+import VerifiedImage from '/src/assets/images/auth/Verified_image.svg';
+import GoogleIcon from '/src/assets/images/auth/google.png';
 
 const AUTH_FORMS = {
   // forms data
-  auth_image: '/src/assets/images/auth/Group.png',
+  auth_image: KlairnLogo,
   login: {
     title: 'Login',
     links: [
@@ -202,7 +204,7 @@ const AUTH_FORMS = {
     link: '#',
   },
   or: 'OR',
-  googlePic: '/src/assets/images/auth/google.png',
+  googlePic: GoogleIcon,
 
   // forms styles
   customInputStyle: {
@@ -290,7 +292,7 @@ const AUTH_FORMS = {
 
 const VERIFICATION_MODAL = {
   title: 'Verification Successful ',
-  image: '/src/assets/images/auth/Verified_image.svg',
+  image: VerifiedImage,
 };
 
 export { AUTH_FORMS, VERIFICATION_MODAL };

@@ -1,23 +1,32 @@
+import uploadedIcon from '/src/assets/images/dashboard/statics-card/uploaded.svg';
+import uploadedLight from '/src/assets/images/dashboard/statics-card/Uploaded-light.svg';
+import rejectedIcon from '/src/assets/images/dashboard/statics-card/rejected.svg';
+import rejectedLight from '/src/assets/images/dashboard/statics-card/Rejected-light.svg';
+import acceptedIcon from '/src/assets/images/dashboard/statics-card/accepted.svg';
+import acceptedLight from '/src/assets/images/dashboard/statics-card/accepted-light.svg';
+import pendingIcon from '/src/assets/images/dashboard/statics-card/pending.svg';
+import pendingLight from '/src/assets/images/dashboard/statics-card/pending-light.svg';
+
 const stats = [
   {
     label: 'Uploaded Leads',
-    icon: '/src/assets/images/dashboard/statics-card/uploaded.svg',
-    light: '/src/assets/images/dashboard/statics-card/Uploaded-light.svg',
+    icon: uploadedIcon,
+    light: uploadedLight,
   },
   {
     label: 'Rejected',
-    icon: '/src/assets/images/dashboard/statics-card/rejected.svg',
-    light: '/src/assets/images/dashboard/statics-card/Rejected-light.svg',
+    icon: rejectedIcon,
+    light: rejectedLight,
   },
   {
     label: 'Accepted',
-    icon: '/src/assets/images/dashboard/statics-card/accepted.svg',
-    light: '/src/assets/images/dashboard/statics-card/accepted-light.svg',
+    icon: acceptedIcon,
+    light: acceptedLight,
   },
   {
     label: 'Pending',
-    icon: '/src/assets/images/dashboard/statics-card/pending.svg',
-    light: '/src/assets/images/dashboard/statics-card/pending-light.svg',
+    icon: pendingIcon,
+    light: pendingLight,
   },
 ];
 

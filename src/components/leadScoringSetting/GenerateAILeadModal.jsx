@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 
 import DonutChartSingleWithText from '../charts/DonutChartSingleWithText';
-import GeneratedAILeadSuccess from './GeneratedAILeadSuccess';
 
 import { PIE_CHARTS2 } from '../../constants/components/charts/PieCharts';
 import {
@@ -70,7 +69,7 @@ const GenerateAILeadModal = ({ open, handleClose }) => {
 
         <Stack sx={checkingStackStyles}>
           {Array.from({ length: 2 }).map((_, index) => (
-            <Box sx={aiCheckingBoxStyles}>
+            <Box sx={aiCheckingBoxStyles} key={index}>
               <Box sx={aiCheckingChildBoxStyles}>
                 <Box
                   component={'img'}

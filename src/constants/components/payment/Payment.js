@@ -1,3 +1,9 @@
+import CardIcon from '/src/assets/images/payment/card.png';
+
+import VisIcon from '/src/assets/images/payment/visa.png';
+import AmexIcon from '/src/assets/images/payment/amex.png';
+import MaestroIcon from '/src/assets/images/payment/maestro.png';
+
 const PAYMENT_DATA = {
   title: 'Payments',
   text: 'You can change  your payment credentials here.',
@@ -26,11 +32,7 @@ const PAYMENT_DATA = {
         name: 'credit_card_number',
         type: 'number',
         placeholder: 'Card number',
-        endAdornment: [
-          '/src/assets/images/payment/visa.png',
-          '/src/assets/images/payment/amex.png',
-          '/src/assets/images/payment/maestro.png',
-        ],
+        endAdornment: [VisIcon, AmexIcon, MaestroIcon],
       },
       {
         px: 0.3,
@@ -38,7 +40,7 @@ const PAYMENT_DATA = {
         name: 'card_holder_name',
         type: 'text',
         placeholder: 'Holder name',
-        startAdornment: '/src/assets/images/payment/card.png',
+        startAdornment: { CardIcon },
       },
       {
         px: 1.8,
