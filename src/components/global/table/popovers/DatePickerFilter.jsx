@@ -1,33 +1,35 @@
-import { useRef, useState } from 'react';
-
-import dayjs from 'dayjs';
+import { useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import { Box, Button, ClickAwayListener, Popover } from '@mui/material';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
+import CustomSeriesDatePicker from '../../CustomSeriesDatePicker';
+import LeadMonitoringHeaderButtons from '../LeadMonitoringHeaderButtons';
+
+import { DATE_PICKER_VARIANTS } from '../../../../constants/components/globals/CustomSeriesDatePicker';
 import {
-  BG_COLOR,
   ICONS,
   TABLE_STATIC_TEXTS,
 } from '../../../../constants/components/globals/Table';
 
 import {
   buttonStyles,
-  calenderActionButtonStyles,
-  calenderHeaderStyles,
-  monthYearButtonStyles,
   paperPropsPickerStyles,
-  pickerLayoutStyles,
   slotsPropsPickerStyles,
 } from '../../../../styles/components/globals/table/popovers/DatePickerFilter';
 
-const DatePickerFilter = () => {
+const DatePickerFilter = ({ leadMonitoring, pickerObjects }) => {
   const { upArrow, downArrow } = ICONS;
 
-  const [value, setValue] = useState(dayjs());
-  const [anchorEl, setAnchorEl] = useState(null);
+  const {
+    payload,
+    setPayload,
+    pickerID,
+    anchorEl,
+    setAnchorEl,
+    setIsViewingHistory,
+    isViewingHistory
+  } = pickerObjects;
 
   const buttonRef = useRef(null);
 
@@ -43,21 +45,30 @@ const DatePickerFilter = () => {
 
   return (
     <Box>
-      <Button
-        ref={buttonRef}
-        onClick={!anchorEl ? handleToggle : null}
-        sx={{
-          backgroundColor: anchorEl
-            ? '#FFFFFF !important'
-            : 'rgba(179, 199, 255, 0.41) !important',
-          ...buttonStyles,
-        }}
-        endIcon={
-          <Box component={'img'} src={!anchorEl ? downArrow : upArrow} />
-        }
-      >
-        {TABLE_STATIC_TEXTS.this_month}
-      </Button>
+      {leadMonitoring ? (
+        <LeadMonitoringHeaderButtons
+          buttonRef={buttonRef}
+          onClick={!anchorEl ? handleToggle : null}
+          setIsViewingHistory={setIsViewingHistory}
+          isViewingHistory={isViewingHistory}
+        />
+      ) : (
+        <Button
+          ref={buttonRef}
+          onClick={!anchorEl ? handleToggle : null}
+          sx={{
+            backgroundColor: anchorEl
+              ? '#FFFFFF !important'
+              : 'rgba(179, 199, 255, 0.41) !important',
+            ...buttonStyles,
+          }}
+          endIcon={
+            <Box component={'img'} src={!anchorEl ? downArrow : upArrow} />
+          }
+        >
+          {TABLE_STATIC_TEXTS.this_month}
+        </Button>
+      )}
 
       <Popover
         open={open}
@@ -81,54 +92,23 @@ const DatePickerFilter = () => {
         }}
       >
         <ClickAwayListener onClickAway={handleClose}>
-          <Box>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <StaticDatePicker
-                value={value}
-                onChange={(newValue) => {
-                  setValue(newValue);
-                }}
-                onAccept={() => {
-                  handleClose();
-                }}
-                orientation={'portrait'}
-                views={['year', 'month', 'day']}
-                slotProps={{
-                  layout: {
-                    sx: {
-                      background: BG_COLOR,
-                      ...pickerLayoutStyles,
-                    },
-                  },
-                  actionBar: {
-                    sx: {
-                      background: BG_COLOR,
-                      ...calenderActionButtonStyles,
-                    },
-                  },
-                  calendarHeader: {
-                    sx: {
-                      background: BG_COLOR,
-                      ...calenderHeaderStyles,
-                    },
-                  },
-                  monthButton: {
-                    sx: monthYearButtonStyles,
-                  },
-                  yearButton: {
-                    sx: monthYearButtonStyles,
-                  },
-                }}
-                slots={{
-                  toolbar: () => null,
-                }}
-              />
-            </LocalizationProvider>
-          </Box>
+          <CustomSeriesDatePicker
+            variant={DATE_PICKER_VARIANTS.FULL}
+            payload={payload}
+            setPayload={setPayload}
+            pickerID={pickerID}
+            allowArrowNavigation={true}
+            setOpen={handleClose}
+          />
         </ClickAwayListener>
       </Popover>
     </Box>
   );
+};
+
+DatePickerFilter.propTypes = {
+  leadMonitoring: PropTypes.bool,
+  pickerObjects: PropTypes.object,
 };
 
 export default DatePickerFilter;

@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
-
+import { useEffect, useState } from 'react';
 import { USER_TYPE } from '../utils/auth';
 import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 
 import HeaderActions from '../components/report-analytics/HeaderActions';
+import NotFound from './NotFound';
 import OptionCard from '../components/klaien-managment/OptionCard';
 import TwilloSetup from '../components/klaien-managment/TwilloSetup';
 import AudioSettings from '../components/klaien-managment/AudioSettings';
@@ -16,6 +15,7 @@ import {
   KLAIEN_MANAGEMENT,
   OPTIONS,
 } from '../constants/pages/KlaienManagement';
+import { useNavigate } from 'react-router-dom';
 
 const KlaienManagement = () => {
   const [activeBox, setActiveBox] = useState(1);

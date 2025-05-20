@@ -23,10 +23,7 @@ const backdropStyles = {
 };
 
 const slotsCommonPropsStyles = {
-  '&::before': {
-    content: '""',
-    ...backdropStyles,
-  },
+  '& .MuiModal-backdrop': backdropStyles,
 };
 
 const paperCommonPropsStyles = {

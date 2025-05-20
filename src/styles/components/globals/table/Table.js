@@ -3,12 +3,15 @@ const flexStyles = {
   alignItems: 'center',
 };
 
-const tableContainerStyles = {
-  backgroundColor: 'rgba(9, 16, 43, 0.05)',
-  border: '1px solid rgba(43, 49, 64, 0.05)',
-  boxShadow: '2px 2px 7.2px rgba(9, 16, 43, 0.11)',
-  borderRadius: '17px',
-  padding: '17px 10px 29px 13px',
+const tableContainerStyles = (marginTop) => {
+  return {
+    backgroundColor: 'rgba(9, 16, 43, 0.05)',
+    border: '1px solid rgba(43, 49, 64, 0.05)',
+    boxShadow: '2px 2px 7.2px rgba(9, 16, 43, 0.11)',
+    borderRadius: '17px',
+    padding: '17px 10px 29px 13px',
+    marginTop,
+  };
 };
 
 const headingBoxStyles = (leadMonitoring, leadStatus) => {
@@ -168,6 +171,19 @@ const newLabelStyles = {
   lineHeight: '12px',
 };
 
+const noDataRowStyles = {
+  textAlign: 'center',
+  py: 4,
+  backgroundColor: '#ffffff',
+};
+
+const noDataTextStyles = {
+  fontSize: '14px !important',
+  fontWeight: 600,
+  color: '#212332',
+  textAlign: 'center',
+};
+
 export {
   flexStyles,
   tableContainerStyles,
@@ -185,4 +201,6 @@ export {
   tableBodyRowStyles,
   latestItemStyles,
   newLabelStyles,
+  noDataRowStyles,
+  noDataTextStyles,
 };

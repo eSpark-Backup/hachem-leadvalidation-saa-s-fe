@@ -4,7 +4,7 @@
  * @param {string[][]} data - A two-dimensional array representing table rows and columns.
  * @returns {void} This function does not return a value.
  */
-const copyTableDataToClipboard = (data, setSelectedRows) => {
+const copyTableDataToClipboard = (data, setSelectedRows, handleOpen) => {
   const tsv = data
     .map((row) =>
       row
@@ -20,7 +20,7 @@ const copyTableDataToClipboard = (data, setSelectedRows) => {
 
   navigator.clipboard.writeText(tsv).then(() => {
     setSelectedRows([]);
-    alert('Table data copied to clipboard!');
+    handleOpen('copy');
   });
 };
 
@@ -32,17 +32,39 @@ const copyTableDataToClipboard = (data, setSelectedRows) => {
  * @returns {void} This function does not return a value.
  */
 
-const downloadTableDataToCSV = (data, filename = 'data.csv') => {
-  const csv = data.map((row) => row.join(',')).join('\n');
-  const blob = new Blob([csv], { type: 'text/csv' });
-  const url = URL.createObjectURL(blob);
+const downloadTableDataToCSV = (
+  data,
+  filename = 'data.csv',
+  handleOpen,
+  setProgress
+) => {
+  handleOpen('download');
+  setProgress(0);
 
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  const interval = setInterval(() => {
+    setProgress((prev) => {
+      if (prev >= 100) {
+        clearInterval(interval);
+
+        const csv = data.map((row) => row.join(',')).join('\n');
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        setTimeout(() => handleOpen('copy'), 500);
+        return 100;
+      }
+
+      return prev + 10;
+    });
+  }, 100);
 };
 
 export { copyTableDataToClipboard, downloadTableDataToCSV };

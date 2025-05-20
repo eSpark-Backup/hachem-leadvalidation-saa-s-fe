@@ -1,3 +1,5 @@
+import { location, validation } from './DropdownOptions';
+
 const MY_LEADS = {
   title: 'Leads',
   filterType: {
@@ -119,9 +121,9 @@ const FILTER_TYPES = [
 ];
 
 const SELECT_FILTERS = [
-  { options: [], label: 'Services', key: 'service' },
-  { options: [], label: 'Validation', key: 'validation' },
-  { options: [], label: 'Select Location', key: 'location' },
+  // { options: service, label: 'Services', key: 'services' },
+  { options: validation, label: 'Validation', key: 'leads_validation' },
+  { options: location, label: 'Select Location', key: 'country' },
 ];
 
 export { TABLE_BODY, TABLE_HEADER, FILTER_TYPES, SELECT_FILTERS, MY_LEADS };

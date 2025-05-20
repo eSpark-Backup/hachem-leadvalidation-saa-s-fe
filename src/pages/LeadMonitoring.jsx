@@ -18,9 +18,31 @@ import {
 
 const LeadMonitoring = () => {
   const [open, setOpen] = useState(false);
+  const [payload, setPayload] = useState({});
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [pickerID] = useState('Leads Monitoring');
+  const [header, setHeader] = useState(TABLE_HEADER);
   const [deleteItemId, setDeleteItemId] = useState(null);
+  const [isViewingHistory, setIsViewingHistory] = useState(false);
+  console.log(payload);
   console.log(deleteItemId);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isViewingHistory) {
+      const addActionObj = { key: 'action', label: '' };
+
+      setHeader([...header, addActionObj]);
+    } else {
+      setHeader(TABLE_HEADER);
+    }
+  }, [isViewingHistory]);
+
+  useEffect(() => {
+    if (USER_TYPE !== USER_TYPES.admin) {
+      navigate(ROUTES.dashboard);
+    }
+  }, [navigate]);
 
   const deleteItemHandler = (row) => {
     setDeleteItemId(row.cl_sp_id);
@@ -31,12 +53,6 @@ const LeadMonitoring = () => {
     setOpen(false);
   };
 
-  useEffect(() => {
-    if (USER_TYPE !== USER_TYPES.admin) {
-      navigate(ROUTES.dashboard);
-    }
-  }, [navigate]);
-
   if (USER_TYPE !== USER_TYPES.admin) return null;
 
   return (
@@ -45,13 +61,22 @@ const LeadMonitoring = () => {
         title={LEAD_MONITORING.title}
         filters={LEAD_MONITORING_FILTER_TYPES}
         filterType={LEAD_MONITORING.filterType}
-        columns={TABLE_HEADER}
+        columns={header}
         data={TABLE_BODY}
         noBg
         trash
         deleteAction={deleteItemHandler}
         marginTop={{ xs: '30px', sm: '14px' }}
         leadMonitoring
+        pickerObjects={{
+          payload,
+          setPayload,
+          pickerID,
+          anchorEl,
+          setAnchorEl,
+          setIsViewingHistory,
+          isViewingHistory,
+        }}
       />
 
       <CommonDialog open={open} handleClose={handleClose} />

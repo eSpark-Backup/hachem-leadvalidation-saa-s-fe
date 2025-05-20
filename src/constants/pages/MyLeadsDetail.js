@@ -1,4 +1,9 @@
 const MY_LEAD_DETAILS = {
+  ok: 'OK',
+  copy: 'Copied',
+  download: 'Downloading Starts',
+  downloaded: 'Downloaded',
+
   filterType: {
     search: 'search',
     copy: 'copy',

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import CommonDialog from '../components/global/table/dialog/CommonDialog';
@@ -13,7 +14,6 @@ import {
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/MyLeads';
-import { useEffect, useState } from 'react';
 
 const MyLeads = () => {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ const MyLeads = () => {
   };
 
   if (USER_TYPE !== USER_TYPES.client) return null;
-  
+
   return (
     <>
       <GenericTable

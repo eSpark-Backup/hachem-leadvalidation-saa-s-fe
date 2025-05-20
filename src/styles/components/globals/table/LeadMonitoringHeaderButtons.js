@@ -12,17 +12,21 @@ const leadMonitoringButtonStackStyles = {
   gap: '11px',
 };
 
-const historyButtonStyles = {
-  ...buttonStyles,
-  backgroundColor: '#136BE5',
-  border: '1px solid #FFFFFF',
-  boxShadow: '1px 2px 3px rgba(70, 118, 251, 0.41)',
-  borderRadius: '7px',
-  color: '#E9EFF4',
+const historyButtonStyles = (isViewingHistory) => {
+  return {
+    ...buttonStyles,
+    backgroundColor: isViewingHistory
+      ? 'rgba(179, 199, 255, 0.41) !important'
+      : '#136BE5',
+    border: isViewingHistory ? '0.5px solid #136BE5' : '1px solid #FFFFFF',
+    boxShadow: !isViewingHistory && '1px 2px 3px rgba(70, 118, 251, 0.41)',
+    borderRadius: '7px',
+    color: isViewingHistory ? '#4A5154' : '#E9EFF4',
 
-  '&:hover': {
-    backgroundColor: 'rgba(19, 107, 229, 0.8)',
-  },
+    '&:hover': {
+      backgroundColor: 'rgba(19, 107, 229, 0.8)',
+    },
+  };
 };
 
 const monthButtonStyles = {

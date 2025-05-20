@@ -19,7 +19,10 @@ const CopyFilter = ({
   tableBody,
   setSelectedRows,
   selectedRows,
+  actions,
 }) => {
+  const { handleOpen } = actions;
+
   const isSelctedRows = () => {
     return selectedRows?.length
       ? tableBody.filter((row) => selectedRows.includes(row.id))
@@ -46,7 +49,8 @@ const CopyFilter = ({
       onClick={() =>
         copyTableDataToClipboard(
           [headerLabels, ...prepareData()],
-          setSelectedRows
+          setSelectedRows,
+          handleOpen
         )
       }
     >
@@ -66,6 +70,7 @@ CopyFilter.propTypes = {
   tableBody: PropTypes.arrayOf(PropTypes.object).isRequired,
   setSelectedRows: PropTypes.func.isRequired,
   selectedRows: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
 export default CopyFilter;

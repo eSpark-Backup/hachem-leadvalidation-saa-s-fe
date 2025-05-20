@@ -7,6 +7,7 @@ const montSelectStyles = {
 const iconButtonStyles = {
   backgroundColor: 'transparent !important',
   padding: 0,
+  color: '#09102B',
 };
 
 const monthHeadingStyles = {

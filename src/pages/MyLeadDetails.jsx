@@ -1,73 +1,96 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box } from '@mui/material';
 
-import ManageModal from '../components/global/table/popovers/ManageModal';
+import LeadDetailsModal from '../components/leadDetails/LeadDetailsModal';
 import GenericTable from '../components/global/table/GenericTable';
 
 import { USER_TYPE } from '../utils/auth';
 import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
-
 import {
-  SUPPLIER_MANAGEMENT,
-  TABLE_BODY,
+  MY_LEAD_DETAILS,
   TABLE_HEADER,
-} from '../constants/pages/SupplierManagement';
+  TABLE_BODY,
+  FILTER_TYPES,
+} from '../constants/pages/MyLeadsDetail';
+import {
+  AVAILABLE_LEAD_DETAILS,
+  AVAILABLE_LEAD_FILTER_TYPES,
+  AVAILABLE_LEAD_TABLE_BODY,
+  AVAILABLE_LEAD_TABLE_HEADER,
+} from '../constants/pages/AvailableLeadsDetail';
+
+import { SUPPLIER_MANAGEMENT } from '../constants/pages/SupplierManagement';
 
 // Styles outside component
 const styles = {
   marginTop: { xs: '30px', sm: '14px' },
 };
 
-// Static texts and constants outside component
-const STATIC_TEXTS = {
-  noAccessRedirect: ROUTES.dashboard,
-  userTypeRequired: USER_TYPES.admin,
-  title: SUPPLIER_MANAGEMENT.title,
-};
-
 const ManageSuppliers = () => {
-  const [details, setDetails] = useState(null);
-  const [anchorEl, setAnchorEl] = useState(null);
-  const navigate = useNavigate();
+  const [type, setType] = useState();
+  const [open, setOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (USER_TYPE !== STATIC_TEXTS.userTypeRequired) {
-      navigate(STATIC_TEXTS.noAccessRedirect);
+    if (USER_TYPE !== USER_TYPES.admin) {
+      navigate(ROUTES.dashboard);
     }
   }, [navigate]);
 
-  const requestHandler = (row, event) => {
-    setDetails(row);
-    setAnchorEl(anchorEl ? null : event.currentTarget);
+  const handleOpen = (type) => {
+    setType(type);
+    setOpen(true);
   };
+
+  const navigate = useNavigate();
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setOpen(false);
   };
 
-  if (USER_TYPE !== STATIC_TEXTS.userTypeRequired) return null;
+  if (USER_TYPE !== USER_TYPES.admin) return null;
 
   return (
-    <Box>
+    <>
       <GenericTable
-        title={STATIC_TEXTS.title}
-        columns={TABLE_HEADER}
-        data={TABLE_BODY}
-        noBg
-        edit
-        editAction={requestHandler}
-        marginTop={styles.marginTop}
+        title={
+          USER_TYPE === USER_TYPES.client ? `Klairn’s ID ${mergeTitle}` : ''
+        }
+        filters={
+          USER_TYPE === USER_TYPES.client
+            ? FILTER_TYPES
+            : AVAILABLE_LEAD_FILTER_TYPES
+        }
+        filterType={
+          USER_TYPE === USER_TYPES.client
+            ? MY_LEAD_DETAILS.filterType
+            : AVAILABLE_LEAD_DETAILS.filterType
+        }
+        columns={
+          USER_TYPE === USER_TYPES.client
+            ? TABLE_HEADER
+            : AVAILABLE_LEAD_TABLE_HEADER
+        }
+        data={
+          USER_TYPE === USER_TYPES.client
+            ? TABLE_BODY
+            : AVAILABLE_LEAD_TABLE_BODY
+        }
+        excelFilter
+        marginTop={styles}
+        actions={{
+          handleOpen,
+          setProgress,
+        }}
       />
 
-      {anchorEl && (
-        <ManageModal
-          item={{ ...details, id: details?.supplier_id }}
-          anchorEl={anchorEl}
-          handleClose={handleClose}
-        />
-      )}
-    </Box>
+      <LeadDetailsModal
+        open={open}
+        handleClose={handleClose}
+        type={type}
+        progress={progress}
+      />
+    </>
   );
 };
 

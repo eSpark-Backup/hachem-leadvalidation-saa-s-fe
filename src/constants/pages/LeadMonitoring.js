@@ -1,8 +1,7 @@
 const LEAD_MONITORING = {
   title: 'Lead Monitoring',
   filterType: {
-    history: 'history',
-    month_dropdown: 'month_dropdown',
+    date: 'date',
   },
 };
 
@@ -14,7 +13,6 @@ const TABLE_HEADER = [
   { key: 'total_leads', label: 'Total Leads' },
   { key: 'validation', label: 'Validation' },
   { key: 'lead_progress', label: 'Lead Progress' },
-  { key: 'action', label: '' },
 ];
 
 const TABLE_BODY = [
@@ -158,10 +156,7 @@ const TABLE_BODY = [
   },
 ];
 
-const LEAD_MONITORING_FILTER_TYPES = [
-  { type: 'history', key: 'history' },
-  { type: 'month_dropdown', key: 'month_dropdown' },
-];
+const LEAD_MONITORING_FILTER_TYPES = [{ type: 'date', key: 'date' }];
 
 export {
   LEAD_MONITORING_FILTER_TYPES,

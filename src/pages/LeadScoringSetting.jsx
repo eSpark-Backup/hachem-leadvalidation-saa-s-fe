@@ -6,7 +6,6 @@ import GenerateAILeadModal from '../components/leadScoringSetting/GenerateAILead
 import ScoringModal from '../components/leadScoringSetting/ScoringModal';
 import InputField from '../components/leadScoringSetting/InputField';
 import GenericTable from '../components/global/table/GenericTable';
-import NotFound from './NotFound';
 
 import { USER_TYPE } from '../utils/auth';
 
@@ -75,6 +74,8 @@ const LeadScoringSetting = () => {
                 key={index}
                 placeholder={inp.placeholder}
                 incWidth={inp.name === 'mandatory_fields'}
+                type={inp.type}
+                name={inp.name}
               />
             ))}
           </Box>
