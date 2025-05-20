@@ -1,64 +1,74 @@
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Box } from '@mui/material';
 
+import ManageModal from '../components/global/table/popovers/ManageModal';
 import GenericTable from '../components/global/table/GenericTable';
 
 import { USER_TYPE } from '../utils/auth';
-
 import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
-import {
-  MY_LEAD_DETAILS,
-  TABLE_HEADER,
-  TABLE_BODY,
-  FILTER_TYPES,
-} from '../constants/pages/MyLeadsDetail';
-import {
-  AVAILABLE_LEAD_DETAILS,
-  AVAILABLE_LEAD_FILTER_TYPES,
-  AVAILABLE_LEAD_TABLE_BODY,
-  AVAILABLE_LEAD_TABLE_HEADER,
-} from '../constants/pages/AvailableLeadsDetail';
-import NotFound from './NotFound';
 
-const LeadDetails = () => {
-  const { state } = useLocation();
-  const title = state?.title?.split(':') || [''];
-  const mergeTitle = title.join('').replace(/\s+/g, '');
+import {
+  SUPPLIER_MANAGEMENT,
+  TABLE_BODY,
+  TABLE_HEADER,
+} from '../constants/pages/SupplierManagement';
+
+// Styles outside component
+const styles = {
+  marginTop: { xs: '30px', sm: '14px' },
+};
+
+// Static texts and constants outside component
+const STATIC_TEXTS = {
+  noAccessRedirect: ROUTES.dashboard,
+  userTypeRequired: USER_TYPES.admin,
+  title: SUPPLIER_MANAGEMENT.title,
+};
+
+const ManageSuppliers = () => {
+  const [details, setDetails] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (USER_TYPE !== STATIC_TEXTS.userTypeRequired) {
+      navigate(STATIC_TEXTS.noAccessRedirect);
+    }
+  }, [navigate]);
+
+  const requestHandler = (row, event) => {
+    setDetails(row);
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  if (USER_TYPE !== STATIC_TEXTS.userTypeRequired) return null;
 
   return (
-    <>
-      {USER_TYPE === USER_TYPES.supplier || USER_TYPE === USER_TYPES.client ? (
-        <GenericTable
-          title={
-            USER_TYPE === USER_TYPES.client ? `Klairn’s ID ${mergeTitle}` : ''
-          }
-          filters={
-            USER_TYPE === USER_TYPES.client
-              ? FILTER_TYPES
-              : AVAILABLE_LEAD_FILTER_TYPES
-          }
-          filterType={
-            USER_TYPE === USER_TYPES.client
-              ? MY_LEAD_DETAILS.filterType
-              : AVAILABLE_LEAD_DETAILS.filterType
-          }
-          columns={
-            USER_TYPE === USER_TYPES.client
-              ? TABLE_HEADER
-              : AVAILABLE_LEAD_TABLE_HEADER
-          }
-          data={
-            USER_TYPE === USER_TYPES.client
-              ? TABLE_BODY
-              : AVAILABLE_LEAD_TABLE_BODY
-          }
-          excelFilter
-          marginTop={{ xs: '30px', sm: '14px' }}
+    <Box>
+      <GenericTable
+        title={STATIC_TEXTS.title}
+        columns={TABLE_HEADER}
+        data={TABLE_BODY}
+        noBg
+        edit
+        editAction={requestHandler}
+        marginTop={styles.marginTop}
+      />
+
+      {anchorEl && (
+        <ManageModal
+          item={{ ...details, id: details?.supplier_id }}
+          anchorEl={anchorEl}
+          handleClose={handleClose}
         />
-      ) : (
-        <NotFound btnLink={ROUTES.dashboard} />
       )}
-    </>
+    </Box>
   );
 };
 
-export default LeadDetails;
+export default ManageSuppliers;

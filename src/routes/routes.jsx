@@ -61,7 +61,6 @@ const {
   myLeadDetails,
   reportsAnalytics,
   systemSetting,
-  // uploadLeads,
   avalaibleLeadsDetails,
 } = ROUTES || {};
 
@@ -118,7 +117,6 @@ const routes = [
       { path: avalaibleLeadsDetails, element: <LeadDetails /> },
       { path: reportsAnalytics, element: <ReportsAnalytics /> },
       { path: systemSetting, element: <SystemSetting /> },
-      // { path: uploadLeads, element: <UploadLeads /> },
       { path: notFound, element: <NotFound btnLink={dashboard} /> },
     ],
   },

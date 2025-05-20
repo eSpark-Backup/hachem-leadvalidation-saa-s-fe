@@ -60,7 +60,7 @@ const FRAUD_SETTINGS = [
     title: 'Disposable Email Detection',
     description:
       'Flag leads using known disposable or temporary email services',
-    icon: { SheildIcon },
+    icon: SheildIcon,
     initialValue: true,
     key: 'disposable-email-detection',
   },
@@ -68,7 +68,7 @@ const FRAUD_SETTINGS = [
     title: 'Multiple Submissions',
     description:
       'Flag leads with multiple submissions from the same IP address within a time period',
-    icon: { LightIcon },
+    icon: LightIcon,
     initialValue: false,
     key: 'multiple-submissions',
   },
@@ -76,21 +76,21 @@ const FRAUD_SETTINGS = [
     title: 'Suspicious Data Patterns',
     description:
       'Detect suspicious patterns in form submissions like keyboard smashing',
-    icon: { CautionIcon },
+    icon: CautionIcon,
     initialValue: true,
     key: 'suspicious-data-patterns',
   },
   {
     title: 'Geographic IP Mismatch',
     description: `Flag when IP location doesn't match submitted location data`,
-    icon: { SheildIcon },
+    icon: SheildIcon,
     initialValue: true,
     key: 'geographic-ip-mismatch',
   },
   {
     title: 'Suspicious Referrers',
     description: 'Flag leads from known suspicious or spam referrer sources',
-    icon: { CautionIcon },
+    icon: CautionIcon,
     initialValue: true,
     key: 'suspicious-referrers',
   },
@@ -100,17 +100,17 @@ const OPTIONS = [
   {
     id: 'lead',
     label: 'Lead Scoring',
-    icon: { GearIcon },
+    icon: GearIcon,
   },
   {
     id: 'fraud',
     label: 'Fraud Detection',
-    icon: { SheildIcon },
+    icon: SheildIcon,
   },
   {
     id: 'reject',
     label: 'Rejection Messages',
-    icon: { MessageIcon },
+    icon: MessageIcon,
   },
 ];
 

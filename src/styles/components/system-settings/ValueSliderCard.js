@@ -1,4 +1,3 @@
-// Style constants
 const cardStyles = {
   borderRadius: 2,
   my: 2.5,
@@ -71,6 +70,9 @@ const labelTypographyStyles = {
   fontWeight: 600,
   fontSize: '16px',
 };
+const SliderBoxStyles = (isTablet) => ({
+  pr: isTablet ? '2%' : '3%',
+});
 
 export {
   labelTypographyStyles,
@@ -83,4 +85,5 @@ export {
   containerBoxStyles,
   headerBoxStyles,
   labelBoxStyles,
+  SliderBoxStyles,
 };

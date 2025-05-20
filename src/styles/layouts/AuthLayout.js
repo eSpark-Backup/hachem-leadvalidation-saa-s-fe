@@ -1,4 +1,3 @@
-// Style constants
 const containerStyle = (bgImage) => ({
   width: '100%',
   height: '100%',

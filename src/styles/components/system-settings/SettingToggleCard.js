@@ -1,4 +1,3 @@
-// 🎨 Styles
 const PaperStyles = {
   p: { xs: 2, sm: 2.5, md: 3 },
   my: { xs: 1.5, sm: 2, md: 2.5 },

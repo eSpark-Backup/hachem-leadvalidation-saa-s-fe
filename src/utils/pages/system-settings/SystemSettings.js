@@ -1,5 +1,3 @@
-// utils/settingsUtils.js
-
 /**
  * Generates an object mapping each lead setting's key to its default value.
  *

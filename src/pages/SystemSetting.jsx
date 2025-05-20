@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { USER_TYPE } from '../utils/auth';
 import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
@@ -23,7 +23,6 @@ import {
 import HeaderActions from '../components/report-analytics/HeaderActions';
 import ValueSliderCard from '../components/system-settings/ValueSliderCard';
 import SettingToggleCard from '../components/system-settings/SettingToggleCard';
-import NotFound from './NotFound';
 
 import {
   modalStyle,
@@ -36,6 +35,7 @@ import {
   updateCardList,
 } from '../utils/pages/system-settings/SystemSettings';
 import OptionCard from '../components/klaien-managment/OptionCard';
+import { useNavigate } from 'react-router-dom';
 
 const SystemSetting = () => {
   const [activeBox, setActiveBox] = useState('lead');
@@ -44,6 +44,13 @@ const SystemSetting = () => {
   const [formState, setFormState] = useState({ title: '', message: '' });
 
   const [cards, setCards] = useState(CARDS);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (USER_TYPE !== USER_TYPES.admin) {
+      navigate(ROUTES.dashboard);
+    }
+  }, [navigate]);
 
   const [leadSettingsValues, setLeadSettingsValues] = useState(() =>
     getDefaultLeadSettings(LEADS_SETTINGS)
@@ -117,8 +124,7 @@ const SystemSetting = () => {
     console.log('Messages:', cards);
   };
 
-  if (USER_TYPE !== USER_TYPES.admin)
-    return <NotFound btnLink={ROUTES.dashboard} />;
+  if (USER_TYPE !== USER_TYPES.admin) return null;
 
   return (
     <>

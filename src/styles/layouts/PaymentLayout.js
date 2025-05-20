@@ -1,4 +1,3 @@
-// Style constants
 const containerStyle = {
   backgroundColor: '#F4F7FE',
 };

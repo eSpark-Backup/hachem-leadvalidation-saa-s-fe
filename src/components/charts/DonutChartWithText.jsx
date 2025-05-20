@@ -4,6 +4,29 @@ import { Box, Typography } from '@mui/material';
 
 const DEFAULT_COLORS = ['#3353F4', '#FF4343', '#54D14D'];
 
+const tooltipContentStyle = {
+  fontSize: '12px',
+  borderRadius: '8px',
+};
+
+const centerBoxStyles = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  textAlign: 'center',
+};
+
+const getValueTextStyles = (valueFontSize) => ({
+  fontWeight: 700,
+  fontSize: valueFontSize,
+});
+
+const getLabelTextStyles = (labelFontSize) => ({
+  fontSize: labelFontSize,
+  color: '#00000080',
+});
+
 const DonutChartWithText = ({
   data = [],
   width = 200,
@@ -22,7 +45,7 @@ const DonutChartWithText = ({
     <Box position="relative" display="inline-flex">
       <PieChart width={width} height={height}>
         <Tooltip
-          contentStyle={{ fontSize: '12px', borderRadius: '8px' }}
+          contentStyle={tooltipContentStyle}
           formatter={(value) => [`${value}${isPerAllowed ? '%' : ''}`, 'Value']}
         />
         <Pie
@@ -41,22 +64,11 @@ const DonutChartWithText = ({
         </Pie>
       </PieChart>
 
-      <Box
-        position="absolute"
-        top="50%"
-        left="50%"
-        sx={{ transform: 'translate(-50%, -50%)', textAlign: 'center' }}
-      >
-        <Typography
-          variant="h6"
-          sx={{ fontWeight: 700, fontSize: valueFontSize }}
-        >
+      <Box sx={centerBoxStyles}>
+        <Typography variant="h6" sx={getValueTextStyles(valueFontSize)}>
           {centerValue?.toLocaleString()}
         </Typography>
-        <Typography
-          variant="caption"
-          sx={{ fontSize: labelFontSize, color: '#00000080' }}
-        >
+        <Typography variant="caption" sx={getLabelTextStyles(labelFontSize)}>
           {centerLabel}
         </Typography>
       </Box>

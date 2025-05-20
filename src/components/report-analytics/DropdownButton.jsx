@@ -2,15 +2,18 @@ import { KeyboardArrowDown } from '@mui/icons-material';
 import { Button, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
-
+import {
+  ButtonStyles,
+  ButtonTitleStyles,
+} from '../../styles/components/report-analytics/DropdownButton';
 const DropdownButton = React.forwardRef(({ onClick, label }, ref) => (
   <Button
     ref={ref}
     onClick={onClick}
-    sx={{ color: '#4A5154', background: '#F5F6F7' }}
+    sx={ButtonStyles}
     endIcon={<KeyboardArrowDown />}
   >
-    <Typography sx={{ fontWeight: 400, fontSize: '14px' }}>{label}</Typography>
+    <Typography sx={ButtonTitleStyles}>{label}</Typography>
   </Button>
 ));
 

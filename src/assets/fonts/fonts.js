@@ -1,4 +1,3 @@
-// src/theme/fonts.js
 import { GlobalStyles } from '@mui/material';
 
 const fontFaces = `

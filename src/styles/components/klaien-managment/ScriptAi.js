@@ -89,9 +89,9 @@ const ScriptAi = {
   addButton: {
     backgroundColor: '#F7F7F7',
     color: '#09102B',
-    boxShadow: '1px 2px 3px 0px #4676FB69', // Custom red shadow
+    boxShadow: '1px 2px 3px 0px #4676FB69',
     '&:hover': {
-      boxShadow: '1px 2px 3px 0px #4676FB69', // On hover
+      boxShadow: '1px 2px 3px 0px #4676FB69',
       backgroundColor: '#F7F7F7',
       color: '#09102B',
     },

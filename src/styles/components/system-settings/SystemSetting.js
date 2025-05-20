@@ -6,7 +6,6 @@ const modalStyle = {
   width: 1000,
   bgcolor: 'background.paper',
   borderRadius: 4,
-  //   boxShadow: 24,
   p: 4,
   px: 8,
 };
@@ -47,17 +46,17 @@ const styles = {
   sectionTitle: {
     fontWeight: 600,
     fontSize: {
-      xs: '1.2rem', // ~19px
-      sm: '1.4rem', // ~22px
-      md: '1.5rem', // ~24px
+      xs: '1.2rem', 
+      sm: '1.4rem',
+      md: '1.5rem', 
     },
     color: '#09102B',
   },
   sectionSubtitle: {
     fontSize: {
-      xs: '0.9rem', // ~14px
-      sm: '1rem', // ~16px
-      md: '1.1rem', // ~17.6px
+      xs: '0.9rem',
+      sm: '1rem', 
+      md: '1.1rem',
     },
     color: '#77797D',
   },
@@ -69,9 +68,9 @@ const styles = {
   addButton: {
     backgroundColor: '#F7F7F7',
     color: '#09102B',
-    boxShadow: '1px 2px 3px 0px #4676FB69', // Custom red shadow
+    boxShadow: '1px 2px 3px 0px #4676FB69',
     '&:hover': {
-      boxShadow: '1px 2px 3px 0px #4676FB69', // On hover
+      boxShadow: '1px 2px 3px 0px #4676FB69', 
       backgroundColor: '#F7F7F7',
       color: '#09102B',
     },

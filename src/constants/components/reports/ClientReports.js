@@ -57,4 +57,5 @@ const styles = {
   clientCardWrapper: { p: 1 },
   popper: { zIndex: 99999 },
 };
+
 export { MODAL_WIDTHS, CHART_COLORS, styles, CLIENT_REPORTS };

@@ -43,12 +43,12 @@ const Dashboard = () => {
         },
       }
     );
-  };
+  };const DashboardBoxStyles={ py: 1 }
 
   return (
     <>
       {/* Top cards section based on user type (admin, client, supplier) */}
-      <Box sx={{ py: 1 }}>
+      <Box sx={DashboardBoxStyles}>
         <DashboardTopCards
           content={
             USER_TYPE === USER_TYPES.client

@@ -3,7 +3,7 @@ const containerStyles = {
     xs: 1,
     sm: 2,
     md: 3,
-    lg: 3, // keep same as md for large screens
+    lg: 3, 
   },
   background: '#C0FBC66B',
   padding: 0,

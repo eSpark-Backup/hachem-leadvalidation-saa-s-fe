@@ -206,7 +206,6 @@ const AUTH_FORMS = {
   or: 'OR',
   googlePic: GoogleIcon,
 
-  // forms styles
   customInputStyle: {
     m: 0.6,
     gap: 0.8,

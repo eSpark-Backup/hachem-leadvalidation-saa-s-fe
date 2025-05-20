@@ -1,5 +1,6 @@
 import { Link } from '@mui/material';
 import PropTypes from 'prop-types';
+import { LinkStyles } from '../../constants/components/auth/Checkbox';
 
 const Checkbox = ({ checked, setChecked, data }) => {
   const { text, link } = data || {};
@@ -31,15 +32,7 @@ const Checkbox = ({ checked, setChecked, data }) => {
         )}
       </span>
 
-      <Link
-        top={link || '#'}
-        sx={{
-          fontSize: '11px',
-          color: '#616161',
-          fontWeight: 400,
-          textDecoration: 'underline',
-        }}
-      >
+      <Link top={link || '#'} sx={LinkStyles}>
         {text || ''}
       </Link>
     </label>

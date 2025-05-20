@@ -1,10 +1,11 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
-import { useState } from 'react';
+
 import { USER_TYPE } from '../utils/auth';
 import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 
 import HeaderActions from '../components/report-analytics/HeaderActions';
-import NotFound from './NotFound';
 import OptionCard from '../components/klaien-managment/OptionCard';
 import TwilloSetup from '../components/klaien-managment/TwilloSetup';
 import AudioSettings from '../components/klaien-managment/AudioSettings';
@@ -18,11 +19,17 @@ import {
 
 const KlaienManagement = () => {
   const [activeBox, setActiveBox] = useState(1);
+  const navigate = useNavigate();
 
   const handleClick = (id) => setActiveBox(id);
 
-  if (USER_TYPE !== USER_TYPES.admin)
-    return <NotFound btnLink={ROUTES.dashboard} />;
+  useEffect(() => {
+    if (USER_TYPE !== USER_TYPES.admin) {
+      navigate(ROUTES.dashboard);
+    }
+  }, [navigate]);
+
+  if (USER_TYPE !== USER_TYPES.admin) return null;
 
   return (
     <>
@@ -37,7 +44,6 @@ const KlaienManagement = () => {
           activeBox={activeBox}
           handleClick={handleClick}
         />
-
         <ScriptAI activeBox={activeBox} />
         <AudioSettings activeBox={activeBox} />
         <TwilloSetup activeBox={activeBox} />

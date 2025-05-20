@@ -1,9 +1,7 @@
 import {
-  // LineChart,
   Line,
   Bar,
   XAxis,
-  // Tooltip,
   ResponsiveContainer,
   ComposedChart,
 } from 'recharts';
@@ -14,17 +12,12 @@ const BarLineChart = ({ data = [], color = '#FFA500', height }) => {
     <ResponsiveContainer width="100%" height={height || 200}>
       <ComposedChart data={data}>
         <XAxis dataKey="week" axisLine={false} tickLine={false} />
-        {/* <Tooltip content={
-              <CustomTooltip />
-            } /> */}
-        {/* Light background bars */}
         <Bar
           dataKey="background"
           barSize={40}
           fill="#c0c0c0"
           radius={[10, 10, 0, 0]}
         />
-        {/* Actual performance line */}
         <Line
           type="monotone"
           dataKey="leads"

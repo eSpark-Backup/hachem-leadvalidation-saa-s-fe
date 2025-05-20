@@ -1,5 +1,3 @@
-// components/PublicRoute.js
-
 import { Navigate } from 'react-router-dom';
 import { isAuthenticated } from '../utils/auth';
 import PropTypes from 'prop-types';
@@ -29,7 +27,6 @@ const PublicRoute = ({ children }) => {
   return isAuthenticated() ? <Navigate to={dashboard} replace /> : children;
 };
 
-// Prop types validation
 PublicRoute.propTypes = {
   children: PropTypes.node.isRequired,
 };

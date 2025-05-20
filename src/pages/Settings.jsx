@@ -11,14 +11,14 @@ import {
   LOW_CREDITS,
   SETTINGS_PATH,
 } from '../constants/components/globals/SideBar';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   CLIENT_INPUT_FIELDS,
   SUPPLIER_COMPANY_INPUT_FIELDS,
   SUPPLIER_REQUEST_INPUT_FIELDS,
 } from '../constants/components/settings/getProfileInputFields';
 import { USER_TYPE } from '../utils/auth';
-import NotFound from './NotFound';
+import { useEffect } from 'react';
 
 const Settings = () => {
   const { formData } = PAYMENT_DATA || {};
@@ -26,7 +26,17 @@ const Settings = () => {
   const client = USER_TYPES?.client;
   const supplier = USER_TYPES?.supplier;
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (USER_TYPE == USER_TYPES.admin) {
+      navigate(ROUTES.dashboard);
+    }
+  }, [navigate]);
+
+  const PaymentBoxStyles = { width: '100%' };
+
+  if (USER_TYPE == USER_TYPES.admin) return null;
   return (
     <>
       {USER_TYPE === USER_TYPES.client && (
@@ -73,7 +83,7 @@ const Settings = () => {
           description={SETTINGS?.payment?.description}
           toolToop={SETTINGS?.payment?.tooltip}
         >
-          <Box sx={{ width: '100%' }}>
+          <Box sx={PaymentBoxStyles}>
             <PaymentForm
               data={formData}
               maxWidth={'100%'}
@@ -89,10 +99,6 @@ const Settings = () => {
             />
           </Box>
         </SettingsCard>
-      )}
-
-      {USER_TYPE === USER_TYPES.admin && (
-        <NotFound btnLink={ROUTES.dashboard} />
       )}
     </>
   );

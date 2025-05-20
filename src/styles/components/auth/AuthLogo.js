@@ -14,4 +14,5 @@ const AuthLogoStyles = (pathname, splash) => ({
     sm: 0,
   },
 });
+
 export default AuthLogoStyles;

@@ -16,6 +16,7 @@ import {
   headerBoxStyles,
   labelBoxStyles,
   labelTypographyStyles,
+  SliderBoxStyles,
   sliderStyles,
   sliderUnitTextStyles,
   sliderValueBoxBase,
@@ -57,12 +58,7 @@ const ValueSliderCard = ({
           display="flex"
           flexDirection={isMobile ? 'column' : isTablet ? 'column' : 'row'}
         >
-          <Box
-            flexGrow={1}
-            sx={{
-              pr: isTablet ? '2%' : '3%',
-            }}
-          >
+          <Box flexGrow={1} sx={SliderBoxStyles(isTablet)}>
             <Slider
               value={typeof value === 'number' ? value : undefined}
               defaultValue={defaultValue}

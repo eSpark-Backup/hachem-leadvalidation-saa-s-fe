@@ -4,4 +4,5 @@ const NOT_FOUND_PAGE = {
   btnTitle: 'Go to Home',
   btnLink: '/',
 };
+
 export { NOT_FOUND_PAGE };

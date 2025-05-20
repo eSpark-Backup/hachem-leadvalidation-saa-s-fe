@@ -10,8 +10,6 @@ const cardStyles = {
   width: '100%',
 };
 
-// const containerStyles = { my: 1 };
-
 const titleStyles = (color) => ({
   fontWeight: 500,
   fontSize: {
@@ -73,7 +71,6 @@ const iconBoxStyles = {
 
 export {
   cardStyles,
-  // containerStyles,
   titleStyles,
   valueStyles,
   unitStyles,

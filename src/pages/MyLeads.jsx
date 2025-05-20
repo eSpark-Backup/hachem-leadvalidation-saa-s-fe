@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 
 import CommonDialog from '../components/global/table/dialog/CommonDialog';
 import GenericTable from '../components/global/table/GenericTable';
-import NotFound from './NotFound';
 
 import { USER_TYPE } from '../utils/auth';
 
@@ -14,10 +13,16 @@ import {
   TABLE_BODY,
   TABLE_HEADER,
 } from '../constants/pages/MyLeads';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const MyLeads = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (USER_TYPE !== USER_TYPES.client) {
+      navigate(ROUTES.dashboard);
+    }
+  }, [navigate]);
 
   const [open, setOpen] = useState(false);
 
@@ -31,29 +36,25 @@ const MyLeads = () => {
     });
   };
 
+  if (USER_TYPE !== USER_TYPES.client) return null;
+  
   return (
     <>
-      {USER_TYPE === USER_TYPES.client ? (
-        <>
-          <GenericTable
-            title={MY_LEADS.title}
-            filters={FILTER_TYPES}
-            select_filters={SELECT_FILTERS}
-            filterType={MY_LEADS.filterType}
-            columns={TABLE_HEADER}
-            data={TABLE_BODY}
-            detail
-            detailAction={goToPage}
-            marginTop={{ xs: '30px', sm: '14px' }}
-            editAction={() => setOpen(true)}
-            myLeads
-          />
+      <GenericTable
+        title={MY_LEADS.title}
+        filters={FILTER_TYPES}
+        select_filters={SELECT_FILTERS}
+        filterType={MY_LEADS.filterType}
+        columns={TABLE_HEADER}
+        data={TABLE_BODY}
+        detail
+        detailAction={goToPage}
+        marginTop={{ xs: '30px', sm: '14px' }}
+        editAction={() => setOpen(true)}
+        myLeads
+      />
 
-          <CommonDialog open={open} handleClose={handleClose} lead />
-        </>
-      ) : (
-        <NotFound btnLink={ROUTES.dashboard} />
-      )}
+      <CommonDialog open={open} handleClose={handleClose} lead />
     </>
   );
 };
