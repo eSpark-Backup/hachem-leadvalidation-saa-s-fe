@@ -62,7 +62,7 @@ const SignupForm = () => {
   };
 
   return (
-    <Stack sx={stackWrapperStyle}>
+    <Stack {...stackWrapperStyle}>
       <Box overflow="auto" sx={scrollBoxStyle}>
         <Box
           component="form"
