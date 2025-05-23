@@ -1,20 +1,24 @@
-import { Box, Button, Stack, Typography } from '@mui/material';
-import { AUTH_FORMS } from '../../constants/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import { Box, Button, Stack, Typography } from '@mui/material';
+
 import { ROUTES, USER_TYPES } from '../../constants/components/globals/Auth';
+import { AUTH_FORMS } from '../../constants/auth';
 
 const Signup = () => {
-  const [selectedOption, setSelectedOption] = useState({
-    supplier: false,
-    client: false,
-  });
   const { signup_as, scrollBoxStyle, formSubmissionButtonStyle } =
     AUTH_FORMS || {};
   const { supplier, client } = USER_TYPES || {};
   const { title, buttons, signupTypeButtonStyle } = signup_as || {};
   const { signup } = ROUTES || {};
+
   const navigate = useNavigate();
+
+  const [selectedOption, setSelectedOption] = useState({
+    supplier: false,
+    client: false,
+  });
 
   const handleClickOption = (option) => {
     setSelectedOption({
@@ -22,11 +26,12 @@ const Signup = () => {
     });
   };
 
-  const handleClickNext = () => {
-    console.log({ sinup_as_a: selectedOption });
+  const handleClickNext = (e) => {
+    e.preventDefault();
+
     if (selectedOption?.supplier || selectedOption?.client) {
       navigate(
-        `/${signup}/${selectedOption?.supplier === true ? supplier : '' || selectedOption?.client === true ? client : ''}`
+        `${signup}/${selectedOption?.supplier === true ? supplier : '' || selectedOption?.client === true ? client : ''}`
       );
     } else {
       null;
@@ -56,13 +61,13 @@ const Signup = () => {
             flexDirection: 'column',
             gap: 4,
           }}
-          action="#"
           component="form"
           onSubmit={handleClickNext}
         >
           <Typography variant="body2" alignSelf={'center'}>
             {title}
           </Typography>
+
           <Box>
             {buttons?.map(({ text }, index) => (
               <Button
@@ -83,13 +88,13 @@ const Signup = () => {
               </Button>
             ))}
           </Box>
+
           <Stack direction={'column'}>
             <Button
               type="submit"
               variant="signupButton"
               disabled={!selectedOption?.supplier && !selectedOption?.client}
               sx={formSubmissionButtonStyle}
-              onClick={() => navigate('/signup/client')}
             >
               Next
             </Button>

@@ -1,36 +1,28 @@
 import {
   Box,
   Button,
+  CircularProgress,
   IconButton,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
 import { AUTH_FORMS } from '../../constants/auth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Checkbox from './Checkbox';
 import { ROUTES } from '../../constants/components/globals/Auth';
+import { useRegisterMutation } from '../../redux/slices/auth/authApiSlice';
+import { handleRegisterMutation } from '../../services/auth';
 
 const SignupForm = () => {
-  const [showPassword, setShowPassword] = useState({
-    password: false,
-    confrim_password: false,
-  });
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confrim_password: '',
-    company_name: '',
-    service_and_policy: false,
-  });
   const {
     signup,
     customInputStyle,
     scrollBoxStyle,
     fieldStyle,
+    errorStyle,
     formSubmissionButtonStyle,
     service_and_policy,
     googlePic,
@@ -39,7 +31,30 @@ const SignupForm = () => {
 
   const { title, fields } = signup || {};
   const { verifyEmail } = ROUTES || {};
+
   const navigate = useNavigate();
+  const { type } = useParams();
+
+  const [register, { isLoading }] = useRegisterMutation();
+
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    confirm_password: false,
+  });
+  const [user, setUser] = useState({
+    fullname: '',
+    email: '',
+    password: '',
+    confirm_password: '',
+    company: '',
+    service_and_policy: false,
+    role: '',
+  });
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setUser((prev) => ({ ...prev, role: type }));
+  }, [type]);
 
   const handleClickEye = (field) => {
     setShowPassword((prev) => ({
@@ -47,22 +62,24 @@ const SignupForm = () => {
       [field]: !prev[field],
     }));
   };
+
   const handleInputChange = (key, val) => {
     setUser((prev) => ({ ...prev, [key]: val }));
   };
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    console.log({ signupCreds: user });
-    navigate(verifyEmail);
-    setUser({
-      name: '',
-      email: '',
-      password: '',
-      confrim_password: '',
-      company_name: '',
-      service_and_policy: false,
-    });
+    setError(null);
+
+    const res = await handleRegisterMutation(
+      user,
+      register,
+      navigate,
+      setUser,
+      setError,
+      verifyEmail
+    );
+    if (!res) return;
   };
 
   return (
@@ -96,37 +113,44 @@ const SignupForm = () => {
           </Typography>
 
           {fields?.map(({ label, name, type, placeholder }, index) => (
-            <Box key={index} sx={customInputStyle}>
-              <Stack direction={'column'} spacing={0.5} width={'100%'}>
-                <Typography variant="inputLabel">{label || ''}</Typography>
-                <TextField
-                  fullWidth
-                  autoComplete="off"
-                  sx={fieldStyle}
-                  name={name}
-                  value={user[name] || ''}
-                  placeholder={placeholder || ''}
-                  onChange={(e) => handleInputChange(name, e?.target?.value)}
-                  type={
-                    type === fields?.[2]?.type
-                      ? showPassword[name]
-                        ? fields?.[2]?.defaultType
-                        : fields?.[2]?.type
-                      : type || fields?.[2]?.defaultType
-                  }
-                />
-              </Stack>
-              {type === fields?.[2]?.type && (
-                <IconButton
-                  disableRipple
-                  onClick={() => handleClickEye(name)}
-                  sx={{ mr: -1.5 }}
-                >
-                  {showPassword[name] ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              )}
+            <Box key={index}>
+              <Box sx={customInputStyle(error && error[name])}>
+                <Stack direction={'column'} spacing={0.5} width={'100%'}>
+                  <Typography variant="inputLabel">{label || ''}</Typography>
+
+                  <TextField
+                    fullWidth
+                    autoComplete="off"
+                    sx={fieldStyle}
+                    name={name}
+                    value={user[name] || ''}
+                    placeholder={placeholder || ''}
+                    onChange={(e) => handleInputChange(name, e?.target?.value)}
+                    type={
+                      type === fields?.[2]?.type
+                        ? showPassword[name]
+                          ? fields?.[2]?.defaultType
+                          : fields?.[2]?.type
+                        : type || fields?.[2]?.defaultType
+                    }
+                  />
+                </Stack>
+
+                {type === fields?.[2]?.type && (
+                  <IconButton
+                    disableRipple
+                    onClick={() => handleClickEye(name)}
+                    sx={{ mr: -1.5 }}
+                  >
+                    {showPassword[name] ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                )}
+              </Box>
+
+              {error && <Typography sx={errorStyle}>{error[name]}</Typography>}
             </Box>
           ))}
+
           <Stack px={1} py={1.5}>
             <Checkbox
               setChecked={setUser}
@@ -134,13 +158,19 @@ const SignupForm = () => {
               data={service_and_policy}
             />
           </Stack>
+
           <Stack direction={'column'} px={0.5} py={1}>
             <Button
               type="submit"
               variant="signupButton"
               sx={formSubmissionButtonStyle}
+              disabled={isLoading}
             >
-              {title}
+              {isLoading ? (
+                <CircularProgress size={30} sx={{ color: ' #444444' }} />
+              ) : (
+                title
+              )}
             </Button>
           </Stack>
 
@@ -160,6 +190,7 @@ const SignupForm = () => {
             >
               {or}
             </Typography>
+
             <Box
               component={'img'}
               src={googlePic}
