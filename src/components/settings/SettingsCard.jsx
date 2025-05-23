@@ -8,14 +8,14 @@ const SettingsCard = ({ title, description, children, toolToop }) => {
     <Box sx={SettingCardStyles.container}>
       <Grid container spacing={2} justifyContent={'space-between'}>
         <Grid item xs={12} md={2}>
-          <Box px={{ xs: 1.8, md: 0 }}>
+          <Box px={SettingCardStyles.gridBoxStyles}>
             <Box sx={SettingCardStyles.titleContainer}>
               <Typography sx={SettingCardStyles?.titleText}>{title}</Typography>
               {toolToop && (
                 <Tooltip title={toolToop} arrow placement="top">
                   <img
                     src={questionIcons}
-                    alt="info"
+                    alt={toolToop}
                     style={SettingCardStyles.toolTip}
                   />
                 </Tooltip>

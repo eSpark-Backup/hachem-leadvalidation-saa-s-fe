@@ -3,6 +3,7 @@ import { LOW_CREDITS_DATA } from '../../constants/components/payment/Payment';
 
 const LowCreditsText = () => {
   const { title, style } = LOW_CREDITS_DATA || {};
+
   const { mainBoxStyle, titleStyle, circleStyle } = style || {};
 
   return (

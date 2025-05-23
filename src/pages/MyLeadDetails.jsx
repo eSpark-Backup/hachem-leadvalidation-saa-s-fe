@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import LeadDetailsModal from '../components/leadDetails/LeadDetailsModal';
 import GenericTable from '../components/global/table/GenericTable';
@@ -19,20 +19,29 @@ import {
   AVAILABLE_LEAD_TABLE_HEADER,
 } from '../constants/pages/AvailableLeadsDetail';
 
-import { SUPPLIER_MANAGEMENT } from '../constants/pages/SupplierManagement';
-
-// Styles outside component
 const styles = {
   marginTop: { xs: '30px', sm: '14px' },
 };
 
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
 const ManageSuppliers = () => {
   const [type, setType] = useState();
+
   const [open, setOpen] = useState(false);
+
   const [progress, setProgress] = useState(0);
 
+  const navigate = useNavigate();
+
+  const query = useQuery();
+
+  const mergeTitle = query.get('id');
+
   useEffect(() => {
-    if (USER_TYPE !== USER_TYPES.admin) {
+    if (USER_TYPE == USER_TYPES.admin) {
       navigate(ROUTES.dashboard);
     }
   }, [navigate]);
@@ -42,13 +51,11 @@ const ManageSuppliers = () => {
     setOpen(true);
   };
 
-  const navigate = useNavigate();
-
   const handleClose = () => {
     setOpen(false);
   };
 
-  if (USER_TYPE !== USER_TYPES.admin) return null;
+  if (USER_TYPE == USER_TYPES.admin) return null;
 
   return (
     <>

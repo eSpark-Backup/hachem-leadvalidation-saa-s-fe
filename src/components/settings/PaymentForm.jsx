@@ -34,6 +34,7 @@ import {
 
 const PaymentForm = () => {
   const [formState, setFormState] = useState(FORM_STATE_DEFAULT);
+
   const [errors, setErrors] = useState({});
 
   return (

@@ -3,7 +3,6 @@ import VerifiedImage from '/src/assets/images/auth/Verified_image.svg';
 import GoogleIcon from '/src/assets/images/auth/google.png';
 
 const AUTH_FORMS = {
-  // forms data
   auth_image: KlairnLogo,
   login: {
     title: 'Login',
@@ -28,7 +27,7 @@ const AUTH_FORMS = {
     ],
   },
   signup_as: {
-    title: 'Sign up as A',
+    title: 'Sign up as ',
     buttons: [
       {
         text: 'SUPPLIER',
@@ -286,6 +285,29 @@ const AUTH_FORMS = {
       backgroundColor: '#ccc',
       color: '#666',
     },
+  },
+  rootStack: {
+    maxWidth: { xs: '420px', sm: '482px', md: '480px', lg: '572px' },
+    minHeight: { xs: '450px', lg: '500px' },
+    maxHeight: { xs: '90%', lg: '500px' },
+    py: { xs: 4.2, lg: 1 },
+    px: { xs: 2.5, md: 2 },
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  formWrapper: {
+    width: '100%',
+    display: 'flex',
+    maxWidth: '380px',
+    flexDirection: 'column',
+    gap: 3,
+  },
+  inputBox: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  eyeIcon: {
+    mr: -1.5,
   },
 };
 

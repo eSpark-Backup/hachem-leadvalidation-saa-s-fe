@@ -31,6 +31,7 @@ import {
 } from '../../../styles/components/globals/table/Table';
 
 import useTableFilter from '../../../hooks/useTableFilter';
+import { GENERIC_TABLE } from '../../../constants/components/globals/table/GenericTable';
 
 const GenericTable = ({
   title,
@@ -80,14 +81,15 @@ const GenericTable = ({
   };
 
   return (
-    <Box sx={!noBg ? tableContainerStyles(marginTop) : { marginTop }}>
+    <Box sx={!noBg ? tableContainerStyles(marginTop) : { mt: marginTop }}>
       <Box sx={headingBoxStyles(leadMonitoring, leadStatus)}>
         <Box sx={genericTableHeadingBoxStyles}>
           <Typography
             variant="h1"
             sx={{
               ...tableHeadingStyles,
-              fontWeight: fontWeight ? fontWeight : 600,
+              fontWeight: fontWeight ?? 600,
+              mx: 0,
             }}
           >
             {title}
@@ -129,9 +131,9 @@ const GenericTable = ({
           <Table sx={tableStyles}>
             <TableHead sx={tableHeaderStyles}>
               <TableRow>
-                {columns.map((col) => (
-                  <TableCell key={col.key} sx={tableHeaderHeadingStyles}>
-                    {col.label}
+                {columns.map(({ key, label }) => (
+                  <TableCell key={key} sx={tableHeaderHeadingStyles}>
+                    {label}
                   </TableCell>
                 ))}
               </TableRow>
@@ -175,7 +177,9 @@ const GenericTable = ({
               ) : (
                 <TableRow sx={noDataRowStyles}>
                   <TableCell colSpan={columns.length}>
-                    <Typography sx={noDataTextStyles}>No Data Found</Typography>
+                    <Typography sx={noDataTextStyles}>
+                      {GENERIC_TABLE.noDataFound}
+                    </Typography>
                   </TableCell>
                 </TableRow>
               )}

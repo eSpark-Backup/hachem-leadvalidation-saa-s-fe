@@ -21,7 +21,7 @@ const TABLE_HEADER = [
 const TABLE_BODY = [
   {
     id: 1,
-    supplier_id: 'SP: 43756',
+    supplier_id: 'SP43756',
     country: 'United States',
     leads_validation: '78%',
     date: new Date('8/30/14'),
@@ -31,7 +31,7 @@ const TABLE_BODY = [
   },
   {
     id: 2,
-    supplier_id: 'SP: 43178',
+    supplier_id: 'SP43178',
     country: 'Greece',
     leads_validation: '80%',
     date: new Date('4/21/12'),
@@ -41,7 +41,7 @@ const TABLE_BODY = [
   },
   {
     id: 3,
-    supplier_id: 'SP: 22739',
+    supplier_id: 'SP22739',
     country: 'Saint Barthélemy',
     leads_validation: '75%',
     date: new Date('7/18/17'),
@@ -51,7 +51,7 @@ const TABLE_BODY = [
   },
   {
     id: 4,
-    supplier_id: 'SP: 97174',
+    supplier_id: 'SP97174',
     country: 'Russian Federation',
     leads_validation: '80%',
     date: new Date('1/15/12'),
@@ -61,7 +61,7 @@ const TABLE_BODY = [
   },
   {
     id: 5,
-    supplier_id: 'SP: 43178',
+    supplier_id: 'SP43178',
     country: 'Palestine',
     leads_validation: '90%',
     date: new Date('1/31/14'),
@@ -71,7 +71,7 @@ const TABLE_BODY = [
   },
   {
     id: 6,
-    supplier_id: 'SP: 39635',
+    supplier_id: 'SP39635',
     country: 'Sao Tome and Principe',
     leads_validation: '90%',
     date: new Date('4/4/18'),
@@ -81,7 +81,7 @@ const TABLE_BODY = [
   },
   {
     id: 7,
-    supplier_id: 'SP: 22739',
+    supplier_id: 'SP22739',
     country: 'South Africa',
     leads_validation: '85%',
     date: new Date('9/18/16'),
@@ -91,7 +91,7 @@ const TABLE_BODY = [
   },
   {
     id: 8,
-    supplier_id: 'SP: 70668',
+    supplier_id: 'SP70668',
     country: 'Guinea',
     leads_validation: '70%',
     date: new Date('7/27/13'),
@@ -101,7 +101,7 @@ const TABLE_BODY = [
   },
   {
     id: 9,
-    supplier_id: 'SP: 97174',
+    supplier_id: 'SP97174',
     country: 'Poland',
     leads_validation: '90%',
     date: new Date('12/4/17'),
@@ -121,7 +121,6 @@ const FILTER_TYPES = [
 ];
 
 const SELECT_FILTERS = [
-  // { options: service, label: 'Services', key: 'services' },
   { options: validation, label: 'Validation', key: 'leads_validation' },
   { options: location, label: 'Select Location', key: 'country' },
 ];

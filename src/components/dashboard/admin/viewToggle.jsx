@@ -1,10 +1,11 @@
 import { Box, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useState } from 'react';
+import { VIEW_TOGGLE } from '../../../constants/components/dashboard/viewToggle';
 
 const ViewToggle = () => {
   const [view, setView] = useState('day');
 
-  const handleChange = (event, newView) => {
+  const handleChange = (_, newView) => {
     if (newView !== null) {
       setView(newView);
     }
@@ -17,13 +18,13 @@ const ViewToggle = () => {
         exclusive
         onChange={handleChange}
         size="small"
-        aria-label="View Toggle"
+        aria-label={VIEW_TOGGLE.ariaLabel}
       >
-        <ToggleButton value="week" aria-label="Week View">
-          Week
+        <ToggleButton value="week" aria-label={VIEW_TOGGLE.weekLabel}>
+          {VIEW_TOGGLE.weekText}
         </ToggleButton>
-        <ToggleButton value="day" aria-label="Day View">
-          Day
+        <ToggleButton value="day" aria-label={VIEW_TOGGLE.dayLabel}>
+          {VIEW_TOGGLE.dayText}
         </ToggleButton>
       </ToggleButtonGroup>
     </Box>

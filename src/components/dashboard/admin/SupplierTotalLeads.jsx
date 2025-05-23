@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import DropdownButton from '../../report-analytics/DropdownButton';
 import BarPipeChart from '../../charts/BarPipeChart';
 import { cardContentStyle } from '../../../styles/components/report-analytics/SupplierReports';
+import { SUPPLIER_TOTAL_LEADS } from '../../../constants/components/dashboard/SupplierTotalLeads';
+import { styles } from '../../../styles/components/dashboard/admin/SupplierTotalLeads';
 
 const SupplierTotalLeads = ({
   chartData,
@@ -16,29 +18,17 @@ const SupplierTotalLeads = ({
   anchorRef,
 }) => (
   <CardContent sx={cardContentStyle}>
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      mb={2}
-    >
+    <Box sx={styles.headerBox}>
       <Typography variant="h4" fontWeight="bold">
-        {title || 'Supplier'}
+        {title || SUPPLIER_TOTAL_LEADS.defaultTitle}
       </Typography>
       <DropdownButton
         ref={anchorRef}
-        onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
-        label={btnTitle || 'This Month'}
+        onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
+        label={btnTitle || SUPPLIER_TOTAL_LEADS.defaultBtnTitle}
       />
     </Box>
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        mb: 2,
-        gap: 1,
-      }}
-    >
+    <Box sx={styles.chartWrapper}>
       <BarPipeChart
         data={chartData}
         validColor={validColor}
@@ -47,6 +37,7 @@ const SupplierTotalLeads = ({
     </Box>
   </CardContent>
 );
+
 SupplierTotalLeads.propTypes = {
   handleOpenChartModalDropDown: PropTypes.any,
   chartData: PropTypes.any,

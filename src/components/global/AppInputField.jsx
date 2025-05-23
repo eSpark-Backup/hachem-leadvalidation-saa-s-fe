@@ -40,8 +40,11 @@ const AppInputField = ({
   setCalenderValue = () => {},
 }) => {
   const [open, setOpen] = useState(false);
+
   const { styles } = APP_INPUT_FIELD_STYLE || {};
+
   const { titleStyle, inputStyle } = styles || {};
+
   const buttonRef = useRef(null);
 
   const handleClickAway = () => {

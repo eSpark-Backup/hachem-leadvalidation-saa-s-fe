@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
+import { COLORS } from '../../constants/components/system-setting/CustomSwitch';
 
 const CustomSwitch = styled(Switch)(({ theme }) => ({
   width: 48,
@@ -8,12 +9,12 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
   display: 'flex',
   '& .MuiSwitch-switchBase': {
     padding: 2,
-    color: '#fff',
+    color: COLORS.thumbColor,
     '&.Mui-checked': {
       transform: 'translateX(22px)',
-      color: '#fff',
+      color: COLORS.thumbColor,
       '& + .MuiSwitch-track': {
-        backgroundColor: '#0A0F2C', // Dark navy when checked
+        backgroundColor: COLORS.checkedTrack,
         opacity: 1,
       },
     },
@@ -24,8 +25,8 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
     boxShadow: 'none',
   },
   '& .MuiSwitch-track': {
-    borderRadius: 26 / 2,
-    backgroundColor: '#bdbdbd', // Gray when unchecked
+    borderRadius: 13,
+    backgroundColor: COLORS.uncheckedTrack,
     opacity: 1,
     transition: theme.transitions.create(['background-color'], {
       duration: 500,

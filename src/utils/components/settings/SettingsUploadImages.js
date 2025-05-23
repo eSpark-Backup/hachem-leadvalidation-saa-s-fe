@@ -21,6 +21,7 @@ import { SETTINGS_UPLOAD_IMAGES } from '../../../constants/components/settings/S
  */
 const handleFile = (file, setAvatar) => {
   const allowedTypes = SETTINGS_UPLOAD_IMAGES?.allowedTypes;
+
   const maxSize = 10 * 1024 * 1024;
   if (!allowedTypes?.includes(file?.type)) {
     alert(SETTINGS_UPLOAD_IMAGES?.alertText);
@@ -46,6 +47,7 @@ const handleFile = (file, setAvatar) => {
  */
 const handleDrop = (e, setAvatar) => {
   e.preventDefault();
+
   const file = e?.dataTransfer?.files[0];
   handleFile(file, setAvatar);
 };

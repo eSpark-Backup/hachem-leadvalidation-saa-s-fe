@@ -81,6 +81,7 @@ const CREDIT_USAGE_DATA = [
 
 const generateRandomMonthData = () => {
   const data = [];
+
   const startDate = new Date(); // today
   startDate.setDate(startDate.getDate() - 29); // go back 29 days
 

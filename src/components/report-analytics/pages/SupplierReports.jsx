@@ -38,11 +38,15 @@ import { DATE_PICKER_VARIANTS } from '../../../constants/components/globals/Cust
 
 const SupplierReports = ({ handleCopy, handleDownload }) => {
   const [open, setOpen] = useState(false);
+
   const [payload, setPayload] = useState({});
+
   const [pickerID, setPickerID] = useState('123');
+
   const [children, setChildren] = useState(<></>);
 
   const [openDatePicker, setOpenDatePicker] = useState(false);
+
   const anchorRef = useRef(null);
 
   const handleToggle = (id) =>
@@ -57,7 +61,6 @@ const SupplierReports = ({ handleCopy, handleDownload }) => {
     setOpen(false);
     setOpenDatePicker(false);
   };
-  // styles.js or at top of the file
 
   return (
     <>

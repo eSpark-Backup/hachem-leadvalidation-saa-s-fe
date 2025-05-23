@@ -5,6 +5,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ViewToggle from './viewToggle';
 import StatsChart from '../../charts/StatsChart';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { styles } from '../../../styles/components/dashboard/admin/StatisticsCard';
 
 const StatisticsCard = ({
   title,
@@ -36,58 +37,54 @@ const StatisticsCard = ({
       />
     );
 
+  const handleIconClick = () => {
+    if (open === false) {
+      modalOpen();
+    } else {
+      handleOpenChartModalDropDown();
+    }
+  };
+
   return (
     <>
       {/* Header */}
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        mb={4}
-      >
+      <Box sx={styles.headerBox}>
         <Typography variant="h5" fontWeight="bold">
           {title}
         </Typography>
+
         {showToggle && (
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 1,
-              flexDirection: 'column',
-              alignItems: 'end',
-            }}
-          >
-            {open == false && (
+          <Box sx={styles.toggleContainer}>
+            {open === false && (
               <Box
                 ref={anchorRef}
-                onClick={
-                  open == false ? modalOpen : handleOpenChartModalDropDown
-                }
-                sx={{
-                  cursor: 'pointer',
-                  p: 0,
-                }}
+                onClick={handleIconClick}
+                sx={styles.clickableIcon}
               >
                 <MoreHorizIcon />
               </Box>
             )}
-
             <ViewToggle />
           </Box>
         )}
       </Box>
 
       {/* Stats */}
-      <Box display="flex" justifyContent="space-between" mb={4}>
+      <Box sx={styles.statsBox}>
         {/* Total Leads */}
-        <Box>
+        <Box sx={styles.statItemLeft}>
           <Typography variant="subtitle2" color="text.secondary">
             {totalLeadsLabel}
           </Typography>
           <Typography variant="h6" fontWeight="bold">
             {totalLeads}
           </Typography>
-          <Stack direction="row" alignItems="center" spacing={0.5} mt={0.5}>
+          <Stack
+            direction="row"
+            alignItems="center"
+            spacing={0.5}
+            sx={styles.changeStackLeft}
+          >
             {getIcon(totalLeadsChangeIcon)}
             <Typography variant="caption" color={totalLeadsChangeColor}>
               {`${totalLeadsChange} ${totalLeadsChangeTime}`}
@@ -96,7 +93,7 @@ const StatisticsCard = ({
         </Box>
 
         {/* Rejected Leads */}
-        <Box textAlign="right">
+        <Box sx={styles.statItemRight}>
           <Typography variant="subtitle2" color="text.secondary">
             {rejectedLeadsLabel}
           </Typography>
@@ -106,9 +103,8 @@ const StatisticsCard = ({
           <Stack
             direction="row"
             alignItems="center"
-            justifyContent="end"
             spacing={0.5}
-            mt={0.5}
+            sx={styles.changeStackRight}
           >
             {getIcon(rejectedLeadsChangeIcon)}
             <Typography variant="caption" color={rejectedLeadsChangeColor}>
@@ -139,11 +135,13 @@ StatisticsCard.propTypes = {
   rejectedLeadsChangeColor: PropTypes.string,
   rejectedLeadsChangeIcon: PropTypes.oneOf(['up', 'down']),
   chartData: PropTypes.array,
-  modalOpen: PropTypes.any,
-  open: PropTypes.any,
-  anchorRef: PropTypes.any,
-
-  handleOpenChartModalDropDown: PropTypes.any,
+  modalOpen: PropTypes.func,
+  open: PropTypes.bool,
+  anchorRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+  handleOpenChartModalDropDown: PropTypes.func,
 };
 
 export default StatisticsCard;

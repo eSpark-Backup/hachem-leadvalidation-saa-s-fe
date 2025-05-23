@@ -12,98 +12,68 @@ import {
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import PropTypes from 'prop-types';
 import { formatNumber } from '../../utils/globals';
+import {
+  ContainerStyle,
+  HeaderCellStyle,
+  HeaderTextStyle,
+  RowTextStyle,
+  SubTextStyle,
+  RowStyle,
+  tableCellStyles,
+} from '../../styles/components/billing/RevenueTable';
 
-const ContainerStyle = {
-  maxWidth: 600,
-};
-
-const HeaderCellStyle = {
-  py: 1,
-  textAlign: 'center',
-};
-
-const HeaderTextStyle = {
-  fontWeight: 600,
-  fontSize: '11px',
-  color: '#555',
-  textTransform: 'uppercase',
-};
-
-const RowTextStyle = {
-  fontWeight: 600,
-  fontSize: '11px',
-  color: '#111',
-};
-
-const SubTextStyle = {
-  fontWeight: 500,
-  fontSize: '11px',
-  color: '#111',
-};
-
-const RowStyle = {
-  transition: 'background-color 0.2s',
-  '&:hover': {
-    backgroundColor: '#f5f5f5',
-  },
-};
-
-// Main component
 const RevenueTable = ({
   data = [],
   dot = [],
   header = ['Client', 'Revenue'],
-}) => {
-  return (
-    <TableContainer
-      component={Paper}
-      variant="outlined"
-      sx={{ ...ContainerStyle, mt: 2 }}
-    >
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            {header.map((head, index) => (
-              <TableCell sx={HeaderCellStyle} key={index}>
-                <Typography sx={HeaderTextStyle}>{head}</Typography>
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row, index) => (
-            <TableRow key={index} sx={RowStyle}>
-              <TableCell align="center" sx={{ py: 0.5 }}>
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  gap={1}
-                >
-                  <FiberManualRecordIcon
-                    sx={{
-                      height: 10,
-                      width: 10,
-                      color: dot[index] || row.color,
-                    }}
-                  />
-                  <Typography sx={RowTextStyle}>{row.key}</Typography>
-                </Box>
-              </TableCell>
-              <TableCell align="center" sx={{ py: 0.5 }}>
-                <Typography sx={SubTextStyle}>
-                  {formatNumber(row.revenue || row.value)}
-                </Typography>
-              </TableCell>
-            </TableRow>
+}) => (
+  <TableContainer
+    component={Paper}
+    variant="outlined"
+    sx={{ ...ContainerStyle }}
+  >
+    <Table size="small">
+      <TableHead>
+        <TableRow>
+          {header.map((head, index) => (
+            <TableCell sx={HeaderCellStyle} key={index}>
+              <Typography sx={HeaderTextStyle}>{head}</Typography>
+            </TableCell>
           ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
-};
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {data.map((row, index) => (
+          <TableRow key={index} sx={RowStyle}>
+            <TableCell align="center" sx={tableCellStyles}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                gap={1}
+              >
+                <FiberManualRecordIcon
+                  sx={{
+                    height: 10,
+                    width: 10,
+                    color: dot[index] || row.color,
+                  }}
+                />
+                <Typography sx={RowTextStyle}>{row.key}</Typography>
+              </Box>
+            </TableCell>
+            <TableCell align="center" sx={tableCellStyles}>
+              <Typography sx={SubTextStyle}>
+                {formatNumber(row.revenue ?? row.value)}
+              </Typography>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </TableContainer>
+);
 
-// Prop validation
 RevenueTable.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({

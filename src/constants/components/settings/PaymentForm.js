@@ -73,4 +73,5 @@ export {
   PAY_FORM_TEXT,
   PAY_FORM_ERROR_TEXT,
   REGEX,
+  PAYMENTS_FORM,
 };

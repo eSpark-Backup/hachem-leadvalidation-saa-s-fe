@@ -34,6 +34,7 @@ const ColorDotStyle = (color) => ({
   backgroundColor: color,
   marginRight: 0.5,
 });
+
 const CellStyles = { py: 0.5 };
 
 export {

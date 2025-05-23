@@ -1,12 +1,15 @@
 import { Box, Typography } from '@mui/material';
 import DropdownButton from './DropdownButton';
 import PropTypes from 'prop-types';
-import { headerBoxStyles } from '../../styles/components/report-analytics/ClientReports';
+import {
+  headerBoxStyles,
+  headerBoxTitleStyles,
+} from '../../styles/components/report-analytics/ClientReports';
 
 const ClientCardHeader = ({ title, label, onClick, anchorRef }) => (
   <Box sx={headerBoxStyles}>
     <Box>
-      <Typography variant="h4" fontWeight="bold">
+      <Typography variant="h4" sx={headerBoxTitleStyles}>
         {title}
       </Typography>
     </Box>
@@ -15,9 +18,9 @@ const ClientCardHeader = ({ title, label, onClick, anchorRef }) => (
 );
 
 ClientCardHeader.propTypes = {
-  title: PropTypes.any.isRequired,
-  label: PropTypes.any.isRequired,
-  onClick: PropTypes.any.isRequired,
+  title: PropTypes.any,
+  label: PropTypes.any,
+  onClick: PropTypes.any,
   anchorRef: PropTypes.any,
 };
 

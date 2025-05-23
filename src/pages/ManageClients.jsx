@@ -18,7 +18,9 @@ import {
 
 const ManageClients = () => {
   const [details, setDetails] = useState(null);
+
   const [anchorEl, setAnchorEl] = useState(null);
+
   const [lowCreditAnchorEl, setLowCreditAnchorEl] = useState(null);
 
   const navigate = useNavigate();

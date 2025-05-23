@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Box,
   Button,
@@ -6,100 +8,77 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { AUTH_FORMS } from '../../constants/auth';
 import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+
+import { AUTH_FORMS } from '../../constants/auth';
 import { ROUTES } from '../../constants/components/globals/Auth';
+import { styles } from '../../styles/components/auth/NewPassword';
+import {
+  NEW_PASSWORD,
+  PASSWORD_DEFAULT,
+  SHOW_USERS_DEFAULT,
+  USERS_DEFAULT,
+} from '../../constants/components/auth/NewPasssword';
 
 const NewPassword = () => {
-  const [user, setUser] = useState({
-    password: '',
-    confrim_password: '',
-  });
-  const [showPassword, setShowPassword] = useState({
-    password: false,
-    confrim_password: false,
-  });
-
-  const {
-    new_password,
-    scrollBoxStyle,
-    formSubmissionButtonStyle,
-    customInputStyle,
-    fieldStyle,
-  } = AUTH_FORMS || {};
-
-  const { title, fields, buttonText } = new_password;
-  const { login } = ROUTES || {};
   const navigate = useNavigate();
 
-  const handleClickEye = (field) => {
-    setShowPassword((prev) => ({
-      ...prev,
-      [field]: !prev[field],
-    }));
-  };
-  const handleInputChange = (key, val) => {
+  const [user, setUser] = useState(USERS_DEFAULT);
+
+  const [showPassword, setShowPassword] = useState(SHOW_USERS_DEFAULT);
+
+  const handleClickEye = (field) =>
+    setShowPassword((prev) => ({ ...prev, [field]: !prev[field] }));
+
+  const handleInputChange = (key, val) =>
     setUser((prev) => ({ ...prev, [key]: val }));
-  };
+
   const handleSave = (e) => {
     e.preventDefault();
-    console.log({ new_password: user });
-    if (user?.password && user?.confrim_password) {
-      navigate(login);
-      setUser({
-        password: '',
-        confrim_password: '',
-      });
-    } else {
-      null;
+    const { password, confrim_password } = user;
+
+    if (password && confrim_password) {
+      navigate(ROUTES?.login);
+      setUser(PASSWORD_DEFAULT);
     }
   };
 
+  const { title, fields, buttonText } = AUTH_FORMS?.new_password || {};
+
   return (
-    <Stack
-      maxWidth={{ xs: '420px', sm: '482px', md: '480px', lg: '572px' }}
-      minHeight={{ xs: '360px', lg: '420px' }}
-      maxHeight={{ xs: '90%', lg: '420px' }}
-      py={{ xs: 4.2, lg: 1 }}
-      px={{ xs: 2.5, md: 2 }}
-      justifyContent={{ xs: 'center' }}
-      alignItems={'center'}
-      variant={'authStack'}
-      direction={'column'}
-      useFlexGap
-      spacing={2}
-    >
-      <Box overflow={'auto'} sx={scrollBoxStyle}>
+    <Stack {...styles.stackProps}>
+      <Box overflow="auto" sx={styles.scrollStyle}>
         <Box
-          sx={{
-            width: '100%',
-            display: 'flex',
-            maxWidth: '380px',
-            flexDirection: 'column',
-            gap: 3,
-          }}
-          action="#"
           component="form"
+          action={NEW_PASSWORD.formAction}
           onSubmit={handleSave}
+          sx={styles.wrapperStyles}
         >
-          <Typography variant="body2" pb={1} alignSelf={'center'}>
+          <Typography
+            variant={NEW_PASSWORD.typographyVariant}
+            pb={1}
+            alignSelf="center"
+          >
             {title}
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+
+          <Box sx={styles.feildsBox}>
             {fields?.map(({ label, name, type, placeholder }, index) => (
-              <Box key={index} sx={customInputStyle}>
-                <Stack direction={'column'} spacing={0.5} width={'100%'}>
-                  <Typography variant="inputLabel">{label || ''}</Typography>
+              <Box key={index} sx={styles.customInputStyle}>
+                <Stack direction="column" spacing={0.5} width="100%">
+                  <Typography variant={NEW_PASSWORD.inputLabelVariant}>
+                    {label}
+                  </Typography>
                   <TextField
                     fullWidth
-                    autoComplete="off"
-                    sx={fieldStyle}
+                    autoComplete={NEW_PASSWORD.inputAutoComplete}
+                    sx={styles.fieldStyle}
                     name={name}
                     value={user[name] || ''}
-                    placeholder={placeholder || ''}
-                    onChange={(e) => handleInputChange(name, e?.target?.value)}
+                    placeholder={placeholder}
+                    onChange={(e) => handleInputChange(name, e.target.value)}
                     type={
                       type === fields?.[1]?.type
                         ? showPassword[name]
@@ -113,7 +92,7 @@ const NewPassword = () => {
                   <IconButton
                     disableRipple
                     onClick={() => handleClickEye(name)}
-                    sx={{ mr: -1.5 }}
+                    sx={styles.iconButton}
                   >
                     {showPassword[name] ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
@@ -121,11 +100,12 @@ const NewPassword = () => {
               </Box>
             ))}
           </Box>
-          <Stack direction={'column'} px={0.5} py={1}>
+
+          <Stack direction="column" px={0.5} py={1}>
             <Button
               type="submit"
-              variant="signupButton"
-              sx={formSubmissionButtonStyle}
+              variant={NEW_PASSWORD.buttonVariant}
+              sx={styles.submitButtonStyle}
             >
               {buttonText}
             </Button>

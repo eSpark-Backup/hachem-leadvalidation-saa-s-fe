@@ -25,6 +25,7 @@ const SettingCardStyles = {
     minHeight: '200px',
     p: { xs: '20px', sm: '24px' },
   },
+  gridBoxStyles: { xs: 1.8, md: 0 },
   toolTip: { marginLeft: 3, cursor: 'pointer' },
 };
 

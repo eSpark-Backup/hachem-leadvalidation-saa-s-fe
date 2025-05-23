@@ -12,6 +12,7 @@ import ScriptAi from '../../styles/components/klaien-managment/ScriptAI';
 
 const ScriptAI = ({ activeBox }) => {
   const [scriptText, setScriptText] = useState('');
+
   const [toggleStates, setToggleStates] = useState(
     AUDIO_PREVIEW.reduce((acc, item) => {
       acc[item.key] = false;

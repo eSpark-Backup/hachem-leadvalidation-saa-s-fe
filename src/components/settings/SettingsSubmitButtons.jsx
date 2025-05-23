@@ -2,33 +2,13 @@ import { Check, Close } from '@mui/icons-material';
 import { Box, Button, Grid } from '@mui/material';
 import PropTypes from 'prop-types';
 
-const boxStyles = {
-  display: 'flex',
-  justifyContent: 'flex-end',
-  gap: 2,
-};
+import {
+  boxStyles,
+  cancelButtonStyles,
+  requestButtonStyles,
+} from '../../styles/components/system-settings/SettingsSubmitButtons';
 
-const cancelButtonStyles = {
-  display: 'flex',
-  width: { xs: '100%', sm: '100px' },
-  fontSize: { xs: '12px', sm: '14px' },
-  height: '40px',
-  border: '1px solid #CBD5E1',
-  color: '#475569',
-  borderRadius: 5,
-  textTransform: 'none',
-  fontWeight: 700,
-  '&:hover': {
-    backgroundColor: 'transparent',
-    color: '#475569',
-  },
-};
-
-const requestButtonStyles = {
-  width: { xs: '100%', sm: '117px' },
-  fontSize: { xs: '12px', sm: '14px' },
-  height: '40px',
-};
+import { SETTINGS_SUBMIT_BUTTONS } from '../../constants/components/system-setting/SettingsSubmitButtons';
 
 const SettingsSubmitButtons = ({ request, cancel }) => {
   return (
@@ -41,7 +21,7 @@ const SettingsSubmitButtons = ({ request, cancel }) => {
           onClick={cancel}
           sx={cancelButtonStyles}
         >
-          Cancel
+          {SETTINGS_SUBMIT_BUTTONS.cancelLabel}
         </Button>
         <Button
           onClick={request}
@@ -49,7 +29,7 @@ const SettingsSubmitButtons = ({ request, cancel }) => {
           endIcon={<Check fontSize="12px" />}
           sx={requestButtonStyles}
         >
-          Request
+          {SETTINGS_SUBMIT_BUTTONS.requestLabel}
         </Button>
       </Box>
     </Grid>

@@ -18,7 +18,7 @@ const TABLE_HEADER = [
 const TABLE_BODY = [
   {
     id: 1,
-    client_id: 'CL:5626',
+    client_id: 'CL5626',
     lead_created: '28200',
     company: 'SP Installation',
     service: 'Solar installation',
@@ -28,7 +28,7 @@ const TABLE_BODY = [
   },
   {
     id: 2,
-    client_id: 'CL:3536',
+    client_id: 'CL3536',
     lead_created: '16627',
     company: '-',
     service: 'Solar installation',
@@ -38,7 +38,7 @@ const TABLE_BODY = [
   },
   {
     id: 3,
-    client_id: 'CL:9151',
+    client_id: 'CL9151',
     lead_created: '9631',
     company: 'SP Installation',
     service: 'Solar installation',
@@ -48,7 +48,7 @@ const TABLE_BODY = [
   },
   {
     id: 4,
-    client_id: 'CL:1148',
+    client_id: 'CL1148',
     lead_created: '50963',
     company: '-',
     service: 'Solar installation',
@@ -58,7 +58,7 @@ const TABLE_BODY = [
   },
   {
     id: 5,
-    client_id: 'CL:1374',
+    client_id: 'CL1374',
     lead_created: '50364',
     company: 'SP Installation',
     service: 'Solar installation',
@@ -68,7 +68,7 @@ const TABLE_BODY = [
   },
   {
     id: 6,
-    client_id: 'CL:4349',
+    client_id: 'CL4349',
     lead_created: '83676',
     company: 'SP Installation',
     service: 'Solar installation',
@@ -78,7 +78,7 @@ const TABLE_BODY = [
   },
   {
     id: 7,
-    client_id: 'CL:4152',
+    client_id: 'CL4152',
     lead_created: '39235',
     company: 'SP Installation',
     service: 'Solar installation',
@@ -88,7 +88,7 @@ const TABLE_BODY = [
   },
   {
     id: 8,
-    client_id: 'CL:8861',
+    client_id: 'CL8861',
     lead_created: '20796',
     company: 'SP Installation',
     service: 'Solar installation',

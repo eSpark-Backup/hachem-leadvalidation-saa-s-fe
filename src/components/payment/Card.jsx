@@ -4,13 +4,15 @@ import CountrySelect from '../global/AppCountryDropdown';
 import en from 'react-phone-number-input/locale/en';
 import PropTypes from 'prop-types';
 
+import { styles } from '../../styles/components/payments/Card';
+
 const Card = ({ fields, buttonText, paymentFormData, setPaymentFormData }) => {
   const handleChange = (key, val) => {
     setPaymentFormData((prev) => ({ ...prev, [key]: val }));
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, my: 2 }}>
+    <Box sx={styles.container}>
       {fields?.map(
         (
           { name, label, type, px, placeholder, startAdornment, endAdornment },
@@ -27,12 +29,12 @@ const Card = ({ fields, buttonText, paymentFormData, setPaymentFormData }) => {
             ) : (
               <AppInputField
                 title={label}
-                fontSize={'16px'}
+                fontSize="16px"
                 py={1.6}
                 px={px}
-                color={'#475569'}
-                borderRadius={'123px'}
-                border={'1px solid #CBD5E1'}
+                color="#475569"
+                borderRadius="123px"
+                border="1px solid #CBD5E1"
                 fontWeight={500}
                 type={type}
                 name={name}
@@ -44,28 +46,23 @@ const Card = ({ fields, buttonText, paymentFormData, setPaymentFormData }) => {
                 startAdornment={
                   startAdornment && (
                     <Box
-                      component={'img'}
-                      width={18}
-                      sx={{
-                        width: 20,
-                        display: 'flex',
-                        alignSelf: 'center',
-                      }}
+                      component="img"
                       src={startAdornment}
+                      alt={label}
+                      sx={styles.startAdornmentImg}
                     />
                   )
                 }
                 endAdornment={
                   endAdornment && (
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 0.5,
-                      }}
-                    >
-                      {endAdornment?.map((icon, iconIndex) => (
-                        <img src={icon} key={iconIndex} alt="" width={26} />
+                    <Box sx={styles.endAdornmentBox}>
+                      {endAdornment.map((icon, iconIndex) => (
+                        <img
+                          src={icon}
+                          key={iconIndex}
+                          alt={label}
+                          width={26}
+                        />
                       ))}
                     </Box>
                   )
@@ -78,14 +75,7 @@ const Card = ({ fields, buttonText, paymentFormData, setPaymentFormData }) => {
       <Button
         type="submit"
         variant="formSubmissionButton"
-        sx={{
-          mt: 1,
-          display: 'flex',
-          alignSelf: 'flex-end',
-          width: { xs: '100%', sm: '166px' },
-          height: '40px',
-          fontSize: { xs: '12px', sm: '14px' },
-        }}
+        sx={styles.submitButton}
       >
         {buttonText}
       </Button>

@@ -2,11 +2,11 @@ import { Box, Grid, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import AppInputField from '../global/AppInputField';
 import AppPhoneNumberInput from '../global/AppPhoneNumberInput';
+import { styles } from '../../styles/components/settings/SettingForm';
 
 const SettingForm = ({ data, values, setValues }) => {
-  const handleChange = (key, val) => {
+  const handleChange = (key, val) =>
     setValues((prev) => ({ ...prev, [key]: val }));
-  };
 
   return (
     <>
@@ -26,18 +26,10 @@ const SettingForm = ({ data, values, setValues }) => {
           },
           idx
         ) => (
-          <Grid item xs={12} sm={6} key={idx} py={0.5}>
+          <Grid item xs={12} sm={6} key={idx} sx={styles.gridItem}>
             {type === 'phone' ? (
-              <Box display={'flex'} flexDirection={'column'} gap={1}>
-                <Typography
-                  sx={{
-                    fontSize: '14px',
-                    fontWeight: 700,
-                    color: '#1E293B',
-                  }}
-                >
-                  {label}
-                </Typography>
+              <Box sx={styles.phoneBox}>
+                <Typography sx={styles.phoneLabel}>{label}</Typography>
                 <AppPhoneNumberInput
                   value={values[name]}
                   setValue={(e) => handleChange(name, e?.target?.value)}
@@ -45,47 +37,41 @@ const SettingForm = ({ data, values, setValues }) => {
               </Box>
             ) : (
               <AppInputField
-                select={type === 'select' ? true : false}
-                key={idx}
+                select={type === 'select'}
                 title={label}
-                fontSize={'16px'}
+                fontSize="16px"
                 py={1.6}
                 px={px}
-                color={'#475569'}
-                borderRadius={'123px'}
-                border={'1px solid #CBD5E1'}
+                color="#475569"
+                borderRadius="123px"
+                border="1px solid #CBD5E1"
                 fontWeight={500}
                 type={type}
                 name={name}
-                value={values[name] || value || ''}
+                value={values[name] ?? value ?? ''}
                 onChange={(e) => handleChange(name, e?.target?.value)}
                 placeholder={placeholder}
                 options={options}
                 startAdornment={
                   startAdornment && (
                     <Box
-                      component={'img'}
-                      width={18}
-                      sx={{
-                        width: 20,
-                        display: 'flex',
-                        alignSelf: 'center',
-                      }}
+                      component="img"
                       src={icon}
+                      alt={label}
+                      sx={styles.iconImg}
                     />
                   )
                 }
                 endAdornment={
                   endAdornment && (
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 0.5,
-                      }}
-                    >
-                      {endAdornment?.map((icon, iconIndex) => (
-                        <img src={icon} key={iconIndex} alt="" width={16} />
+                    <Box sx={styles.endAdornmentBox}>
+                      {endAdornment.map((iconSrc, iconIndex) => (
+                        <img
+                          src={iconSrc}
+                          key={iconIndex}
+                          alt={label}
+                          width={16}
+                        />
                       ))}
                     </Box>
                   )

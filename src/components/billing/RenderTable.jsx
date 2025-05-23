@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   Box,
   Paper,
@@ -10,6 +11,7 @@ import {
   Typography,
 } from '@mui/material';
 import { styles } from '../../styles/components/billing/RenderTable';
+import { RENDER_TABLE } from '../../constants/components/billing/RenderTable';
 
 const renderTable = (title, rows) => (
   <Box sx={styles.container}>
@@ -21,9 +23,11 @@ const renderTable = (title, rows) => (
         <Table size="small">
           <TableHead>
             <TableRow sx={styles.headerRow}>
-              <TableCell sx={styles.headerCell}>Category</TableCell>
+              <TableCell sx={styles.headerCell}>
+                {RENDER_TABLE.category}
+              </TableCell>
               <TableCell align="right" sx={styles.headerCell}>
-                Amount
+                {RENDER_TABLE.amount}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -47,5 +51,17 @@ const renderTable = (title, rows) => (
     </Box>
   </Box>
 );
+
+renderTable.propTypes = {
+  title: PropTypes.string.isRequired,
+  rows: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
+      highlight: PropTypes.bool,
+    })
+  ).isRequired,
+};
 
 export default renderTable;

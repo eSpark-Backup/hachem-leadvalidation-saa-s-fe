@@ -38,7 +38,7 @@ const CLIENT_REPORTS = {
   clientsMostGenerateLeads: 'ClientMostGenerateLeads',
   suppliersMostGenerateLeads: 'SupplierMostGenerateLeads',
 };
-// Text Constants
+
 const MODAL_WIDTHS = {
   CreditUsage: 800,
   Default: 400,

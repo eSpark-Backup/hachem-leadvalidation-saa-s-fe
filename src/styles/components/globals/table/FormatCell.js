@@ -44,6 +44,7 @@ const actionButtonBoxStyles = {
 
 const buttonBoxStyles = (status) => {
   const green = status === 'accepted' || status === 'active';
+
   const blue = status === 'pending' || status === 'non-active';
 
   return {

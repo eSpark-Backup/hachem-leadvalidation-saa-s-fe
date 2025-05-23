@@ -4,17 +4,19 @@ import PaymentFormSwitch from './PaymentFormSwitch';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
+import {
+  PAYMENT_FORM,
+  PAYMENTS_FORM_DEFAULT,
+} from '../../constants/components/payment/PaymentForm';
+
+import { styles } from '../../styles/components/payments/PaymentForm';
+
 const PaymentForm = ({ data, maxWidth, border, padding, lowCreditText }) => {
-  const [paymentMethod, setPaymentMethod] = useState('card');
-  const [paymentFormData, setPaymentFormData] = useState({
-    payout: false,
-    new_payment: false,
-    credit_card_number: '',
-    card_holder_name: '',
-    date: '',
-    country: '',
-    cvv: '',
-  });
+  const [paymentMethod, setPaymentMethod] = useState(
+    PAYMENT_FORM.defaultPaymentMethod
+  );
+
+  const [paymentFormData, setPaymentFormData] = useState(PAYMENTS_FORM_DEFAULT);
 
   const { switchs, buttonText, fields, methods } = data || {};
 
@@ -25,29 +27,17 @@ const PaymentForm = ({ data, maxWidth, border, padding, lowCreditText }) => {
 
   return (
     <Box
+      component="form"
       onSubmit={handleSubmit}
-      component={'form'}
-      sx={{
-        width: '100%',
-        height: 'auto',
-        mx: 'auto',
-        maxWidth: maxWidth || '580px',
-        border: border || '1px solid #E2E8F0',
-        backgroundColor: '#ffff',
-        borderRadius: '32px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        p: padding || 3,
-      }}
+      sx={styles.formContainer(maxWidth, border, padding)}
     >
       {lowCreditText}
 
-      <Box display={'flex'} flexDirection={'column'} gap={2}>
-        {switchs?.map(({ title, text, name }, switchIndex) => (
+      <Box sx={styles.switchesWrapper}>
+        {switchs?.map(({ title, text, name }, index) => (
           <PaymentFormSwitch
-            key={switchIndex}
-            label={{ title: title, text: text }}
+            key={index}
+            label={{ title, text }}
             checked={paymentFormData[name]}
             onChange={(e) =>
               setPaymentFormData({
@@ -58,31 +48,23 @@ const PaymentForm = ({ data, maxWidth, border, padding, lowCreditText }) => {
           />
         ))}
       </Box>
-      {methods?.map(({ method, text }, methodIndex) => (
+
+      {methods?.map(({ method, text }, index) => (
         <RadioGroup
-          key={methodIndex}
+          key={index}
           value={paymentMethod}
           onChange={(e) => setPaymentMethod(e?.target?.value)}
-          sx={{ mt: 2 }}
+          sx={styles.radioGroupWrapper}
         >
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.2 }}>
+          <Box sx={styles.radioItem}>
             <Box
               onClick={() => setPaymentMethod(method)}
-              sx={{
-                width: '18px',
-                height: '18px',
-                border: '5px solid #1B2559',
-                borderRadius: '100%',
-                cursor: 'pointer',
-              }}
+              sx={styles.radioCircle}
             />
-            <Typography
-              sx={{ fontSize: '14px', fontWeight: 700, color: '#1E293B' }}
-            >
-              {text}
-            </Typography>
+            <Typography sx={styles.radioText}>{text}</Typography>
           </Box>
-          {[paymentMethod, method]?.every(
+
+          {[paymentMethod, method].every(
             (val) => val === methods[0]?.method
           ) && (
             <Card

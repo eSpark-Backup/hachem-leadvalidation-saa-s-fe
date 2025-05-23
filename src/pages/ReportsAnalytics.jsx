@@ -25,6 +25,7 @@ const ReportsAnalytics = () => {
   }, [navigate]);
 
   const handleDownload = () => downloadReportData(TEXT.userTypeKey);
+
   const handleCopy = () => copyReportDataToClipboard(TEXT.userTypeKey);
 
   if (USER_TYPE === USER_TYPES.supplier) {

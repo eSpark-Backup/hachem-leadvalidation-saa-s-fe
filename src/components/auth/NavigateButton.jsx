@@ -2,52 +2,45 @@ import { Button, Stack } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AUTH_FORMS } from '../../constants/auth';
 import { ROUTES } from '../../constants/components/globals/Auth';
+import {
+  stackStyles,
+  loginButtonStyles,
+  signupButtonStyles,
+} from '../../constants/components/auth/NavigationButton';
+
+const { login: LOGIN_ROUTE, signup: SIGNUP_ROUTE } = ROUTES || {};
 
 const NavigateButton = () => {
   const navigate = useNavigate();
+
   const { pathname } = useLocation();
-  const { login: loginRoute, signup: signRoute } = ROUTES || {};
-  const { login: loginForm, signup: signupForm } = AUTH_FORMS || {};
+
+  const isLoginPage = pathname === LOGIN_ROUTE;
+
+  const isSignupPage = pathname === SIGNUP_ROUTE;
 
   return (
-    <Stack
-      spacing={0}
-      direction={'row'}
-      position={'relative'}
-      sx={{ width: '100%', justifyContent: 'flex-end' }}
-    >
-      <Button
-        variant="loginButton"
-        disableRipple
-        onClick={() =>
-          navigate(pathname === loginRoute ? signRoute : loginRoute)
-        }
-        sx={{
-          width: '83px',
-          height: '44px',
-          mr: { xs: 1.5, sm: 2 },
-          mt: { xs: 1.5, sm: 2.8 },
-          display: pathname === loginRoute ? 'none' : 'flex',
-        }}
-      >
-        {pathname === loginRoute ? signupForm?.title : loginForm?.title}
-      </Button>
-      <Button
-        variant="signupButton"
-        disableRipple
-        onClick={() =>
-          navigate(pathname === signRoute ? loginRoute : signRoute)
-        }
-        sx={{
-          width: '95px',
-          height: '44px',
-          mt: { xs: 1.5, sm: 2.8 },
-          mr: { xs: 1.5, sm: 2.8 },
-          display: pathname?.includes(signRoute) ? 'none' : 'flex',
-        }}
-      >
-        {pathname === signRoute ? loginForm?.title : signupForm?.title}
-      </Button>
+    <Stack spacing={0} direction="row" position="relative" sx={stackStyles}>
+      {!isLoginPage && (
+        <Button
+          variant="loginButton"
+          disableRipple
+          onClick={() => navigate(LOGIN_ROUTE)}
+          sx={loginButtonStyles}
+        >
+          {AUTH_FORMS?.login?.title || 'Login'}
+        </Button>
+      )}
+      {!isSignupPage && (
+        <Button
+          variant="signupButton"
+          disableRipple
+          onClick={() => navigate(SIGNUP_ROUTE)}
+          sx={signupButtonStyles}
+        >
+          {AUTH_FORMS?.signup?.title || 'Signup'}
+        </Button>
+      )}
     </Stack>
   );
 };

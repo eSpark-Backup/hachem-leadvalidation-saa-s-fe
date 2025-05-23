@@ -1,79 +1,45 @@
 import { Box, Stack, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 
+import { styles } from '../../styles/components/payments/CreditCard';
+
+import { CREDIT_CARD } from '../../constants/components/payment/CreditCard';
+
 const CreditCard = ({ data }) => {
   const { title, volume, minimumAmountText, volumeBoxStyle } = data || {};
 
   return (
-    <Box
-      sx={{
-        width: '100%',
-        height: '100%',
-        maxWidth: '415px',
-        boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)',
-        borderRadius: '0px 0px 11px 11px',
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          minHeight: '86px',
-          backgroundColor: '#126D30',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '11px 11px 0px 0px',
-          p: 2.5,
-        }}
-      >
-        <Typography
-          variant="h2"
-          color={'#fff'}
-          fontWeight={700}
-          textAlign={{ xs: 'center' }}
-        >
+    <Box sx={styles.container}>
+      <Box sx={styles.header}>
+        <Typography variant="h2" sx={styles.title}>
           {title}
         </Typography>
       </Box>
-      <Box
-        sx={{
-          width: '100%',
-          display: 'flex',
-          minHeight: '275px',
-          flexDirection: 'column',
-          alignItems: 'center',
-          border: '1px solid #0000006B',
-          borderRadius: '0px 0px 11px 11px',
-          p: 2,
-          gap: 2,
-        }}
-      >
-        {volume?.map((item, eachIndex) => (
-          <Box key={eachIndex} sx={volumeBoxStyle}>
-            <Stack p={1} spacing={0.4}>
-              <Typography variant="h5" color={'#09102B'} fontWeight={700}>
+
+      <Box sx={styles.contentBox}>
+        {volume?.map((item, idx) => (
+          <Box key={idx} sx={volumeBoxStyle}>
+            <Stack sx={styles.volumeStack}>
+              <Typography variant="h5" sx={styles.textOne}>
                 {item?.vol}
               </Typography>
-              <Typography variant="h6" color={'#09102B'} fontWeight={400}>
+              <Typography variant="h6" sx={styles.textTwo}>
                 {item?.duration}
               </Typography>
             </Stack>
-            <Stack p={1} spacing={0.4}>
-              <Typography variant="h5" color={'#09102B'} fontWeight={700}>
+            <Stack sx={styles.volumeStack}>
+              <Typography variant="h5" sx={styles.textOne}>
                 {item?.price}
               </Typography>
-              <Typography variant="h6" color={'#09102B'} fontWeight={400}>
+              <Typography variant="h6" sx={styles.textTwo}>
                 {item?.text}
               </Typography>
             </Stack>
           </Box>
         ))}
-        <Typography
-          variant="h6"
-          color={'#09102B'}
-          fontSize={'12px'}
-          fontWeight={400}
-        >
-          {minimumAmountText + '€100'}
+
+        <Typography variant="h6" sx={styles.minimumAmountText}>
+          {minimumAmountText + CREDIT_CARD.hundradsEuro}
         </Typography>
       </Box>
     </Box>
@@ -81,7 +47,19 @@ const CreditCard = ({ data }) => {
 };
 
 CreditCard.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    volume: PropTypes.arrayOf(
+      PropTypes.shape({
+        vol: PropTypes.string,
+        duration: PropTypes.string,
+        price: PropTypes.string,
+        text: PropTypes.string,
+      })
+    ),
+    minimumAmountText: PropTypes.string,
+    volumeBoxStyle: PropTypes.object,
+  }).isRequired,
 };
 
 export default CreditCard;

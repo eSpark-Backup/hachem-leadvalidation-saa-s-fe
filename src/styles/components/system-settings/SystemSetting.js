@@ -11,6 +11,32 @@ const modalStyle = {
 };
 
 const styles = {
+  modalTitle: {
+    fontWeight: 500,
+    fontSize: { xs: '24px', sm: '30px', md: '36px' },
+    textAlign: 'center',
+    mb: 3,
+  },
+  modalSubtitle: {
+    fontWeight: 500,
+    fontSize: { xs: '16px', sm: '18px', md: '21px' },
+    mb: 1,
+  },
+  modalTextField: {
+    mb: 3,
+    border: '1.43px solid #00000047',
+    borderRadius: '10px',
+  },
+  modalMultilineTextField: {
+    border: '1.43px solid #00000047',
+    borderRadius: '10px',
+  },
+  modalButtonStack: {
+    direction: 'row',
+    justifyContent: 'flex-end',
+    spacing: 2,
+    mt: 3,
+  },
   outerBox: {
     py: 2,
   },
@@ -46,16 +72,16 @@ const styles = {
   sectionTitle: {
     fontWeight: 600,
     fontSize: {
-      xs: '1.2rem', 
+      xs: '1.2rem',
       sm: '1.4rem',
-      md: '1.5rem', 
+      md: '1.5rem',
     },
     color: '#09102B',
   },
   sectionSubtitle: {
     fontSize: {
       xs: '0.9rem',
-      sm: '1rem', 
+      sm: '1rem',
       md: '1.1rem',
     },
     color: '#77797D',
@@ -70,7 +96,7 @@ const styles = {
     color: '#09102B',
     boxShadow: '1px 2px 3px 0px #4676FB69',
     '&:hover': {
-      boxShadow: '1px 2px 3px 0px #4676FB69', 
+      boxShadow: '1px 2px 3px 0px #4676FB69',
       backgroundColor: '#F7F7F7',
       color: '#09102B',
     },

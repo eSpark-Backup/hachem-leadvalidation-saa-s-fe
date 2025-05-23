@@ -135,6 +135,10 @@ const SUPPLIER_AVAILABLE_LEADS = {
   filterType: SUPPLIER_DASHBOARD_AVAILABLE_LEADS.filterType,
 };
 
+const DASHBOARD_TOP_CARDS = {
+  iconAltSuffix: 'icon',
+};
+
 export {
   ADMIN_CARDS,
   CLIENT_CARDS,
@@ -144,4 +148,5 @@ export {
   ADMIN_CARDS_DATA,
   CLIENT_LEADS,
   SUPPLIER_AVAILABLE_LEADS,
+  DASHBOARD_TOP_CARDS,
 };

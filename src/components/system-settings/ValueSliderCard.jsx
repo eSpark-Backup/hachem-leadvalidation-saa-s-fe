@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import {
   Card,
   Typography,
@@ -8,8 +9,8 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
-import PropTypes from 'prop-types';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
 import {
   cardStyles,
   containerBoxStyles,
@@ -24,6 +25,8 @@ import {
   valueLabelStyles,
 } from '../../styles/components/system-settings/ValueSliderCard';
 
+import { VALUE_SLIDER_TEXT } from '../../constants/components/system-setting/ValueSliderCard';
+
 const ValueSliderCard = ({
   label,
   tooltip,
@@ -37,8 +40,11 @@ const ValueSliderCard = ({
   endTitle,
 }) => {
   const theme = useTheme();
+
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+
   const formattedUnit = useMemo(() => ` ${unit}`, [unit]);
 
   return (
@@ -56,7 +62,7 @@ const ValueSliderCard = ({
         <Box
           mt={2}
           display="flex"
-          flexDirection={isMobile ? 'column' : isTablet ? 'column' : 'row'}
+          flexDirection={isMobile || isTablet ? 'column' : 'row'}
         >
           <Box flexGrow={1} sx={SliderBoxStyles(isTablet)}>
             <Slider
@@ -65,22 +71,19 @@ const ValueSliderCard = ({
               onChange={(e, newVal) => onChange?.(newVal)}
               min={min}
               max={max}
-              aria-label={`${label} slider`}
+              aria-label={`${label} ${VALUE_SLIDER_TEXT.slider}`}
               sx={sliderStyles}
             />
             <Box display="flex" justifyContent="space-between">
-              <Typography sx={valueLabelStyles}>
-                {startTitle ? startTitle : min}
-              </Typography>
-              <Typography sx={valueLabelStyles}>
-                {endTitle ? endTitle : max}
-              </Typography>
+              <Typography sx={valueLabelStyles}>{startTitle ?? min}</Typography>
+              <Typography sx={valueLabelStyles}>{endTitle ?? max}</Typography>
             </Box>
           </Box>
+
           {unit && (
             <Box
               mt={isMobile ? 1 : 0}
-              ml={isMobile ? 0 : 1}
+              mx={isMobile ? 0 : 1}
               sx={sliderValueBoxBase}
             >
               <Typography sx={sliderValueTextStyles}>{value}</Typography>
@@ -94,16 +97,16 @@ const ValueSliderCard = ({
 };
 
 ValueSliderCard.propTypes = {
-  label: PropTypes.any,
-  value: PropTypes.any,
-  onChange: PropTypes.any,
-  tooltip: PropTypes.any,
-  min: PropTypes.any,
-  max: PropTypes.any,
-  unit: PropTypes.any,
-  startTitle: PropTypes.any,
-  endTitle: PropTypes.any,
-  defaultValue: PropTypes.any,
+  label: PropTypes.string.isRequired,
+  tooltip: PropTypes.string,
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  unit: PropTypes.string,
+  value: PropTypes.number,
+  onChange: PropTypes.func.isRequired,
+  startTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  endTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  defaultValue: PropTypes.number,
 };
 
 export default ValueSliderCard;

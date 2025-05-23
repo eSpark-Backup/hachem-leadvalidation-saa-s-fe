@@ -40,7 +40,7 @@ const PAYMENT_DATA = {
         name: 'card_holder_name',
         type: 'text',
         placeholder: 'Holder name',
-        startAdornment: { CardIcon },
+        startAdornment: CardIcon,
       },
       {
         px: 1.8,
@@ -70,8 +70,6 @@ const PAYMENT_DATA = {
 const LOW_CREDITS_DATA = {
   title:
     'low Credits please recharge your Klairn Subscription To get more Credits !',
-
-  // style
   style: {
     mainBoxStyle: {
       display: 'flex',
@@ -95,4 +93,9 @@ const LOW_CREDITS_DATA = {
   },
 };
 
-export { PAYMENT_DATA, LOW_CREDITS_DATA };
+const PAYMENT = {
+  iconColor: '#94A3B8',
+  textColor: '#475569',
+};
+
+export { PAYMENT_DATA, LOW_CREDITS_DATA, PAYMENT };

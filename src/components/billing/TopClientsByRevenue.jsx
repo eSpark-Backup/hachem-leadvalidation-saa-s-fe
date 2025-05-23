@@ -3,6 +3,7 @@ import DropdownButton from '../report-analytics/DropdownButton';
 import DonutChart from '../charts/DonutChart';
 import PropTypes from 'prop-types';
 import RevenueTable from './RevenueTable';
+import { styles } from '../../styles/components/billing/TopClientsByRevenue';
 
 const TopClientsByRevenue = ({
   open,
@@ -15,37 +16,25 @@ const TopClientsByRevenue = ({
   dropdownLabel,
   tableHeader,
   anchorRef,
-}) => {
-  return (
-    <CardContent sx={cardStyle}>
-      <Box
-        display="flex"
-        flexDirection={'column'}
-        justifyContent="center"
-        alignItems="center"
-        mb={2}
-      >
-        <Typography variant="h4" fontWeight="bold">
-          {title}
-        </Typography>
-        <DropdownButton
-          ref={anchorRef}
-          onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
-          label={dropdownLabel}
-        />
-      </Box>
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-      >
-        <DonutChart data={chartData} colors={chartColors} />
-        <RevenueTable data={chartData} dot={chartColors} header={tableHeader} />
-      </Box>
-    </CardContent>
-  );
-};
+}) => (
+  <CardContent sx={cardStyle}>
+    <Box sx={styles.headerBox}>
+      <Typography variant="h4" sx={styles.titleTypography}>
+        {title}
+      </Typography>
+      <DropdownButton
+        ref={anchorRef}
+        onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
+        label={dropdownLabel}
+      />
+    </Box>
+
+    <Box sx={styles.chartBox}>
+      <DonutChart data={chartData} colors={chartColors} />
+      <RevenueTable data={chartData} dot={chartColors} header={tableHeader} />
+    </Box>
+  </CardContent>
+);
 
 TopClientsByRevenue.propTypes = {
   open: PropTypes.bool,
@@ -57,7 +46,6 @@ TopClientsByRevenue.propTypes = {
   cardStyle: PropTypes.object,
   title: PropTypes.string,
   anchorRef: PropTypes.any,
-
   dropdownLabel: PropTypes.string,
   boxItems: PropTypes.arrayOf(
     PropTypes.shape({

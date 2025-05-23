@@ -6,26 +6,29 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { AUTH_FORMS } from '../../constants/auth';
 import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import Checkbox from './Checkbox';
+import { AUTH_FORMS } from '../../constants/auth';
 import { ROUTES } from '../../constants/components/globals/Auth';
+import { SIGNUP_FORM_DEFAULT } from '../../constants/components/auth/SignupForm';
+import { USERS_DEFAULT } from '../../constants/components/auth/NewPasssword';
+import {
+  stackWrapperStyle,
+  formBoxStyle,
+  orTextStyle,
+  googleImageStyle,
+  iconBox,
+} from '../../styles/components/auth/SignupForm';
 
 const SignupForm = () => {
-  const [showPassword, setShowPassword] = useState({
-    password: false,
-    confrim_password: false,
-  });
-  const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confrim_password: '',
-    company_name: '',
-    service_and_policy: false,
-  });
+  const [showPassword, setShowPassword] = useState(USERS_DEFAULT);
+
+  const [user, setUser] = useState(SIGNUP_FORM_DEFAULT);
+
+  const navigate = useNavigate();
+
   const {
     signup,
     customInputStyle,
@@ -34,12 +37,11 @@ const SignupForm = () => {
     formSubmissionButtonStyle,
     service_and_policy,
     googlePic,
-    or,
   } = AUTH_FORMS || {};
 
   const { title, fields } = signup || {};
+
   const { verifyEmail } = ROUTES || {};
-  const navigate = useNavigate();
 
   const handleClickEye = (field) => {
     setShowPassword((prev) => ({
@@ -47,6 +49,7 @@ const SignupForm = () => {
       [field]: !prev[field],
     }));
   };
+
   const handleInputChange = (key, val) => {
     setUser((prev) => ({ ...prev, [key]: val }));
   };
@@ -55,50 +58,26 @@ const SignupForm = () => {
     e.preventDefault();
     console.log({ signupCreds: user });
     navigate(verifyEmail);
-    setUser({
-      name: '',
-      email: '',
-      password: '',
-      confrim_password: '',
-      company_name: '',
-      service_and_policy: false,
-    });
+    setUser(SIGNUP_FORM_DEFAULT);
   };
 
   return (
-    <Stack
-      minHeight={{ xs: 'auto', sm: 'auto', lg: '690px' }}
-      maxWidth={{ xs: '420px', sm: '482px', lg: '572px' }}
-      maxHeight={{ xs: '90%', sm: '420px', lg: '690px' }}
-      py={{ xs: 4.2, sm: 3, lg: 1 }}
-      px={{ xs: 2.5, sm: 2, md: 2 }}
-      justifyContent={{ lg: 'center' }}
-      alignItems={'center'}
-      variant={'authStack'}
-      direction={'column'}
-      useFlexGap
-      spacing={2}
-    >
-      <Box overflow={'auto'} sx={scrollBoxStyle}>
+    <Stack sx={stackWrapperStyle}>
+      <Box overflow="auto" sx={scrollBoxStyle}>
         <Box
-          sx={{
-            width: '100%',
-            maxWidth: '380px',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
           component="form"
+          sx={formBoxStyle}
           action="#"
           onSubmit={handleSignup}
         >
-          <Typography variant="body2" pb={1} alignSelf={'center'}>
+          <Typography variant="body2" pb={1} alignSelf="center">
             {title}
           </Typography>
 
           {fields?.map(({ label, name, type, placeholder }, index) => (
             <Box key={index} sx={customInputStyle}>
-              <Stack direction={'column'} spacing={0.5} width={'100%'}>
-                <Typography variant="inputLabel">{label || ''}</Typography>
+              <Stack direction="column" spacing={0.5} width="100%">
+                <Typography variant="inputLabel">{label}</Typography>
                 <TextField
                   fullWidth
                   autoComplete="off"
@@ -120,13 +99,14 @@ const SignupForm = () => {
                 <IconButton
                   disableRipple
                   onClick={() => handleClickEye(name)}
-                  sx={{ mr: -1.5 }}
+                  sx={iconBox}
                 >
                   {showPassword[name] ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               )}
             </Box>
           ))}
+
           <Stack px={1} py={1.5}>
             <Checkbox
               setChecked={setUser}
@@ -134,7 +114,8 @@ const SignupForm = () => {
               data={service_and_policy}
             />
           </Stack>
-          <Stack direction={'column'} px={0.5} py={1}>
+
+          <Stack direction="column" px={0.5} py={1}>
             <Button
               type="submit"
               variant="signupButton"
@@ -144,27 +125,11 @@ const SignupForm = () => {
             </Button>
           </Stack>
 
-          <Stack
-            direction={'column'}
-            alignItems={'center'}
-            mt={{ xs: 1 }}
-            gap={1}
-          >
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: '12px',
-                fontWeight: 400,
-                color: '#000',
-              }}
-            >
-              {or}
+          <Stack direction="column" alignItems="center" mt={{ xs: 1 }} gap={1}>
+            <Typography variant="h6" sx={orTextStyle}>
+              {AUTH_FORMS?.or}
             </Typography>
-            <Box
-              component={'img'}
-              src={googlePic}
-              sx={{ width: '40px', height: '40px', cursor: 'pointer' }}
-            />
+            <Box component="img" src={googlePic} sx={googleImageStyle} />
           </Stack>
         </Box>
       </Box>

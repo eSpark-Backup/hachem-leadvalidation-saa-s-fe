@@ -70,6 +70,7 @@ const labelTypographyStyles = {
   fontWeight: 600,
   fontSize: '16px',
 };
+
 const SliderBoxStyles = (isTablet) => ({
   pr: isTablet ? '2%' : '3%',
 });

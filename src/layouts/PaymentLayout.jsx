@@ -1,5 +1,3 @@
-// layouts/PaymentLayout.js
-
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import KlairnLogo from '/src/assets/images/auth/KlairnLogo.png';

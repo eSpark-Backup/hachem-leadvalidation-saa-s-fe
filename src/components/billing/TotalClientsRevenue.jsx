@@ -9,69 +9,52 @@ import {
   Typography,
 } from '@mui/material';
 import PropTypes from 'prop-types';
+import { styles } from '../../styles/components/billing/TotalClientsRevenue';
 
-const paperStyle = {
-  borderRadius: '20px',
-  backgroundColor: '#fff',
-  p: 2,
-  mx: 'auto',
-};
+const TotalClientsRevenue = ({ title, tableHead, tableData }) => (
+  <Paper elevation={0} sx={styles.paper}>
+    <Typography variant="h6" align="center" fontWeight="bold" sx={styles.title}>
+      {title}
+    </Typography>
 
-const titleStyle = { mb: 2, fontSize: '25px' };
+    <TableContainer>
+      <Table>
+        <TableHead sx={styles.tableHead}>
+          <TableRow>
+            {tableHead.map((heading, idx) => (
+              <TableCell key={idx} sx={styles.headCell}>
+                {heading}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
 
-const headCellStyle = { fontWeight: 'bold' };
-
-const bodyCellStyle = { fontWeight: 'normal' };
-
-const TotalClientsRevenue = ({ title, tableHead, tableData }) => {
-  return (
-    <Paper elevation={0} sx={paperStyle}>
-      <Typography variant="h6" align="center" fontWeight="bold" sx={titleStyle}>
-        {title}
-      </Typography>
-
-      <TableContainer>
-        <Table>
-          <TableHead sx={{ backgroundColor: '#cfdafe' }}>
-            <TableRow>
-              {tableHead.map((heading, index) => (
-                <TableCell key={index} sx={headCellStyle}>
-                  {heading}
+        <TableBody>
+          {tableData.map((row, idx) => (
+            <TableRow key={idx}>
+              {Object.values(row).map((value, i) => (
+                <TableCell key={i} sx={styles.bodyCell}>
+                  {value}
                 </TableCell>
               ))}
             </TableRow>
-          </TableHead>
-          <TableBody>
-            {tableData.map((row, index) => (
-              <TableRow key={index}>
-                {Object.values(row).map((value, i) => (
-                  <TableCell key={i} sx={bodyCellStyle}>
-                    {value}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
-  );
-};
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  </Paper>
+);
 
 TotalClientsRevenue.propTypes = {
-  title: PropTypes.string,
-  tableHead: PropTypes.arrayOf(PropTypes.string),
+  title: PropTypes.string.isRequired,
+  tableHead: PropTypes.arrayOf(PropTypes.string).isRequired,
   tableData: PropTypes.arrayOf(
     PropTypes.shape({
       client: PropTypes.string,
       credits: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       revenue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     })
-  ),
-  paperStyle: PropTypes.object,
-  titleStyle: PropTypes.object,
-  headCellStyle: PropTypes.object,
-  bodyCellStyle: PropTypes.object,
+  ).isRequired,
 };
 
 export default TotalClientsRevenue;

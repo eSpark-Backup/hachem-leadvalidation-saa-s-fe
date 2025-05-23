@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import DropdownButton from '../../report-analytics/DropdownButton';
 import BarPipeChart from '../../charts/BarPipeChart';
 import { cardContentStyle } from '../../../styles/components/report-analytics/SupplierReports';
+import { styles } from '../../../styles/components/dashboard/admin/ClientTotalLeads';
 
 const ClientTotalLeads = ({
   chartData,
@@ -11,47 +12,46 @@ const ClientTotalLeads = ({
   modalOpen,
   open,
   anchorRef,
-
   handleOpenChartModalDropDown,
 }) => {
+  const handleClick = () => {
+    if (open === false) {
+      modalOpen();
+    } else {
+      handleOpenChartModalDropDown();
+    }
+  };
+
   return (
     <CardContent sx={cardContentStyle}>
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        mb={2}
-      >
+      <Box sx={styles.headerBox}>
         <Typography variant="h4" fontWeight="bold">
           {title}
         </Typography>
         <DropdownButton
           ref={anchorRef}
-          onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
+          onClick={handleClick}
           label={btnTitle}
         />
       </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          mb: 2,
-          gap: 1,
-        }}
-      >
+      <Box sx={styles.chartContainer}>
         <BarPipeChart data={chartData} />
       </Box>
     </CardContent>
   );
 };
+
 ClientTotalLeads.propTypes = {
   chartData: PropTypes.any,
   title: PropTypes.any,
   btnTitle: PropTypes.any,
-  modalOpen: PropTypes.any,
-  open: PropTypes.any,
-  handleOpenChartModalDropDown: PropTypes.any,
-  anchorRef: PropTypes.any,
+  modalOpen: PropTypes.func,
+  open: PropTypes.bool,
+  handleOpenChartModalDropDown: PropTypes.func,
+  anchorRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
 };
 
 export default ClientTotalLeads;

@@ -12,157 +12,117 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '../../constants/components/globals/Auth';
+import { styles } from '../../styles/components/CreditModal';
 
 const CreditModal = ({ open, setOpen, data }) => {
   const [amount, setAmount] = useState('');
-  const { title, text, field, bill, buttons, modalBoxStyle, iconButtonStyle } =
-    data || {};
-  const { label, name, type, placeholder, style } = field || {};
-  const { onboardingPayment } = ROUTES || {};
-  const nagivate = useNavigate();
 
-  const handleCloseChartModal = () => {
+  const {
+    title,
+    text,
+    field,
+    bill = [],
+    buttons = [],
+    modalBoxStyle,
+    iconButtonStyle,
+  } = data || {};
+
+  const { label, name, type, placeholder, style } = field || {};
+
+  const { onboardingPayment } = ROUTES || {};
+
+  const navigate = useNavigate();
+
+  const handleClose = () => {
     setAmount('');
     setOpen(false);
   };
 
   const handleClick = (btnText) => {
-    handleCloseChartModal();
-    if (btnText == buttons[0]?.btnText) {
-      return handleCloseChartModal();
-    } else if (btnText == buttons[1]?.btnText) {
+    handleClose();
+    if (btnText === buttons[0]?.btnText) {
+      return;
+    }
+    if (btnText === buttons[1]?.btnText) {
       setAmount('');
-      return nagivate(onboardingPayment);
+      navigate(onboardingPayment);
     }
   };
 
   return (
-    <div>
-      <Modal
-        open={open}
-        onClose={handleCloseChartModal}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={modalBoxStyle}>
-          <Box sx={{ overflow: 'auto' }}>
-            <Box
-              sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 3.5,
-                p: 4.5,
-              }}
-            >
-              <IconButton
-                disableRipple
-                onClick={handleCloseChartModal}
-                sx={iconButtonStyle}
-              >
-                <HighlightOffIcon fontSize="medium" />
-              </IconButton>
-              <Stack direction={'column'} spacing={0.5}>
-                <Typography
-                  sx={{
-                    color: '#09102B',
-                    fontSize: { xs: '20px', sm: '22px', md: '25px' },
-                    fontWeight: 600,
-                  }}
-                >
-                  {title}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: '#212332',
-                    fontSize: { xs: '13px', md: '14px' },
-                    fontWeight: 400,
-                  }}
-                >
-                  {text}
-                </Typography>
-              </Stack>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: '#212332',
-                    fontSize: { xs: '12px' },
-                    fontWeight: 500,
-                  }}
-                >
-                  {label}
-                </Typography>
-                <TextField
-                  name={name}
-                  type={type}
-                  value={amount}
-                  placeholder={placeholder}
-                  onChange={(e) => setAmount(e?.target?.value)}
-                  sx={style}
-                />
-              </Box>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby={'modal-modal-title'}
+      aria-describedby={'modal-modal-description'}
+    >
+      <Box sx={{ ...modalBoxStyle, ...styles.modalBox }}>
+        <Box sx={styles.containerBox}>
+          <IconButton
+            disableRipple
+            onClick={handleClose}
+            sx={{ ...iconButtonStyle }}
+          >
+            <HighlightOffIcon fontSize="medium" />
+          </IconButton>
 
-              <Stack direction={'column'} spacing={1}>
-                {bill?.map(
-                  ({ billText, billAmount, color, weight }, eachIndex) => (
-                    <Stack
-                      key={eachIndex}
-                      direction={'row'}
-                      justifyContent={'space-between'}
-                    >
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          color: color || '#77797D',
-                          fontSize: { xs: '14px' },
-                          fontWeight: weight || 500,
-                        }}
-                      >
-                        {billText}
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          color: '#09102B',
-                          fontSize: { xs: '14px' },
-                          fontWeight: 500,
-                        }}
-                      >
-                        {billText === bill[1]?.billText
-                          ? billAmount
-                          : `€ ${amount}`}
-                      </Typography>
-                    </Stack>
-                  )
-                )}
-                <Stack
-                  spacing={2}
-                  direction={{ xs: 'column', sm: 'row' }}
-                  justifyContent={'flex-end'}
-                >
-                  {buttons?.map(({ btnText, buttonStyle }, btnIndex) => (
-                    <Button
-                      key={btnIndex}
-                      sx={buttonStyle}
-                      disableRipple
-                      disabled={
-                        btnText !== buttons[0]?.btnText &&
-                        (!amount || amount?.length === 0)
-                      }
-                      onClick={() => handleClick(btnText)}
-                    >
-                      {btnText}
-                    </Button>
-                  ))}
-                </Stack>
-              </Stack>
-            </Box>
+          <Stack direction="column" spacing={0.5}>
+            <Typography sx={styles.titleTypography}>{title}</Typography>
+            <Typography variant="h6" sx={styles.textTypography}>
+              {text}
+            </Typography>
+          </Stack>
+
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+            <Typography variant="h6" sx={styles.labelTypography}>
+              {label}
+            </Typography>
+            <TextField
+              name={name}
+              type={type}
+              value={amount}
+              placeholder={placeholder}
+              onChange={(e) => setAmount(e.target.value)}
+              sx={style}
+            />
           </Box>
+
+          <Stack direction="column" spacing={1}>
+            {bill.map(({ billText, billAmount, color, weight }, index) => (
+              <Stack key={index} direction="row" justifyContent="space-between">
+                <Typography variant="h6" sx={styles.billText(color, weight)}>
+                  {billText}
+                </Typography>
+                <Typography variant="h6" sx={styles.billAmount}>
+                  {billText === bill[1]?.billText ? billAmount : `€ ${amount}`}
+                </Typography>
+              </Stack>
+            ))}
+
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={2}
+              justifyContent="flex-end"
+            >
+              {buttons.map(({ btnText, buttonStyle }, idx) => (
+                <Button
+                  key={idx}
+                  sx={buttonStyle}
+                  disableRipple
+                  disabled={
+                    btnText !== buttons[0]?.btnText &&
+                    (!amount || amount.length === 0)
+                  }
+                  onClick={() => handleClick(btnText)}
+                >
+                  {btnText}
+                </Button>
+              ))}
+            </Stack>
+          </Stack>
         </Box>
-      </Modal>
-    </div>
+      </Box>
+    </Modal>
   );
 };
 

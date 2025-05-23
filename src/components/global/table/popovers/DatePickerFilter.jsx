@@ -28,7 +28,7 @@ const DatePickerFilter = ({ leadMonitoring, pickerObjects }) => {
     anchorEl,
     setAnchorEl,
     setIsViewingHistory,
-    isViewingHistory
+    isViewingHistory,
   } = pickerObjects;
 
   const buttonRef = useRef(null);

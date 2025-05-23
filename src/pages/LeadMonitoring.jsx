@@ -18,14 +18,21 @@ import {
 
 const LeadMonitoring = () => {
   const [open, setOpen] = useState(false);
+
   const [payload, setPayload] = useState({});
+
   const [anchorEl, setAnchorEl] = useState(null);
+
   const [pickerID] = useState('Leads Monitoring');
+
   const [header, setHeader] = useState(TABLE_HEADER);
+
   const [deleteItemId, setDeleteItemId] = useState(null);
+
   const [isViewingHistory, setIsViewingHistory] = useState(false);
   console.log(payload);
   console.log(deleteItemId);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +43,7 @@ const LeadMonitoring = () => {
     } else {
       setHeader(TABLE_HEADER);
     }
-  }, [isViewingHistory]);
+  }, [isViewingHistory, header]);
 
   useEffect(() => {
     if (USER_TYPE !== USER_TYPES.admin) {

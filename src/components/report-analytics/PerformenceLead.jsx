@@ -11,6 +11,7 @@ import { Box, CardContent, Typography } from '@mui/material';
 import BarLineChart from '../charts/BarLineChart';
 import { LEADS_CHART } from '../../constants/components/charts/LeadsPerformanceChart';
 import DropdownButton from './DropdownButton';
+import { PERFORMENCE_LEAD } from '../../constants/components/report-analytics/PerformenceLead';
 
 const PerformenceLead = ({
   open,
@@ -18,6 +19,14 @@ const PerformenceLead = ({
   handleOpenChartModalDropDown,
   anchorRef,
 }) => {
+  const onDropdownClick = () => {
+    if (open === false) {
+      modalOpen?.();
+    } else {
+      handleOpenChartModalDropDown?.();
+    }
+  };
+
   return (
     <CardContent sx={cardContentStyle}>
       <Box sx={{ ...simpleBoxStyle, flexDirection: 'column' }}>
@@ -25,7 +34,7 @@ const PerformenceLead = ({
           {TEXT_CONSTANTS.leadsPerformance}
         </Typography>
         <DropdownButton
-          onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
+          onClick={onDropdownClick}
           label={TEXT_CONSTANTS.thisMonth}
           ref={anchorRef}
         />
@@ -38,20 +47,34 @@ const PerformenceLead = ({
       />
       <Box sx={performanceBoxStyle}>
         <Typography sx={{ ...typographyMainStyle, color: '#FFA500' }}>
-          {'30%'}
+          {PERFORMENCE_LEAD.leadImprovementValue}
         </Typography>
         <Typography sx={typographySubStyle}>
-          {TEXT_CONSTANTS.leadsImprovement('30%', 'last month')}
+          {TEXT_CONSTANTS.leadsImprovement(
+            PERFORMENCE_LEAD.leadImprovementValue,
+            PERFORMENCE_LEAD.leadImprovementPeriod
+          )}
         </Typography>
       </Box>
     </CardContent>
   );
 };
+
 PerformenceLead.propTypes = {
-  open: PropTypes.any,
-  modalOpen: PropTypes.any,
-  handleOpenChartModalDropDown: PropTypes.any,
-  anchorRef: PropTypes.any,
+  open: PropTypes.bool,
+  modalOpen: PropTypes.func,
+  handleOpenChartModalDropDown: PropTypes.func,
+  anchorRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+};
+
+PerformenceLead.defaultProps = {
+  open: false,
+  modalOpen: null,
+  handleOpenChartModalDropDown: null,
+  anchorRef: null,
 };
 
 export default PerformenceLead;

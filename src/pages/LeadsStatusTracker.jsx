@@ -16,8 +16,11 @@ import { useState } from 'react';
 
 const LeadsStatusTracker = () => {
   const navigate = useNavigate();
+
   const [payload, setPayload] = useState({});
+
   const [pickerID] = useState('Status Tracking');
+
   const [anchorEl, setAnchorEl] = useState(null);
   console.log(payload);
 

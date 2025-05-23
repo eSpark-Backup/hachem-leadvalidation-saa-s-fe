@@ -1,14 +1,13 @@
-import { Box, Button, Stack, TextField, Typography } from '@mui/material';
-import { AUTH_FORMS } from '../../constants/auth';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Box, Button, Stack, TextField, Typography } from '@mui/material';
+import { AUTH_FORMS } from '../../constants/auth';
 import { ROUTES } from '../../constants/components/globals/Auth';
-import { styles } from '../../constants/components/auth/ForgotPassword';
+import { styles } from '../../styles/components/auth/ForgotPassword';
+import { FORGET_PASSWORD } from '../../constants/components/auth/Auth';
 
 const ForgotPassword = () => {
-  const [user, setUser] = useState({
-    email: '',
-  });
+  const [user, setUser] = useState(FORGET_PASSWORD);
 
   const {
     forgot_password,
@@ -18,24 +17,20 @@ const ForgotPassword = () => {
     fieldStyle,
   } = AUTH_FORMS || {};
 
-  const { title, fields, buttonText } = forgot_password;
+  const { title, fields, buttonText } = forgot_password || {};
+
   const { forgotPassword } = ROUTES || {};
+
   const navigate = useNavigate();
 
-  const handleInputChange = (key, val) => {
+  const handleInputChange = (key, val) =>
     setUser((prev) => ({ ...prev, [key]: val }));
-  };
 
   const handleSendCode = (e) => {
     e.preventDefault();
-    console.log({ forgotPassword: user });
-    if (user?.email) {
-      navigate(`${forgotPassword}/${user?.email}`);
-      setUser({
-        email: '',
-      });
-    } else {
-      null;
+    if (user.email) {
+      navigate(`${forgotPassword}/${user.email}`);
+      setUser(FORGET_PASSWORD);
     }
   };
 
@@ -49,10 +44,10 @@ const ForgotPassword = () => {
     >
       <Box overflow="auto" sx={scrollBoxStyle}>
         <Box
-          sx={styles.formWrapper}
-          action="#"
           component="form"
+          sx={styles.formWrapper}
           onSubmit={handleSendCode}
+          action="#"
         >
           <Typography variant="body2" pb={1} alignSelf="center">
             {title}
@@ -69,7 +64,7 @@ const ForgotPassword = () => {
                     name={name}
                     value={user[name] || ''}
                     placeholder={placeholder}
-                    onChange={(e) => handleInputChange(name, e?.target?.value)}
+                    onChange={(e) => handleInputChange(name, e.target.value)}
                     type={type}
                   />
                 </Stack>
@@ -79,7 +74,7 @@ const ForgotPassword = () => {
               <Button
                 type="submit"
                 variant="signupButton"
-                disabled={!user?.email}
+                disabled={!user.email}
                 sx={formSubmissionButtonStyle}
               >
                 {buttonText}

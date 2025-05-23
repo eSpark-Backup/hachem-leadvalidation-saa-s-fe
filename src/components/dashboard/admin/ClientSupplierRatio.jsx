@@ -2,6 +2,8 @@ import { Box, CardContent, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import DonutChartWithImage from '../../charts/DonutChartWithImage';
 import DropdownButton from '../../report-analytics/DropdownButton';
+import { styles } from '../../../styles/components/dashboard/admin/ClientSupplierRatio';
+import { CLIENT_SUPPLIER_RATIO } from '../../../constants/components/dashboard/ClientSupplierRatio';
 
 const ClientSupplierRatio = ({
   title,
@@ -11,8 +13,8 @@ const ClientSupplierRatio = ({
   centerImageUrl,
   clientValue,
   supplierValue,
-  clientColor,
-  supplierColor,
+  clientColor = '#4CAF50',
+  supplierColor = '#B0BEC5',
   clientLegnedTitle,
   supplierLegnedTitle,
   modalOpen,
@@ -20,97 +22,84 @@ const ClientSupplierRatio = ({
   handleOpenChartModalDropDown,
   open,
   anchorRef,
-}) => (
-  <CardContent sx={{ p: 2 }}>
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      mb={2}
-    >
-      <Typography variant="h4" fontWeight="bold">
-        {title}
-      </Typography>
-      <DropdownButton
-        onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
-        label={btntitle || 'This Month'}
-        ref={anchorRef}
-      />
-    </Box>
+}) => {
+  const onDropdownClick =
+    open === false ? modalOpen : handleOpenChartModalDropDown;
 
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
-      py={4}
-    >
-      <DonutChartWithImage
-        data={chartData}
-        colors={chartColors}
-        centerImageUrl={centerImageUrl}
-      />
-    </Box>
-
-    <Box
-      mt={5}
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      width="100%"
-      gap={2}
-      flexWrap="wrap"
-    >
-      {/* Client Box */}
-      <Box display="flex" flexDirection="column" gap={1}>
-        <Box display="flex" alignItems="center" gap={1}>
-          <Box
-            width={10}
-            height={10}
-            bgcolor={clientColor || '#4CAF50'}
-            borderRadius="50%"
-          />
-          <Typography>{clientLegnedTitle || 'Client'}</Typography>
-        </Box>
-        <Typography fontWeight="bold">
-          {clientValue}
-          {isPerAllowed ? '%' : ''}
+  return (
+    <CardContent sx={styles.cardContent}>
+      <Box sx={styles.headerBox}>
+        <Typography variant="h4" fontWeight="bold">
+          {title}
         </Typography>
+        <DropdownButton
+          onClick={onDropdownClick}
+          label={btntitle || CLIENT_SUPPLIER_RATIO.defaultBtnTitle}
+          ref={anchorRef}
+        />
       </Box>
 
-      {/* Supplier Box */}
-      <Box display="flex" flexDirection="column" gap={1}>
-        <Box display="flex" alignItems="center" gap={1}>
-          <Box
-            width={10}
-            height={10}
-            bgcolor={supplierColor || '#B0BEC5'}
-            borderRadius="50%"
-          />
-          <Typography>{supplierLegnedTitle || 'Supplier'}</Typography>
-        </Box>
-        <Typography fontWeight="bold">{supplierValue}</Typography>
+      <Box sx={styles.chartBox}>
+        <DonutChartWithImage
+          data={chartData}
+          colors={chartColors}
+          centerImageUrl={centerImageUrl}
+        />
       </Box>
-    </Box>
-  </CardContent>
-);
+
+      <Box sx={styles.footerBox}>
+        {/* Client Box */}
+        <Box sx={styles.legendBox}>
+          <Box sx={styles.legendTitleBox}>
+            <Box sx={styles.colorDot(clientColor)} />
+            <Typography>
+              {clientLegnedTitle || CLIENT_SUPPLIER_RATIO.defaultClientLegend}
+            </Typography>
+          </Box>
+          <Typography sx={styles.valueText}>
+            {clientValue}
+            {isPerAllowed ? '%' : ''}
+          </Typography>
+        </Box>
+
+        {/* Supplier Box */}
+        <Box sx={styles.legendBox}>
+          <Box sx={styles.legendTitleBox}>
+            <Box sx={styles.colorDot(supplierColor)} />
+            <Typography>
+              {supplierLegnedTitle ||
+                CLIENT_SUPPLIER_RATIO.defaultSupplierLegend}
+            </Typography>
+          </Box>
+          <Typography sx={styles.valueText}>{supplierValue}</Typography>
+        </Box>
+      </Box>
+    </CardContent>
+  );
+};
+
 ClientSupplierRatio.propTypes = {
-  btntitle: PropTypes.any,
-  title: PropTypes.any,
-  chartData: PropTypes.any,
-  chartColors: PropTypes.any,
-  centerImageUrl: PropTypes.any,
-  clientValue: PropTypes.any,
-  supplierValue: PropTypes.any,
-  modalOpen: PropTypes.any,
-  open: PropTypes.any,
-  handleOpenChartModalDropDown: PropTypes.any,
-  isPerAllowed: PropTypes.any,
-  clientColor: PropTypes.any,
-  supplierColor: PropTypes.any,
-  clientLegnedTitle: PropTypes.any,
-  supplierLegnedTitle: PropTypes.any,
-  anchorRef: PropTypes.any,
+  title: PropTypes.string.isRequired,
+  btntitle: PropTypes.string,
+  chartData: PropTypes.array.isRequired,
+  chartColors: PropTypes.array,
+  centerImageUrl: PropTypes.string,
+  clientValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
+  supplierValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
+  clientColor: PropTypes.string,
+  supplierColor: PropTypes.string,
+  clientLegnedTitle: PropTypes.string,
+  supplierLegnedTitle: PropTypes.string,
+  modalOpen: PropTypes.func.isRequired,
+  isPerAllowed: PropTypes.bool,
+  handleOpenChartModalDropDown: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired,
+  anchorRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
 };
 
 export default ClientSupplierRatio;

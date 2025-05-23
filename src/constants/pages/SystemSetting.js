@@ -145,4 +145,13 @@ const SYSTEM_SETTING = {
   modalSave: 'Save Message',
 };
 
-export { OPTIONS, CARDS, SYSTEM_SETTING, FRAUD_SETTINGS, LEADS_SETTINGS };
+const SYSTEM_SETTING_FORM = { title: '', message: '' };
+
+export {
+  OPTIONS,
+  CARDS,
+  SYSTEM_SETTING,
+  FRAUD_SETTINGS,
+  LEADS_SETTINGS,
+  SYSTEM_SETTING_FORM,
+};

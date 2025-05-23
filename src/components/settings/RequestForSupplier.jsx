@@ -6,6 +6,11 @@ import { useState } from 'react';
 
 import PropTypes from 'prop-types';
 
+import {
+  handleCancelRequest,
+  handleSendRequest,
+} from '../../utils/components/settings/PersonalInfo';
+
 const RequestForSupplier = ({ data }) => {
   const [values, setValues] = useState({});
 

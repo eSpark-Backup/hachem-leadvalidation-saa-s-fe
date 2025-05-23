@@ -31,9 +31,12 @@ const MyLeads = () => {
   };
 
   const goToPage = (row) => {
-    navigate(`${ROUTES.dashboard}/${ROUTES.myLeadDetails}`, {
-      state: { title: row.supplier_id },
-    });
+    navigate(
+      `${ROUTES.dashboard}/${ROUTES.myLeadDetails}?id=${row.supplier_id}`,
+      {
+        state: { title: row.supplier_id },
+      }
+    );
   };
 
   if (USER_TYPE !== USER_TYPES.client) return null;

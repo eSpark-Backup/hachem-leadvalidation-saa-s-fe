@@ -5,6 +5,8 @@ import { cardContentStyle } from '../../../styles/components/report-analytics/Su
 import DonutChartWithText from '../../charts/DonutChartWithText';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { styles } from '../../../styles/components/dashboard/admin/FmoMonth';
+import { FMO_MONTH } from '../../../constants/components/dashboard/FmoMonth';
 
 const FmoMonth = ({
   handleOpenChartModalDropDown,
@@ -29,12 +31,7 @@ const FmoMonth = ({
   supplierChangeDirection, // 'up' or 'down'
 }) => (
   <CardContent sx={cardContentStyle}>
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-      mb={2}
-    >
+    <Box sx={styles.headerBox}>
       <Typography variant="h4" fontWeight="bold">
         {title}
       </Typography>
@@ -45,13 +42,7 @@ const FmoMonth = ({
       />
     </Box>
 
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
-      gap={2}
-    >
+    <Box sx={styles.chartContainer}>
       <DonutChartWithText
         data={chartData}
         colors={chartColors}
@@ -60,25 +51,12 @@ const FmoMonth = ({
         centerValue={centerValue}
       />
 
-      <Box
-        mt={2}
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        width="100%"
-        gap={2}
-        flexWrap="wrap"
-      >
+      <Box sx={styles.statsContainer}>
         {/* Client Box */}
-        <Box display="flex" flexDirection="column" gap={1}>
-          <Box display="flex" alignItems="center" gap={1}>
-            <Box
-              width={10}
-              height={10}
-              bgcolor={clientColor}
-              borderRadius="50%"
-            />
-            <Typography>Client</Typography>
+        <Box sx={styles.statBox}>
+          <Box sx={styles.labelRow}>
+            <Box sx={{ ...styles.colorDot, bgcolor: clientColor }} />
+            <Typography>{FMO_MONTH.clientLabel}</Typography>
           </Box>
           <Typography fontWeight="bold">{clientValue}</Typography>
           <Chip
@@ -92,27 +70,15 @@ const FmoMonth = ({
                 <ArrowDownwardIcon fontSize="small" />
               )
             }
-            sx={{ pl: 0.5 }}
+            sx={styles.chipIconPadding}
           />
         </Box>
 
         {/* Supplier Box */}
-        <Box
-          display="flex"
-          flexDirection="column"
-          gap={1}
-          sx={{
-            textAlign: 'right',
-          }}
-        >
-          <Box display="flex" alignItems="center" gap={1}>
-            <Box
-              width={10}
-              height={10}
-              bgcolor={supplierColor}
-              borderRadius="50%"
-            />
-            <Typography>Supplier</Typography>
+        <Box sx={{ ...styles.statBox, ...styles.statBoxRightAligned }}>
+          <Box sx={styles.labelRow}>
+            <Box sx={{ ...styles.colorDot, bgcolor: supplierColor }} />
+            <Typography>{FMO_MONTH.supplierLabel}</Typography>
           </Box>
           <Typography fontWeight="bold">{supplierValue}</Typography>
           <Chip
@@ -126,7 +92,7 @@ const FmoMonth = ({
                 <ArrowDownwardIcon fontSize="small" />
               )
             }
-            sx={{ pl: 0.5 }}
+            sx={styles.chipIconPadding}
           />
         </Box>
       </Box>

@@ -46,10 +46,15 @@ import { USER_TYPES } from '../../constants/components/globals/Auth';
 
 const Sidebar = () => {
   const { pathname } = useLocation();
+
   const [open, setOpen] = useState(false);
+
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
   const navigate = useNavigate();
+
   const userType = localStorage?.getItem('userType');
+
   const client = USER_TYPES?.client;
 
   const openLogoutModal = () => {

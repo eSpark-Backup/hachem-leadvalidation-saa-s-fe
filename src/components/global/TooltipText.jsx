@@ -10,6 +10,7 @@ const TooltipText = ({
   variant = 'secondary',
 }) => {
   const isTooltipVisible = text?.length > maxLength;
+
   return (
     <Tooltip
       title={isTooltipVisible ? text : ''}

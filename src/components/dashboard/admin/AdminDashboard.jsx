@@ -32,7 +32,7 @@ import ClientSupplierRatio from './ClientSupplierRatio';
 import ClientTotalLeads from './ClientTotalLeads';
 import SupplierTotalLeads from './SupplierTotalLeads';
 import EngagementRatio from './EngagementRatio';
-import FmoMonth from './FMOMonth';
+import FmoMonth from './FmoMonth';
 import StatisticsCard from './StatisticsCard';
 import CustomSeriesDatePicker from '../../global/CustomSeriesDatePicker';
 import { DATE_PICKER_VARIANTS } from '../../../constants/components/globals/CustomSeriesDatePicker';
@@ -40,16 +40,22 @@ import { ADMIN_DASHBOARD } from '../../../constants/components/dashboard/AdminDa
 
 const AdminDashboard = () => {
   const [open, setOpen] = useState(false);
+
   const [payload, setPayload] = useState({});
+
   const [pickerID, setPickerID] = useState('123');
+
   const [children, setChildren] = useState(<></>);
+
   const [openDatePicker, setOpenDatePicker] = useState(false);
+
   const anchorRef = useRef(null);
 
   const handleOpenChartModal = (component) => {
     setChildren(component);
     setOpen(true);
   };
+
   const handleCloseChartModal = () => {
     setOpen(false);
     setOpenDatePicker(false);
@@ -72,11 +78,7 @@ const AdminDashboard = () => {
             item
             xs={12}
             md={8.9}
-            sx={{
-              background: '#09102B0D',
-              p: 2,
-              borderRadius: '17px',
-            }}
+            sx={{ background: '#09102B0D', p: 2, borderRadius: '17px' }}
           >
             <Typography
               sx={{
@@ -120,7 +122,6 @@ const AdminDashboard = () => {
                   />
                 </Card>
               </Grid>
-
               <Grid item xs={12} md={4}>
                 <Card sx={cardStyle}>
                   <SupplierTotalLeads
@@ -159,7 +160,6 @@ const AdminDashboard = () => {
                   />
                 </Card>
               </Grid>
-
               <Grid item xs={12} md={4}>
                 <Card sx={cardStyle}>
                   <EngagementRatio
@@ -215,11 +215,7 @@ const AdminDashboard = () => {
             item
             xs={12}
             md={2.9}
-            sx={{
-              background: '#09102B0D',
-              p: 2,
-              borderRadius: '17px',
-            }}
+            sx={{ background: '#09102B0D', p: 2, borderRadius: '17px' }}
           >
             <Typography
               sx={{
@@ -303,11 +299,7 @@ const AdminDashboard = () => {
             item
             xs={12}
             md={7.9}
-            sx={{
-              background: '#09102B0D',
-              p: 2,
-              borderRadius: '17px',
-            }}
+            sx={{ background: '#09102B0D', p: 2, borderRadius: '17px' }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
@@ -528,11 +520,7 @@ const AdminDashboard = () => {
             item
             xs={12}
             md={3.9}
-            sx={{
-              background: '#09102B0D',
-              p: 2,
-              borderRadius: '17px',
-            }}
+            sx={{ background: '#09102B0D', p: 2, borderRadius: '17px' }}
           >
             <Card sx={cardStyle}>
               <ClientSupplierRatio

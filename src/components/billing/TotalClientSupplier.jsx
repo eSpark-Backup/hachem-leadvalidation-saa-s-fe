@@ -2,6 +2,8 @@ import { Box, CardContent, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import DropdownButton from '../report-analytics/DropdownButton';
 import DonutChartWithText from '../charts/DonutChartWithText';
+import { TOTAL_CLIENT_SUPPLIER } from '../../constants/components/billing/TotalClientSupplier';
+import { styles } from '../../styles/components/billing/TotalClientSupplier';
 
 const TotalClientSupplier = ({
   open,
@@ -11,119 +13,78 @@ const TotalClientSupplier = ({
   dropdownLabel,
   chartData,
   chartColors,
-  clientLabel,
+  clientLabel = TOTAL_CLIENT_SUPPLIER.clientLabelDefault,
   clientValue,
   clientColor,
-  supplierLabel,
+  supplierLabel = TOTAL_CLIENT_SUPPLIER.supplierLabelDefault,
   supplierValue,
   supplierColor,
   cardStyle,
   centerValue,
   anchorRef,
-}) => {
-  return (
-    <CardContent sx={cardStyle}>
-      {/* Header */}
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        flexDirection={'column'}
-        alignItems="center"
-        mb={2}
-      >
-        <Typography variant="h4" fontWeight="bold">
-          {title}
-        </Typography>
-        <DropdownButton
-          ref={anchorRef}
-          onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
-          label={dropdownLabel}
-        />
-      </Box>
+}) => (
+  <CardContent sx={styles.cardContent(cardStyle)}>
+    <Box sx={styles.headerBox}>
+      <Typography variant="h4" fontWeight="bold">
+        {title}
+      </Typography>
+      <DropdownButton
+        ref={anchorRef}
+        onClick={open === false ? modalOpen : handleOpenChartModalDropDown}
+        label={dropdownLabel}
+      />
+    </Box>
 
-      {/* Chart + Legend */}
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-        gap={2}
-      >
-        <DonutChartWithText
-          data={chartData}
-          colors={chartColors}
-          width={200}
-          height={200}
-          innerRadius={70}
-          outerRadius={80}
-          dataKey={'value'}
-          centerValue={centerValue}
-          valueFontSize={'20px'}
-          labelFontSize={'10px'}
-          isPerAllowed={true}
-        />
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
-          width="100%"
-          gap={2}
-          flexWrap="wrap"
-        >
-          {/* Client Box */}
-          <Box display="flex" flexDirection="column" gap={1}>
-            <Box display="flex" alignItems="center" gap={1}>
-              <Box
-                width={10}
-                height={10}
-                bgcolor={clientColor}
-                borderRadius="50%"
-              />
-              <Typography>{clientLabel}</Typography>
-            </Box>
-            <Typography fontWeight="bold">{clientValue}</Typography>
-          </Box>
+    <Box sx={styles.chartWrapper}>
+      <DonutChartWithText
+        data={chartData}
+        colors={chartColors}
+        width={200}
+        height={200}
+        innerRadius={70}
+        outerRadius={80}
+        dataKey="value"
+        centerValue={centerValue}
+        valueFontSize="20px"
+        labelFontSize="10px"
+        isPerAllowed
+      />
 
-          {/* Supplier Box */}
-          <Box
-            display="flex"
-            flexDirection="column"
-            gap={1}
-            sx={{
-              textAlign: 'end',
-            }}
-          >
-            <Box display="flex" alignItems="center" gap={1}>
-              <Box
-                width={10}
-                height={10}
-                bgcolor={supplierColor}
-                borderRadius="50%"
-              />
-              <Typography>{supplierLabel}</Typography>
-            </Box>
-            <Typography fontWeight="bold">{supplierValue}</Typography>
+      <Box sx={styles.chartLegendWrapper}>
+        <Box sx={styles.clientBox}>
+          <Box sx={styles.legendItem}>
+            <Box sx={styles.colorCircle(clientColor)} />
+            <Typography>{clientLabel}</Typography>
           </Box>
+          <Typography fontWeight="bold">{clientValue}</Typography>
+        </Box>
+
+        <Box sx={styles.supplierBox}>
+          <Box sx={styles.legendItem}>
+            <Box sx={styles.colorCircle(supplierColor)} />
+            <Typography>{supplierLabel}</Typography>
+          </Box>
+          <Typography fontWeight="bold">{supplierValue}</Typography>
         </Box>
       </Box>
-    </CardContent>
-  );
-};
+    </Box>
+  </CardContent>
+);
 
 TotalClientSupplier.propTypes = {
   open: PropTypes.bool,
   modalOpen: PropTypes.func.isRequired,
   handleOpenChartModalDropDown: PropTypes.func.isRequired,
-  title: PropTypes.string,
-  dropdownLabel: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  dropdownLabel: PropTypes.string.isRequired,
   chartData: PropTypes.array.isRequired,
   chartColors: PropTypes.array.isRequired,
   clientLabel: PropTypes.string,
   clientValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  clientColor: PropTypes.string,
+  clientColor: PropTypes.string.isRequired,
   supplierLabel: PropTypes.string,
   supplierValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  supplierColor: PropTypes.string,
+  supplierColor: PropTypes.string.isRequired,
   cardStyle: PropTypes.object,
   centerValue: PropTypes.any,
   anchorRef: PropTypes.any,

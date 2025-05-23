@@ -22,10 +22,15 @@ import { useEffect } from 'react';
 
 const Settings = () => {
   const { formData } = PAYMENT_DATA || {};
+
   const userType = localStorage?.getItem('userType');
+
   const client = USER_TYPES?.client;
+
   const supplier = USER_TYPES?.supplier;
+
   const { pathname } = useLocation();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,6 +42,7 @@ const Settings = () => {
   const PaymentBoxStyles = { width: '100%' };
 
   if (USER_TYPE == USER_TYPES.admin) return null;
+
   return (
     <>
       {USER_TYPE === USER_TYPES.client && (

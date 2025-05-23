@@ -9,6 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { USER_TYPE } from '../utils/auth';
 import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
@@ -18,32 +19,37 @@ import {
   LEADS_SETTINGS,
   OPTIONS,
   SYSTEM_SETTING,
+  SYSTEM_SETTING_FORM,
 } from '../constants/pages/SystemSetting';
 
 import HeaderActions from '../components/report-analytics/HeaderActions';
 import ValueSliderCard from '../components/system-settings/ValueSliderCard';
 import SettingToggleCard from '../components/system-settings/SettingToggleCard';
+import RejectionCard from '../components/system-settings/RejectionCards';
+import OptionCard from '../components/klaien-managment/OptionCard';
 
 import {
   modalStyle,
   styles,
 } from '../styles/components/system-settings/SystemSetting';
-import RejectionCard from '../components/system-settings/RejectionCards';
+
 import {
   getDefaultFraudSettings,
   getDefaultLeadSettings,
   updateCardList,
 } from '../utils/pages/system-settings/SystemSettings';
-import OptionCard from '../components/klaien-managment/OptionCard';
-import { useNavigate } from 'react-router-dom';
 
 const SystemSetting = () => {
   const [activeBox, setActiveBox] = useState('lead');
+
   const [modalOpen, setModalOpen] = useState(false);
+
   const [editingCardId, setEditingCardId] = useState(null);
-  const [formState, setFormState] = useState({ title: '', message: '' });
+
+  const [formState, setFormState] = useState(SYSTEM_SETTING_FORM);
 
   const [cards, setCards] = useState(CARDS);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,21 +68,16 @@ const SystemSetting = () => {
 
   const handleClick = (id) => setActiveBox(id);
 
-  const handleResetLeads = () => {
+  const handleResetLeads = () =>
     setLeadSettingsValues(getDefaultLeadSettings(LEADS_SETTINGS));
-  };
 
-  const handleSaveLeads = () => {
+  const handleSaveLeads = () =>
     console.log('Lead Settings:', leadSettingsValues);
-  };
 
-  const handleResetFraud = () => {
+  const handleResetFraud = () =>
     setSettingsState(getDefaultFraudSettings(FRAUD_SETTINGS));
-  };
 
-  const handleSaveFraud = () => {
-    console.log('Fraud Settings:', settingsState);
-  };
+  const handleSaveFraud = () => console.log('Fraud Settings:', settingsState);
 
   const handleOpenModal = (card = null) => {
     if (card) {
@@ -84,7 +85,7 @@ const SystemSetting = () => {
       setFormState({ title: card.title, message: card.message });
     } else {
       setEditingCardId(null);
-      setFormState({ title: '', message: '' });
+      setFormState(SYSTEM_SETTING_FORM);
     }
     setModalOpen(true);
   };
@@ -92,7 +93,7 @@ const SystemSetting = () => {
   const handleCloseModal = () => {
     setModalOpen(false);
     setEditingCardId(null);
-    setFormState({ title: '', message: '' });
+    setFormState(SYSTEM_SETTING_FORM);
   };
 
   const handleCardSave = () => {
@@ -108,7 +109,6 @@ const SystemSetting = () => {
       };
       setCards((prev) => [...prev, newCard]);
     }
-
     handleCloseModal();
   };
 
@@ -116,13 +116,9 @@ const SystemSetting = () => {
     setCards((prev) => prev.filter((card) => card.id !== id));
   };
 
-  const handleSaveMessages = () => {
-    console.log('Lead Settings:', cards);
-  };
+  const handleSaveMessages = () => console.log('Lead Settings:', cards);
 
-  const handleResetMessages = () => {
-    console.log('Messages:', cards);
-  };
+  const handleResetMessages = () => console.log('Messages:', cards);
 
   if (USER_TYPE !== USER_TYPES.admin) return null;
 
@@ -285,29 +281,16 @@ const SystemSetting = () => {
           </Box>
         </Collapse>
       </Box>
+
       <Modal open={modalOpen} onClose={handleCloseModal}>
         <Box sx={modalStyle}>
-          <Typography
-            mb={3}
-            sx={{
-              fontWeight: 500,
-              fontSize: { xs: '24px', sm: '30px', md: '36px' },
-              textAlign: 'center',
-            }}
-          >
+          <Typography sx={styles.modalTitle}>
             {editingCardId !== null
               ? SYSTEM_SETTING.modalTitleEdit
               : SYSTEM_SETTING.modalTitleAdd}
           </Typography>
 
-          <Typography
-            variant="subtitle1"
-            mb={1}
-            sx={{
-              fontWeight: 500,
-              fontSize: { xs: '16px', sm: '18px', md: '21px' },
-            }}
-          >
+          <Typography variant="subtitle1" sx={styles.modalSubtitle}>
             {SYSTEM_SETTING.modalReason}
           </Typography>
           <TextField
@@ -318,28 +301,13 @@ const SystemSetting = () => {
             }
             placeholder={SYSTEM_SETTING.modalPlaceholderReason}
             variant="outlined"
-            sx={{
-              mb: 3,
-              border: '1.43px solid #00000047',
-              borderRadius: '10px',
-            }}
+            sx={styles.modalTextField}
           />
 
-          <Typography
-            variant="subtitle1"
-            mb={1}
-            sx={{
-              fontWeight: 500,
-              fontSize: { xs: '16px', sm: '18px', md: '21px' },
-            }}
-          >
+          <Typography variant="subtitle1" sx={styles.modalSubtitle}>
             {SYSTEM_SETTING.modalTemplate}
           </Typography>
           <TextField
-            sx={{
-              border: '1.43px solid #00000047',
-              borderRadius: '10px',
-            }}
             fullWidth
             multiline
             rows={4}
@@ -349,9 +317,10 @@ const SystemSetting = () => {
             }
             placeholder={SYSTEM_SETTING.modalPlaceholderTemplate}
             variant="outlined"
+            sx={styles.modalMultilineTextField}
           />
 
-          <Stack direction="row" justifyContent="flex-end" spacing={2} mt={3}>
+          <Stack sx={styles.modalButtonStack}>
             <Button
               variant="outlined"
               onClick={handleCloseModal}

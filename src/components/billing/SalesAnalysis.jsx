@@ -2,11 +2,12 @@ import SingleLineChartWeeks from '../charts/SingleLineChartWeeks';
 import { Box, CardContent, Typography } from '@mui/material';
 import DropdownButton from '../report-analytics/DropdownButton';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import UpIcons from '/src/assets/images/billing/upIcons.svg'
+import UpIcons from '/src/assets/images/billing/upIcons.svg';
 import DownIcons from '/src/assets/images/billing/downIcons.svg';
-
 import PropTypes from 'prop-types';
 import { formatNumber } from '../../utils/globals';
+import { styles } from '../../styles/components/billing/SalesAnalysis';
+import { SALES_ANALYSIS } from '../../constants/components/billing/SalesAnalysis';
 
 const SalesAnalysis = ({
   chartData,
@@ -25,86 +26,54 @@ const SalesAnalysis = ({
   anchorRef,
 }) => {
   return (
-    <>
-      <CardContent>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            mb: 2,
-          }}
-        >
-          <Box>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-                alignItems: 'center',
-                gap: '5px',
-                pb: 2,
-              }}
-            >
-              <Typography
-                sx={{
-                  color: '#000',
-                }}
-              >
-                {title}
-              </Typography>
-              <InfoOutlinedIcon sx={{ color: '#7D7D82' }} />
-            </Box>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'start',
-                alignItems: 'center',
-                gap: '10px',
-              }}
-            >
-              <Typography variant="h2" fontWeight="bold">
-                {`${curreny} ${formatNumber(totalSales)}`}
-              </Typography>
-              <img
-                src={
-                  up
-                    ? UpIcons
-                    : DownIcons
-                }
-              />
-              <Typography sx={{ color: '#FF4E4E' }}>{inPer}</Typography>
-            </Box>
+    <CardContent>
+      <Box sx={styles.headerContainer}>
+        <Box>
+          <Box sx={styles.titleWrapper}>
+            <Typography sx={styles.title}>{title}</Typography>
+            <InfoOutlinedIcon sx={styles.icon} />
           </Box>
-          <DropdownButton
-            ref={anchorRef}
-            onClick={open == false ? modalOpen : handleOpenChartModalDropDown}
-            label={btnTitle}
-          />
+          <Box sx={styles.salesWrapper}>
+            <Typography variant="h2" fontWeight="bold">
+              {`${curreny} ${formatNumber(totalSales)}`}
+            </Typography>
+            <img
+              src={up ? UpIcons : DownIcons}
+              alt={SALES_ANALYSIS.trendIconAlt}
+            />
+            <Typography sx={styles.percentage}>{inPer}</Typography>
+          </Box>
         </Box>
-        <SingleLineChartWeeks
-          data={chartData}
-          color={color}
-          fillColor={fillColor}
-          strokeWidth={strokeWidth}
+        <DropdownButton
+          ref={anchorRef}
+          onClick={!open ? modalOpen : handleOpenChartModalDropDown}
+          label={btnTitle}
         />
-      </CardContent>
-    </>
+      </Box>
+      <SingleLineChartWeeks
+        data={chartData}
+        color={color}
+        fillColor={fillColor}
+        strokeWidth={strokeWidth}
+      />
+    </CardContent>
   );
 };
+
 SalesAnalysis.propTypes = {
   chartData: PropTypes.any,
-  modalOpen: PropTypes.any,
-  btnTitle: PropTypes.any,
-  title: PropTypes.any,
-  handleOpenChartModalDropDown: PropTypes.any,
-  open: PropTypes.any,
-  color: PropTypes.any,
-  fillColor: PropTypes.any,
-  strokeWidth: PropTypes.any,
-  up: PropTypes.any,
-  totalSales: PropTypes.any,
-  inPer: PropTypes.any,
-  curreny: PropTypes.any,
+  modalOpen: PropTypes.func,
+  btnTitle: PropTypes.string,
+  title: PropTypes.string,
+  handleOpenChartModalDropDown: PropTypes.func,
+  open: PropTypes.bool,
+  color: PropTypes.string,
+  fillColor: PropTypes.string,
+  strokeWidth: PropTypes.number,
+  up: PropTypes.bool,
+  totalSales: PropTypes.number,
+  inPer: PropTypes.string,
+  curreny: PropTypes.string,
   anchorRef: PropTypes.any,
 };
 

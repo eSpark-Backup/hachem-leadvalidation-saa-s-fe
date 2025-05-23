@@ -6,35 +6,21 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { AUTH_FORMS } from '../../constants/auth';
-import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AUTH_FORMS } from '../../constants/auth';
 import { ROUTES } from '../../constants/components/globals/Auth';
+import {
+  RESET_SHOW_USERS_DEFAULT,
+  RESET_USERS_DEFAULT,
+} from '../../constants/components/auth/ResetPassword';
 
 const ResetPassword = () => {
-  const [user, setUser] = useState({
-    current_password: '',
-    new_password: '',
-    confrim_password: '',
-  });
+  const [user, setUser] = useState(RESET_USERS_DEFAULT);
 
-  const [showPassword, setShowPassword] = useState({
-    current_password: false,
-    new_password: false,
-    confrim_password: false,
-  });
+  const [showPassword, setShowPassword] = useState(RESET_SHOW_USERS_DEFAULT);
 
-  const {
-    reset_password,
-    scrollBoxStyle,
-    formSubmissionButtonStyle,
-    customInputStyle,
-    fieldStyle,
-  } = AUTH_FORMS || {};
-
-  const { title, fields, buttonText } = reset_password;
-  const { login } = ROUTES || {};
   const navigate = useNavigate();
 
   const handleClickEye = (field) => {
@@ -43,99 +29,81 @@ const ResetPassword = () => {
       [field]: !prev[field],
     }));
   };
+
   const handleInputChange = (key, val) => {
     setUser((prev) => ({ ...prev, [key]: val }));
   };
+
   const handleSave = (e) => {
     e.preventDefault();
-    console.log({ reset_password: user });
     if (
       user?.current_password &&
       user?.new_password &&
       user?.confrim_password
     ) {
-      navigate(login);
-      setUser({
-        current_password: '',
-        new_password: '',
-        confrim_password: '',
-      });
-    } else {
-      null;
+      navigate(ROUTES.login);
+      setUser(RESET_USERS_DEFAULT);
     }
   };
 
   return (
     <Stack
-      maxWidth={{ xs: '420px', sm: '482px', md: '480px', lg: '572px' }}
-      minHeight={{ xs: '450x', lg: '500px' }}
-      maxHeight={{ xs: '90%', lg: '500px' }}
-      py={{ xs: 4.2, lg: 1 }}
-      px={{ xs: 2.5, md: 2 }}
-      justifyContent={{ xs: 'center' }}
-      alignItems={'center'}
-      variant={'authStack'}
-      direction={'column'}
+      sx={AUTH_FORMS.rootStack}
+      variant="authStack"
+      direction="column"
       useFlexGap
       spacing={2}
     >
-      <Box overflow={'auto'} sx={scrollBoxStyle}>
-        <Box
-          sx={{
-            width: '100%',
-            display: 'flex',
-            maxWidth: '380px',
-            flexDirection: 'column',
-            gap: 3,
-          }}
-          action="#"
-          component="form"
-          onSubmit={handleSave}
-        >
-          <Typography variant="body2" pb={1} alignSelf={'center'}>
-            {title}
+      <Box overflow="auto" sx={AUTH_FORMS.scrollBoxStyle}>
+        <Box component="form" onSubmit={handleSave} sx={AUTH_FORMS.formWrapper}>
+          <Typography variant="body2" pb={1} alignSelf="center">
+            {AUTH_FORMS.reset_password.title}
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            {fields?.map(({ label, name, type, placeholder }, index) => (
-              <Box key={index} sx={customInputStyle}>
-                <Stack direction={'column'} spacing={0.5} width={'100%'}>
-                  <Typography variant="inputLabel">{label || ''}</Typography>
-                  <TextField
-                    fullWidth
-                    autoComplete="off"
-                    sx={fieldStyle}
-                    name={name}
-                    value={user[name] || ''}
-                    placeholder={placeholder || ''}
-                    onChange={(e) => handleInputChange(name, e?.target?.value)}
-                    type={
-                      type === fields?.[0]?.type
-                        ? showPassword[name]
-                          ? fields?.[0]?.defaultType
-                          : fields?.[0]?.type
-                        : type || fields?.[0]?.defaultType
-                    }
-                  />
-                </Stack>
-                {type === fields?.[0]?.type && (
-                  <IconButton
-                    disableRipple
-                    onClick={() => handleClickEye(name)}
-                    sx={{ mr: -1.5 }}
-                  >
-                    {showPassword[name] ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                )}
-              </Box>
-            ))}
+          <Box sx={AUTH_FORMS.inputBox}>
+            {AUTH_FORMS.reset_password.fields?.map(
+              ({ label, name, type, placeholder, defaultType }, index) => (
+                <Box key={index} sx={AUTH_FORMS.customInputStyle}>
+                  <Stack direction="column" spacing={0.5} width="100%">
+                    <Typography variant="inputLabel">{label}</Typography>
+                    <TextField
+                      fullWidth
+                      autoComplete="off"
+                      sx={AUTH_FORMS.fieldStyle}
+                      name={name}
+                      value={user[name] || ''}
+                      placeholder={placeholder}
+                      onChange={(e) =>
+                        handleInputChange(name, e?.target?.value)
+                      }
+                      type={
+                        type === AUTH_FORMS.reset_password.fields?.[0]?.type
+                          ? showPassword[name]
+                            ? defaultType
+                            : type
+                          : type || defaultType
+                      }
+                    />
+                  </Stack>
+                  {type === AUTH_FORMS.reset_password.fields?.[0]?.type && (
+                    <IconButton
+                      disableRipple
+                      onClick={() => handleClickEye(name)}
+                      sx={AUTH_FORMS.eyeIcon}
+                    >
+                      {showPassword[name] ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  )}
+                </Box>
+              )
+            )}
           </Box>
-          <Stack direction={'column'} px={0.5} py={1}>
+          <Stack direction="column" px={0.5} py={1}>
             <Button
               type="submit"
               variant="signupButton"
-              sx={formSubmissionButtonStyle}
+              sx={AUTH_FORMS.submitButtonStyle}
             >
-              {buttonText}
+              {AUTH_FORMS.reset_password.buttonText}
             </Button>
           </Stack>
         </Box>

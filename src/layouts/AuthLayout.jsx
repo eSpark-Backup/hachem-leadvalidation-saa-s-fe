@@ -1,5 +1,3 @@
-// layouts/AuthLayout.js
-
 import { Outlet } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
 import bgImage from '../assets/images/auth/Dashboard.svg';

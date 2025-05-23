@@ -16,4 +16,8 @@ const centerColumnBox = {
   flexDirection: 'column',
 };
 
-export { cardStyles, headerBoxStyles, centerColumnBox };
+const headerBoxTitleStyles = {
+  fontWeight: 'bold',
+};
+
+export { cardStyles, headerBoxStyles, centerColumnBox, headerBoxTitleStyles };

@@ -1,28 +1,27 @@
+import PropTypes from 'prop-types';
 import { Box, Typography } from '@mui/material';
-import renderTable from './renderTable';
+import renderTable from './RenderTable';
+import { styles } from '../../styles/components/billing/ProfitLossOverview';
+import { PROFIT_LOSS_OVERVIEW } from '../../constants/components/billing/ProfitLossOverview';
 
-const ProfitLossOverview = ({ data, title }) => {
-  return (
-    <>
-      <Box sx={{ p: 4, bgcolor: '#E9EDF7', borderRadius: 4 }}>
-        <Typography
-          variant="h5"
-          sx={{
-            fontWeight: 'bold',
-            textAlign: 'center',
-            mb: 5,
-            fontSize: '30px',
-          }}
-        >
-          {title}
-        </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4 }}>
-          {renderTable('Last Month', data.lastMonth)}
-          {renderTable('This year to date', data.yearToDate)}
-        </Box>
-      </Box>
-    </>
-  );
+const ProfitLossOverview = ({ data, title }) => (
+  <Box sx={styles.container}>
+    <Typography variant="h5" sx={styles.title} mx="auto">
+      {title}
+    </Typography>
+    <Box sx={styles.tablesWrapper}>
+      {renderTable(PROFIT_LOSS_OVERVIEW.lastMonth, data.lastMonth)}
+      {renderTable(PROFIT_LOSS_OVERVIEW.yearToDate, data.yearToDate)}
+    </Box>
+  </Box>
+);
+
+ProfitLossOverview.propTypes = {
+  title: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    lastMonth: PropTypes.arrayOf(PropTypes.object).isRequired,
+    yearToDate: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }).isRequired,
 };
 
 export default ProfitLossOverview;

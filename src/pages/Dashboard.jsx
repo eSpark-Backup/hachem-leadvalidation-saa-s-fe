@@ -35,7 +35,7 @@ const Dashboard = () => {
 
   const goToPage = (row) => {
     navigate(
-      `${ROUTES.dashboard}/${USER_TYPE === USER_TYPES.client ? ROUTES.myLeadDetails : ROUTES.avalaibleLeadsDetails}`,
+      `${ROUTES.dashboard}/${USER_TYPE === USER_TYPES.client ? ROUTES.myLeadDetails : ROUTES.avalaibleLeadsDetails}?id=${USER_TYPE === USER_TYPES.client ? row.supplier_id : row.client_id}`,
       {
         state: {
           title:
@@ -43,7 +43,9 @@ const Dashboard = () => {
         },
       }
     );
-  };const DashboardBoxStyles={ py: 1 }
+  };
+
+  const DashboardBoxStyles = { py: 1 };
 
   return (
     <>

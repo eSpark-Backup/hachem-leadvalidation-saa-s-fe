@@ -101,6 +101,7 @@ const tableBodyRowStyles = (excelFilter, isSelected, lead) => {
 
 const buttonBoxStyles = (status) => {
   const green = status === 'accepted' || status === 'active';
+
   const blue = status === 'pending' || status === 'non-active';
 
   return {

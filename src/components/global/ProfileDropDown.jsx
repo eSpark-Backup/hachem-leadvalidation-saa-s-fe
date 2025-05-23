@@ -28,14 +28,20 @@ import { PROFILE } from '../../utils/auth';
 
 const ProfileDropDown = () => {
   const [open, setOpen] = useState(false);
+
   const [searchTerm, setSearchTerm] = useState('');
+
   const [filteredData, setFilteredData] = useState([]);
   console.log(filteredData);
+
   const theme = useTheme();
+
   const lgUp = useMediaQuery(theme.breakpoints.up('lg'));
+
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
 
   const mockData = [];
+
   const usersOptionsDropDownOptions = [];
   useEffect(() => {
     setFilteredData(
@@ -48,7 +54,9 @@ const ProfileDropDown = () => {
   }, [searchTerm]);
 
   const handleToggle = () => setOpen((prev) => !prev);
+
   const handleCloseChartModal = () => setOpen(false);
+
   const handleClear = () => setSearchTerm('');
 
   return (

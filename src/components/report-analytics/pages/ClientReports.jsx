@@ -43,11 +43,15 @@ import ClientMostGenerateLeads from '../ClientMostGenerateLeads';
 
 const ClientReports = ({ handleDownload }) => {
   const [open, setOpen] = useState(false);
+
   const [payload, setPayload] = useState({});
+
   const [pickerID, setPickerID] = useState('123');
+
   const [children, setChildren] = useState(<></>);
 
   const [openDatePicker, setOpenDatePicker] = useState(false);
+
   const anchorRef = useRef(null);
 
   const handleToggle = (id) =>

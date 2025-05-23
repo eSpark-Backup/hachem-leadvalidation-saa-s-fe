@@ -30,4 +30,17 @@ const stats = [
   },
 ];
 
-export { stats };
+const DASHBOARD_STATICS_CARDS = {
+  sectionTitle: 'Statistics',
+  latestActionTitle: 'Latest Action',
+  iconAlt: 'icon',
+  lightIconAlt: 'light icon',
+};
+
+const LEAD_STATS = [
+  { label: 'valid Leads', value: 80.47, color: '#54D14D' },
+  { label: 'Duplicate Leads', value: 50.56, color: '#136BE5' },
+  { label: 'False Leads', value: 19.53, color: '#FF4343' },
+];
+
+export { stats, DASHBOARD_STATICS_CARDS, LEAD_STATS };

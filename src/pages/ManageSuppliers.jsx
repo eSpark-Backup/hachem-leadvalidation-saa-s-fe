@@ -17,6 +17,7 @@ import {
 
 const ManageSuppliers = () => {
   const [details, setDetails] = useState(null);
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const navigate = useNavigate();

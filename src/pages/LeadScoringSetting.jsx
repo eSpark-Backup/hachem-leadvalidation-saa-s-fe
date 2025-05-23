@@ -31,6 +31,7 @@ import { useNavigate } from 'react-router-dom';
 
 const LeadScoringSetting = () => {
   const [scoringModal, setScoringModal] = useState(false);
+
   const [generatAiModal, setGeneratAiModal] = useState(false);
 
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ const LeadScoringSetting = () => {
   if (USER_TYPE !== USER_TYPES.client) return null;
 
   const TitleBoxStyles = { marginTop: { xs: '24px', sm: '8px' } };
+
   const TitleStyles = {
     ...tableHeadingStyles,
     fontWeight: 600,

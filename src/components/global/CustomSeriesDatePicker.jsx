@@ -61,12 +61,19 @@ const CustomSeriesDatePicker = ({
   pickerID,
 }) => {
   const today = new Date();
+
   const [selectedDate, setSelectedDate] = useState(new Date());
+
   const [selectedStartDate, setSelectedStartDate] = useState(new Date());
+
   const [selectedEndDate, setSelectedEndDate] = useState(new Date());
+
   const [viewingMonth, setViewingMonth] = useState(today.getMonth());
+
   const [viewingYear, setViewingYear] = useState(today.getFullYear());
+
   const [showMonthList, setShowMonthList] = useState(false);
+
   const [showYearList, setShowYearList] = useState(false);
   /**
    * Handles the confirmation of a selected date or date range and updates the payload.

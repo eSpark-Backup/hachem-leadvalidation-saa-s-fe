@@ -26,7 +26,9 @@ const AppCountryDropdown = ({ title, paymentFormData, onChange, labels }) => {
   } = APP_COUNTRY_DROPDOWN_STYLE || {};
 
   const [anchorEl, setAnchorEl] = useState(null);
+
   const open = Boolean(anchorEl);
+
   const countries = getCountries();
 
   const handleClick = (event) => {

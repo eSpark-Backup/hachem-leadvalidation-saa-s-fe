@@ -20,7 +20,7 @@ const SUPPLIER_AVAILABLE_LEADS_TABLE_HEADER = [
 const SUPPLIER_AVAILABLE_LEADS_TABLE_BODY = [
   {
     id: 1,
-    client_id: 'Cl:51912',
+    client_id: 'CL51912',
     country: 'United States',
     leads_validation: '78%',
     date: new Date('8/30/14'),

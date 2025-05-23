@@ -20,7 +20,9 @@ import dayjs from 'dayjs';
  */
 const useTableFilter = (data, itemsPerPage = 10) => {
   const [filterState, setFilterState] = useState({});
+
   const [currentMonth, setCurrentMonth] = useState(dayjs());
+
   const [page, setPage] = useState(1);
 
   /**

@@ -8,8 +8,11 @@ import AuthLogoStyles from '../../styles/components/auth/AuthLogo';
 
 const AuthLogo = () => {
   const { splash } = ROUTES || {};
+
   const { pathname } = useLocation();
+
   const { auth_image } = AUTH_FORMS;
+
   return (
     <Box
       src={auth_image}
