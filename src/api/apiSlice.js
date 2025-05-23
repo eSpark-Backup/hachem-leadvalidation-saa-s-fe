@@ -50,9 +50,8 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
       result = await baseQuery(args, api, extraOptions);
     } else {
-      console.error('Refresh token failed:', refreshResult);
+      toast.error('Your session has expired. Please log in again.');
 
-      toast.error(`${refreshResult?.data?.message}, logging you out`);
       api.dispatch(logOut());
       handleLogout(navigate);
     }
