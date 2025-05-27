@@ -72,7 +72,7 @@ const handleLoginAsSupplier = (navigate) => {
 const handleLogout = (navigate) => {
   // localStorage.removeItem('token');
   // localStorage.removeItem('userType');
-  localStorage.clear()
+  localStorage.clear();
   navigate(ROUTES.login);
 };
 
