@@ -1,107 +1,102 @@
-import {
-  Box,
-  Button,
-  IconButton,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AUTH_FORMS } from '../../constants/auth';
-import { ROUTES } from '../../constants/components/globals/Auth';
-import {
-  RESET_SHOW_USERS_DEFAULT,
-  RESET_USERS_DEFAULT,
-} from '../../constants/components/auth/ResetPassword';
 
-const ResetPassword = () => {
-  const [user, setUser] = useState(RESET_USERS_DEFAULT);
-  const [showPassword, setShowPassword] = useState(RESET_SHOW_USERS_DEFAULT);
+import { Box, Button, Stack, Typography } from '@mui/material';
+
+import { ROUTES, USER_TYPES } from '../../constants/components/globals/Auth';
+import { AUTH_FORMS } from '../../constants/auth';
+
+const Signup = () => {
+  const { signup_as, scrollBoxStyle, formSubmissionButtonStyle } =
+    AUTH_FORMS || {};
+  const { supplier, client } = USER_TYPES || {};
+  const { title, buttons, signupTypeButtonStyle } = signup_as || {};
+  const { signup } = ROUTES || {};
+
   const navigate = useNavigate();
 
-  const handleClickEye = (field) => {
-    setShowPassword((prev) => ({
-      ...prev,
-      [field]: !prev[field],
-    }));
+  const [selectedOption, setSelectedOption] = useState({
+    supplier: false,
+    client: false,
+  });
+
+  const handleClickOption = (option) => {
+    setSelectedOption({
+      [option]: true,
+    });
   };
 
-  const handleInputChange = (key, val) => {
-    setUser((prev) => ({ ...prev, [key]: val }));
-  };
-
-  const handleSave = (e) => {
+  const handleClickNext = (e) => {
     e.preventDefault();
-    if (
-      user?.current_password &&
-      user?.new_password &&
-      user?.confrim_password
-    ) {
-      navigate(ROUTES.login);
-      setUser(RESET_USERS_DEFAULT);
+
+    if (selectedOption?.supplier || selectedOption?.client) {
+      navigate(
+        `${signup}/${selectedOption?.supplier === true ? supplier : '' || selectedOption?.client === true ? client : ''}`
+      );
+    } else {
+      null;
     }
   };
 
   return (
     <Stack
-      sx={AUTH_FORMS.rootStack}
-      variant="authStack"
-      direction="column"
+      maxWidth={{ xs: '420px', sm: '482px', md: '480px', lg: '572px' }}
+      minHeight={{ xs: '350px', lg: '428px' }}
+      maxHeight={{ xs: '90%', lg: '428px' }}
+      py={{ xs: 4.2, sm: 4.2, md: 4.2, lg: 1 }}
+      px={{ xs: 2.5, md: 2 }}
+      justifyContent={{ lg: 'center' }}
+      alignItems={'center'}
+      variant={'authStack'}
+      direction={'column'}
       useFlexGap
       spacing={2}
     >
-      <Box overflow="auto" sx={AUTH_FORMS.scrollBoxStyle}>
-        <Box component="form" onSubmit={handleSave} sx={AUTH_FORMS.formWrapper}>
-          <Typography variant="body2" pb={1} alignSelf="center">
-            {AUTH_FORMS.reset_password.title}
+      <Box overflow={'auto'} sx={scrollBoxStyle}>
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            maxWidth: '380px',
+            flexDirection: 'column',
+            gap: 4,
+          }}
+          component="form"
+          onSubmit={handleClickNext}
+        >
+          <Typography variant="body2" alignSelf={'center'}>
+            {title}
           </Typography>
-          <Box sx={AUTH_FORMS.inputBox}>
-            {AUTH_FORMS.reset_password.fields?.map(
-              ({ label, name, type, placeholder, defaultType }, index) => (
-                <Box key={index} sx={AUTH_FORMS.customInputStyle}>
-                  <Stack direction="column" spacing={0.5} width="100%">
-                    <Typography variant="inputLabel">{label}</Typography>
-                    <TextField
-                      fullWidth
-                      autoComplete="off"
-                      sx={AUTH_FORMS.fieldStyle}
-                      name={name}
-                      value={user[name] || ''}
-                      placeholder={placeholder}
-                      onChange={(e) =>
-                        handleInputChange(name, e?.target?.value)
-                      }
-                      type={
-                        type === AUTH_FORMS.reset_password.fields?.[0]?.type
-                          ? showPassword[name]
-                            ? defaultType
-                            : type
-                          : type || defaultType
-                      }
-                    />
-                  </Stack>
-                  {type === AUTH_FORMS.reset_password.fields?.[0]?.type && (
-                    <IconButton
-                      disableRipple
-                      onClick={() => handleClickEye(name)}
-                      sx={AUTH_FORMS.eyeIcon}
-                    >
-                      {showPassword[name] ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  )}
-                </Box>
-              )
-            )}
+
+          <Box>
+            {buttons?.map(({ text }, index) => (
+              <Button
+                variant="outlined"
+                disableRipple
+                key={index}
+                onClick={() => handleClickOption(text?.toLowerCase())}
+                endIcon={
+                  <Box
+                    component={'img'}
+                    src="/src/assets/images/auth/signup_button_arrow.png"
+                    sx={{ width: { xs: '28px', md: 'auto' }, height: 'auto' }}
+                  />
+                }
+                sx={signupTypeButtonStyle(selectedOption, text)}
+              >
+                {text}
+              </Button>
+            ))}
           </Box>
-          <Stack direction="column" px={0.5} py={1}>
+
+          <Stack direction={'column'}>
             <Button
               type="submit"
               variant="signupButton"
-              sx={AUTH_FORMS.submitButtonStyle}
+              disabled={!selectedOption?.supplier && !selectedOption?.client}
+              sx={formSubmissionButtonStyle}
             >
-              {AUTH_FORMS.reset_password.buttonText}
+              Next
             </Button>
           </Stack>
         </Box>
@@ -110,4 +105,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default Signup;

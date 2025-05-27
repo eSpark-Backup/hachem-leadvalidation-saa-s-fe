@@ -1,74 +1,111 @@
 import { Box, IconButton, Link, Modal, Typography } from '@mui/material';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import PropTypes from 'prop-types';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Link as RouterLink } from 'react-router-dom';
-import {
-  modalBoxStyle,
-  contentBoxStyle,
-  closeButtonStyle,
-  titleStyle,
-  imageStyle,
-  linkStyle,
-} from '../../styles/components/auth/VerificationModal';
-
-import { VERIFICATION_MODAL } from '../../constants/components/auth/VerificationModal';
 
 const VerificationModal = ({ open, setOpen, data, link, text }) => {
-  const {
-    title = VERIFICATION_MODAL.defaultTitle,
-    image = VERIFICATION_MODAL.defaultImage,
-  } = data || {};
-
-  const handleClose = () => setOpen(false);
+  const { title, image } = data || {};
+  const handleCloseChartModal = () => setOpen(false);
 
   return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="verification-modal-title"
-      aria-describedby="verification-modal-description"
-    >
-      <Box sx={modalBoxStyle}>
-        <Box sx={contentBoxStyle}>
-          <IconButton
-            onClick={handleClose}
-            aria-label={VERIFICATION_MODAL.closeAlt}
-            disableRipple
-            sx={closeButtonStyle}
-          >
-            <HighlightOffIcon fontSize="medium" />
-          </IconButton>
-
-          <Typography sx={titleStyle}>{title}</Typography>
-
+    <div>
+      <Modal
+        open={open}
+        onClose={handleCloseChartModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            top: '50%',
+            left: '50%',
+            width: '70%',
+            height: '70%',
+            position: 'absolute',
+            borderRadius: '20px',
+            maxWidth: { xs: '404px' },
+            maxHeight: { xs: '333px', md: '373px' },
+            bgcolor: 'background.paper',
+            transform: 'translate(-50%, -50%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'auto',
+            p: 3,
+          }}
+        >
           <Box
-            component="img"
-            alt="verification-image"
-            src={image}
-            sx={imageStyle}
-          />
-
-          <Link
-            component={RouterLink}
-            to={link || VERIFICATION_MODAL.defaultLink}
-            underline="none"
-            sx={linkStyle}
+            sx={{
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              gap: 2,
+              px: 2.5,
+            }}
           >
-            {text || VERIFICATION_MODAL.defaultText}
-          </Link>
+            <IconButton
+              onClick={handleCloseChartModal}
+              disableRipple
+              sx={{
+                width: '20px',
+                height: '20px',
+                color: 'black',
+                position: 'absolute',
+                top: 20,
+                right: 20,
+                p: 0,
+                '&:hover': {
+                  backgroundColor: 'transparent',
+                },
+              }}
+            >
+              <HighlightOffIcon fontSize="medium" />
+            </IconButton>
+            <Typography
+              sx={{
+                color: '#1B2559',
+                fontSize: { xs: '20px', sm: '22px', md: '24px' },
+                fontWeight: 600,
+              }}
+            >
+              {title || ''}
+            </Typography>
+            <Box
+              component={'img'}
+              alt="verified-image"
+              src={image || '/'}
+              sx={{
+                width: { xs: '164px', md: 'auto' },
+                height: 'auto',
+              }}
+            />
+            <Link
+              component={RouterLink}
+              to={link || '#'}
+              underline="none"
+              sx={{
+                color: '#136BE5',
+                fontSize: { xs: '17px', sm: '18px', md: '20px' },
+                textTransform: 'uppercase',
+                fontWeight: 400,
+              }}
+            >
+              {text || ''}
+            </Link>
+          </Box>
         </Box>
-      </Box>
-    </Modal>
+      </Modal>
+    </div>
   );
 };
 
 VerificationModal.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
-  data: PropTypes.shape({
-    title: PropTypes.string,
-    image: PropTypes.string,
-  }),
+  data: PropTypes.object.isRequired,
   link: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
 };

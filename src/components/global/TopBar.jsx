@@ -17,13 +17,16 @@ import {
 } from '../../styles/components/globals/TopBar';
 
 import { TOP_BAR } from '../../constants/components/globals/TopBar';
-import { PROFILE, USER_TYPE } from '../../utils/auth';
+import { USER_TYPE } from '../../utils/auth';
 import { USER_TYPES } from '../../constants/components/globals/Auth';
+import { useSelector } from 'react-redux';
 
 const TopBar = ({ open, setOpenNav }) => {
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
   const mdDown = useMediaQuery((theme) => theme.breakpoints.down('md'));
+
+  const { user } = useSelector((state) => state.auth);
 
   const { comapnayName, ID } = TOP_BAR;
 
@@ -31,8 +34,7 @@ const TopBar = ({ open, setOpenNav }) => {
     USER_TYPE === USER_TYPES.client
       ? USER_TYPES.user
       : capitalizeFirstLetter(USER_TYPE);
-
-  const profileID = PROFILE.id || 'N/A';
+  const profileID = user?.id || 'N/A';
 
   const fullTitle = `${comapnayName} ${userTypeCapitalized} ${ID} ${profileID}`;
 
