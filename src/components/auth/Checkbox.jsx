@@ -1,7 +1,6 @@
 import { Link } from '@mui/material';
 import PropTypes from 'prop-types';
 import { LinkStyles } from '../../constants/components/auth/Checkbox';
-import CheckBox from '../../assets/images/global/checkbox.svg';
 
 const Checkbox = ({ checked, setChecked, data }) => {
   const { text, link } = data || {};
@@ -19,7 +18,20 @@ const Checkbox = ({ checked, setChecked, data }) => {
         className={`custom-checkbox ${checked ? 'checked' : ''}`}
         onClick={handleCheckboxChange}
       >
-        {checked && CheckBox}
+        {checked && (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="black"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        )}
       </span>
       <Link top={link || '#'} sx={LinkStyles}>
         {text || ''}
