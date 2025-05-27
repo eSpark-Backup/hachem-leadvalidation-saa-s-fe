@@ -21,7 +21,7 @@ const PAYMENT_DATA = {
     ],
     fields: [
       {
-        px: 1.5,
+        px: 1.8,
         label: 'Credit Card Number',
         name: 'credit_card_number',
         type: 'number',
@@ -41,21 +41,21 @@ const PAYMENT_DATA = {
         startAdornment: '/src/assets/images/payment/card.png',
       },
       {
-        px: 1.5,
+        px: 1.8,
         label: 'Country',
         name: 'country',
         type: 'text',
         placeholder: 'Country',
       },
       {
-        px: 1.5,
+        px: 1.8,
         label: 'Expiry Date',
         name: 'date',
         type: 'month',
         placeholder: 'MMMM YYYY',
       },
       {
-        px: 1.5,
+        px: 1.8,
         label: 'CVV',
         name: 'cvv',
         type: 'number',
@@ -65,4 +65,32 @@ const PAYMENT_DATA = {
   },
 };
 
-export { PAYMENT_DATA };
+const LOW_CREDITS_DATA = {
+  title:
+    'low Credits please recharge your Klairn Subscription To get more Credits !',
+
+  // style
+  style: {
+    mainBoxStyle: {
+      display: 'flex',
+      alignItems: 'flex-start',
+      gap: 1.5,
+      mb: 3,
+    },
+    circleStyle: {
+      width: '20px',
+      height: '20px',
+      backgroundColor: '#FF4343',
+      borderRadius: '50%',
+      mt: 0.2,
+    },
+    titleStyle: {
+      width: 'calc(100% - 20px)',
+      fontSize: { xs: '12px', sm: '14px' },
+      fontWeight: 400,
+      color: '#475569',
+    },
+  },
+};
+
+export { PAYMENT_DATA, LOW_CREDITS_DATA };

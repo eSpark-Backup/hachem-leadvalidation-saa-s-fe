@@ -12,7 +12,6 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import PropTypes from 'prop-types';
 import {
   clickableBoxStyles,
   userInfoBoxStyles,
@@ -26,8 +25,9 @@ import {
   profileNameStyles,
 } from '../../styles/components/globals/ProfileDropDown';
 import { PROFILE } from '../../utils/auth';
+import { useSelector } from 'react-redux';
 
-const ProfileDropDown = ({ profile }) => {
+const ProfileDropDown = () => {
   const [open, setOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredData, setFilteredData] = useState([]);
@@ -35,6 +35,8 @@ const ProfileDropDown = ({ profile }) => {
   const theme = useTheme();
   const lgUp = useMediaQuery(theme.breakpoints.up('lg'));
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+
+  const { user } = useSelector((state) => state.auth);
 
   const mockData = [];
   const usersOptionsDropDownOptions = [];
@@ -49,7 +51,7 @@ const ProfileDropDown = ({ profile }) => {
   }, [searchTerm]);
 
   const handleToggle = () => setOpen((prev) => !prev);
-  const handleClose = () => setOpen(false);
+  const handleCloseChartModal = () => setOpen(false);
   const handleClear = () => setSearchTerm('');
 
   return (
@@ -80,11 +82,11 @@ const ProfileDropDown = ({ profile }) => {
           />
         )}
 
-        <ClickAwayListener onClickAway={handleClose}>
+        <ClickAwayListener onClickAway={handleCloseChartModal}>
           <Box sx={dropdownBoxStyles(lgUp)}>
             <Box onClick={handleToggle} sx={clickableBoxStyles}>
               <Box sx={userInfoBoxStyles}>
-                <img src={profile.profileImage} alt="Profile" style={profile} />
+                <img src={PROFILE.profileImage} alt="Profile" />
                 {lgUp && (
                   <>
                     <Box>
@@ -92,7 +94,7 @@ const ProfileDropDown = ({ profile }) => {
                         {PROFILE_DROP_DOWN.welcomeText}
                       </Typography>
                       <Typography sx={profileNameStyles}>
-                        {PROFILE.name}
+                        {user?.fullname}
                       </Typography>
                     </Box>
                     <ExpandMoreIcon />
@@ -106,7 +108,7 @@ const ProfileDropDown = ({ profile }) => {
                   <MenuItem
                     key={index}
                     sx={menuItemStyles}
-                    onClick={handleClose}
+                    onClick={handleCloseChartModal}
                   >
                     {item?.label}
                   </MenuItem>
@@ -118,10 +120,6 @@ const ProfileDropDown = ({ profile }) => {
       </Box>
     </Box>
   );
-};
-
-ProfileDropDown.propTypes = {
-  profile: PropTypes.string.isRequired,
 };
 
 export default ProfileDropDown;

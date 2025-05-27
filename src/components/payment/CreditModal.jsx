@@ -21,15 +21,15 @@ const CreditModal = ({ open, setOpen, data }) => {
   const { onboardingPayment } = ROUTES || {};
   const nagivate = useNavigate();
 
-  const handleClose = () => {
+  const handleCloseChartModal = () => {
     setAmount('');
     setOpen(false);
   };
 
   const handleClick = (btnText) => {
-    handleClose();
+    handleCloseChartModal();
     if (btnText == buttons[0]?.btnText) {
-      return handleClose();
+      return handleCloseChartModal();
     } else if (btnText == buttons[1]?.btnText) {
       setAmount('');
       return nagivate(onboardingPayment);
@@ -40,7 +40,7 @@ const CreditModal = ({ open, setOpen, data }) => {
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={handleCloseChartModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -57,7 +57,7 @@ const CreditModal = ({ open, setOpen, data }) => {
             >
               <IconButton
                 disableRipple
-                onClick={handleClose}
+                onClick={handleCloseChartModal}
                 sx={iconButtonStyle}
               >
                 <HighlightOffIcon fontSize="medium" />

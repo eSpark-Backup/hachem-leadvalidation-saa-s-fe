@@ -21,7 +21,7 @@ export const SideNav = ({ open, onClose }) => {
           }}
           variant="permanent"
         >
-          <Sidebar setOpenNav={onClose} />
+          <Sidebar setOpenNav={onClose(false)} />
         </Drawer>
       </>
     );
@@ -51,5 +51,5 @@ export const SideNav = ({ open, onClose }) => {
 
 SideNav.propTypes = {
   open: PropTypes.node.isRequired,
-  onClose: PropTypes.node.isRequired,
+  onClose: PropTypes.func.isRequired,
 };

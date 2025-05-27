@@ -3,7 +3,7 @@ const drawerPropsStyles = {
   bgcolor: '#FFF',
   color: 'red',
   p: 2,
-  boxShadow: '4px 0 10px rgba(0,0,0,0.2)',
+  boxShadow: '7px 0px 65px 0px rgba(9, 16, 43, 0.23)',
   borderTopRightRadius: '43px',
   display: 'flex',
   flexDirection: 'column',

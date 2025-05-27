@@ -1,4 +1,3 @@
-// routes/index.js (ya jo file mein tum routes define kar rahe ho)
 import AuthLayout from '../layouts/AuthLayout';
 import Login from '../components/auth/Login';
 import Signup from '../components/auth/Signup';
@@ -8,15 +7,29 @@ import VerifyEmail from '../components/auth/VerifyEmail';
 import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import ResetPassword from '../components/auth/ResetPassword';
-// import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 import SignupForm from '../components/auth/SignupForm';
 import PrivateLayout from '../layouts/PrivateLayout';
-import { ROUTES } from '../constants/components/globals/Auth';
-import { AUTH_FORMS } from '../constants/auth';
+import Settings from '../pages/Settings';
+// import UploadLeads from '../pages/UploadLeads';
+import BillingLogsRevenue from '../pages/BillingLogsRevenue';
+import KlaienManagement from '../pages/KlaienManagement';
+import LeadMonitoring from '../pages/LeadMonitoring';
+import LeadScoringSetting from '../pages/LeadScoringSetting';
+import LeadsStatusTracker from '../pages/LeadsStatusTracker';
+import ManageClients from '../pages/ManageClients';
+import MyLeads from '../pages/MyLeads';
+import LeadDetails from '../pages/MyLeadDetails';
+import SystemSetting from '../pages/SystemSetting';
+import ReportsAnalytics from '../pages/ReportsAnalytics';
+import ManageSuppliers from '../pages/ManageSuppliers';
 import PaymentLayout from '../layouts/PaymentLayout';
 import Credit from '../components/payment/Credit';
 import Payment from '../components/payment/Payment';
-import PrivateRoute from './PrivateRoute';
+
+import { ROUTES } from '../constants/components/globals/Auth';
+import { AUTH_FORMS } from '../constants/auth';
 
 const {
   // publich paths --->
@@ -38,6 +51,20 @@ const {
 
   // dashboard routes
   dashboard,
+  settings,
+  billingLogsRevenue,
+  klaienManagement,
+  leadMonitoring,
+  leadScoringSetting,
+  leadsStatusTracker,
+  manageClients,
+  manageSuppliers,
+  myLeads,
+  myLeadDetails,
+  reportsAnalytics,
+  systemSetting,
+  // uploadLeads,
+  avalaibleLeadsDetails,
 } = ROUTES || {};
 
 const { forgot_password, verify_email } = AUTH_FORMS || {};
@@ -45,7 +72,11 @@ const { forgot_password, verify_email } = AUTH_FORMS || {};
 const routes = [
   {
     path: splash,
-    element: <AuthLayout />,
+    element: (
+      <PublicRoute>
+        <AuthLayout />
+      </PublicRoute>
+    ),
     children: [
       { index: true },
       { path: login, element: <Login /> },
@@ -56,12 +87,12 @@ const routes = [
         path: forgotPasswordEmail,
         element: <VerifyEmail title={forgot_password?.title} />,
       },
-      { path: newpassword, element: <NewPassword /> },
+      { path: resetPassword, element: <ResetPassword /> },
       {
         path: verifyEmail,
         element: <VerifyEmail title={verify_email?.title} />,
       },
-      { path: resetPassword, element: <ResetPassword /> },
+      { path: newpassword, element: <NewPassword /> },
     ],
   },
   {
@@ -78,9 +109,26 @@ const routes = [
         <PrivateLayout />
       </PrivateRoute>
     ),
-    children: [{ index: true, element: <Dashboard /> }],
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: settings, element: <Settings /> },
+      { path: billingLogsRevenue, element: <BillingLogsRevenue /> },
+      { path: klaienManagement, element: <KlaienManagement /> },
+      { path: leadMonitoring, element: <LeadMonitoring /> },
+      { path: leadScoringSetting, element: <LeadScoringSetting /> },
+      { path: leadsStatusTracker, element: <LeadsStatusTracker /> },
+      { path: manageClients, element: <ManageClients /> },
+      { path: manageSuppliers, element: <ManageSuppliers /> },
+      { path: myLeads, element: <MyLeads /> },
+      { path: myLeadDetails, element: <LeadDetails /> },
+      { path: avalaibleLeadsDetails, element: <LeadDetails /> },
+      { path: reportsAnalytics, element: <ReportsAnalytics /> },
+      { path: systemSetting, element: <SystemSetting /> },
+      // { path: uploadLeads, element: <UploadLeads /> },
+      { path: notFound, element: <NotFound btnLink={dashboard} /> },
+    ],
   },
-  { path: notFound, element: <NotFound /> },
+  { path: notFound, element: <NotFound btnLink={dashboard} /> },
 ];
 
 export default routes;

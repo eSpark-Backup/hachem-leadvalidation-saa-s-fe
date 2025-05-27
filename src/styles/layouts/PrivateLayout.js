@@ -38,7 +38,7 @@ const privateLayoutBoxStyles = {
 };
 
 const privateLayoutOutletBoxStyles = {
-  p: 2,
+  p: { xs: 0, sm: 2 },
   overflowY: 'auto',
 };
 export {

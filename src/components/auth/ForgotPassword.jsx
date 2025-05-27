@@ -1,14 +1,24 @@
-import { Box, Button, Stack, TextField, Typography } from '@mui/material';
-import { AUTH_FORMS } from '../../constants/auth';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
+
+import VerificationModal from './VerificationModal';
+
+import { useResetPasswordRequestMutation } from '../../redux/slices/auth/authApiSlice';
+
+import { handleResetPasswordRequestMutation } from '../../services/auth';
+
+import { AUTH_FORMS } from '../../constants/auth';
 import { ROUTES } from '../../constants/components/globals/Auth';
 
 const ForgotPassword = () => {
-  const [user, setUser] = useState({
-    email: '',
-  });
-
   const {
     forgot_password,
     scrollBoxStyle,
@@ -18,23 +28,40 @@ const ForgotPassword = () => {
   } = AUTH_FORMS || {};
 
   const { title, fields, buttonText } = forgot_password;
-  const { forgotPassword } = ROUTES || {};
-  const navigate = useNavigate();
+  const { login } = ROUTES || {};
+
+  const [resetPasswordRequest, { isLoading }] =
+    useResetPasswordRequestMutation();
+
+  const [user, setUser] = useState({
+    email: '',
+  });
+  const [showInstruction, setShowInstruction] = useState(false);
+  const [message, setMessage] = useState();
 
   const handleInputChange = (key, val) => {
     setUser((prev) => ({ ...prev, [key]: val }));
   };
 
-  const handleSendCode = (e) => {
+  const handleSendCode = async (e) => {
     e.preventDefault();
-    console.log({ forgotPassword: user });
+
     if (user?.email) {
-      navigate(`${forgotPassword}/${user?.email}`);
-      setUser({
-        email: '',
-      });
-    } else {
-      null;
+      const res = await handleResetPasswordRequestMutation(
+        user?.email,
+        resetPasswordRequest,
+        setShowInstruction,
+        setUser
+      );
+
+      if (!res) return;
+      
+      if (res) {
+        setMessage({
+          title: res,
+          image: '/src/assets/images/auth/Verified_image.svg',
+        });
+      }
     }
   };
 
@@ -68,6 +95,7 @@ const ForgotPassword = () => {
           <Typography variant="body2" pb={1} alignSelf={'center'}>
             {title}
           </Typography>
+
           <Box
             sx={{
               display: 'flex',
@@ -77,9 +105,10 @@ const ForgotPassword = () => {
             }}
           >
             {fields?.map(({ label, name, type, placeholder }, index) => (
-              <Box key={index} sx={customInputStyle}>
+              <Box key={index} sx={customInputStyle()}>
                 <Stack direction={'column'} spacing={0.5} width={'100%'}>
                   <Typography variant="inputLabel">{label || ''}</Typography>
+
                   <TextField
                     fullWidth
                     autoComplete="off"
@@ -93,19 +122,32 @@ const ForgotPassword = () => {
                 </Stack>
               </Box>
             ))}
+
             <Stack direction={'column'} px={0.5} py={1}>
               <Button
                 type="submit"
                 variant="signupButton"
-                disabled={user?.email === ''}
+                disabled={user?.email === '' || isLoading}
                 sx={formSubmissionButtonStyle}
               >
-                {buttonText}
+                {isLoading ? (
+                  <CircularProgress size={30} sx={{ color: ' #444444' }} />
+                ) : (
+                  buttonText
+                )}
               </Button>
             </Stack>
           </Box>
         </Box>
       </Box>
+
+      <VerificationModal
+        open={showInstruction}
+        setOpen={setShowInstruction}
+        data={message}
+        text="Go to login"
+        link={login}
+      />
     </Stack>
   );
 };

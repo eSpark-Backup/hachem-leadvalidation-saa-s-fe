@@ -1,36 +1,36 @@
+// layouts/AuthLayout.js
+
 import { Outlet } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
 import bgImage from '../assets/images/auth/Dashboard.svg';
 import AuthLogo from '../components/auth/AuthLogo';
 import NavigateButton from '../components/auth/NavigateButton';
+import {
+  gridContainerStyle,
+  containerStyle,
+} from '../styles/layouts/AuthLayout';
+
+/**
+ * Layout for authentication pages like login, register, etc.
+ * Includes a background image, a logo, and dynamic routed content.
+ *
+ * @component
+ * @returns {JSX.Element} AuthLayout wrapper
+ */
 
 const AuthLayout = () => {
   return (
-    <Box
-      sx={{
-        width: '100%',
-        height: '100%',
-        backgroundImage: `url(${bgImage})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        minHeight: '100vh',
-      }}
-    >
+    <Box sx={containerStyle(bgImage)}>
+      {/* Navigation button (e.g., back to home or login switch) */}
       <NavigateButton />
+
+      {/* Main content area: logo + auth form */}
       <Grid
         container
-        alignItems={'center'}
+        alignItems="center"
         justifyContent="center"
         flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
-        sx={{
-          px: '5%',
-          width: '100%',
-          height: '100%',
-          minHeight: 'calc(100vh - 80px)',
-          gap: { xs: '9%', md: '9%' },
-          py: { xs: '3.5%', sm: '1.5%' },
-        }}
+        sx={gridContainerStyle}
       >
         <AuthLogo />
         <Outlet />

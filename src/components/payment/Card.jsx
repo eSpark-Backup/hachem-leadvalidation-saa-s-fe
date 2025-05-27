@@ -79,7 +79,7 @@ const Card = ({ fields, buttonText, paymentFormData, setPaymentFormData }) => {
         type="submit"
         variant="formSubmissionButton"
         sx={{
-          mt: 0.5,
+          mt: 1,
           display: 'flex',
           alignSelf: 'flex-end',
           width: { xs: '100%', sm: '166px' },

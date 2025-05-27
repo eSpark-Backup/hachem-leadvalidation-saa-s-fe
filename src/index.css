@@ -3,6 +3,8 @@ body {
   padding: 0px;
 }
 
+/*  custom check box style  */
+
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -19,3 +21,68 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* ******* */
+
+/*  phone number input style */
+
+.PhoneInput {
+  border: 1px solid #cbd5e1;
+  height: 48px;
+  border-radius: 123px;
+}
+
+.PhoneInputCountry {
+  width: 70px;
+  background-color: #f8fafc;
+  border-right: 1px solid #cbd5e1;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.PhoneInputCountryIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  border: 0px;
+}
+
+.PhoneInputCountryIconImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+  border: 0px;
+}
+.PhoneInputCountrySelectArrow {
+  background: url('/src/assets/images/payment/down_arrow.png') no-repeat center !important;
+  background-size: contain !important;
+  width: 14px;
+  height: 13px;
+  border: none;
+  transform: rotate(0deg);
+  opacity: 1;
+}
+.PhoneInputCountrySelect {
+  background: none;
+}
+.PhoneInputInput {
+  margin-left: 2px;
+  margin-right: 15px;
+  height: 40px;
+  width: 50%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #475569;
+}
+.PhoneInputInput::placeholder {
+  color: #475569;
+  opacity: 0.4;
+  font-weight: 500;
+}
+/* ******* */

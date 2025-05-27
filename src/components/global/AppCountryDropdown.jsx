@@ -32,7 +32,7 @@ const AppCountryDropdown = ({ title, paymentFormData, onChange, labels }) => {
     setAnchorEl(event?.currentTarget);
   };
 
-  const handleClose = (country) => {
+  const handleCloseChartModal = (country) => {
     if (country) {
       setvalue(country);
       onChange({
@@ -95,7 +95,7 @@ const AppCountryDropdown = ({ title, paymentFormData, onChange, labels }) => {
       <Menu
         anchorEl={anchorEl}
         open={open}
-        onClose={() => handleClose()}
+        onClose={() => handleCloseChartModal()}
         PaperProps={{
           sx: { ...menuStyle, ...optionScrollBoxStyle },
         }}
@@ -103,7 +103,7 @@ const AppCountryDropdown = ({ title, paymentFormData, onChange, labels }) => {
         {countries?.map((country) => (
           <MenuItem
             key={country}
-            onClick={() => handleClose(country)}
+            onClick={() => handleCloseChartModal(country)}
             sx={optionBoxStyle}
           >
             <Avatar

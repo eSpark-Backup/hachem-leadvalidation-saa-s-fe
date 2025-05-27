@@ -6,6 +6,7 @@ import {
   TextField,
   Typography,
   ClickAwayListener,
+  MenuItem,
 } from '@mui/material';
 import { APP_INPUT_FIELD_STYLE } from '../../constants/components/globals/AppInputField';
 import PropTypes from 'prop-types';
@@ -27,12 +28,15 @@ const AppInputField = ({
   fontWeight = '400',
   startAdornment = null,
   endAdornment = null,
+  selectHeight = '',
   name,
   value = '',
   onChange = () => {},
   placeholder = '',
   type = 'text',
   formData = {},
+  select = false,
+  options = [],
   setCalenderValue = () => {},
 }) => {
   const [open, setOpen] = useState(false);
@@ -48,6 +52,8 @@ const AppInputField = ({
     <Box display={'flex'} flexDirection={'column'} gap={1}>
       <Typography sx={titleStyle}>{title}</Typography>
       <TextField
+        select={select}
+        options={options}
         fullWidth
         type={name === 'credit_card_number' || name === 'cvv' ? 'text' : type}
         name={name}
@@ -89,6 +95,21 @@ const AppInputField = ({
             type
           ),
         }}
+        SelectProps={{
+          IconComponent: () => null,
+          MenuProps: {
+            PaperProps: {
+              style: {
+                maxHeight: 200,
+              },
+            },
+          },
+          sx: {
+            height: selectHeight || '48px',
+            display: 'flex',
+            alignItems: 'center',
+          },
+        }}
         InputProps={{
           startAdornment: startAdornment ? (
             <InputAdornment position="start">{startAdornment}</InputAdornment>
@@ -108,7 +129,19 @@ const AppInputField = ({
               <InputAdornment position="end">{endAdornment}</InputAdornment>
             ) : null,
         }}
-      />
+      >
+        {select && placeholder && (
+          <MenuItem value="" disabled>
+            {placeholder}
+          </MenuItem>
+        )}
+        {select &&
+          options?.map((opt, i) => (
+            <MenuItem key={i} value={opt?.value}>
+              {opt?.label}
+            </MenuItem>
+          ))}
+      </TextField>
       <Popper
         open={open}
         anchorEl={buttonRef?.current}
@@ -146,16 +179,14 @@ const AppInputField = ({
 
 AppInputField.propTypes = {
   title: PropTypes.string.isRequired,
-  fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
-  py: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  px: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
-  border: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  fontWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
+  fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  py: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  px: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  selectHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  border: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  fontWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   startAdornment: PropTypes.node,
   endAdornment: PropTypes.node,
   name: PropTypes.string.isRequired,
@@ -167,12 +198,16 @@ AppInputField.propTypes = {
     'tel',
     'date',
     'month',
-  ]).isRequired, // Updated here
+    'phone',
+    'select',
+  ]).isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  formData: PropTypes.object.isRequired,
-  setCalenderValue: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  formData: PropTypes.object,
+  setCalenderValue: PropTypes.func,
+  select: PropTypes.bool,
+  options: PropTypes.array,
 };
 
 export default AppInputField;
