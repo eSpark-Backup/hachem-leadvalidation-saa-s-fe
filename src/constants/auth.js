@@ -70,7 +70,7 @@ const AUTH_FORMS = {
     fields: [
       {
         label: 'FULL NAME',
-        name: 'fullname',
+        name: 'name',
         type: 'text',
         placeholder: 'John Doe',
       },
@@ -88,15 +88,15 @@ const AUTH_FORMS = {
         placeholder: '******',
       },
       {
-        label: 'CONFIRM PASSWORD',
-        name: 'confirm_password',
+        label: 'CONFRIM PASSWORD',
+        name: 'confrim_password',
         type: 'password',
         defaultType: 'text',
         placeholder: '******',
       },
       {
         label: 'COMPANY NAME (Optional)',
-        name: 'company',
+        name: 'company_name',
         type: 'text',
         placeholder: 'Klairn',
       },
@@ -166,8 +166,8 @@ const AUTH_FORMS = {
         placeholder: '******',
       },
       {
-        label: 'CONFIRM PASSWORD',
-        name: 'confirm_password',
+        label: 'CONFRIM PASSWORD',
+        name: 'confrim_password',
         type: 'password',
         placeholder: '******',
       },
@@ -190,8 +190,8 @@ const AUTH_FORMS = {
         placeholder: '******',
       },
       {
-        label: 'CONFIRM PASSWORD',
-        name: 'confirm_password',
+        label: 'CONFRIM PASSWORD',
+        name: 'confrim_password',
         type: 'password',
         placeholder: '******',
       },
@@ -205,23 +205,21 @@ const AUTH_FORMS = {
   googlePic: '/src/assets/images/auth/google.png',
 
   // forms styles
-  customInputStyle: (error = null) => {
-    return {
-      m: 0.6,
-      gap: 0.8,
-      width: 'auto',
-      height: '100%',
-      display: 'flex',
-      maxHeight: '68px',
-      alignItems: 'center',
-      border: error ? '1px solid #f44336 !important' : '1px solid #E0E0E0',
-      py: { xs: 1, lg: 1.2 },
-      px: { xs: 1.5, lg: 2 },
-      borderRadius: '12px',
-      '&:hover': {
-        border: '1px solid #212121',
-      },
-    };
+  customInputStyle: {
+    m: 0.6,
+    gap: 0.8,
+    width: 'auto',
+    height: '100%',
+    display: 'flex',
+    maxHeight: '68px',
+    alignItems: 'center',
+    border: '1px solid #E0E0E0',
+    py: { xs: 1, lg: 1.2 },
+    px: { xs: 1.5, lg: 2 },
+    borderRadius: '12px',
+    '&:hover': {
+      border: '1px solid #212121',
+    },
   },
   fieldStyle: {
     '& input': {
@@ -253,7 +251,6 @@ const AUTH_FORMS = {
       color: '#616161',
     },
   },
-  errorStyle: { fontSize: '12px', marginLeft: '9.6px', color: '#f44336' },
   scrollBoxStyle: {
     pr: 1.5,
     my: 1.5,

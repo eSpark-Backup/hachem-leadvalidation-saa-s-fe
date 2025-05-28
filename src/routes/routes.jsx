@@ -8,7 +8,6 @@ import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
 import ResetPassword from '../components/auth/ResetPassword';
 import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
 import SignupForm from '../components/auth/SignupForm';
 import PrivateLayout from '../layouts/PrivateLayout';
 import Settings from '../pages/Settings';
@@ -72,11 +71,7 @@ const { forgot_password, verify_email } = AUTH_FORMS || {};
 const routes = [
   {
     path: splash,
-    element: (
-      <PublicRoute>
-        <AuthLayout />
-      </PublicRoute>
-    ),
+    element: <AuthLayout />,
     children: [
       { index: true },
       { path: login, element: <Login /> },
@@ -87,12 +82,12 @@ const routes = [
         path: forgotPasswordEmail,
         element: <VerifyEmail title={forgot_password?.title} />,
       },
-      { path: resetPassword, element: <ResetPassword /> },
+      { path: newpassword, element: <NewPassword /> },
       {
         path: verifyEmail,
         element: <VerifyEmail title={verify_email?.title} />,
       },
-      { path: newpassword, element: <NewPassword /> },
+      { path: resetPassword, element: <ResetPassword /> },
     ],
   },
   {

@@ -1,9 +1,8 @@
 // components/PublicRoute.js
 
 import { Navigate } from 'react-router-dom';
+import { isAuthenticated } from '../utils/auth';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
-
 import { ROUTES } from '../constants/components/globals/Auth';
 
 /**
@@ -25,10 +24,9 @@ import { ROUTES } from '../constants/components/globals/Auth';
  */
 const PublicRoute = ({ children }) => {
   const { dashboard } = ROUTES || {};
-  const { token } = useSelector((state) => state.auth);
 
   // If user is authenticated, redirect to the dashboard
-  return token ? <Navigate to={dashboard} replace /> : children;
+  return isAuthenticated() ? <Navigate to={dashboard} replace /> : children;
 };
 
 // Prop types validation

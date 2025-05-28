@@ -1,7 +1,6 @@
 // Import core React libraries
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
 
 // Import the root application component
 import App from './App.jsx';
@@ -31,45 +30,35 @@ import ErrorBoundary from './components/global/ErrorBoundary.jsx';
 
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
-import { Toaster } from 'sonner';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-
 /**
  * Initializes a new instance of the React Query Client.
  * This client handles caching, background updates, and request deduplication.
  */
 const queryClient = new QueryClient();
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 // Render the application
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
-      {/* Provides React Query context to the application */}
-      <QueryClientProvider client={queryClient}>
-        {/* Redux state provider */}
-        <Provider store={store}>
-          {/* Handles rehydration of persisted Redux state */}
-          <PersistGate loading={<Loader />} persistor={persistor}>
-            {/* Material UI theme provider for consistent styling */}
-            <ThemeProvider theme={theme}>
-              {/* Normalize and reset CSS styles */}
-              <CssBaseline />
-              {/* Catch and handle runtime errors gracefully */}
-              <ErrorBoundary>
-                {/* Main application component */}
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <BrowserRouter>
-                    <App />
-                  </BrowserRouter>
-                  <Toaster position="top-right" richColors closeButton />
-                </LocalizationProvider>
-              </ErrorBoundary>
-            </ThemeProvider>
-          </PersistGate>
-        </Provider>
-      </QueryClientProvider>
-    </GoogleOAuthProvider>
+    {/* Provides React Query context to the application */}
+    <QueryClientProvider client={queryClient}>
+      {/* Redux state provider */}
+      <Provider store={store}>
+        {/* Handles rehydration of persisted Redux state */}
+        <PersistGate loading={<Loader />} persistor={persistor}>
+          {/* Material UI theme provider for consistent styling */}
+          <ThemeProvider theme={theme}>
+            {/* Normalize and reset CSS styles */}
+            <CssBaseline />
+            {/* Catch and handle runtime errors gracefully */}
+            <ErrorBoundary>
+              {/* Main application component */}
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <App />
+              </LocalizationProvider>
+            </ErrorBoundary>
+          </ThemeProvider>
+        </PersistGate>
+      </Provider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

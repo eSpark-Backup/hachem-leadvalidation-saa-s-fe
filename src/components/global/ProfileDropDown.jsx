@@ -25,7 +25,6 @@ import {
   profileNameStyles,
 } from '../../styles/components/globals/ProfileDropDown';
 import { PROFILE } from '../../utils/auth';
-import { useSelector } from 'react-redux';
 
 const ProfileDropDown = () => {
   const [open, setOpen] = useState(false);
@@ -35,8 +34,6 @@ const ProfileDropDown = () => {
   const theme = useTheme();
   const lgUp = useMediaQuery(theme.breakpoints.up('lg'));
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
-
-  const { user } = useSelector((state) => state.auth);
 
   const mockData = [];
   const usersOptionsDropDownOptions = [];
@@ -94,7 +91,7 @@ const ProfileDropDown = () => {
                         {PROFILE_DROP_DOWN.welcomeText}
                       </Typography>
                       <Typography sx={profileNameStyles}>
-                        {user?.fullname}
+                        {PROFILE.name}
                       </Typography>
                     </Box>
                     <ExpandMoreIcon />

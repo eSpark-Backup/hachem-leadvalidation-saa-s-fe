@@ -5,7 +5,6 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 import authSlice from './slices/auth/authSlice';
-import { apiSlice } from '../api/apiSlice';
 
 /**
  * Configuration for redux-persist.
@@ -18,22 +17,18 @@ const persistConfig = {
 };
 
 // Combine reducers and apply persistence wrapper
-const rootReducer = combineReducers({
-  auth: authSlice,
-  [apiSlice.reducerPath]: apiSlice.reducer, // Include RTK Query reducer here
-})
-
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(
+  persistConfig,
+  combineReducers({
+    auth: authSlice,
+  })
+);
 
 /**
  * Redux store configured with persisted reducers.
  */
 const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }).concat(apiSlice.middleware),
 });
 
 /**
