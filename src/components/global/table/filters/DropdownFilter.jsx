@@ -15,6 +15,7 @@ import {
 } from '../../../../styles/components/globals/table/filters/DropdownFilter';
 
 const DropdownFilter = ({ label, value = null, onChange = null, options }) => {
+
   return (
     <FormControl size="small" sx={{ width: { xs: '100%', sm: 'auto' } }}>
       <Select

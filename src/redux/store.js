@@ -21,7 +21,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authSlice,
   [apiSlice.reducerPath]: apiSlice.reducer, // Include RTK Query reducer here
-});
+})
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

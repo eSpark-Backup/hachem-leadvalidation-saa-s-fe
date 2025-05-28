@@ -37,6 +37,7 @@ const LeadMonitoring = () => {
     }
   }, [isViewingHistory]);
 
+
   const deleteItemHandler = (row) => {
     setDeleteItemId(row.cl_sp_id);
     setOpen(true);

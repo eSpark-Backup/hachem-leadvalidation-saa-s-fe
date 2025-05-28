@@ -125,7 +125,7 @@ export const ALT_ATTRIBUTE = {
   document: 'Document',
   trash: 'Trash',
   check: 'Check',
-  successfull: 'Successfull',
+  successfull:"Successfull"
 };
 
 export const ICONS = {

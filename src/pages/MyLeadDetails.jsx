@@ -30,6 +30,7 @@ const LeadDetails = () => {
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(0);
 
+
   const handleOpen = (type) => {
     setType(type);
     setOpen(true);

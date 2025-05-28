@@ -28,7 +28,7 @@ const FilterRenderer = ({
   selectedRows,
   leadMonitoring,
   pickerObjects,
-  actions,
+  actions
 }) => {
   return (
     <Box sx={filterBoxStyles}>
