@@ -1,23 +1,23 @@
 const stats = [
   {
     label: 'Uploaded Leads',
-    icon: '/src/assets/images/dashboard/statics-card/uploaded.svg',
-    light: '/src/assets/images/dashboard/statics-card/Uploaded-light.svg',
+    icon: '/assets/images/dashboard/statics-card/uploaded.svg',
+    light: '/assets/images/dashboard/statics-card/uploaded-light.svg',
   },
   {
     label: 'Rejected',
-    icon: '/src/assets/images/dashboard/statics-card/rejected.svg',
-    light: '/src/assets/images/dashboard/statics-card/Rejected-light.svg',
+    icon: '/assets/images/dashboard/statics-card/rejected.svg',
+    light: '/assets/images/dashboard/statics-card/rejected-light.svg',
   },
   {
     label: 'Accepted',
-    icon: '/src/assets/images/dashboard/statics-card/accepted.svg',
-    light: '/src/assets/images/dashboard/statics-card/accepted-light.svg',
+    icon: '/assets/images/dashboard/statics-card/accepted.svg',
+    light: '/assets/images/dashboard/statics-card/accepted-light.svg',
   },
   {
     label: 'Pending',
-    icon: '/src/assets/images/dashboard/statics-card/pending.svg',
-    light: '/src/assets/images/dashboard/statics-card/pending-light.svg',
+    icon: '/assets/images/dashboard/statics-card/pending.svg',
+    light: '/assets/images/dashboard/statics-card/pending-light.svg',
   },
 ];
 export { stats };

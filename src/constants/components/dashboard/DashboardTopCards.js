@@ -1,7 +1,7 @@
-import card1Image from '../../../assets/images/dashboard/topcards/card1-image.svg';
-import card2Image1 from '../../../assets/images/dashboard/topcards/card2-image1.svg';
-import card2Image2 from '../../../assets/images/dashboard/topcards/card2-image2.svg';
-import card3Image from '../../../assets/images/dashboard/topcards/card3-image.svg';
+import card1Image from '/assets/images/dashboard/topcards/card1-image.svg';
+import card2Image1 from '/assets/images/dashboard/topcards/card2-image1.svg';
+import card2Image2 from '/assets/images/dashboard/topcards/card2-image2.svg';
+import card3Image from '/assets/images/dashboard/topcards/card3-image.svg';
 
 import {
   CLIENT_DASHBOARD_LEADS,

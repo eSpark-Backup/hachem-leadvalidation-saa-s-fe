@@ -27,9 +27,9 @@ const PAYMENT_DATA = {
         type: 'number',
         placeholder: 'Card number',
         endAdornment: [
-          '/src/assets/images/payment/visa.png',
-          '/src/assets/images/payment/amex.png',
-          '/src/assets/images/payment/maestro.png',
+          '/assets/images/payment/visa.png',
+          '/assets/images/payment/amex.png',
+          '/assets/images/payment/maestro.png',
         ],
       },
       {
@@ -38,7 +38,7 @@ const PAYMENT_DATA = {
         name: 'card_holder_name',
         type: 'text',
         placeholder: 'Holder name',
-        startAdornment: '/src/assets/images/payment/card.png',
+        startAdornment: '/assets/images/payment/card.png',
       },
       {
         px: 1.8,

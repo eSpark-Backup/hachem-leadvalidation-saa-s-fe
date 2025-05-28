@@ -2,7 +2,7 @@
 
 import { Outlet } from 'react-router-dom';
 import { Box, Grid } from '@mui/material';
-import bgImage from '../assets/images/auth/Dashboard.svg';
+import bgImage from '/assets/images/auth/Dashboard.svg';
 import AuthLogo from '../components/auth/AuthLogo';
 import NavigateButton from '../components/auth/NavigateButton';
 import {

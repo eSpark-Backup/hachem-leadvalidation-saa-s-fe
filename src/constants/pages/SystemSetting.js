@@ -53,7 +53,7 @@ export const FRAUD_SETTINGS = [
     title: 'Disposable Email Detection',
     description:
       'Flag leads using known disposable or temporary email services',
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: '/assets/images/system-setting/sheild-icon.svg',
     initialValue: true,
     key: 'disposable-email-detection',
   },
@@ -61,7 +61,7 @@ export const FRAUD_SETTINGS = [
     title: 'Multiple Submissions',
     description:
       'Flag leads with multiple submissions from the same IP address within a time period',
-    icon: '/src/assets/images/system-setting/light-icon.svg',
+    icon: '/assets/images/system-setting/light-icon.svg',
     initialValue: false,
     key: 'multiple-submissions',
   },
@@ -69,21 +69,21 @@ export const FRAUD_SETTINGS = [
     title: 'Suspicious Data Patterns',
     description:
       'Detect suspicious patterns in form submissions like keyboard smashing',
-    icon: '/src/assets/images/system-setting/caution-icon.svg',
+    icon: '/assets/images/system-setting/caution-icon.svg',
     initialValue: true,
     key: 'suspicious-data-patterns',
   },
   {
     title: 'Geographic IP Mismatch',
     description: `Flag when IP location doesn't match submitted location data`,
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: '/assets/images/system-setting/sheild-icon.svg',
     initialValue: true,
     key: 'geographic-ip-mismatch',
   },
   {
     title: 'Suspicious Referrers',
     description: 'Flag leads from known suspicious or spam referrer sources',
-    icon: '/src/assets/images/system-setting/caution-icon.svg',
+    icon: '/assets/images/system-setting/caution-icon.svg',
     initialValue: true,
     key: 'suspicious-referrers',
   },
@@ -92,17 +92,17 @@ export const OPTIONS = [
   {
     id: 'lead',
     label: 'Lead Scoring',
-    icon: '/src/assets/images/system-setting/gear-icon.svg',
+    icon: '/assets/images/system-setting/gear-icon.svg',
   },
   {
     id: 'fraud',
     label: 'Fraud Detection',
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: '/assets/images/system-setting/sheild-icon.svg',
   },
   {
     id: 'reject',
     label: 'Rejection Messages',
-    icon: '/src/assets/images/system-setting/message-icon.svg',
+    icon: '/assets/images/system-setting/message-icon.svg',
   },
 ];
 export const CARDS = [

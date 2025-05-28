@@ -73,7 +73,7 @@ const Signup = () => {
                 endIcon={
                   <Box
                     component={'img'}
-                    src="/src/assets/images/auth/signup_button_arrow.png"
+                    src="/assets/images/auth/signup_button_arrow.png"
                     sx={{ width: { xs: '28px', md: 'auto' }, height: 'auto' }}
                   />
                 }

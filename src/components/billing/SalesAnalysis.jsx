@@ -66,7 +66,7 @@ const SalesAnalysis = ({
                 src={
                   up
                     ? '/src/assets/images/billing/upIcons.svg'
-                    : '/src/assets/images/billing/downIcons.svg'
+                    : '/assets/images/billing/downIcons.svg'
                 }
               />
               <Typography sx={{ color: '#FF4E4E' }}>{inPer}</Typography>

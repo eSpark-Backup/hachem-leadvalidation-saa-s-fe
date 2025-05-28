@@ -26,7 +26,7 @@ export const ADMIN_DASHBOARD = {
     title: 'Client/Supplier Ratio',
     clientLegnedTitle: 'Client',
     supplierLegnedTitle: 'Supplier',
-    centerImageUrl: '/src/assets/images/global/pie-image.png',
+    centerImageUrl: '/assets/images/global/pie-image.png',
     clientValue: '346.2',
     supplierValue: '46.2',
     packerID: 'ClientSupplierRatio',

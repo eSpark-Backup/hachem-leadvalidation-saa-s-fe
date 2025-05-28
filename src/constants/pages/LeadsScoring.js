@@ -1,9 +1,9 @@
-import DropdownIcon from '../../assets/images/client/dropdown.svg';
-import CloseIcon from '../../assets/images/client/close.svg';
-import DocumentIcon from '../../assets/images/client/document-text.svg';
-import TrashIcon from '../../assets/images/client/trash.svg';
-import CheckIcon from '../../assets/images/client/check.svg';
-import SuccessfullIcon from '../../assets/images/auth/Verified_image.svg';
+import DropdownIcon from '/assets/images/client/dropdown.svg';
+import CloseIcon from '/assets/images/client/close.svg';
+import DocumentIcon from '/assets/images/client/document-text.svg';
+import TrashIcon from '/assets/images/client/trash.svg';
+import CheckIcon from '/assets/images/client/check.svg';
+import SuccessfullIcon from '/assets/images/auth/Verified_image.svg';
 
 export const LEAD_SCORING_SETTING = {
   title: 'Leads Scoring Setting',
@@ -125,7 +125,7 @@ export const ALT_ATTRIBUTE = {
   document: 'Document',
   trash: 'Trash',
   check: 'Check',
-  successfull:"Successfull"
+  successfull: 'Successfull',
 };
 
 export const ICONS = {

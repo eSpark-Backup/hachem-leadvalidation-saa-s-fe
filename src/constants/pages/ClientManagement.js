@@ -1,4 +1,4 @@
-import ClientImage from '../../assets/images/admin/client.png';
+import ClientImage from '/assets/images/admin/client.png';
 
 export const CLIENT_MANAGEMENT = {
   title: 'Client Management',

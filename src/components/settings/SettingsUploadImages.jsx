@@ -67,7 +67,7 @@ const SettingsUploadImages = () => {
             },
           }}
         >
-          <img src="/src/assets/settings/upload-image.svg" alt="Upload" />
+          <img src="/assets/images/settings/upload-image.svg" alt="Upload" />
           <Typography variant="h6" color="#475569" fontWeight={500}>
             <Typography
               variant="span"

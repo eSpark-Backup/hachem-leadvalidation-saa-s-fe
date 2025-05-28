@@ -26,7 +26,7 @@ const PaymentLayout = () => {
           alt="logo"
           component="img"
           sx={logoImageStyle}
-          src="/src/assets/images/auth/Group.png"
+          src="/assets/images/auth/Group.png"
         />
       </Box>
 

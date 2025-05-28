@@ -58,7 +58,7 @@ const AppCountryDropdown = ({ title, paymentFormData, onChange, labels }) => {
                 width={14}
                 height={8}
                 style={{ marginTop: '2px' }}
-                src="/src/assets/images/payment/down_arrow.png"
+                src="/assets/images/payment/down_arrow.png"
               />
             </Box>
             <Box sx={selectTypoBoxStyle}>
@@ -77,7 +77,7 @@ const AppCountryDropdown = ({ title, paymentFormData, onChange, labels }) => {
               <img
                 width={14}
                 height={8}
-                src="/src/assets/images/payment/down_arrow.png"
+                src="/assets/images/payment/down_arrow.png"
                 style={{ marginTop: '2px' }}
               />
             </Box>

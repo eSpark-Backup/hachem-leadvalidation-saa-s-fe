@@ -2,7 +2,7 @@
 
 const AUTH_FORMS = {
   // forms data
-  auth_image: '/src/assets/images/auth/Group.png',
+  auth_image: '/assets/images/auth/Group.png',
   login: {
     title: 'Login',
     links: [
@@ -202,7 +202,7 @@ const AUTH_FORMS = {
     link: '#',
   },
   or: 'OR',
-  googlePic: '/src/assets/images/auth/google.png',
+  googlePic: '/assets/images/auth/google.png',
 
   // forms styles
   customInputStyle: {
@@ -290,7 +290,7 @@ const AUTH_FORMS = {
 
 const VERIFICATION_MODAL = {
   title: 'Verification Successful ',
-  image: '/src/assets/images/auth/Verified_image.svg',
+  image: '/assets/images/auth/Verified_image.svg',
 };
 
 export { AUTH_FORMS, VERIFICATION_MODAL };

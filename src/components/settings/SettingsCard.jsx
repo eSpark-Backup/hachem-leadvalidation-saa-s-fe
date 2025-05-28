@@ -1,7 +1,7 @@
 import { Box, Grid, Typography, Tooltip } from '@mui/material';
 import PropTypes from 'prop-types';
 import { SettingCardStyles } from '../../styles/components/settings/SettingsCard';
-import questionIcons from '/src/assets/settings/questions.svg';
+import questionIcons from '/assets/images/settings/questions.svg';
 
 const SettingsCard = ({ title, description, children, toolToop }) => {
   return (

@@ -58,7 +58,7 @@ body {
   border: 0px;
 }
 .PhoneInputCountrySelectArrow {
-  background: url('/src/assets/images/payment/down_arrow.png') no-repeat center !important;
+  background: url('/assets/images/payment/down_arrow.png') no-repeat center !important;
   background-size: contain !important;
   width: 14px;
   height: 13px;

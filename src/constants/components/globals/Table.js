@@ -1,22 +1,22 @@
-import CopyIcon from '../../../assets/images/global/table-icons/copy.svg';
-import DownloadIcon from '../../../assets/images/global/table-icons/download.svg';
-import DropdownIcon from '../../../assets/images/global/table-icons/dropdown.svg';
-import SearchIcon from '../../../assets/images/global/table-icons/search-icon.svg';
-import GradientDropdownIcon from '../../../assets/images/global/table-icons/gradient-dropdown.svg';
+import CopyIcon from '/assets/images/global/table-icons/copy.svg';
+import DownloadIcon from '/assets/images/global/table-icons/download.svg';
+import DropdownIcon from '/assets/images/global/table-icons/dropdown.svg';
+import SearchIcon from '/assets/images/global/table-icons/search-icon.svg';
+import GradientDropdownIcon from '/assets/images/global/table-icons/gradient-dropdown.svg';
 // Table Row Icons
-import EyeIcon from '../../../assets/images/global/table-icons/eye.svg';
-import EditIcon from '../../../assets/images/global/table-icons/edit.svg';
-import TrashIcon from '../../../assets/images/global/table-icons/trash.svg';
+import EyeIcon from '/assets/images/global/table-icons/eye.svg';
+import EditIcon from '/assets/images/global/table-icons/edit.svg';
+import TrashIcon from '/assets/images/global/table-icons/trash.svg';
 // Pagination Icons
-import LargeLeftArrowIcon from '../../../assets/images/global/table-icons/large-left-arrow.svg';
-import LargeRightArrowIcon from '../../../assets/images/global/table-icons/large-right-arrow.svg';
+import LargeLeftArrowIcon from '/assets/images/global/table-icons/large-left-arrow.svg';
+import LargeRightArrowIcon from '/assets/images/global/table-icons/large-right-arrow.svg';
 // Date Filter Button icons
-import UpArrowIcon from '../../../assets/images/global/table-icons/up-arrow.svg';
-import DownArrowIcon from '../../../assets/images/global/table-icons/down-arrow.svg';
+import UpArrowIcon from '/assets/images/global/table-icons/up-arrow.svg';
+import DownArrowIcon from '/assets/images/global/table-icons/down-arrow.svg';
 // Manage Client/Supplier icons
-import ServiceIcon from '../../../assets/images/admin/service.svg';
-import ContactIcon from '../../../assets/images/admin/contact.svg';
-import EmailIcon from '../../../assets/images/admin/mail.svg';
+import ServiceIcon from '/assets/images/admin/service.svg';
+import ContactIcon from '/assets/images/admin/contact.svg';
+import EmailIcon from '/assets/images/admin/mail.svg';
 
 const TABLE_TEXTS = {
   copy: 'Copy',
@@ -75,8 +75,6 @@ const TABLE_STATIC_TEXTS = {
   delete: 'Delete',
   cancel: 'Cancel',
   confirmLead: 'Do you want to accept this lead?',
-  accept: 'Accept',
-  reject: 'Reject',
 };
 
 export { TABLE_TEXTS, PLACEHOLDERS, ALT_ATTRIBUTE, ICONS, TABLE_STATIC_TEXTS };

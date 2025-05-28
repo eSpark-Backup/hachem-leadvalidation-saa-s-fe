@@ -11,8 +11,8 @@ import {
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import LogoutIcon from '@mui/icons-material/Logout';
-import DashboardLogo from '../../assets/images/global/dashboard-logo.svg';
-import bar from '../../assets/images/global/bar.svg';
+import DashboardLogo from '/assets/images/global/dashboard-logo.svg';
+import bar from '/assets/images/global/bar.svg';
 
 import {
   handleLoginAsAdmin,

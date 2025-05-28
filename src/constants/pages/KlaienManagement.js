@@ -40,17 +40,17 @@ export const OPTIONS = [
   {
     id: 1,
     label: 'Script AI',
-    icon: '/src/assets/images/system-setting/gear-icon.svg',
+    icon: '/assets/images/system-setting/gear-icon.svg',
   },
   {
     id: 2,
     label: 'Audio Preview',
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: '/assets/images/system-setting/sheild-icon.svg',
   },
   {
     id: 3,
     label: 'Twilio Setup',
-    icon: '/src/assets/images/system-setting/message-icon.svg',
+    icon: '/assets/images/system-setting/message-icon.svg',
   },
 ];
 
@@ -58,7 +58,7 @@ export const AUDIO_PREVIEW = [
   {
     title: 'Audio Preview',
     description: 'Listen to your script with different voice settings',
-    icon: '/src/assets/images/system-setting/sheild-icon.svg',
+    icon: '/assets/images/system-setting/sheild-icon.svg',
     initialValue: true,
     key: 'audio-preview',
   },
