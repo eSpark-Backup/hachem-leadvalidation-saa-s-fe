@@ -1,21 +1,19 @@
 import { Box, Typography, RadioGroup } from '@mui/material';
-import { useState } from 'react';
 import PaymentFormSwitch from './PaymentFormSwitch';
 import Card from './Card';
 import PropTypes from 'prop-types';
 
-const PaymentForm = ({ data, maxWidth, border, padding, lowCreditText }) => {
-  const [paymentMethod, setPaymentMethod] = useState('card');
-  const [paymentFormData, setPaymentFormData] = useState({
-    payout: false,
-    new_payment: false,
-    credit_card_number: '',
-    card_holder_name: '',
-    date: '',
-    country: '',
-    cvv: '',
-  });
-
+const PaymentForm = ({
+  data,
+  maxWidth,
+  border,
+  padding,
+  lowCreditText,
+  paymentMethod,
+  setPaymentMethod,
+  paymentFormData,
+  setPaymentFormData,
+}) => {
   const { switchs, buttonText, fields, methods } = data || {};
 
   const handleSubmit = (e) => {
@@ -104,6 +102,10 @@ PaymentForm.propTypes = {
   border: PropTypes.any.isRequired,
   padding: PropTypes.any.isRequired,
   lowCreditText: PropTypes.node,
+  paymentMethod: PropTypes.any.isRequired,
+  setPaymentMethod: PropTypes.any.isRequired,
+  paymentFormData: PropTypes.any.isRequired,
+  setPaymentFormData: PropTypes.any.isRequired,
 };
 
 export default PaymentForm;

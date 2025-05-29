@@ -12,6 +12,8 @@ import {
   privateLayoutBoxStyles,
   privateLayoutOutletBoxStyles,
 } from '/src/styles/layouts/PrivateLayout';
+import { USER_TYPES } from '../constants/components/globals/Auth';
+// import { USER_TYPE } from '../utils/auth';
 
 /**
  * PrivateLayout component wraps all authenticated (private) pages.
@@ -31,7 +33,7 @@ import {
  */
 const PrivateLayout = () => {
   const [openNav, setOpenNav] = useState(false);
-
+  localStorage.setItem('userType', USER_TYPES.client);
   /**
    * Closes the sidebar navigation.
    * Memoized to avoid unnecessary re-renders.

@@ -91,11 +91,11 @@ const PROFILE =
       : ADMIN_INFO;
 
 const menuItems = (userType) => {
-  return userType === USER_TYPES.supplier
-    ? SIDE_BAR_MENU_SUPPLIER
+  return userType === USER_TYPES.admin
+    ? SIDE_BAR_MENU_ADMIN
     : userType === USER_TYPES.client
       ? SIDE_BAR_MENU_CLIENT
-      : SIDE_BAR_MENU_ADMIN;
+      : SIDE_BAR_MENU_SUPPLIER;
 };
 
 /**

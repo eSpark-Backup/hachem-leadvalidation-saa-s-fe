@@ -16,3 +16,12 @@ export const RESET_PASSWORD = '/auth/reset-password'; // Reset password with tok
 export const GOOGLE = '/auth/google'; // Authenticate with Google
 // GET ENDPOINT
 export const PROFILE = '/auth/me'; // Get current user information
+
+// Client API Endpoints
+export const CLIENTS_SETTINGS = 'api/client/settings'; // Get client settings
+export const CLIENTS_LEAD = 'api/client/lead'; // Get list of clients
+export const CLIENTS_STATS = 'api/client/stats'; // Get client statistics
+export const CLIENTS_STATS_BULK = 'api/client/stats/bulk'; // Get bulk client statistics
+export const CLIENTS_LEAD_STATS = 'api/client/lead-stats'; // Get client statistics
+export const CLIENTS_LEAD_STATS_BULK = 'api/client/lead-stats/bulk'; // Get bulk client statistics
+export const CLIENTS_LEAD_STATS_SUMMARY = 'api/client/lead-stats-summary'; // Get client lead statistics summary

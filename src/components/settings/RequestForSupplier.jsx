@@ -2,13 +2,14 @@ import { Box, Grid } from '@mui/material';
 
 import SettingsSubmitButtons from './SettingsSubmitButtons';
 import SettingForm from './SettingForm';
-import { useState } from 'react';
 
 import PropTypes from 'prop-types';
+import {
+  handleCancelRequest,
+  handleSendRequest,
+} from '../../utils/components/settings/PersonalInfo';
 
-const RequestForSupplier = ({ data }) => {
-  const [values, setValues] = useState({});
-
+const RequestForSupplier = ({ data, setValues, values }) => {
   return (
     <Box>
       <Grid container spacing={2}>
@@ -24,6 +25,8 @@ const RequestForSupplier = ({ data }) => {
 
 RequestForSupplier.propTypes = {
   data: PropTypes.array.isRequired,
+  values: PropTypes.any.isRequired,
+  setValues: PropTypes.any.isRequired,
 };
 
 export default RequestForSupplier;

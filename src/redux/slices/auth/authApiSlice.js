@@ -82,7 +82,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
           await queryFulfilled;
           dispatch(logOut());
           handleLogout(navigate);
-        } catch {}
+        } catch (error) {
+          console.error('Error during query fulfillment:', error);
+        }
       },
     }),
     refresh: builder.mutation({

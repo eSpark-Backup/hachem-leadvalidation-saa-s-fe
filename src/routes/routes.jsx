@@ -105,9 +105,9 @@ const routes = [
   {
     path: dashboard,
     element: (
-      <PrivateRoute>
-        <PrivateLayout />
-      </PrivateRoute>
+      // <PrivateRoute>
+      <PrivateLayout />
+      // </PrivateRoute>
     ),
     children: [
       { index: true, element: <Dashboard /> },

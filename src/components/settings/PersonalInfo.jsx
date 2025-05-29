@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { Box, Grid } from '@mui/material';
+import PropTypes from 'prop-types';
 
 import SettingsUploadImages from './SettingsUploadImages.jsx';
 import SettingsSubmitButtons from './SettingsSubmitButtons.jsx';
@@ -8,16 +8,12 @@ import {
   handleCancelRequest,
   handleSendRequest,
 } from '../../utils/components/settings/PersonalInfo.js';
-import { getProfileInputFields } from '../../constants/components/settings/getProfileInputFields.js';
 
-const PersonalInfo = () => {
-  const [values, setValues] = useState({});
-  const inputFields = getProfileInputFields();
-
+const PersonalInfo = ({ data, values, setValues }) => {
   return (
     <Box>
       <Grid container spacing={2}>
-        <SettingForm data={inputFields} values={values} setValues={setValues} />
+        <SettingForm data={data} values={values} setValues={setValues} />
         <SettingsUploadImages />
         <SettingsSubmitButtons
           request={() => handleSendRequest(values)}
@@ -27,4 +23,11 @@ const PersonalInfo = () => {
     </Box>
   );
 };
+
+PersonalInfo.propTypes = {
+  data: PropTypes.any.isRequired,
+  values: PropTypes.any.isRequired,
+  setValues: PropTypes.any.isRequired,
+};
+
 export default PersonalInfo;
