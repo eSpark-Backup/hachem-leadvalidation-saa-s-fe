@@ -7,20 +7,15 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  CircularProgress,
 } from '@mui/material';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardLogo from '/assets/images/global/dashboard-logo.svg';
 import bar from '/assets/images/global/bar.svg';
 
-import {
-  handleLoginAsAdmin,
-  handleLoginAsClient,
-  handleLoginAsSupplier,
-  handleLogout,
-  MENU_ITEMS,
-} from '../../utils/auth';
+import { menuItems } from '../../utils/auth';
 import {
   logoContainerStyles,
   menuWrapperStyles,
@@ -43,14 +38,23 @@ import {
 } from '../../constants/components/globals/SideBar';
 import DotBadge from './DotBadge';
 import { USER_TYPES } from '../../constants/components/globals/Auth';
+import { useSelector } from 'react-redux';
+import { useLogoutMutation } from '../../redux/slices/auth/authApiSlice';
+import { handleLogoutMutation } from '../../services/auth';
 
 const Sidebar = () => {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const navigate = useNavigate();
-  const userType = localStorage?.getItem('userType');
+  const { user } = useSelector((state) => state.auth);
   const client = USER_TYPES?.client;
+
+  const [logout, { isLoading }] = useLogoutMutation();
+
+  const handleLogout = async () => {
+    const res = await handleLogoutMutation(logout);
+    if (!res) return;
+  };
 
   const openLogoutModal = () => {
     setOpen(true);
@@ -67,7 +71,7 @@ const Sidebar = () => {
       {/* Menu */}
       <Box sx={growBoxSTyles}>
         <Box sx={menuWrapperStyles}>
-          {MENU_ITEMS?.map((item, index) => (
+          {menuItems(user?.role)?.map((item, index) => (
             <Link
               to={item?.path}
               key={index}
@@ -86,7 +90,7 @@ const Sidebar = () => {
               >
                 <Box sx={menuItemContentStyles}>
                   {item?.path.startsWith(SETTINGS_PATH) &&
-                  userType === client &&
+                  user?.role === client &&
                   LOW_CREDITS ? (
                     <DotBadge
                       color={'#FF0000'}
@@ -131,62 +135,17 @@ const Sidebar = () => {
                     {item?.label}
                   </Typography>
                 </Box>
+
                 <img src={bar} alt="bar" />
               </Box>
             </Link>
           ))}
         </Box>
       </Box>
-      <Box
-        sx={{
-          justifyContent: 'space-between',
-          gap: 1,
-        }}
-      >
-        <Typography
-          sx={{ ...logoutBtnStyles, color: '#000', fontSize: '14px' }}
-        >
-          {' Change User Type'}
-        </Typography>
-        <Button
-          onClick={() => handleLoginAsClient(navigate)}
-          sx={{
-            cursor: 'pointer',
-          }}
-        >
-          <Typography
-            sx={{ ...logoutBtnStyles, color: 'green', fontSize: '14px' }}
-          >
-            {' Client'}
-          </Typography>
-        </Button>
-        <Button
-          onClick={() => handleLoginAsSupplier(navigate)}
-          sx={{
-            cursor: 'pointer',
-          }}
-        >
-          <Typography
-            sx={{ ...logoutBtnStyles, color: 'green', fontSize: '14px' }}
-          >
-            {' Supplier'}
-          </Typography>
-        </Button>
-        <Button
-          onClick={() => handleLoginAsAdmin(navigate)}
-          sx={{
-            cursor: 'pointer',
-          }}
-        >
-          <Typography
-            sx={{ ...logoutBtnStyles, color: 'green', fontSize: '14px' }}
-          >
-            {'Admin'}
-          </Typography>
-        </Button>
-      </Box>
+
       <Box sx={logoutBoxStyles} onClick={openLogoutModal}>
         <LogoutIcon />
+
         <Typography sx={logoutBtnStyles}>
           {SIDE_BAR_LOGOUT_BUTTON.logoutBtn}
         </Typography>
@@ -200,6 +159,7 @@ const Sidebar = () => {
         <DialogTitle id="logout-dialog-title">
           <Typography variant="h3" sx={dialogTitleStyles}></Typography>
         </DialogTitle>
+
         <DialogContent>
           <Typography sx={dialogContentStyles}>
             {LOG_OUT_MODAL_INFO?.logOutText}
@@ -207,17 +167,25 @@ const Sidebar = () => {
             {LOG_OUT_MODAL_INFO?.unsavedChanges}
           </Typography>
         </DialogContent>
+
         <DialogActions>
           <Button onClick={() => setOpen(false)} color="primary">
             {LOG_OUT_MODAL_INFO?.cancelBtn}
           </Button>
+
           <Button
-            onClick={() => handleLogout(navigate)}
+            onClick={handleLogout}
             color="error"
             variant="contained"
             autoFocus
+            disabled={isLoading}
+            sx={{ width: '113px' }}
           >
-            {LOG_OUT_MODAL_INFO?.confirmBtn}
+            {isLoading ? (
+              <CircularProgress size={24} sx={{ color: ' #444444' }} />
+            ) : (
+              LOG_OUT_MODAL_INFO?.confirmBtn
+            )}
           </Button>
         </DialogActions>
       </Dialog>

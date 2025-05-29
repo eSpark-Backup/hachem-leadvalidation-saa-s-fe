@@ -67,7 +67,7 @@ const VerificationModal = ({ open, setOpen, data, link, text }) => {
             <Typography
               sx={{
                 color: '#1B2559',
-                fontSize: { xs: '20px', sm: '22px', md: '25px' },
+                fontSize: { xs: '20px', sm: '22px', md: '24px' },
                 fontWeight: 600,
               }}
             >

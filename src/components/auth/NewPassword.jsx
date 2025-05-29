@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
   Box,
   Button,
@@ -6,33 +9,36 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { AUTH_FORMS } from '../../constants/auth';
-import { useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+
+import { AUTH_FORMS } from '../../constants/auth';
 import { ROUTES } from '../../constants/components/globals/Auth';
 
 const NewPassword = () => {
-  const [user, setUser] = useState({
-    password: '',
-    confrim_password: '',
-  });
-  const [showPassword, setShowPassword] = useState({
-    password: false,
-    confrim_password: false,
-  });
-
   const {
-    new_password,
+    reset_password,
     scrollBoxStyle,
     formSubmissionButtonStyle,
     customInputStyle,
     fieldStyle,
   } = AUTH_FORMS || {};
 
-  const { title, fields, buttonText } = new_password;
+  const { title, fields, buttonText } = reset_password;
   const { login } = ROUTES || {};
+
   const navigate = useNavigate();
+
+  const [user, setUser] = useState({
+    current_password: '',
+    new_password: '',
+    confirm_password: '',
+  });
+
+  const [showPassword, setShowPassword] = useState({
+    current_password: false,
+    new_password: false,
+    confirm_password: false,
+  });
 
   const handleClickEye = (field) => {
     setShowPassword((prev) => ({
@@ -45,12 +51,17 @@ const NewPassword = () => {
   };
   const handleSave = (e) => {
     e.preventDefault();
-    console.log({ new_password: user });
-    if (user?.password && user?.confrim_password) {
+
+    if (
+      user?.current_password &&
+      user?.new_password &&
+      user?.confirm_password
+    ) {
       navigate(login);
       setUser({
-        password: '',
-        confrim_password: '',
+        current_password: '',
+        new_password: '',
+        confirm_password: '',
       });
     } else {
       null;
@@ -60,8 +71,8 @@ const NewPassword = () => {
   return (
     <Stack
       maxWidth={{ xs: '420px', sm: '482px', md: '480px', lg: '572px' }}
-      minHeight={{ xs: '360px', lg: '420px' }}
-      maxHeight={{ xs: '90%', lg: '420px' }}
+      minHeight={{ xs: '450x', lg: '500px' }}
+      maxHeight={{ xs: '90%', lg: '500px' }}
       py={{ xs: 4.2, lg: 1 }}
       px={{ xs: 2.5, md: 2 }}
       justifyContent={{ xs: 'center' }}
@@ -87,11 +98,13 @@ const NewPassword = () => {
           <Typography variant="body2" pb={1} alignSelf={'center'}>
             {title}
           </Typography>
+
           <Box sx={{ display: 'flex', flexDirection: 'column' }}>
             {fields?.map(({ label, name, type, placeholder }, index) => (
-              <Box key={index} sx={customInputStyle}>
+              <Box key={index} sx={customInputStyle()}>
                 <Stack direction={'column'} spacing={0.5} width={'100%'}>
                   <Typography variant="inputLabel">{label || ''}</Typography>
+
                   <TextField
                     fullWidth
                     autoComplete="off"
@@ -101,15 +114,16 @@ const NewPassword = () => {
                     placeholder={placeholder || ''}
                     onChange={(e) => handleInputChange(name, e?.target?.value)}
                     type={
-                      type === fields?.[1]?.type
+                      type === fields?.[0]?.type
                         ? showPassword[name]
-                          ? fields?.[1]?.defaultType
-                          : fields?.[1]?.type
-                        : type || fields?.[1]?.defaultType
+                          ? fields?.[0]?.defaultType
+                          : fields?.[0]?.type
+                        : type || fields?.[0]?.defaultType
                     }
                   />
                 </Stack>
-                {type === fields?.[1]?.type && (
+
+                {type === fields?.[0]?.type && (
                   <IconButton
                     disableRipple
                     onClick={() => handleClickEye(name)}
@@ -121,6 +135,7 @@ const NewPassword = () => {
               </Box>
             ))}
           </Box>
+
           <Stack direction={'column'} px={0.5} py={1}>
             <Button
               type="submit"

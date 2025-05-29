@@ -1,22 +1,38 @@
-import { Box, Button, Stack, Typography, useTheme } from '@mui/material';
-import { AUTH_FORMS, VERIFICATION_MODAL } from '../../constants/auth';
-import { OtpInput } from 'reactjs-otp-input';
 import { useState } from 'react';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import VerificationModal from './VerificationModal';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { OtpInput } from 'reactjs-otp-input';
+
+import {
+  Box,
+  Button,
+  Stack,
+  Typography,
+  useTheme,
+  CircularProgress,
+} from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+import VerificationModal from './VerificationModal';
+
+import {
+  useResendVerificationCodeMutation,
+  useVerifyEmailMutation,
+} from '../../redux/slices/auth/authApiSlice';
+
+import {
+  handleResendCodeMutation,
+  handleVerifyEmailMutation,
+} from '../../services/auth';
+
+import { AUTH_FORMS, VERIFICATION_MODAL } from '../../constants/auth';
 import { ROUTES } from '../../constants/components/globals/Auth';
 
 const VerifyEmail = ({ title }) => {
-  const [otp, setOtp] = useState('');
-  const [showVerifyEmail, setShowVerifyEmail] = useState(false);
-
   const { verify_email, scrollBoxStyle, formSubmissionButtonStyle } =
     AUTH_FORMS || {};
   const { forgotPassword, newpassword, login } = ROUTES || {};
-  const navigate = useNavigate();
-
   const {
     text,
     resendButtonText,
@@ -26,21 +42,46 @@ const VerifyEmail = ({ title }) => {
     otpXsStyle,
     otpSmStyle,
   } = verify_email || {};
+
   const theme = useTheme();
   const isXs = useMediaQuery(theme?.breakpoints?.down('sm'));
+
+  const navigate = useNavigate();
+  const { state } = useLocation();
+
+  const [resendVerificationCode, { isLoading: resendCodeIsLoading }] =
+    useResendVerificationCodeMutation();
+  const [verifyEmail, { isLoading }] = useVerifyEmailMutation();
+
+  const [otp, setOtp] = useState('');
+  const [showVerifyEmail, setShowVerifyEmail] = useState(false);
 
   const handleChange = (value) => {
     setOtp(value);
   };
 
-  const handleVerify = (e) => {
+  const handleVerify = async (e) => {
     e.preventDefault();
+
     if (title == forgotPassword) {
       navigate(newpassword);
     } else {
-      setShowVerifyEmail(true);
+      const bodyObject = { email: state, code: otp };
+
+      const res = await handleVerifyEmailMutation(
+        bodyObject,
+        verifyEmail,
+        setShowVerifyEmail,
+        setOtp
+      );
+
+      if (!res) return;
     }
-    console.log({ Entered_OTP: otp });
+  };
+
+  const handleResend = async () => {
+    const res = await handleResendCodeMutation(state, resendVerificationCode);
+    if (!res) return;
   };
 
   return (
@@ -73,6 +114,7 @@ const VerifyEmail = ({ title }) => {
           <Typography variant="body2" alignSelf={'center'}>
             {title}
           </Typography>
+          
           <Box>
             <Typography
               alignSelf={'center'}
@@ -81,6 +123,7 @@ const VerifyEmail = ({ title }) => {
             >
               {text}
             </Typography>
+
             <Box
               sx={{
                 display: 'flex',
@@ -92,28 +135,41 @@ const VerifyEmail = ({ title }) => {
               <OtpInput
                 value={otp}
                 onChange={handleChange}
-                numInputs={4}
+                numInputs={6}
                 className="otpInput"
                 inputStyle={isXs ? otpXsStyle : otpSmStyle}
                 renderInput={(props) => <Box component={'input'} {...props} />}
               />
             </Box>
           </Box>
+
           <Stack direction={'column'} gap={1.5}>
             <Button
               type="submit"
               variant="signupButton"
-              disabled={otp?.length !== 4}
+              disabled={otp?.length !== 6 || isLoading}
               sx={formSubmissionButtonStyle}
             >
-              {buttonText}
+              {isLoading ? (
+                <CircularProgress size={30} sx={{ color: ' #444444' }} />
+              ) : (
+                buttonText
+              )}
             </Button>
-            <Button disableRipple sx={resendButtonStyle}>
+
+            <Button
+              disableRipple
+              sx={resendButtonStyle}
+              type="button"
+              onClick={handleResend}
+              disabled={resendCodeIsLoading}
+            >
               {resendButtonText}
             </Button>
           </Stack>
         </Box>
       </Box>
+
       <VerificationModal
         open={showVerifyEmail}
         setOpen={setShowVerifyEmail}
