@@ -24,6 +24,10 @@ import {
   useGetSettingsQuery,
   useUpdateSettingsMutation,
 } from '../redux/slices/client/settings';
+import {
+  handleCancelRequest,
+  handleSendRequest,
+} from '../utils/components/settings/PersonalInfo';
 
 const inputFields = getProfileInputFields();
 
@@ -32,7 +36,9 @@ const Settings = () => {
   const userType = localStorage?.getItem('userType');
   const client = USER_TYPES?.client;
   const supplier = USER_TYPES?.supplier;
-  const { pathname } = useLocation();
+  const { pathname } = useLocation(); // State to manage supplier values
+  // State to manage personal info values
+  const [personalInfoValues, setPersonalInfoValues] = useState({});
 
   // State to manage payment method and form data
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -45,13 +51,6 @@ const Settings = () => {
     country: '',
     cvv: '',
   });
-
-  // State to manage supplier values
-  const [supplierValues, setSupplierValues] = useState({});
-
-  // State to manage personal info values
-  const [personalInfoValues, setPersonalInfoValues] = useState({});
-
   // Fetch settings data
   const {
     data: settingsData,
@@ -59,6 +58,10 @@ const Settings = () => {
     isError,
     error,
   } = useGetSettingsQuery();
+  const [supplierValues, setSupplierValues] = useState(
+    settingsData?.supplier || {}
+  );
+  const [clientValues, setClientValues] = useState(settingsData?.client || {});
 
   const [updateSettings] = useUpdateSettingsMutation();
 
@@ -89,6 +92,8 @@ const Settings = () => {
             data={inputFields}
             values={personalInfoValues}
             setValues={setPersonalInfoValues}
+            request={() => handleSendRequest(personalInfoValues)}
+            cancel={() => handleCancelRequest(setPersonalInfoValues)}
           />
         </SettingsCard>
       )}
@@ -104,8 +109,10 @@ const Settings = () => {
                 ? CLIENT_INPUT_FIELDS
                 : SUPPLIER_REQUEST_INPUT_FIELDS
             }
-            setValues={setSupplierValues}
-            values={supplierValues}
+            setValues={setClientValues}
+            values={clientValues}
+            request={() => handleSendRequest(clientValues)}
+            cancel={() => handleCancelRequest(setClientValues)}
           />
         </SettingsCard>
       )}
@@ -119,6 +126,8 @@ const Settings = () => {
             data={SUPPLIER_COMPANY_INPUT_FIELDS}
             setValues={setSupplierValues}
             values={supplierValues}
+            request={() => handleSendRequest(supplierValues)}
+            cancel={() => handleCancelRequest(setSupplierValues)}
           />
         </SettingsCard>
       )}

@@ -7,12 +7,19 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+
 import { clearIconStyles } from '../../styles/components/settings/SettingsUploadImages';
 import { SETTINGS_UPLOAD_IMAGES } from '../../constants/components/settings/SettingsUploadImages';
 
-const SettingsUploadImages = () => {
-  const [avatar, setAvatar] = useState(null);
+const SettingsUploadImages = (
+  avatar,
+  setAvatar,
+  handleChange,
+  handleClick,
+  handleDrop,
+  clearAvatar
+) => {
   const fileInputRef = useRef(null);
 
   return (
