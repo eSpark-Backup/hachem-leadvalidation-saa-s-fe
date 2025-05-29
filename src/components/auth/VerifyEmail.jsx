@@ -114,7 +114,7 @@ const VerifyEmail = ({ title }) => {
           <Typography variant="body2" alignSelf={'center'}>
             {title}
           </Typography>
-          
+
           <Box>
             <Typography
               alignSelf={'center'}

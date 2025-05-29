@@ -55,7 +55,7 @@ const ForgotPassword = () => {
       );
 
       if (!res) return;
-      
+
       if (res) {
         setMessage({
           title: res,

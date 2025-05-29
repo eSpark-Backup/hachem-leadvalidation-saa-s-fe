@@ -42,7 +42,7 @@ const DownloadFilter = ({
           [headerLabels, ...prepareData()],
           'leads.csv',
           handleOpen,
-          setProgress,
+          setProgress
         )
       }
     >
