@@ -61,6 +61,9 @@ const Settings = () => {
   const [supplierValues, setSupplierValues] = useState(
     settingsData?.supplier || {}
   );
+  const [paymentInfoValues, setPaymentInfoValues] = useState(
+    settingsData?.paymentinfo || {}
+  );
   const [clientValues, setClientValues] = useState(settingsData?.client || {});
 
   const [updateSettings] = useUpdateSettingsMutation();
@@ -92,7 +95,9 @@ const Settings = () => {
             data={inputFields}
             values={personalInfoValues}
             setValues={setPersonalInfoValues}
-            request={() => handleSendRequest(personalInfoValues)}
+            request={() =>
+              handleSendRequest(personalInfoValues, updateSettings)
+            }
             cancel={() => handleCancelRequest(setPersonalInfoValues)}
           />
         </SettingsCard>
@@ -111,7 +116,7 @@ const Settings = () => {
             }
             setValues={setClientValues}
             values={clientValues}
-            request={() => handleSendRequest(clientValues)}
+            request={() => handleSendRequest(clientValues, updateSettings)}
             cancel={() => handleCancelRequest(setClientValues)}
           />
         </SettingsCard>
@@ -126,7 +131,7 @@ const Settings = () => {
             data={SUPPLIER_COMPANY_INPUT_FIELDS}
             setValues={setSupplierValues}
             values={supplierValues}
-            request={() => handleSendRequest(supplierValues)}
+            request={() => handleSendRequest(supplierValues, updateSettings)}
             cancel={() => handleCancelRequest(setSupplierValues)}
           />
         </SettingsCard>
@@ -145,6 +150,10 @@ const Settings = () => {
               setPaymentMethod={setPaymentMethod}
               paymentFormData={paymentFormData}
               setPaymentFormData={setPaymentFormData}
+              request={() =>
+                handleSendRequest(paymentInfoValues, updateSettings)
+              }
+              cancel={() => handleCancelRequest(setPaymentInfoValues)}
               maxWidth={'100%'}
               border={'0px'}
               padding={{ xs: '0px', sm: 1 }}

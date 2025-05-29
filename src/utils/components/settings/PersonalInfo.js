@@ -9,10 +9,25 @@ import { PersonalInfo } from '../../../constants/components/settings/PersonalInf
  * @property {string} PersonalInfo.logCancelRequest - The log message for canceling a request.
  * @property {string} PersonalInfo.logSendRequest - The log message for sending a request.
  */
-const handleSendRequest = (values) => {
-  localStorage.setItem(PersonalInfo.storageKeyProfile, JSON.stringify(values));
-  console.log(PersonalInfo.logCancelRequest);
-  console.log(PersonalInfo.logSendRequest);
+const handleSendRequest = async (values, updateSettings) => {
+  try {
+    // Optional: Keep localStorage if still desired
+    localStorage.setItem(
+      PersonalInfo.storageKeyProfile,
+      JSON.stringify(values)
+    );
+
+    // Perform actual API mutation
+    const response = await updateSettings(values).unwrap(); // using .unwrap() to throw if error
+    console.log('Settings updated successfully:', response);
+
+    // Optionally: clear localStorage after successful update
+    localStorage.removeItem(PersonalInfo.storageKeyProfile);
+
+    console.log(PersonalInfo.logSendRequest);
+  } catch (error) {
+    console.error('Error updating settings:', error);
+  }
 };
 
 /**
