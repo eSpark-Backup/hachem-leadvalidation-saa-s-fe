@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import AppInputField from '../global/AppInputField';
 import AppPhoneNumberInput from '../global/AppPhoneNumberInput';
 
-const SettingForm = ({ data, values, setValues }) => {
-  const handleChange = (key, val) => {
-    setValues((prev) => ({ ...prev, [key]: val }));
-  };
-
+const SettingForm = ({ data, values, handleChange }) => {
   return (
     <>
       {data?.map(
@@ -40,12 +36,13 @@ const SettingForm = ({ data, values, setValues }) => {
                 </Typography>
                 <AppPhoneNumberInput
                   value={values[name]}
-                  setValue={(e) => handleChange(name, e?.target?.value)}
+                  setValue={(val) => handleChange(name, val)}
+                  placeholder={'Enter phone number'}
                 />
               </Box>
             ) : (
               <AppInputField
-                select={type === 'select' ? true : false}
+                select={type === 'select'}
                 key={idx}
                 title={label}
                 fontSize={'16px'}
@@ -103,6 +100,7 @@ SettingForm.propTypes = {
   data: PropTypes.array.isRequired,
   values: PropTypes.object.isRequired,
   setValues: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default SettingForm;

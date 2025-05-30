@@ -5,26 +5,26 @@ import PropTypes from 'prop-types';
 import SettingsUploadImages from './SettingsUploadImages.jsx';
 import SettingsSubmitButtons from './SettingsSubmitButtons.jsx';
 import SettingForm from './SettingForm.jsx';
-import {
-  handleChange,
-  handleClick,
-  handleDrop,
-  clearAvatar,
-} from '../../utils/components/settings/SettingsUploadImages';
+
 
 const PersonalInfo = ({ data, values, setValues, request, cancel }) => {
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState(values?.avatar || '');
+  const handleChange = (key, val) => {
+    setValues((prev) => ({ ...prev, [key]: val }));
+  };
+
   return (
     <Box>
       <Grid container spacing={2}>
-        <SettingForm data={data} values={values} setValues={setValues} />
+        <SettingForm
+          data={data}
+          values={values}
+          setValues={setValues}
+          handleChange={handleChange}
+        />
         <SettingsUploadImages
           avatar={avatar}
           setAvatar={setAvatar}
-          handleChange={handleChange}
-          handleClick={handleClick}
-          handleDrop={handleDrop}
-          clearAvatar={clearAvatar}
         />
         <SettingsSubmitButtons request={request} cancel={cancel} />
       </Grid>

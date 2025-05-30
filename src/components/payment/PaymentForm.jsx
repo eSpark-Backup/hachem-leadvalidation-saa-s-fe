@@ -13,17 +13,13 @@ const PaymentForm = ({
   setPaymentMethod,
   paymentFormData,
   setPaymentFormData,
+  handlePamentSubmit,
 }) => {
   const { switchs, buttonText, fields, methods } = data || {};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({ paymentFormData });
-  };
-
   return (
     <Box
-      onSubmit={handleSubmit}
+      onSubmit={handlePamentSubmit}
       component={'form'}
       sx={{
         width: '100%',
@@ -106,6 +102,7 @@ PaymentForm.propTypes = {
   setPaymentMethod: PropTypes.any.isRequired,
   paymentFormData: PropTypes.any.isRequired,
   setPaymentFormData: PropTypes.any.isRequired,
+  handlePamentSubmit: PropTypes.any.isRequired,
 };
 
 export default PaymentForm;

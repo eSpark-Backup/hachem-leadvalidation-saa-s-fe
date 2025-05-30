@@ -8,18 +8,18 @@ import {
   Typography,
 } from '@mui/material';
 import { useRef } from 'react';
+import PropTypes from 'prop-types';
+import {
+  handleChange,
+  handleClick,
+  handleDrop,
+  clearAvatar,
+} from '../../utils/components/settings/SettingsUploadImages.js';
 
 import { clearIconStyles } from '../../styles/components/settings/SettingsUploadImages';
 import { SETTINGS_UPLOAD_IMAGES } from '../../constants/components/settings/SettingsUploadImages';
 
-const SettingsUploadImages = (
-  avatar,
-  setAvatar,
-  handleChange,
-  handleClick,
-  handleDrop,
-  clearAvatar
-) => {
+const SettingsUploadImages = ({ avatar, setAvatar }) => {
   const fileInputRef = useRef(null);
 
   return (
@@ -101,5 +101,12 @@ const SettingsUploadImages = (
     </Grid>
   );
 };
-
+SettingsUploadImages.propTypes = {
+  avatar: PropTypes.any.isRequired,
+  setAvatar: PropTypes.any.isRequired,
+  handleChangeAvatar: PropTypes.any.isRequired,
+  handleClickAvatar: PropTypes.any.isRequired,
+  handleDropAvatar: PropTypes.any.isRequired,
+  clearAvatar: PropTypes.any.isRequired,
+};
 export default SettingsUploadImages;

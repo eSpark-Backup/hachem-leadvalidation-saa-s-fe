@@ -33,7 +33,7 @@ const getProfileInputFields = () => [
     value: 'regular',
     endAdornment: ['/assets/images/payment/down_arrow.png'],
     options: [
-      { value: 'regular', label: 'Regular' },
+      { value: 'regular', label: 'Regular', },
       { value: 'admin', label: 'Admin' },
     ],
   },

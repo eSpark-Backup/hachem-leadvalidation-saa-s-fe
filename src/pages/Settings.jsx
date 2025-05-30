@@ -66,6 +66,11 @@ const Settings = () => {
   );
   const [clientValues, setClientValues] = useState(settingsData?.client || {});
 
+  const handlePamentSubmit = (e) => {
+    e.preventDefault();
+    console.log({ paymentFormData });
+  };
+
   const [updateSettings] = useUpdateSettingsMutation();
 
   if (isLoading) {
@@ -150,6 +155,7 @@ const Settings = () => {
               setPaymentMethod={setPaymentMethod}
               paymentFormData={paymentFormData}
               setPaymentFormData={setPaymentFormData}
+              handlePamentSubmit={handlePamentSubmit}
               request={() =>
                 handleSendRequest(paymentInfoValues, updateSettings)
               }
