@@ -93,7 +93,7 @@ const PROFILE =
 const menuItems = (userType) => {
   return userType === USER_TYPES.admin
     ? SIDE_BAR_MENU_ADMIN
-    : userType === USER_TYPES.client
+    : userType === USER_TYPES.supplier
       ? SIDE_BAR_MENU_CLIENT
       : SIDE_BAR_MENU_SUPPLIER;
 };

@@ -43,15 +43,15 @@ const Settings = () => {
   const isSupplier = USER_TYPE === USER_TYPES.supplier;
   const isAdmin = USER_TYPE === USER_TYPES.admin;
 
-  const { formData } = PAYMENT_DATA || {};
-  const inputFields = getProfileInputFields();
+  const settingsType = isSupplier ? 'supplier' : 'client';
 
   const {
     data: settingsData,
     isLoading,
     isError,
     error,
-  } = useGetSettingsQuery();
+  } = useGetSettingsQuery(settingsType);
+
   const [updateSettings] = useUpdateSettingsMutation();
 
   const [personalInfoValues, setPersonalInfoValues] = useState({});
@@ -62,18 +62,24 @@ const Settings = () => {
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [paymentFormData, setPaymentFormData] = useState(PAYMENT_FORM_DATA);
 
+  const { formData } = PAYMENT_DATA || {};
+  const inputFields = getProfileInputFields();
+
   useEffect(() => {
     if (settingsData) {
       setSupplierValues(settingsData?.supplier || {});
       setPaymentInfoValues(settingsData?.paymentinfo || {});
       setClientValues(settingsData?.client || {});
-      setPersonalInfoValues(settingsData?.person || {}); // Added this
+      setPersonalInfoValues(settingsData?.person || {});
     }
   }, [settingsData]);
 
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
-    await handleSendRequest(paymentInfoValues, updateSettings);
+    await handleSendRequest(
+      { type: settingsType, body: paymentInfoValues },
+      updateSettings
+    );
   };
 
   if (isLoading) {
@@ -109,7 +115,10 @@ const Settings = () => {
             values={personalInfoValues}
             setValues={setPersonalInfoValues}
             request={async () =>
-              await handleSendRequest(personalInfoValues, updateSettings)
+              await handleSendRequest(
+                { type: settingsType, body: personalInfoValues },
+                updateSettings
+              )
             }
             cancel={() => handleCancelRequest(setPersonalInfoValues)}
           />
@@ -129,7 +138,10 @@ const Settings = () => {
             setValues={setClientValues}
             values={clientValues}
             request={async () =>
-              await handleSendRequest(clientValues, updateSettings)
+              await handleSendRequest(
+                { type: settingsType, body: clientValues },
+                updateSettings
+              )
             }
             cancel={() => handleCancelRequest(setClientValues)}
           />
@@ -147,7 +159,10 @@ const Settings = () => {
             setValues={setSupplierValues}
             values={supplierValues}
             request={async () =>
-              await handleSendRequest(supplierValues, updateSettings)
+              await handleSendRequest(
+                { type: settingsType, body: supplierValues },
+                updateSettings
+              )
             }
             cancel={() => handleCancelRequest(setSupplierValues)}
           />
@@ -170,7 +185,10 @@ const Settings = () => {
               setPaymentFormData={setPaymentFormData}
               handlePamentSubmit={handlePaymentSubmit}
               request={async () =>
-                await handleSendRequest(paymentInfoValues, updateSettings)
+                await handleSendRequest(
+                  { type: settingsType, body: paymentInfoValues },
+                  updateSettings
+                )
               }
               cancel={() => handleCancelRequest(setPaymentInfoValues)}
               maxWidth="100%"
