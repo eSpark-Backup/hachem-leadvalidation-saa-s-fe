@@ -1,10 +1,4 @@
-import {
-  Line,
-  Bar,
-  XAxis,
-  ResponsiveContainer,
-  ComposedChart,
-} from 'recharts';
+import { Line, Bar, XAxis, ResponsiveContainer, ComposedChart } from 'recharts';
 import PropTypes from 'prop-types';
 
 const BarLineChart = ({ data = [], color = '#FFA500', height }) => {

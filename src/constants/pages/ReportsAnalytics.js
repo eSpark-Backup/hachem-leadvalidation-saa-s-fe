@@ -1,4 +1,4 @@
-import  DownloadFile  from '/src/assets/images/dashboard/download-file.svg';
+import DownloadFile from '/src/assets/images/dashboard/download-file.svg';
 
 const CLIENT_REPORTS_ANALYTICS = {
   title: 'Reports & Analytics',

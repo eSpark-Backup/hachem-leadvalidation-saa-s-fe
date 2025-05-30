@@ -1,122 +1,80 @@
-import { Box, useMediaQuery, useTheme } from '@mui/system';
-import { useEffect, useState } from 'react';
-import { PROFILE_DROP_DOWN } from '../../constants/components/globals/ProfileDropDown';
+import { useState } from 'react';
 import {
-  ClickAwayListener,
-  IconButton,
-  InputAdornment,
+  Box,
+  Avatar,
+  Menu,
   MenuItem,
-  TextField,
+  ListItemIcon,
+  Divider,
   Typography,
 } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import ClearIcon from '@mui/icons-material/Clear';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import {
-  clickableBoxStyles,
-  userInfoBoxStyles,
-  dropdownMenuStyles,
-  menuItemStyles,
-  dropdownBoxStyles,
-  innerRowStyles,
-  containerBoxStyles,
-  textFieldStyles,
-  welcomdeTextStyles,
-  profileNameStyles,
-} from '../../styles/components/globals/ProfileDropDown';
-import { PROFILE } from '../../utils/auth';
+import { PROFILE_DROPDOWN_STYLE } from '../../styles/components/globals/ProfileDropDown';
+import PropTypes from 'prop-types';
 
-const ProfileDropDown = () => {
-  const [open, setOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filteredData, setFilteredData] = useState([]);
-  console.log(filteredData);
-  const theme = useTheme();
-  const lgUp = useMediaQuery(theme.breakpoints.up('lg'));
-  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
-
-  const mockData = [];
-  const usersOptionsDropDownOptions = [];
-  useEffect(() => {
-    setFilteredData(
-      searchTerm.trim() === ''
-        ? []
-        : mockData?.filter((item) =>
-            item?.toLowerCase()?.includes(searchTerm?.toLowerCase())
-          )
-    );
-  }, [searchTerm]);
-
-  const handleToggle = () => setOpen((prev) => !prev);
-  const handleCloseChartModal = () => setOpen(false);
-  const handleClear = () => setSearchTerm('');
+const ProfileDropDown = ({ data }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => setAnchorEl(event?.currentTarget);
+  const handleClose = () => setAnchorEl(null);
+  const { defaultImage, welcomeText, user, arrowImage, menuItems } = data || {};
+  const {
+    profileDropdownStyle,
+    avatarStyle,
+    contentBoxStyle,
+    welcomeTextStyle,
+    userTextStyle,
+    arrowImageStyle,
+    menuStyle,
+  } = PROFILE_DROPDOWN_STYLE || {};
 
   return (
-    <Box sx={containerBoxStyles}>
-      <Box sx={innerRowStyles}>
-        {!mdDown && (
-          <TextField
-            autoFocus={!lgUp}
-            variant="outlined"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            sx={textFieldStyles}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-              endAdornment: searchTerm && (
-                <InputAdornment position="end">
-                  <IconButton onClick={handleClear} edge="end">
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-        )}
-
-        <ClickAwayListener onClickAway={handleCloseChartModal}>
-          <Box sx={dropdownBoxStyles(lgUp)}>
-            <Box onClick={handleToggle} sx={clickableBoxStyles}>
-              <Box sx={userInfoBoxStyles}>
-                <img src={PROFILE.profileImage} alt="Profile" />
-                {lgUp && (
-                  <>
-                    <Box>
-                      <Typography sx={welcomdeTextStyles}>
-                        {PROFILE_DROP_DOWN.welcomeText}
-                      </Typography>
-                      <Typography sx={profileNameStyles}>
-                        {PROFILE.name}
-                      </Typography>
-                    </Box>
-                    <ExpandMoreIcon />
-                  </>
-                )}
-              </Box>
-            </Box>
-            {open && (
-              <Box sx={dropdownMenuStyles}>
-                {usersOptionsDropDownOptions?.map((item, index) => (
-                  <MenuItem
-                    key={index}
-                    sx={menuItemStyles}
-                    onClick={handleCloseChartModal}
-                  >
-                    {item?.label}
-                  </MenuItem>
-                ))}
-              </Box>
-            )}
+    <Box sx={{ position: 'relative' }}>
+      <Box onClick={handleClick} sx={profileDropdownStyle}>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1,
+          }}
+        >
+          <Avatar alt={user} sx={avatarStyle} src={defaultImage} />
+          <Box sx={contentBoxStyle}>
+            <Typography sx={welcomeTextStyle}>{welcomeText}</Typography>
+            <Typography sx={userTextStyle}>{user}</Typography>
           </Box>
-        </ClickAwayListener>
+        </Box>
+        <Box component={'img'} src={arrowImage} sx={arrowImageStyle(open)} />
       </Box>
+      <Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        id="account-menu"
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        PaperProps={{
+          elevation: 3,
+          sx: menuStyle,
+        }}
+      >
+        {menuItems.map((item, i) =>
+          item === 'divider' ? (
+            <Divider key={i} />
+          ) : (
+            <MenuItem key={i}>
+              {item?.icon && <ListItemIcon>{item?.icon}</ListItemIcon>}
+              {item?.label}
+            </MenuItem>
+          )
+        )}
+      </Menu>
     </Box>
   );
+};
+
+ProfileDropDown.propTypes = {
+  data: PropTypes.object,
 };
 
 export default ProfileDropDown;

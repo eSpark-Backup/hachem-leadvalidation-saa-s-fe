@@ -46,16 +46,16 @@ const styles = {
   sectionTitle: {
     fontWeight: 600,
     fontSize: {
-      xs: '1.2rem', 
+      xs: '1.2rem',
       sm: '1.4rem',
-      md: '1.5rem', 
+      md: '1.5rem',
     },
     color: '#09102B',
   },
   sectionSubtitle: {
     fontSize: {
       xs: '0.9rem',
-      sm: '1rem', 
+      sm: '1rem',
       md: '1.1rem',
     },
     color: '#77797D',
@@ -70,7 +70,7 @@ const styles = {
     color: '#09102B',
     boxShadow: '1px 2px 3px 0px #4676FB69',
     '&:hover': {
-      boxShadow: '1px 2px 3px 0px #4676FB69', 
+      boxShadow: '1px 2px 3px 0px #4676FB69',
       backgroundColor: '#F7F7F7',
       color: '#09102B',
     },

@@ -1,4 +1,4 @@
-import ProfileImageDefault from '/src/assets/images/global/profile-Image-default.png';
+import ProfileImageDefault from '/src/assets/images/global/default-img.jpg';
 
 const ROUTES = {
   // public paths

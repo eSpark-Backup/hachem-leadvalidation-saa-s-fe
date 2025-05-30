@@ -125,7 +125,7 @@ const ALT_ATTRIBUTE = {
   document: 'Document',
   trash: 'Trash',
   check: 'Check',
-  successfull:"Successfull"
+  successfull: 'Successfull',
 };
 
 const ICONS = {

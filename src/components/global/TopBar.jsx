@@ -10,8 +10,6 @@ import {
   menuIconStyles,
   titleStyles,
   compactTitleContainer,
-  smallTitleStyles,
-  idStyles,
   containerStyles,
   leftSectionStyles,
 } from '../../styles/components/globals/TopBar';
@@ -19,6 +17,9 @@ import {
 import { TOP_BAR } from '../../constants/components/globals/TopBar';
 import { PROFILE, USER_TYPE } from '../../utils/auth';
 import { USER_TYPES } from '../../constants/components/globals/Auth';
+import { PROFILE_DROP_DOWN } from '../../constants/components/globals/ProfileDropDown';
+import TopBarSearch from './TopBarSearch';
+import { TOP_BAR_SEARCH_DATA } from '../../constants/components/globals/TopBarSearch';
 
 const TopBar = ({ open, setOpenNav }) => {
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
@@ -46,19 +47,28 @@ const TopBar = ({ open, setOpenNav }) => {
           />
         )}
         {!mdDown ? (
-          <Typography variant="h6" component="div" sx={titleStyles}>
+          <Typography variant="h6" sx={titleStyles}>
             {fullTitle}
           </Typography>
         ) : (
           <Box sx={compactTitleContainer}>
-            <Typography sx={smallTitleStyles}>{compactTitle}</Typography>
-            <Typography sx={idStyles}>{profileID}</Typography>
+            <Typography variant="h6" sx={titleStyles}>
+              {compactTitle}
+            </Typography>
+            <Typography variant="h6" sx={titleStyles}>
+              {profileID}
+            </Typography>
           </Box>
         )}
       </Box>
 
       {/* Right Section: Profile Dropdown */}
-      <ProfileDropDown />
+      <Box
+        sx={{ display: 'flex', alignItems: 'center', gap: 1, width: 'auto' }}
+      >
+        <TopBarSearch data={TOP_BAR_SEARCH_DATA} />
+        <ProfileDropDown data={PROFILE_DROP_DOWN} />
+      </Box>
     </Box>
   );
 };

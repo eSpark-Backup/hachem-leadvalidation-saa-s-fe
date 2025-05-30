@@ -1,117 +1,59 @@
-const containerBoxStyles = {
-  width: '50%',
-  display: 'flex',
-  justifyContent: 'flex-end',
-  alignItems: 'center',
-  gap: { xs: 1, sm: 2 },
-  flexWrap: 'wrap',
-};
-
-const innerRowStyles = {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  gap: 2,
-  flexWrap: 'wrap',
-};
-
-const textFieldStyles = {
-  bgcolor: '#fff',
-  '& .MuiOutlinedInput-root': {
-    height: '48px',
-    borderRadius: '5px',
-    border: '1px solid gray',
-    backgroundColor: '#fff',
-    paddingLeft: '8px',
+export const PROFILE_DROPDOWN_STYLE = {
+  profileDropdownStyle: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 2,
+    px: { xs: 0, md: 1 },
+    borderRadius: '8px',
+    border: { xs: 0, md: '1px solid #263C2870' },
+    cursor: 'pointer',
+    bgcolor: '#fff',
+    width: 'fit-content',
+    minWidth: { md: '210px', lg: '217px' },
+    height: '46px',
   },
-  '& .MuiOutlinedInput-notchedOutline': {
-    border: 'none',
+  avatarStyle: {
+    width: { xs: 36, md: 32 },
+    height: { xs: 36, md: 32 },
+    borderRadius: { md: '8px' },
   },
-  '& input::placeholder': {
-    fontSize: '14px',
+  contentBoxStyle: {
+    display: { xs: 'none', md: 'flex' },
+    flexDirection: 'column',
   },
-};
-
-const dropdownBoxStyles = (lgUp) => ({
-  position: 'relative',
-  height: '48px',
-  borderRadius: '5px',
-  border: lgUp ? '1px solid gray' : 'none',
-  backgroundColor: '#fff',
-  display: 'flex',
-  alignItems: 'center',
-  px: 1.5,
-  justifyContent: 'space-between',
-  cursor: 'pointer',
-});
-
-const clickableBoxStyles = {
-  bgcolor: '#fff',
-  '& .MuiOutlinedInput-root': {
-    height: '48px',
-    borderRadius: '5px',
-    border: '1px solid gray',
-    backgroundColor: '#fff',
-    paddingLeft: '8px',
+  welcomeTextStyle: { fontSize: '10.5px', fontWeight: 500, color: '#373B5C' },
+  userTextStyle: {
+    fontSize: '16.5px',
+    fontWeight: 600,
+    color: '#373B5C',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    maxWidth: '150px',
   },
-  '& .MuiOutlinedInput-notchedOutline': {
-    border: 'none',
+  arrowImageStyle: (open) => ({
+    display: { xs: 'none', md: 'flex' },
+    mr: 0.5,
+    transition: 'transform 0.4s ease',
+    transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+  }),
+  menuStyle: {
+    mt: 1.5,
+    overflow: 'visible',
+    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.15))',
+    '& .MuiAvatar-root': { width: 32, height: 32, ml: -0.5, mr: 1 },
+    '&::before': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      top: 0,
+      right: 16,
+      width: 10,
+      height: 10,
+      bgcolor: 'background.paper',
+      transform: 'translateY(-50%) rotate(45deg)',
+      zIndex: 0,
+    },
   },
-  '& input::placeholder': {
-    fontSize: '14px',
-  },
-};
-
-const userInfoBoxStyles = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: 1,
-};
-
-const dropdownMenuStyles = {
-  position: 'absolute',
-  top: '100%',
-  minWidth: '150px',
-  left: 0,
-  right: 0,
-  border: '1px solid #ccc',
-  borderRadius: '5px',
-  mt: 1,
-  backgroundColor: '#fff',
-  zIndex: 10,
-};
-
-const menuItemStyles = {
-  fontSize: { xs: '14px', sm: '15px', md: '16px' },
-  lineHeight: { xs: '20px', sm: '22px', md: '24px' },
-  color: '#373B5C',
-  fontWeight: 500,
-};
-
-const profileImgStyles = {
-  width: '32px',
-  height: '32px',
-  borderRadius: '50%',
-};
-
-const welcomdeTextStyles = { fontSize: '12px', color: '#373B5C' };
-
-const profileNameStyles = {
-  fontSize: { xs: '14px', sm: '15px', md: '16px' },
-  color: '#373B5C',
-  fontWeight: 500,
-};
-
-export {
-  clickableBoxStyles,
-  profileNameStyles,
-  welcomdeTextStyles,
-  userInfoBoxStyles,
-  dropdownMenuStyles,
-  menuItemStyles,
-  dropdownBoxStyles,
-  profileImgStyles,
-  innerRowStyles,
-  containerBoxStyles,
-  textFieldStyles,
 };
