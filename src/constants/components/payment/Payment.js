@@ -65,6 +65,16 @@ const PAYMENT_DATA = {
   },
 };
 
+const PAYMENT_FORM_DATA = {
+  payout: false,
+  new_payment: false,
+  credit_card_number: '',
+  card_holder_name: '',
+  date: '',
+  country: '',
+  cvv: '',
+};
+
 const LOW_CREDITS_DATA = {
   title:
     'low Credits please recharge your Klairn Subscription To get more Credits !',
@@ -93,4 +103,4 @@ const LOW_CREDITS_DATA = {
   },
 };
 
-export { PAYMENT_DATA, LOW_CREDITS_DATA };
+export { PAYMENT_DATA, LOW_CREDITS_DATA, PAYMENT_FORM_DATA };

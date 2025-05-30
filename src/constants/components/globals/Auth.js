@@ -61,5 +61,61 @@ const KEYS = {
   userType: 'userType',
   tokenKey: 'sample-token',
 };
+const EMAIL_FROM = {
+  email: '',
+};
 
-export { ROUTES, SUPPLIER_INFO, ADMIN_INFO, CLIENT_INFO, USER_TYPES, KEYS };
+const LOGIN_FORM = {
+  email: '',
+  password: '',
+  service_and_policy: false,
+};
+const NEW_PASSWORD_FORM = {
+  current_password: '',
+  new_password: '',
+  confirm_password: '',
+};
+const NEW_PASSWORD_FORM_RESET = {
+  current_password: false,
+  new_password: false,
+  confirm_password: false,
+};
+
+const RESRT_PASSWORD_FORM = {
+  password: '',
+  confirm_password: '',
+};
+const RESRT_PASSWORD_FORM_RESET = {
+  password: false,
+  confirm_password: false,
+};
+const SIGNUP_FORM = {
+  fullname: '',
+  email: '',
+  password: '',
+  confirm_password: '',
+  company: '',
+  service_and_policy: false,
+  role: '',
+};
+
+const SIGNUP_FORM_SHOW = {
+  password: false,
+  confirm_password: false,
+};
+export {
+  ROUTES,
+  SUPPLIER_INFO,
+  ADMIN_INFO,
+  CLIENT_INFO,
+  USER_TYPES,
+  KEYS,
+  EMAIL_FROM,
+  LOGIN_FORM,
+  NEW_PASSWORD_FORM,
+  NEW_PASSWORD_FORM_RESET,
+  RESRT_PASSWORD_FORM,
+  RESRT_PASSWORD_FORM_RESET,
+  SIGNUP_FORM,
+  SIGNUP_FORM_SHOW,
+};

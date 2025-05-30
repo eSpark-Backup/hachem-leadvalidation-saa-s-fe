@@ -113,6 +113,7 @@ export const CARDS = [
       'Low Credits, please recharge your subscription to get more credits!',
   },
 ];
+export const FORM_DATA = { title: '', message: '' };
 
 export const SYSTEM_SETTING = {
   headerTitle: 'System Settings',

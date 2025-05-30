@@ -14,6 +14,7 @@ import { USER_TYPE } from '../utils/auth';
 import { ROUTES, USER_TYPES } from '../constants/components/globals/Auth';
 import {
   CARDS,
+  FORM_DATA,
   FRAUD_SETTINGS,
   LEADS_SETTINGS,
   OPTIONS,
@@ -41,7 +42,7 @@ const SystemSetting = () => {
   const [activeBox, setActiveBox] = useState('lead');
   const [modalOpen, setModalOpen] = useState(false);
   const [editingCardId, setEditingCardId] = useState(null);
-  const [formState, setFormState] = useState({ title: '', message: '' });
+  const [formState, setFormState] = useState(FORM_DATA);
 
   const [cards, setCards] = useState(CARDS);
 
@@ -77,7 +78,7 @@ const SystemSetting = () => {
       setFormState({ title: card.title, message: card.message });
     } else {
       setEditingCardId(null);
-      setFormState({ title: '', message: '' });
+      setFormState(FORM_DATA);
     }
     setModalOpen(true);
   };
@@ -85,7 +86,7 @@ const SystemSetting = () => {
   const handleCloseModal = () => {
     setModalOpen(false);
     setEditingCardId(null);
-    setFormState({ title: '', message: '' });
+    setFormState(FORM_DATA);
   };
 
   const handleCardSave = () => {

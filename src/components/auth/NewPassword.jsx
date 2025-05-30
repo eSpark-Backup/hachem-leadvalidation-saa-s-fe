@@ -12,7 +12,11 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 import { AUTH_FORMS } from '../../constants/auth';
-import { ROUTES } from '../../constants/components/globals/Auth';
+import {
+  NEW_PASSWORD_FORM,
+  NEW_PASSWORD_FORM_RESET,
+  ROUTES,
+} from '../../constants/components/globals/Auth';
 
 const NewPassword = () => {
   const {
@@ -28,17 +32,9 @@ const NewPassword = () => {
 
   const navigate = useNavigate();
 
-  const [user, setUser] = useState({
-    current_password: '',
-    new_password: '',
-    confirm_password: '',
-  });
+  const [user, setUser] = useState(NEW_PASSWORD_FORM);
 
-  const [showPassword, setShowPassword] = useState({
-    current_password: false,
-    new_password: false,
-    confirm_password: false,
-  });
+  const [showPassword, setShowPassword] = useState(NEW_PASSWORD_FORM_RESET);
 
   const handleClickEye = (field) => {
     setShowPassword((prev) => ({
@@ -58,11 +54,7 @@ const NewPassword = () => {
       user?.confirm_password
     ) {
       navigate(login);
-      setUser({
-        current_password: '',
-        new_password: '',
-        confirm_password: '',
-      });
+      setUser(NEW_PASSWORD_FORM);
     } else {
       null;
     }

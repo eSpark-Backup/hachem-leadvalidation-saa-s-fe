@@ -22,6 +22,7 @@ import { useLoginMutation } from '../../redux/slices/auth/authApiSlice';
 import { handleLoginMutation } from '../../services/auth';
 
 import { AUTH_FORMS } from '../../constants/auth';
+import { LOGIN_FORM } from '../../constants/components/globals/Auth';
 
 const Login = () => {
   const {
@@ -41,11 +42,7 @@ const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
 
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-    service_and_policy: false,
-  });
+  const [user, setUser] = useState(LOGIN_FORM);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
 

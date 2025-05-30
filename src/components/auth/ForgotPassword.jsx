@@ -16,7 +16,7 @@ import { useResetPasswordRequestMutation } from '../../redux/slices/auth/authApi
 import { handleResetPasswordRequestMutation } from '../../services/auth';
 
 import { AUTH_FORMS } from '../../constants/auth';
-import { ROUTES } from '../../constants/components/globals/Auth';
+import { EMAIL_FROM, ROUTES } from '../../constants/components/globals/Auth';
 
 const ForgotPassword = () => {
   const {
@@ -33,9 +33,7 @@ const ForgotPassword = () => {
   const [resetPasswordRequest, { isLoading }] =
     useResetPasswordRequestMutation();
 
-  const [user, setUser] = useState({
-    email: '',
-  });
+  const [user, setUser] = useState(EMAIL_FROM);
   const [showInstruction, setShowInstruction] = useState(false);
   const [message, setMessage] = useState();
 

@@ -17,7 +17,11 @@ import { useResetPasswordMutation } from '../../redux/slices/auth/authApiSlice';
 import { handleResetPasswordMutation } from '../../services/auth';
 
 import { AUTH_FORMS } from '../../constants/auth';
-import { ROUTES } from '../../constants/components/globals/Auth';
+import {
+  RESRT_PASSWORD_FORM,
+  RESRT_PASSWORD_FORM_RESET,
+  ROUTES,
+} from '../../constants/components/globals/Auth';
 
 const ResetPassword = () => {
   const {
@@ -38,14 +42,8 @@ const ResetPassword = () => {
 
   const [resetPassword, { isLoading }] = useResetPasswordMutation();
 
-  const [user, setUser] = useState({
-    password: '',
-    confirm_password: '',
-  });
-  const [showPassword, setShowPassword] = useState({
-    password: false,
-    confirm_password: false,
-  });
+  const [user, setUser] = useState(RESRT_PASSWORD_FORM);
+  const [showPassword, setShowPassword] = useState(RESRT_PASSWORD_FORM_RESET);
   const [error, setError] = useState();
 
   const handleClickEye = (field) => {

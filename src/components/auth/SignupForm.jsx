@@ -12,7 +12,11 @@ import { useEffect, useState } from 'react';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate, useParams } from 'react-router-dom';
 import Checkbox from './Checkbox';
-import { ROUTES } from '../../constants/components/globals/Auth';
+import {
+  ROUTES,
+  SIGNUP_FORM,
+  SIGNUP_FORM_SHOW,
+} from '../../constants/components/globals/Auth';
 import { useRegisterMutation } from '../../redux/slices/auth/authApiSlice';
 import { handleRegisterMutation } from '../../services/auth';
 
@@ -37,19 +41,8 @@ const SignupForm = () => {
 
   const [register, { isLoading }] = useRegisterMutation();
 
-  const [showPassword, setShowPassword] = useState({
-    password: false,
-    confirm_password: false,
-  });
-  const [user, setUser] = useState({
-    fullname: '',
-    email: '',
-    password: '',
-    confirm_password: '',
-    company: '',
-    service_and_policy: false,
-    role: '',
-  });
+  const [showPassword, setShowPassword] = useState(SIGNUP_FORM_SHOW);
+  const [user, setUser] = useState(SIGNUP_FORM);
   const [error, setError] = useState(null);
 
   useEffect(() => {
