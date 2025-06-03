@@ -1,7 +1,7 @@
 import { inputStyles } from '../Common';
 
 const filterDropdownStyles = {
-  backgroundColor: 'white',
+  backgroundColor: 'white.main',
   height: { xs: '35px', sm: '25px' },
 
   '& input': {

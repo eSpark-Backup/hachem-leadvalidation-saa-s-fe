@@ -1,6 +1,6 @@
 import { flexStyles } from './Table';
 
-const tableBodyItemStyles = (hasPoints) => {
+const tableBodyItemStyles = (hasPoints, colKey) => {
   return {
     fontSize: '14px !important',
     lineHeight: '17px',
@@ -8,6 +8,12 @@ const tableBodyItemStyles = (hasPoints) => {
     color: '#212332',
     height: { xs: hasPoints ? '85px' : '60px', md: '60px' },
     minWidth: '100px',
+    textAlign:
+      colKey === 'date'
+        ? 'center'
+        : colKey === 'leads_validation'
+          ? 'center'
+          : 'left',
     padding: hasPoints ? '0px' : '0px 18px',
 
     '&:first-of-type': {
@@ -55,7 +61,13 @@ const buttonBoxStyles = (status) => {
     border: '1px solid',
     borderColor: green ? '#54D14D' : blue ? '#136BE5' : '#FF4343',
     height: '32px',
-
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: green ? '#54D14D' : blue ? '#136BE5' : '#FF4343',
+    },
+    '&:hover p': {
+      color: '#fff',
+    },
     '& p': {
       color: green ? '#54D14D' : blue ? '#136BE5' : '#FF4343',
       fontSize: '13px',
@@ -74,6 +86,7 @@ const editButtonStyles = {
 
 const eyeButtonStyles = {
   backgroundColor: 'rgba(84, 209, 77, 0.1) !important',
+  mx: 'auto',
   width: '30px',
   height: '30px',
   padding: 0,

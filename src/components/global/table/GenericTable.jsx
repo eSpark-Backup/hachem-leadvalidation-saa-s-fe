@@ -28,6 +28,7 @@ import {
   tableHeaderStyles,
   tableHeadingStyles,
   tableStyles,
+  tableHeaderHeadingTypographyStyles,
 } from '../../../styles/components/globals/table/Table';
 
 import useTableFilter from '../../../hooks/useTableFilter';
@@ -84,7 +85,7 @@ const GenericTable = ({
       <Box sx={headingBoxStyles(leadMonitoring, leadStatus)}>
         <Box sx={genericTableHeadingBoxStyles}>
           <Typography
-            variant="h1"
+            variant="h3"
             sx={{
               ...tableHeadingStyles,
               fontWeight: fontWeight ? fontWeight : 600,
@@ -129,9 +130,22 @@ const GenericTable = ({
           <Table sx={tableStyles}>
             <TableHead sx={tableHeaderStyles}>
               <TableRow>
-                {columns.map((col) => (
-                  <TableCell key={col.key} sx={tableHeaderHeadingStyles}>
-                    {col.label}
+                {columns?.map((col) => (
+                  <TableCell
+                    key={col.key}
+                    sx={tableHeaderHeadingStyles(
+                      !paginatedData?.length,
+                      col?.key
+                    )}
+                  >
+                    {!paginatedData?.length && col?.key === 'action' ? null : (
+                      <Typography
+                        variant="h6"
+                        sx={tableHeaderHeadingTypographyStyles(col?.key)}
+                      >
+                        {col.label}
+                      </Typography>
+                    )}
                   </TableCell>
                 ))}
               </TableRow>

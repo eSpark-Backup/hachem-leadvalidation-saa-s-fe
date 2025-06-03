@@ -16,9 +16,9 @@ import { LEADS_PERFORMANCE_CHART } from '../../constants/components/charts/Leads
 
 const DashboardTopCards = ({ data, content }) => {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} justifyContent={'center'} px={{ xs: 1, lg: 2 }}>
       {content?.map((card, index) => (
-        <Grid item xs={12} sm={6} md={3} key={index}>
+        <Grid item xs={11.8} sm={6} md={3} key={index}>
           <Box
             sx={{
               ...cardStyles,
@@ -28,9 +28,11 @@ const DashboardTopCards = ({ data, content }) => {
           >
             <Box sx={layoutStyles(card.isInverted)}>
               <Box sx={textColumnStyles(!!card.chartTitle)}>
-                <Box sx={titleStyles(card.titleColor)}>{card.title}</Box>
-                <Box sx={{ display: 'flex', alignItems: 'top', gap: 0.5 }}>
-                  <Typography sx={valueStyles(card.valueColor)}>
+                <Typography variant="h6" sx={titleStyles(card.titleColor)}>
+                  {card.title}
+                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
+                  <Typography variant="h4" sx={valueStyles(card.valueColor)}>
                     {data[index].toLocaleString()}
                     {card.postText || ''}
                   </Typography>
@@ -48,7 +50,15 @@ const DashboardTopCards = ({ data, content }) => {
                   </>
                 )}
                 {card.icon ? (
-                  <img src={card.icon} alt={card.title} />
+                  <Box
+                    component={'img'}
+                    src={card.icon}
+                    alt={card.title}
+                    sx={{
+                      width: { xs: '88%', lg: 'auto' },
+                      mr: 'auto',
+                    }}
+                  />
                 ) : (
                   <LeadsPerformanceChart
                     color={card.chartColor}

@@ -40,7 +40,7 @@ const privateLayoutBoxStyles = {
 };
 
 const privateLayoutOutletBoxStyles = {
-  p: { xs: 0, sm: 2 },
+  py: { xs: 0, sm: 2 },
   overflowY: 'auto',
 };
 

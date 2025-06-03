@@ -121,7 +121,7 @@ const formatCellItem = (
       <Box sx={actionButtonBoxStyles}>
         {detail && (
           <IconButton sx={eyeButtonStyles} onClick={() => detailAction(row)}>
-            <img src={ICONS.eye} alt="Show" />
+            <img src={ICONS?.eye} alt="Show" />
           </IconButton>
         )}
 
@@ -148,7 +148,7 @@ const formatCellItem = (
 
         {trash && (
           <IconButton sx={trashButtonStyles} onClick={() => deleteAction(row)}>
-            <img src={ICONS.trash} alt="Trash" />
+            <img src={ICONS?.trash} alt="Trash" />
           </IconButton>
         )}
       </Box>
@@ -173,7 +173,7 @@ const FormatCell = ({
   myLeads,
 }) => {
   return (
-    <TableCell key={colKey} sx={tableBodyItemStyles(hasPoints)}>
+    <TableCell key={colKey} sx={tableBodyItemStyles(hasPoints, colKey)}>
       {colIndex === 0 && row.isLatest && (
         <Box sx={latestItemStyles}>
           <Typography sx={newLabelStyles}>{row.isLatestText}</Typography>

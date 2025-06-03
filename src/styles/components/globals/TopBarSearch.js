@@ -4,7 +4,7 @@ const TOP_BAR_SEARCH_STYLE = {
       display: { xs: 'none', sm: 'flex' },
       borderRadius: '12px',
       maxWidth: { md: '200px', lg: '341px' },
-      height: '46px',
+      height: { xs: '38px', md: '46px' },
 
       '& fieldset': {
         border: '1px solid #263C2870',

@@ -5,31 +5,74 @@ import {
 } from '@mui/material/styles';
 
 let theme = createTheme_default({
+  palette: {
+    color1: {
+      main: '#1B2559',
+    },
+    color2: {
+      main: '#15134B',
+    },
+    color3: {
+      main: '#A3AED0',
+    },
+    color4: {
+      main: '#212332',
+    },
+    color5: {
+      main: '#3A3A49',
+    },
+    color6: {
+      main: '#77797D',
+    },
+    color7: {
+      main: '#1E293B',
+    },
+    color8: {
+      main: '#475569',
+    },
+    color9: {
+      main: '#136BE5',
+    },
+    color10: {
+      main: '#94A3B8',
+    },
+    color11: {
+      main: '#E9EDF7',
+    },
+    white: {
+      main: '#FFFFFF',
+    },
+    black: {
+      main: '#000',
+    },
+    success: { main: '#54D14D' },
+    error: { main: '#FF4343' },
+  },
   typography: {
     fontFamily: ['Gilroy', 'sans-serif'].join(','),
     h1: {
-      fontSize: '40px',
+      fontSize: '41px',
       fontWeight: 700,
     },
     h2: {
-      fontSize: '28px',
-      fontWeight: 600,
+      fontSize: '31px',
+      fontWeight: 700,
     },
     h3: {
-      fontSize: '20px',
+      fontSize: '25px',
       fontWeight: 600,
     },
     h4: {
-      fontSize: '18px',
-      fontWeight: 700,
+      fontSize: '23px',
+      fontWeight: 600,
     },
     h5: {
-      fontSize: '22px',
+      fontSize: '18px',
       fontWeight: 600,
     },
     h6: {
-      fontSize: '16px',
-      fontWeight: 700,
+      fontSize: '14px',
+      fontWeight: 600,
     },
     body1: {},
     body2: {

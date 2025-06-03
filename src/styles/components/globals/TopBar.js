@@ -1,5 +1,6 @@
 const containerStyles = {
-  width: '100%',
+  mx: 'auto',
+  width: { xs: '100%' },
   minHeight: '46px',
   bgcolor: '#FFFFFF',
   color: '#000',

@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Typography } from '@mui/material';
+import { Box, Card, Grid, Tooltip, Typography } from '@mui/material';
 import { stats } from '../../constants/components/dashboard/DashboardStaticsCards';
 import CircularProgressWithAutoUpdate from './CircularProgressWithLabel';
 import ClientStaticsChart from '../charts/ClientStaticsChart';
@@ -11,18 +11,20 @@ import {
   PIE_CHARTS_COLORS,
 } from '../../constants/components/charts/PieCharts';
 import DonutChartSingleWithText from '../charts/DonutChartSingleWithText';
+import TooltipText from '../global/TooltipText';
+import AppSlider from '../global/AppSlider';
 // --- Styles ---
-const containerStyles = { borderRadius: '17px' };
+const containerStyles = { borderRadius: '17px', overflowY: 'hidden' };
 
 const boxStyles = { background: '#09102B0D', p: 2, borderRadius: '17px' };
 
 const sectionTitle = {
   fontWeight: 800,
-  fontSize: { xs: '20px', sm: '25px' },
   color: '#1B2559',
 };
 
 const statsCardStyles = {
+  mt: '14px',
   borderRadius: '10px',
   background: '#ffffff',
 };
@@ -35,10 +37,18 @@ const statCard = {
   borderRadius: 3,
 };
 
-const statLabel = {
+const statLabel = (index) => ({
   fontWeight: 400,
-  fontSize: { xs: '14px', sm: '16px' },
-};
+  fontSize: 'clamp(0.75rem, 1vw, 0.875rem)',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  minWidth: '70px',
+  maxWidth: 'auto', // optional
+  display: 'inline-block', // required for ellipsis
+  mx: index === 0 ? 2 : 0,
+  color: '#3A3A49',
+});
 
 const chartContainer = {
   display: 'flex',
@@ -51,28 +61,33 @@ const actionBoxStyles = {
   background: '#09102B0D',
   p: 2.5,
   borderRadius: '17px',
+  height: '100%',
 };
 
 const actionTitle = {
   fontWeight: 800,
-  fontSize: '25px',
   color: '#1B2559',
 };
 
 const actionItemBox = {
-  display: 'flex',
+  display: { xs: 'none', sm: 'flex' },
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'column',
   color: '#1B2559',
-  p: 2,
+  py: 2,
 };
 
 const actionLabel = {
-  fontWeight: 400,
-  fontSize: '16px',
+  fontWeight: 500,
   textTransform: 'capitalize',
   pt: 1,
+};
+
+const slideStyle = {
+  width: '100%',
+  maxWidth: '170px',
+  paddingBottom: '20px',
 };
 
 // --- Static Data ---
@@ -88,14 +103,17 @@ const LEAD_STATS_DATA = [{ key: 'Group A', value: 50.56 }];
 const StatsCard = ({ data }) => {
   return (
     <>
-      {data.map((item) => (
-        <Grid item xs={12} sm={6} key={item.label}>
+      {data.map((item, index) => (
+        <Grid item xs={12} sm={6} key={index}>
           <Card variant="outlined" sx={statCard}>
-            <img src={item.icon} alt="icon" />
-            <Typography variant="subtitle1" sx={statLabel} color="#3A3A49">
-              {item.label}
-            </Typography>
-            <img src={item.light} alt="light-icon" />
+            <img src={item?.icon} alt="icon" />
+            <TooltipText
+              text={item?.label}
+              typographyStyle={statLabel(index)}
+              maxLength={10}
+              variant="subtitle1"
+            />
+            <img src={item?.light} alt="light-icon" />
           </Card>
         </Grid>
       ))}
@@ -110,39 +128,64 @@ const DashboardStaticsCards = () => {
   return (
     <Grid container sx={containerStyles} spacing={2}>
       {/* Left Section */}
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={6.5}>
         <Box sx={boxStyles}>
-          <Typography sx={sectionTitle}>Statistics</Typography>
+          <Typography variant="h3" sx={sectionTitle}>
+            Statistics
+          </Typography>
           <Grid container sx={statsCardStyles}>
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12} lg={8}>
               <Box sx={{ p: 2 }}>
                 <Grid container spacing={2}>
                   <StatsCard data={stats} />
                 </Grid>
               </Box>
             </Grid>
-            <Grid item xs={12} md={4} sx={chartContainer}>
-              <ClientStaticsChart data={CLIENT_STATICS_CHART} />
+            <Grid item xs={12} lg={4} sx={chartContainer}>
+              <ClientStaticsChart data={CLIENT_STATICS_CHART} height={'100%'} />
             </Grid>
           </Grid>
         </Box>
       </Grid>
 
       {/* Right Section */}
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={5.5}>
         <Box sx={actionBoxStyles}>
-          <Typography sx={actionTitle}>{'Latest Action'}</Typography>
-          <Grid container>
-            {leadStats.map((item) => (
-              <Grid item xs={12} md={4} sx={actionItemBox} key={item.label}>
+          <Typography variant="h3" sx={actionTitle}>
+            {'Latest Action'}
+          </Typography>
+          <Grid container mt={'8px'} maxWidth={'550px'} mx={'auto'}>
+            {leadStats?.map((item) => (
+              <Grid item xs={4} sm={4} sx={actionItemBox} key={item.label}>
                 <DonutChartSingleWithText
                   data={PIE_CHARTS2}
                   color={item.color}
                   text={item.value}
                 />
-                <Typography sx={actionLabel}>{item.label}</Typography>
+                <Typography variant="h6" sx={actionLabel}>
+                  {item.label}
+                </Typography>
               </Grid>
             ))}
+            <AppSlider
+              data={leadStats}
+              isDisplay={true}
+              slideStyle={slideStyle}
+              card={(item) => (
+                <Box
+                  sx={{ ...actionItemBox, display: { xs: 'flex', sm: 'none' } }}
+                >
+                  <DonutChartSingleWithText
+                    data={PIE_CHARTS2}
+                    color={item?.color}
+                    text={item?.value}
+                  />
+                  <Typography variant="h6" sx={actionLabel}>
+                    {item?.label}
+                  </Typography>
+                </Box>
+              )}
+            />
           </Grid>
         </Box>
       </Grid>

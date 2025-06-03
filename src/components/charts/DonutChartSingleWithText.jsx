@@ -34,7 +34,15 @@ const DonutChartSingleWithText = ({
           </svg>
         )}
         <Tooltip
-          contentStyle={{ fontSize: '12px', borderRadius: '8px' }}
+          contentStyle={{
+            fontSize: '12px',
+            borderRadius: '8px',
+            backgroundColor: '#ffff',
+            position: 'absolute',
+            top: 25,
+            left: 1,
+            zIndex: 1,
+          }}
           formatter={(value) => [`${value}${isPerAllowed ? '%' : ''}`, 'Value']}
         />
         <Pie
@@ -57,18 +65,13 @@ const DonutChartSingleWithText = ({
           ))}
         </Pie>
       </PieChart>
-
       <Box
         position="absolute"
         top="50%"
         left="50%"
-        sx={{ transform: 'translate(-50%, -50%)' }}
+        sx={{ transform: 'translate(-50%, -50%)', zIndex: 0 }}
       >
-        <Typography
-          variant="h6"
-          align="center"
-          sx={{ fontWeight: 700, fontSize }}
-        >
+        <Typography variant="h6" align="center">
           {`${text}${isPerAllowed ? '%' : ''}`}
         </Typography>
       </Box>

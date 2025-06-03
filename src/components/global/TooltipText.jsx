@@ -25,10 +25,10 @@ const TooltipText = ({
 };
 
 TooltipText.propTypes = {
-  text: PropTypes.any.isRequired,
-  typographyStyle: PropTypes.object.isRequired,
-  maxLength: PropTypes.number.isRequired,
-  variant: PropTypes.string.isRequired,
+  text: PropTypes.any,
+  typographyStyle: PropTypes.object,
+  maxLength: PropTypes.number,
+  variant: PropTypes.string,
 };
 
 export default TooltipText;

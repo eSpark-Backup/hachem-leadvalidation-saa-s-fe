@@ -39,7 +39,6 @@ const genericTableHeadingBoxStyles = {
 };
 
 const tableHeadingStyles = {
-  fontSize: '25px !important',
   lineHeight: '32px',
   color: '#1B2559',
 };
@@ -48,20 +47,24 @@ const tableHeaderStyles = {
   backgroundColor: 'rgba(192, 251, 198, 0.42)',
 };
 
-const tableHeaderHeadingStyles = {
-  fontSize: '14px !important',
-  padding: '14px 13px 12px',
-  fontWeight: 600,
+const tableHeaderHeadingStyles = (length, col) => ({
+  padding: length && col === 'action' ? 0 : '14px 13px 12px',
+});
+
+const tableHeaderHeadingTypographyStyles = (col) => ({
+  fontWeight: 700,
   lineHeight: '17px',
   color: '#212332',
   minWidth: '100px',
-};
+  pl: col === 'status' ? 2.5 : 0,
+  textAlign:
+    col === 'date' ? 'center' : col === 'leads_validation' ? 'center' : 'left',
+});
 
 const tableStyles = {
-  marginTop: '10px',
   borderCollapse: 'separate',
   borderSpacing: '0px 12px',
-  minWidth: 800,
+  minWidth: 1150,
 
   '& th:first-of-type, & td:first-of-type': {
     borderTopLeftRadius: '5px',
@@ -192,6 +195,7 @@ export {
   tableHeadingStyles,
   tableHeaderStyles,
   tableHeaderHeadingStyles,
+  tableHeaderHeadingTypographyStyles,
   tableStyles,
   buttonBoxStyles,
   actionButtonBoxStyles,

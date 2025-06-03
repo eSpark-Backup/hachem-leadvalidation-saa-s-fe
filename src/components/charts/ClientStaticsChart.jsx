@@ -67,7 +67,7 @@ const ClientStaticsChart = ({
         {showYAxis && <YAxis />}
         {showTooltip && <Tooltip />}
 
-        {areaKeys.map((key, index) => (
+        {areaKeys?.map((key, index) => (
           <Area
             key={key}
             type="monotone"

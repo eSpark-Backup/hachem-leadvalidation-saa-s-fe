@@ -1,40 +1,35 @@
 const cardStyles = {
-  boxShadow: '6px 3px 7.2px 0px #09102B21',
+  boxShadow: {
+    xs: '0px 3px 5.2px 0px #09102B21',
+    sm: '6px 3px 7.2px 0px #09102B21',
+  },
   backgroundColor: '#fff',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   borderRadius: '20px',
-  height: '100px',
+  height: { xs: '77px', sm: '87px', md: '97px' },
   padding: '20px',
   width: '100%',
 };
 
 const titleStyles = (color) => ({
   fontWeight: 500,
-  fontSize: {
-    xs: 12,
-    sm: 14,
-  },
   color: color || '#A3AED0',
 });
 
 const valueStyles = (color) => ({
   color: color || '#1B2559',
-  fontSize: {
-    xs: 20,
-    sm: 24,
-  },
   fontWeight: '700',
 });
 
 const unitStyles = (color) => ({
   color: color || '#212332',
   fontSize: {
-    xs: 12,
-    sm: 14,
+    xs: 10.5,
   },
   fontWeight: '500',
+  mb: { xs: 0.1, md: 0.2 },
 });
 
 const layoutStyles = (isInverted) => ({
@@ -65,8 +60,7 @@ const chartTitleStyles = (color) => ({
 
 const iconBoxStyles = {
   display: 'flex',
-  alignItems: 'end',
-  flexDirection: 'column',
+  width: 'fit-content',
 };
 
 export {
