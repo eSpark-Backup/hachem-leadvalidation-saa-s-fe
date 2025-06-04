@@ -64,7 +64,7 @@ const tableHeaderHeadingTypographyStyles = (col) => ({
 const tableStyles = {
   borderCollapse: 'separate',
   borderSpacing: '0px 12px',
-  minWidth: 1150,
+  // minWidth: 1150,
 
   '& th:first-of-type, & td:first-of-type': {
     borderTopLeftRadius: '5px',

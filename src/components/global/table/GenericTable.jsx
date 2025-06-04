@@ -56,6 +56,7 @@ const GenericTable = ({
   leadMonitoring = false,
   leadStatus = false,
   myLeads = false,
+  minWidth = 900,
   pickerObjects,
   actions,
 }) => {
@@ -127,12 +128,12 @@ const GenericTable = ({
 
       <Box>
         <TableContainer sx={{ overflow: 'auto' }}>
-          <Table sx={tableStyles}>
+          <Table sx={{ ...tableStyles, minWidth: minWidth }}>
             <TableHead sx={tableHeaderStyles}>
               <TableRow>
                 {columns?.map((col) => (
                   <TableCell
-                    key={col.key}
+                    key={col?.key}
                     sx={tableHeaderHeadingStyles(
                       !paginatedData?.length,
                       col?.key
@@ -143,7 +144,7 @@ const GenericTable = ({
                         variant="h6"
                         sx={tableHeaderHeadingTypographyStyles(col?.key)}
                       >
-                        {col.label}
+                        {col?.label}
                       </Typography>
                     )}
                   </TableCell>
@@ -153,18 +154,18 @@ const GenericTable = ({
 
             <TableBody>
               {paginatedData?.length ? (
-                paginatedData.map((row, i) => (
+                paginatedData?.map((row, i) => (
                   <TableRow
                     key={i}
                     sx={tableBodyRowStyles(
                       excelFilter,
-                      selectedRows.includes(row.id),
+                      selectedRows?.includes(row?.id),
                       myLeads &&
-                        (row.status === 'Pending' || row.status === 'Reject')
+                        (row?.status === 'Pending' || row?.status === 'Reject')
                     )}
-                    onClick={() => excelFilter && toggleRow(row.id)}
+                    onClick={() => excelFilter && toggleRow(row?.id)}
                   >
-                    {columns.map(({ key }, colIndex) => (
+                    {columns?.map(({ key }, colIndex) => (
                       <FormatCell
                         key={key}
                         colIndex={colIndex}
@@ -240,6 +241,7 @@ GenericTable.propTypes = {
   myLeads: PropTypes.bool,
   pickerObjects: PropTypes.object,
   actions: PropTypes.object,
+  minWidth: PropTypes.any,
 };
 
 export default GenericTable;

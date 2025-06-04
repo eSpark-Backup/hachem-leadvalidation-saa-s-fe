@@ -50,6 +50,7 @@ const MyLeads = () => {
         detail
         detailAction={goToPage}
         marginTop={{ xs: '30px', sm: '14px' }}
+        minWidth={900}
         editAction={() => setOpen(true)}
         myLeads
       />

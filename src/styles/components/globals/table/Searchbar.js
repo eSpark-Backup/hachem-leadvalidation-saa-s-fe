@@ -3,7 +3,7 @@ import { inputStyles } from './Common';
 const filterSearchStyles = {
   width: { xs: '100%', sm: '131px' },
   height: { xs: '35px', sm: '25px' },
-  backgroundColor: 'white',
+  backgroundColor: 'white.main',
   borderRadius: '5px',
   padding: '4px 11px 6px 10px',
 

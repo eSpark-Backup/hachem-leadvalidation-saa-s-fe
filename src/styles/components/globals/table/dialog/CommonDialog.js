@@ -10,7 +10,7 @@ const boxContainerstyles = {
   border: '3px solid rgba(0, 0, 0, 0.19)',
   backgroundColor: '#FFFFFF',
   borderRadius: '20px',
-  padding: { xs: '30px 54px 50px', sm: '36px 74px 60px' },
+  padding: { xs: '30px 30px 40px', sm: '36px 40px 45px' },
   display: 'inline-block',
   textAlign: 'center',
 };
@@ -18,13 +18,13 @@ const boxContainerstyles = {
 const textStyles = {
   color: '#1B2559',
   lineHeight: { xs: '28px', sm: '32px' },
-  fontSize: { xs: '22px', sm: '25px' },
   fontWeight: 600,
   marginBottom: '12px',
 };
 
 const stackStyles = {
-  gap: '26px',
+  mt: 2,
+  gap: { xs: '15px', md: '22px' },
   justifyContent: 'center',
   flexDirection: 'row',
 };

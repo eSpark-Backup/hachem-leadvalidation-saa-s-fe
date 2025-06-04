@@ -22,7 +22,7 @@ const CommonDialog = ({ open, handleClose, lead }) => {
       sx={paperStyles}
     >
       <Box sx={boxContainerstyles}>
-        <Typography variant="body1" sx={textStyles}>
+        <Typography variant="h3" sx={textStyles}>
           {lead
             ? TABLE_STATIC_TEXTS.confirmLead
             : TABLE_STATIC_TEXTS.confirmDelete}

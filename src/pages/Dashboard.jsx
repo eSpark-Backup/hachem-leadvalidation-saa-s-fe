@@ -44,7 +44,7 @@ const Dashboard = () => {
       }
     );
   };
-  const DashboardBoxStyles = { py: 1 };
+  const DashboardBoxStyles = { pt: { xs: 3, sm: 1 }, pb: 1 };
 
   return (
     <>
