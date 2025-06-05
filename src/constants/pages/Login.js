@@ -1,4 +1,4 @@
-export const LOGIN_PAGE = {
+const LOGIN_PAGE = {
   title: 'Login Page',
   description: 'Please select your role to log in.',
   adminBtnTitle: 'Login as Admin',
@@ -6,3 +6,5 @@ export const LOGIN_PAGE = {
   supplierBtnTitle: 'Login as Supplier',
   logoutBtnTitle: 'Logout',
 };
+
+export { LOGIN_PAGE };

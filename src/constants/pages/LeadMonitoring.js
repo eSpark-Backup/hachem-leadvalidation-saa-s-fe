@@ -1,11 +1,11 @@
-export const LEAD_MONITORING = {
+const LEAD_MONITORING = {
   title: 'Lead Monitoring',
   filterType: {
     date: 'date',
   },
 };
 
-export const TABLE_HEADER = [
+const TABLE_HEADER = [
   { key: 'cl_sp_id', label: 'CL/SP’s ID' },
   { key: 'company', label: 'Company' },
   { key: 'service', label: 'Service' },
@@ -15,7 +15,7 @@ export const TABLE_HEADER = [
   { key: 'lead_progress', label: 'Lead Progress' },
 ];
 
-export const TABLE_BODY = [
+const TABLE_BODY = [
   {
     id: 1,
     cl_sp_id: 'SP10023',
@@ -156,4 +156,11 @@ export const TABLE_BODY = [
   },
 ];
 
-export const LEAD_MONITORING_FILTER_TYPES = [{ type: 'date', key: 'date' }];
+const LEAD_MONITORING_FILTER_TYPES = [{ type: 'date', key: 'date' }];
+
+export {
+  LEAD_MONITORING_FILTER_TYPES,
+  TABLE_BODY,
+  TABLE_HEADER,
+  LEAD_MONITORING,
+};

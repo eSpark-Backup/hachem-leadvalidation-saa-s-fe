@@ -1,4 +1,3 @@
-// Styles
 const cardStyles = { p: 2 };
 
 const gridItemStyles = { pl: '3%' };

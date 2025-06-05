@@ -42,7 +42,7 @@ const validateForm = (setErrors, formState) => {
  * @param {string} key - The key in the form state object to toggle.
  * @param {Function} setFormState - A state updater function to update the form state.
  */
-export const handleSwitchChange = (key, setFormState) => {
+const handleSwitchChange = (key, setFormState) => {
   setFormState((prev) => ({ ...prev, [key]: !prev[key] }));
 };
 
@@ -54,7 +54,7 @@ export const handleSwitchChange = (key, setFormState) => {
  * @param {Function} setFormState - A state setter function to update the form state.
  * @param {Function} setErrors - A state setter function to update the error state.
  */
-export const handleInputChange = (key, value, setFormState, setErrors) => {
+const handleInputChange = (key, value, setFormState, setErrors) => {
   setFormState((prev) => ({ ...prev, [key]: value }));
   setErrors((prev) => ({ ...prev, [key]: '' }));
 };
@@ -67,7 +67,7 @@ export const handleInputChange = (key, value, setFormState, setErrors) => {
  * @param {Function} setErrors - A function to set validation errors for the form.
  * @param {string} alertText - The text to display in the alert if the form is valid.
  */
-export const handlePayNow = (formState, setErrors, alertText) => {
+const handlePayNow = (formState, setErrors, alertText) => {
   if (validateForm(setErrors, formState)) {
     localStorage.setItem(
       PAY_FORM_ERROR_TEXT.paymentInfo,
@@ -76,3 +76,5 @@ export const handlePayNow = (formState, setErrors, alertText) => {
     alert(alertText);
   }
 };
+
+export { handleSwitchChange, handleInputChange, handlePayNow };

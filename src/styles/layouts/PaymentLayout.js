@@ -1,9 +1,8 @@
-// Style constants
-export const containerStyle = {
+const containerStyle = {
   backgroundColor: '#F4F7FE',
 };
 
-export const logoWrapperStyle = {
+const logoWrapperStyle = {
   width: '100%',
   height: '100%',
   minHeight: '64px',
@@ -12,12 +11,12 @@ export const logoWrapperStyle = {
   mx: 'auto',
 };
 
-export const logoImageStyle = {
+const logoImageStyle = {
   width: '120px',
   height: '34px',
 };
 
-export const contentWrapperStyle = {
+const contentWrapperStyle = {
   width: '85%',
   minHeight: 'calc(100vh - 97px)',
   display: 'flex',
@@ -25,4 +24,11 @@ export const contentWrapperStyle = {
   py: { xs: 0, md: 1.5 },
   maxWidth: '1190px',
   mx: 'auto',
+};
+
+export {
+  containerStyle,
+  logoWrapperStyle,
+  logoImageStyle,
+  contentWrapperStyle,
 };

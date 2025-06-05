@@ -78,8 +78,6 @@ const PAYMENT_FORM_DATA = {
 const LOW_CREDITS_DATA = {
   title:
     'low Credits please recharge your Klairn Subscription To get more Credits !',
-
-  // style
   style: {
     mainBoxStyle: {
       display: 'flex',

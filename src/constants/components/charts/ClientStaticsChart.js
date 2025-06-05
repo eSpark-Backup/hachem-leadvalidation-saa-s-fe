@@ -1,4 +1,4 @@
-export const CLIENT_STATICS_CHART = [
+const CLIENT_STATICS_CHART = [
   { key: '1', a: 30, b: 52, c: 22, d: 28 },
   { key: '2', a: 31, b: 51, c: 23, d: 27 },
   { key: '3', a: 32, b: 53, c: 25, d: 29 },
@@ -30,3 +30,5 @@ export const CLIENT_STATICS_CHART = [
   { key: '16', a: 48, b: 68, c: 39, d: 43 },
   { key: '17', a: 50, b: 70, c: 38, d: 45 },
 ];
+
+export { CLIENT_STATICS_CHART };

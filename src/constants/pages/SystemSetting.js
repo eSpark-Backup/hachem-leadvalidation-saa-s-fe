@@ -1,4 +1,4 @@
-export const LEADS_SETTINGS = [
+const LEADS_SETTINGS = [
   {
     key: 'valid-name',
     name: 'Valid Name',
@@ -48,7 +48,7 @@ export const LEADS_SETTINGS = [
     max: 100,
   },
 ];
-export const FRAUD_SETTINGS = [
+const FRAUD_SETTINGS = [
   {
     title: 'Disposable Email Detection',
     description:
@@ -88,7 +88,7 @@ export const FRAUD_SETTINGS = [
     key: 'suspicious-referrers',
   },
 ];
-export const OPTIONS = [
+const OPTIONS = [
   {
     id: 'lead',
     label: 'Lead Scoring',
@@ -105,7 +105,7 @@ export const OPTIONS = [
     icon: '/assets/images/system-setting/message-icon.svg',
   },
 ];
-export const CARDS = [
+const CARDS = [
   {
     id: 1,
     title: 'Low Credits',
@@ -113,9 +113,9 @@ export const CARDS = [
       'Low Credits, please recharge your subscription to get more credits!',
   },
 ];
-export const FORM_DATA = { title: '', message: '' };
+const FORM_DATA = { title: '', message: '' };
 
-export const SYSTEM_SETTING = {
+const SYSTEM_SETTING = {
   headerTitle: 'System Settings',
   leadSettingsTitle: 'Lead Rejection Messages',
   fraudDetectionTitle: 'Fraud Detection',
@@ -135,4 +135,13 @@ export const SYSTEM_SETTING = {
   modalPlaceholderTemplate: 'Enter message template',
   modalCancel: 'Cancel',
   modalSave: 'Save Message',
+};
+
+export {
+  SYSTEM_SETTING,
+  CARDS,
+  FORM_DATA,
+  LEADS_SETTINGS,
+  OPTIONS,
+  FRAUD_SETTINGS,
 };

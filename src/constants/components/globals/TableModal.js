@@ -1,9 +1,11 @@
 import CloseIcon from '/assets/images/client/close.svg';
 
-export const ALT_ATTRIBUTE = {
+const ALT_ATTRIBUTE = {
   close: 'Close',
 };
 
-export const ICONS = {
+const ICONS = {
   close: CloseIcon,
 };
+
+export { ALT_ATTRIBUTE, ICONS };

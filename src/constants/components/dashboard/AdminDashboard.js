@@ -1,4 +1,4 @@
-export const ADMIN_DASHBOARD = {
+const ADMIN_DASHBOARD = {
   usage: 'Usage',
   ClientTotalLeads: {
     mainTitle: `Total Leads`,
@@ -74,3 +74,5 @@ export const ADMIN_DASHBOARD = {
     packerID: 'FmoMonth',
   },
 };
+
+export { ADMIN_DASHBOARD };

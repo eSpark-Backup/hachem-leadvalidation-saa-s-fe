@@ -35,8 +35,7 @@ const AUTH_FORMS = {
         text: 'CLIENT',
       },
     ],
-
-    // styles
+    
     signupTypeButtonStyle: (selectedOption, text) => ({
       mb: 1,
       pr: 3,
@@ -107,7 +106,6 @@ const AUTH_FORMS = {
     text: 'A verification code has been sent to your email',
     buttonText: 'Verify',
     resendButtonText: 'Resend',
-    // styles
     textStyle: {
       fontSize: '20px',
       fontWeight: 400,

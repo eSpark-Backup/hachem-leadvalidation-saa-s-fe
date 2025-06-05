@@ -1,10 +1,10 @@
-export const DASHBOARD_TEXT = {
+const DASHBOARD_TEXT = {
   LEADS_OVERVIEW: 'Leads overview',
   MOST_GENERATE_LEADS: 'Most Generate Leads',
   THIS_YEAR: 'This Year',
   THIS_MONTH: 'This Month',
 };
-export const TEXT_CONSTANTS = {
+const TEXT_CONSTANTS = {
   leadsPerformance: 'Leads Performance',
   validLeads: 'Valid Leads',
   pendingLeads: 'Pending Leads',
@@ -14,7 +14,7 @@ export const TEXT_CONSTANTS = {
     `Your leads performance is ${percent} better compare to ${duration}`,
 };
 
-export const SUPPLIER_REPORTS = {
+const SUPPLIER_REPORTS = {
   PerformenceLead: 'PerformenceLead',
   ValidLeads: 'ValidLeads',
   PendingLeads: 'PendingLeads',
@@ -22,3 +22,5 @@ export const SUPPLIER_REPORTS = {
   LeadsOverview: 'LeadsOverview',
   MostGenerateLeads: 'MostGenerateLeads',
 };
+
+export { DASHBOARD_TEXT, TEXT_CONSTANTS, SUPPLIER_REPORTS };

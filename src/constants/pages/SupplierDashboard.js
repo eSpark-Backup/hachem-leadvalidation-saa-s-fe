@@ -1,6 +1,6 @@
 import { location, validation } from './DropdownOptions';
 
-export const SUPPLIER_DASHBOARD_AVAILABLE_LEADS = {
+const SUPPLIER_DASHBOARD_AVAILABLE_LEADS = {
   title: 'Available Leads',
   filterType: {
     dropdown: 'dropdown',
@@ -8,7 +8,7 @@ export const SUPPLIER_DASHBOARD_AVAILABLE_LEADS = {
   },
 };
 
-export const SUPPLIER_AVAILABLE_LEADS_TABLE_HEADER = [
+const SUPPLIER_AVAILABLE_LEADS_TABLE_HEADER = [
   { key: 'client_id', label: 'Client ID' },
   { key: 'country', label: 'Country' },
   { key: 'leads_validation', label: 'Leads Validation Rate' },
@@ -17,7 +17,7 @@ export const SUPPLIER_AVAILABLE_LEADS_TABLE_HEADER = [
   { key: 'action', label: '' },
 ];
 
-export const SUPPLIER_AVAILABLE_LEADS_TABLE_BODY = [
+const SUPPLIER_AVAILABLE_LEADS_TABLE_BODY = [
   {
     id: 1,
     client_id: 'Cl:51912',
@@ -90,7 +90,7 @@ export const SUPPLIER_AVAILABLE_LEADS_TABLE_BODY = [
   },
 ];
 
-export const SUPPLIER_AVAILABLE_LEADS_FILTER_TYPES = [
+const SUPPLIER_AVAILABLE_LEADS_FILTER_TYPES = [
   {
     type: 'dropdown',
     key: 'dropdown',
@@ -98,7 +98,15 @@ export const SUPPLIER_AVAILABLE_LEADS_FILTER_TYPES = [
   { type: 'month', key: 'month' },
 ];
 
-export const SUPPLIER_AVAILABLE_LEADS_SELECT_FILTERS = [
+const SUPPLIER_AVAILABLE_LEADS_SELECT_FILTERS = [
   { options: validation, label: 'Validation', key: 'leads_validation' },
   { options: location, label: 'Select Location', key: 'country' },
 ];
+
+export {
+  SUPPLIER_AVAILABLE_LEADS_SELECT_FILTERS,
+  SUPPLIER_AVAILABLE_LEADS_FILTER_TYPES,
+  SUPPLIER_AVAILABLE_LEADS_TABLE_HEADER,
+  SUPPLIER_AVAILABLE_LEADS_TABLE_BODY,
+  SUPPLIER_DASHBOARD_AVAILABLE_LEADS,
+};

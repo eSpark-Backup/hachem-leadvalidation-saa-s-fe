@@ -1,4 +1,4 @@
-export const DATA_THIS_MONTH = [
+const DATA_THIS_MONTH = [
   { key: 1, value: 60 },
   { key: 2, value: 70 },
   { key: 3, value: 19 },
@@ -31,7 +31,7 @@ export const DATA_THIS_MONTH = [
   { key: 10, value: 70 },
 ];
 
-export const DATA_LAST_MONTH = [
+const DATA_LAST_MONTH = [
   { key: 1, value: 60 },
   { key: 2, value: 70 },
   { key: 3, value: 19 },
@@ -63,3 +63,5 @@ export const DATA_LAST_MONTH = [
   { key: 9, value: 45 },
   { key: 10, value: 70 },
 ];
+
+export { DATA_THIS_MONTH, DATA_LAST_MONTH };

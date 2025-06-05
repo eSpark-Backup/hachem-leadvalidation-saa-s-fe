@@ -92,8 +92,6 @@ const CREDITS_DATA = {
         },
       },
     ],
-
-    // style
     iconButtonStyle: {
       width: '20px',
       height: '20px',
@@ -138,8 +136,6 @@ const CREDITS_DATA = {
         text: 'per validated lead',
       },
     ],
-
-    // style
     volumeBoxStyle: {
       width: '100%',
       height: '100%',

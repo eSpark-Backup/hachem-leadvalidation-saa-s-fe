@@ -1,4 +1,4 @@
-export const styles = {
+const styles = {
   paper: (minHeight) => ({
     width: 300,
     p: 2,
@@ -74,3 +74,5 @@ export const styles = {
     justifyContent: 'space-between',
   },
 };
+
+export { styles };

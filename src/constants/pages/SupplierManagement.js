@@ -1,10 +1,10 @@
 import SupplierImage from '/assets/images/admin/supplier.png';
 
-export const SUPPLIER_MANAGEMENT = {
+const SUPPLIER_MANAGEMENT = {
   title: 'Supplier Management',
 };
 
-export const TABLE_HEADER = [
+const TABLE_HEADER = [
   { key: 'supplier_id', label: 'Supplier ID' },
   { key: 'name', label: 'Name' },
   { key: 'email', label: 'Email' },
@@ -14,7 +14,7 @@ export const TABLE_HEADER = [
   { key: 'action', label: '' },
 ];
 
-export const TABLE_BODY = [
+const TABLE_BODY = [
   {
     id: 1,
     profile: SupplierImage,
@@ -172,3 +172,5 @@ export const TABLE_BODY = [
     isLatest: false,
   },
 ];
+
+export { SupplierImage, SUPPLIER_MANAGEMENT, TABLE_HEADER, TABLE_BODY };

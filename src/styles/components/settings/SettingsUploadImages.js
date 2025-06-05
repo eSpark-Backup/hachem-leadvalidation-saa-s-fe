@@ -1,4 +1,4 @@
-export const uploadBoxStyles = {
+const uploadBoxStyles = {
   border: '2px dashed #CBD5E1',
   gap: '10px',
   borderRadius: '32px',
@@ -14,7 +14,7 @@ export const uploadBoxStyles = {
   },
 };
 
-export const clearIconStyles = {
+const clearIconStyles = {
   position: 'absolute',
   bottom: -10,
   right: -10,
@@ -25,3 +25,5 @@ export const clearIconStyles = {
     backgroundColor: '#fff',
   },
 };
+
+export { uploadBoxStyles, clearIconStyles };

@@ -3,7 +3,6 @@
 import { Box } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { SideNav } from '/src/components/global/SideNav';
 import TopBar from '/src/components/global/TopBar';
 import {
   LayoutBodyRoot,
@@ -13,6 +12,7 @@ import {
   privateLayoutOutletBoxStyles,
 } from '/src/styles/layouts/PrivateLayout';
 import { USER_TYPES } from '../constants/components/globals/Auth';
+import SideNav from '../components/global/SideNav';
 // import { USER_TYPE } from '../utils/auth';
 
 /**

@@ -12,41 +12,14 @@ import {
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import PropTypes from 'prop-types';
 import { formatNumber } from '../../utils/globals';
-
-const ContainerStyle = {
-  maxWidth: 600,
-};
-
-const HeaderCellStyle = {
-  py: 1,
-  textAlign: 'center',
-};
-
-const HeaderTextStyle = {
-  fontWeight: 600,
-  fontSize: '11px',
-  color: '#555',
-  textTransform: 'uppercase',
-};
-
-const RowTextStyle = {
-  fontWeight: 600,
-  fontSize: '11px',
-  color: '#111',
-};
-
-const SubTextStyle = {
-  fontWeight: 500,
-  fontSize: '11px',
-  color: '#111',
-};
-
-const RowStyle = {
-  transition: 'background-color 0.2s',
-  '&:hover': {
-    backgroundColor: '#f5f5f5',
-  },
-};
+import {
+  ContainerStyle,
+  HeaderCellStyle,
+  HeaderTextStyle,
+  RowTextStyle,
+  SubTextStyle,
+  RowStyle,
+} from '../../constants/components/billing/RevenueTable';
 
 // Main component
 const RevenueTable = ({

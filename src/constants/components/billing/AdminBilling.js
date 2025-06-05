@@ -1,5 +1,5 @@
-export const ADMIN_DASHBOARD = { title: `Billing Logs and Revenue` };
-export const data = {
+const ADMIN_DASHBOARD = { title: `Billing Logs and Revenue` };
+const data = {
   lastMonth: [
     { label: 'Total Income', value: '14,0700' },
     { label: 'Total Cost of Leads', value: '155,230' },
@@ -13,12 +13,12 @@ export const data = {
     { label: 'Net Earning', value: '89,21546' },
   ],
 };
-export const clientsData = [
+const clientsData = [
   { client: 'CL10042', credits: '€22,500', revenue: '12,25450' },
   { client: 'CL10042', credits: '€22,500', revenue: '12,25450' },
 ];
 
-export const ADMIN_BILLING = {
+const ADMIN_BILLING = {
   usage: `Usage`,
   TotalClientsRevenue: {
     title: 'Total Clients and Revenue',
@@ -53,3 +53,5 @@ export const ADMIN_BILLING = {
     pickerID: 'TopClientsByRevenue',
   },
 };
+
+export { clientsData, ADMIN_BILLING, data, ADMIN_DASHBOARD };

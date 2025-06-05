@@ -1,8 +1,8 @@
-import { CLIENTS_LEAD, SUPPLIER_LEAD } from '../../../api/apiEndPoints';
+import { CLIENTS_LEAD, SUPPLIER_LEADS } from '../../../api/apiEndPoints';
 import { apiSlice } from '../../../api/apiSlice';
 
 const getSettingsUrl = (type) =>
-  type === 'supplier' ? SUPPLIER_LEAD : CLIENTS_LEAD;
+  type === 'supplier' ? SUPPLIER_LEADS : CLIENTS_LEAD;
 
 export const clientLeadApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

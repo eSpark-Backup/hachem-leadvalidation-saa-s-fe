@@ -1,4 +1,4 @@
-export const service = [
+const service = [
   {
     id: 1,
     label: 'Solar installation',
@@ -29,7 +29,7 @@ export const service = [
   },
 ];
 
-export const validation = [
+const validation = [
   {
     id: 1,
     label: '70%-75%',
@@ -48,7 +48,7 @@ export const validation = [
   },
 ];
 
-export const location = [
+const location = [
   {
     id: 1,
     label: 'Germany',
@@ -78,3 +78,5 @@ export const location = [
     label: 'Argentina',
   },
 ];
+
+export { location, validation, service };

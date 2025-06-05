@@ -10,15 +10,12 @@ import {
 } from '@mui/material';
 import PropTypes from 'prop-types';
 
-const paperStyle = {
-  borderRadius: '20px',
-  backgroundColor: '#fff',
-  p: 2,
-  mx: 'auto',
-};
-const titleStyle = { mb: 2, fontSize: '25px' };
-const headCellStyle = { fontWeight: 'bold' };
-const bodyCellStyle = { fontWeight: 'normal' };
+import {
+  paperStyle,
+  titleStyle,
+  headCellStyle,
+  bodyCellStyle,
+} from '../../constants/components/billing/TotalClientsRevenue';
 
 const TotalClientsRevenue = ({ title, tableHead, tableData }) => {
   return (

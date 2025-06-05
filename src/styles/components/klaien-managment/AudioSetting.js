@@ -1,4 +1,4 @@
-export const AudioSetting = {
+const AudioSetting = {
   card: {
     padding: {
       xs: 2,
@@ -81,3 +81,5 @@ export const AudioSetting = {
     },
   },
 };
+
+export { AudioSetting };

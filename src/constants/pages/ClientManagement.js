@@ -1,10 +1,10 @@
 import ClientImage from '/assets/images/admin/client.png';
 
-export const CLIENT_MANAGEMENT = {
+const CLIENT_MANAGEMENT = {
   title: 'Client Management',
 };
 
-export const TABLE_HEADER = [
+const TABLE_HEADER = [
   { key: 'client_id', label: 'Client ID' },
   { key: 'name', label: 'Name' },
   { key: 'email', label: 'Email' },
@@ -14,7 +14,7 @@ export const TABLE_HEADER = [
   { key: 'action', label: '' },
 ];
 
-export const TABLE_BODY = [
+const TABLE_BODY = [
   {
     id: 1,
     profile: ClientImage,
@@ -212,3 +212,5 @@ export const TABLE_BODY = [
     isLatestText: 'New Client',
   },
 ];
+
+export { CLIENT_MANAGEMENT, TABLE_HEADER, TABLE_BODY };

@@ -11,7 +11,7 @@ import {
 /**
  * Calls RTK Query AUTH mutations and handles state + errors + toasts.
  */
-export const handleLoginMutation = async (
+const handleLoginMutation = async (
   { email, password },
   loginMutation,
   dispatch,
@@ -43,7 +43,7 @@ export const handleLoginMutation = async (
   }
 };
 
-export const handleRegisterMutation = async (
+const handleRegisterMutation = async (
   body,
   registerMutation,
   navigate,
@@ -56,7 +56,7 @@ export const handleRegisterMutation = async (
       abortEarly: false,
     });
 
-    const { confirm_password, service_and_policy, ...payload } = validatedData;
+    const { ...payload } = validatedData;
 
     const res = await registerMutation(payload).unwrap();
 
@@ -95,7 +95,7 @@ export const handleRegisterMutation = async (
   }
 };
 
-export const handleResendCodeMutation = async (
+const handleResendCodeMutation = async (
   email,
   resendVerificationCodeMutation
 ) => {
@@ -116,7 +116,7 @@ export const handleResendCodeMutation = async (
   }
 };
 
-export const handleVerifyEmailMutation = async (
+const handleVerifyEmailMutation = async (
   { email, code },
   verifyEmailMutation,
   setShowVerifyEmail,
@@ -142,7 +142,7 @@ export const handleVerifyEmailMutation = async (
   }
 };
 
-export const handleResetPasswordRequestMutation = async (
+const handleResetPasswordRequestMutation = async (
   email,
   resetPasswordRequestMutation,
   setShowVerifyEmail,
@@ -168,7 +168,7 @@ export const handleResetPasswordRequestMutation = async (
   }
 };
 
-export const handleResetPasswordMutation = async (
+const handleResetPasswordMutation = async (
   body,
   resetPasswordMutation,
   navigate,
@@ -181,7 +181,7 @@ export const handleResetPasswordMutation = async (
       abortEarly: false,
     });
 
-    const { confirm_password, ...payload } = validatedData;
+    const { ...payload } = validatedData;
 
     const res = await resetPasswordMutation(payload).unwrap();
 
@@ -214,7 +214,7 @@ export const handleResetPasswordMutation = async (
   }
 };
 
-export const handleLogoutMutation = async (logoutMutation) => {
+const handleLogoutMutation = async (logoutMutation) => {
   try {
     const res = await logoutMutation({ refreshToken: '' }).unwrap();
 
@@ -230,4 +230,13 @@ export const handleLogoutMutation = async (logoutMutation) => {
 
     return null;
   }
+};
+export {
+  handleLoginMutation,
+  handleLogoutMutation,
+  handleResetPasswordMutation,
+  handleResetPasswordRequestMutation,
+  handleResendCodeMutation,
+  handleVerifyEmailMutation,
+  handleRegisterMutation,
 };

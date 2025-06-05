@@ -1,11 +1,11 @@
-export const LEAD_STATUS = {
+const LEAD_STATUS = {
   title: 'Leads Status Tracking',
   filterType: {
     date: 'date',
   },
 };
 
-export const TABLE_HEADER = [
+const TABLE_HEADER = [
   { key: 'client_id', label: 'Client ID' },
   { key: 'lead_created', label: 'Lead Created' },
   { key: 'company', label: 'Company' },
@@ -15,7 +15,7 @@ export const TABLE_HEADER = [
   { key: 'validation', label: 'Validation' },
 ];
 
-export const TABLE_BODY = [
+const TABLE_BODY = [
   {
     id: 1,
     client_id: 'CL:5626',
@@ -98,4 +98,6 @@ export const TABLE_BODY = [
   },
 ];
 
-export const FILTER_TYPES = [{ type: 'date', key: 'date' }];
+const FILTER_TYPES = [{ type: 'date', key: 'date' }];
+
+export { LEAD_STATUS, TABLE_BODY, TABLE_HEADER, FILTER_TYPES };

@@ -1,27 +1,26 @@
-// Style constants
-export const cardStyles = {
+const cardStyles = {
   borderRadius: 2,
   my: 2.5,
   p: 1,
 };
 
-export const containerBoxStyles = {
+const containerBoxStyles = {
   p: 1,
 };
 
-export const headerBoxStyles = {
+const headerBoxStyles = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
 };
 
-export const labelBoxStyles = {
+const labelBoxStyles = {
   display: 'flex',
   alignItems: 'center',
   gap: 2,
 };
 
-export const sliderStyles = {
+const sliderStyles = {
   color: '#0C0C22',
   '& .MuiSlider-thumb': {
     width: 14,
@@ -34,13 +33,13 @@ export const sliderStyles = {
   },
 };
 
-export const valueLabelStyles = {
+const valueLabelStyles = {
   fontWeight: 600,
   fontSize: '13px',
   color: '#77797D',
 };
 
-export const sliderValueBoxBase = {
+const sliderValueBoxBase = {
   px: 2,
   py: 1,
   borderRadius: 1,
@@ -55,18 +54,31 @@ export const sliderValueBoxBase = {
   gap: 0.5,
 };
 
-export const sliderValueTextStyles = {
+const sliderValueTextStyles = {
   color: '#09102B',
   fontWeight: 500,
   fontSize: '16px',
 };
-export const sliderUnitTextStyles = {
+const sliderUnitTextStyles = {
   color: '#09102B',
   fontWeight: 400,
   fontSize: '12px',
 };
 
-export const labelTypographyStyles = {
+const labelTypographyStyles = {
   fontWeight: 600,
   fontSize: '16px',
+};
+
+export {
+  sliderValueBoxBase,
+  sliderValueTextStyles,
+  labelTypographyStyles,
+  sliderUnitTextStyles,
+  valueLabelStyles,
+  cardStyles,
+  containerBoxStyles,
+  sliderStyles,
+  labelBoxStyles,
+  headerBoxStyles,
 };

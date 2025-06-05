@@ -57,7 +57,6 @@ const SupplierReports = ({ handleCopy, handleDownload }) => {
     setOpen(false);
     setOpenDatePicker(false);
   };
-  // styles.js or at top of the file
 
   return (
     <>

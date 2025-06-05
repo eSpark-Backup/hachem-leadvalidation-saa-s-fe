@@ -5,7 +5,7 @@ import TrashIcon from '/assets/images/client/trash.svg';
 import CheckIcon from '/assets/images/client/check.svg';
 import SuccessfullIcon from '/assets/images/auth/Verified_image.svg';
 
-export const LEAD_SCORING_SETTING = {
+const LEAD_SCORING_SETTING = {
   title: 'Leads Scoring Setting',
   buttonText: 'Score with AI',
   rate: 'Validation rate',
@@ -28,7 +28,7 @@ export const LEAD_SCORING_SETTING = {
   ok: 'OK',
 };
 
-export const TABLE_HEADER = [
+const TABLE_HEADER = [
   { key: 'name', label: 'Name' },
   { key: 'address', label: 'Address' },
   { key: 'services', label: 'Services' },
@@ -39,7 +39,7 @@ export const TABLE_HEADER = [
   { key: 'requirement', label: 'Requirement' },
 ];
 
-export const TABLE_BODY = [
+const TABLE_BODY = [
   {
     id: 1,
     name: 'Floyd Miles - 20pts',
@@ -119,7 +119,7 @@ export const TABLE_BODY = [
   },
 ];
 
-export const ALT_ATTRIBUTE = {
+const ALT_ATTRIBUTE = {
   dropdown: 'Dropdown',
   close: 'Close',
   document: 'Document',
@@ -128,7 +128,7 @@ export const ALT_ATTRIBUTE = {
   successfull: 'Successfull',
 };
 
-export const ICONS = {
+const ICONS = {
   dropdown: DropdownIcon,
   close: CloseIcon,
   document: DocumentIcon,
@@ -137,7 +137,7 @@ export const ICONS = {
   successfull: SuccessfullIcon,
 };
 
-export const SCORING_SETTINGS = [
+const SCORING_SETTINGS = [
   {
     name: 'name',
     placeholder: 'Valid Name\t+05 pts',
@@ -179,3 +179,12 @@ export const SCORING_SETTINGS = [
     type: 'number',
   },
 ];
+
+export {
+  ICONS,
+  SCORING_SETTINGS,
+  ALT_ATTRIBUTE,
+  TABLE_BODY,
+  TABLE_HEADER,
+  LEAD_SCORING_SETTING,
+};

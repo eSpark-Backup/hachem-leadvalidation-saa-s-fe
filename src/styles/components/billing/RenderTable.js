@@ -1,4 +1,4 @@
-export const styles = {
+const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -34,3 +34,4 @@ export const styles = {
     backgroundColor: '#C6D9FD',
   },
 };
+export { styles };

@@ -1,4 +1,4 @@
-export const containerStyles = {
+const containerStyles = {
   px: {
     xs: 1,
     sm: 2,
@@ -12,7 +12,7 @@ export const containerStyles = {
   borderRadius: '5px',
 };
 
-export const getBoxStyles = (isActive) => ({
+const getBoxStyles = (isActive) => ({
   background: isActive ? '#FFFFFF' : '#00000000',
   border: `2px solid ${isActive ? '#FFFFFF' : '#00000000'}`,
   '&:hover': {
@@ -20,3 +20,5 @@ export const getBoxStyles = (isActive) => ({
     transform: 'scale(1.02)',
   },
 });
+
+export { containerStyles, getBoxStyles };
